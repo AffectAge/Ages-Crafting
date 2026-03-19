@@ -20,6 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 
 public class WorkspaceJeiCategory implements IRecipeCategory<WorkspaceCraftingRecipe> {
+    private static final int RECIPE_WIDTH = 190;
+    private static final int RECIPE_HEIGHT = 122;
     private static final int LAYER0_X = 8;
     private static final int LAYER1_X = 68;
     private static final int LAYER2_X = 128;
@@ -33,11 +35,9 @@ public class WorkspaceJeiCategory implements IRecipeCategory<WorkspaceCraftingRe
             WorkspaceCraftingRecipe.class
     );
 
-    private final IDrawable background;
     private final IDrawable icon;
 
     public WorkspaceJeiCategory(IGuiHelper guiHelper) {
-        this.background = guiHelper.createBlankDrawable(190, 122);
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModBlocks.WORKSPACE_TABLE.get()));
     }
 
@@ -52,8 +52,13 @@ public class WorkspaceJeiCategory implements IRecipeCategory<WorkspaceCraftingRe
     }
 
     @Override
-    public @NotNull IDrawable getBackground() {
-        return background;
+    public int getWidth() {
+        return RECIPE_WIDTH;
+    }
+
+    @Override
+    public int getHeight() {
+        return RECIPE_HEIGHT;
     }
 
     @Override

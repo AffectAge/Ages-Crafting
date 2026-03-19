@@ -23,6 +23,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+@SuppressWarnings("deprecation")
 public class WorkspaceTableBlock extends BaseEntityBlock {
     public static final VoxelShape BASE_SHAPE = Block.box(0, 0, 0, 16, 2, 16);
     public static final VoxelShape CELL_BOX = Shapes.box(0, 0, 0, 1 / 3.0, 1 / 3.0, 1 / 3.0);
@@ -139,3 +140,6 @@ public class WorkspaceTableBlock extends BaseEntityBlock {
         return shape;
     }
 }
+
+
+
