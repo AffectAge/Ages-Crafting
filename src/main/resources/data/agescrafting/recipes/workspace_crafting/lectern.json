@@ -1,0 +1,32 @@
+{
+  "type": "agescrafting:workspace_crafting",
+  "key": {
+    "B": {
+      "item": "minecraft:bookshelf"
+    },
+    "S": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "pattern": {
+    "bottom": [
+      "SSS",
+      " B ",
+      " S "
+    ],
+    "middle": [
+      "   ",
+      "   ",
+      "   "
+    ],
+    "top": [
+      "   ",
+      "   ",
+      "   "
+    ]
+  },
+  "result": {
+    "item": "minecraft:lectern"
+  }
+}
+

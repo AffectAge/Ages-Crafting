@@ -1,0 +1,29 @@
+{
+  "type": "agescrafting:workspace_crafting",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": {
+    "bottom": [
+      "## ",
+      "## ",
+      "   "
+    ],
+    "middle": [
+      "   ",
+      "   ",
+      "   "
+    ],
+    "top": [
+      "   ",
+      "   ",
+      "   "
+    ]
+  },
+  "result": {
+    "item": "minecraft:crafting_table"
+  }
+}
+

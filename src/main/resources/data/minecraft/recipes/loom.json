@@ -1,0 +1,26 @@
+{
+  "conditions": [
+    {
+      "type": "agescrafting:enable_vanilla_recipes"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "@": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    "@@",
+    "##"
+  ],
+  "result": {
+    "item": "minecraft:loom"
+  },
+  "show_notification": true
+}
+

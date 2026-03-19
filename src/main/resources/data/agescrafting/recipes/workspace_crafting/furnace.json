@@ -1,0 +1,29 @@
+{
+  "type": "agescrafting:workspace_crafting",
+  "key": {
+    "#": {
+      "tag": "minecraft:stone_crafting_materials"
+    }
+  },
+  "pattern": {
+    "bottom": [
+      "###",
+      "# #",
+      "###"
+    ],
+    "middle": [
+      "   ",
+      "   ",
+      "   "
+    ],
+    "top": [
+      "   ",
+      "   ",
+      "   "
+    ]
+  },
+  "result": {
+    "item": "minecraft:furnace"
+  }
+}
+

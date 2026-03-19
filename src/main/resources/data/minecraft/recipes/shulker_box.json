@@ -1,0 +1,27 @@
+{
+  "conditions": [
+    {
+      "type": "agescrafting:enable_vanilla_recipes"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:chest"
+    },
+    "-": {
+      "item": "minecraft:shulker_shell"
+    }
+  },
+  "pattern": [
+    "-",
+    "#",
+    "-"
+  ],
+  "result": {
+    "item": "minecraft:shulker_box"
+  },
+  "show_notification": true
+}
+

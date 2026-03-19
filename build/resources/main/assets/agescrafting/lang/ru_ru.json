@@ -1,0 +1,20 @@
+{
+  "block.agescrafting.workspace_table": "Верстак-решетка",
+  "item.agescrafting.workspace_table": "Верстак-решетка",
+  "item.agescrafting.flint_hint": "Используйте кремень для сборки",
+  "emi.category.agescrafting.workspace_crafting": "Объёмный крафт",
+  "gui.agescrafting.layer.bottom": "Нижний слой",
+  "gui.agescrafting.layer.middle": "Средний слой",
+  "gui.agescrafting.layer.top": "Верхний слой",
+  "gui.agescrafting.assembly_tool": "Инструмент сборки",
+  "gui.agescrafting.result": "Результат",
+  "gui.agescrafting.stage_required": "Требуется стадия: %s",
+  "message.agescrafting.stage_required": "Нужна стадия: %s",
+  "block.agescrafting.barrel": "Реалистичная бочка",
+  "item.agescrafting.barrel": "Реалистичная бочка",
+  "gui.agescrafting.barrel.fluid": "Жидкость",
+  "gui.agescrafting.barrel.empty": "Пусто",
+  "gui.agescrafting.barrel.sealed": "Запечатано",
+  "gui.agescrafting.barrel.seal.short": "З",
+  "gui.agescrafting.barrel.unseal.short": "О"
+}

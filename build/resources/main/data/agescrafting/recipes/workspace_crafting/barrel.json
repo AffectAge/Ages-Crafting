@@ -1,0 +1,32 @@
+{
+  "type": "agescrafting:workspace_crafting",
+  "key": {
+    "P": {
+      "tag": "minecraft:planks"
+    },
+    "S": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "pattern": {
+    "bottom": [
+      "PSP",
+      "P P",
+      "PSP"
+    ],
+    "middle": [
+      "   ",
+      "   ",
+      "   "
+    ],
+    "top": [
+      "   ",
+      "   ",
+      "   "
+    ]
+  },
+  "result": {
+    "item": "minecraft:barrel"
+  }
+}
+

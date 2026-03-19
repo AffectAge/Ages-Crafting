@@ -1,0 +1,29 @@
+{
+  "type": "agescrafting:workspace_crafting",
+  "key": {
+    "#": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "pattern": {
+    "bottom": [
+      "# #",
+      "# #",
+      "###"
+    ],
+    "middle": [
+      "   ",
+      "   ",
+      "   "
+    ],
+    "top": [
+      "   ",
+      "   ",
+      "   "
+    ]
+  },
+  "result": {
+    "item": "minecraft:composter"
+  }
+}
+

@@ -1,0 +1,35 @@
+{
+  "type": "agescrafting:workspace_crafting",
+  "key": {
+    "#": {
+      "item": "minecraft:cobblestone"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": {
+    "bottom": [
+      "###",
+      "RRQ",
+      "###"
+    ],
+    "middle": [
+      "   ",
+      "   ",
+      "   "
+    ],
+    "top": [
+      "   ",
+      "   ",
+      "   "
+    ]
+  },
+  "result": {
+    "item": "minecraft:observer"
+  }
+}
+

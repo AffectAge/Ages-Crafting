@@ -1,0 +1,32 @@
+{
+  "type": "agescrafting:workspace_crafting",
+  "key": {
+    "#": {
+      "tag": "minecraft:stone_crafting_materials"
+    },
+    "B": {
+      "item": "minecraft:blaze_rod"
+    }
+  },
+  "pattern": {
+    "bottom": [
+      " B ",
+      "###",
+      "   "
+    ],
+    "middle": [
+      "   ",
+      "   ",
+      "   "
+    ],
+    "top": [
+      "   ",
+      "   ",
+      "   "
+    ]
+  },
+  "result": {
+    "item": "minecraft:brewing_stand"
+  }
+}
+

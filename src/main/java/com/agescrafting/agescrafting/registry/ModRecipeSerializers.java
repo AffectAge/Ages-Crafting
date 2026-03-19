@@ -1,0 +1,17 @@
+package com.agescrafting.agescrafting.registry;
+
+import com.agescrafting.agescrafting.AgesCraftingMod;
+import com.agescrafting.agescrafting.workspace.WorkspaceCraftingRecipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+
+public class ModRecipeSerializers {
+    public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, AgesCraftingMod.MODID);
+
+    public static final RegistryObject<RecipeSerializer<WorkspaceCraftingRecipe>> WORKSPACE_CRAFTING = RECIPE_SERIALIZERS.register(
+            "workspace_crafting",
+            WorkspaceCraftingRecipe.Serializer::new
+    );
+}

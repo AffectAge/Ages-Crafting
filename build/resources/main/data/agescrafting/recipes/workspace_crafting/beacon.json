@@ -1,0 +1,35 @@
+{
+  "type": "agescrafting:workspace_crafting",
+  "key": {
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "O": {
+      "item": "minecraft:obsidian"
+    },
+    "S": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "pattern": {
+    "bottom": [
+      "GGG",
+      "GSG",
+      "OOO"
+    ],
+    "middle": [
+      "   ",
+      "   ",
+      "   "
+    ],
+    "top": [
+      "   ",
+      "   ",
+      "   "
+    ]
+  },
+  "result": {
+    "item": "minecraft:beacon"
+  }
+}
+

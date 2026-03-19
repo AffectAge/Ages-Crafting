@@ -1,0 +1,72 @@
+package com.agescrafting.agescrafting;
+
+import com.agescrafting.agescrafting.registry.ModBlockEntities;
+import com.agescrafting.agescrafting.registry.ModBlocks;
+import com.agescrafting.agescrafting.registry.ModItems;
+import com.agescrafting.agescrafting.registry.ModMenuTypes;
+import com.agescrafting.agescrafting.registry.ModRecipeSerializers;
+import com.agescrafting.agescrafting.registry.ModRecipeTypes;
+import com.agescrafting.agescrafting.config.AgesCraftingConfig;
+import com.agescrafting.agescrafting.barrel.BarrelScreen;
+import com.agescrafting.agescrafting.recipe.condition.EnableVanillaRecipesCondition;
+import com.agescrafting.agescrafting.workspace.WorkspaceTableRenderer;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+@Mod(AgesCraftingMod.MODID)
+public class AgesCraftingMod {
+    public static final String MODID = "agescrafting";
+
+    public AgesCraftingMod(FMLJavaModLoadingContext context) {
+        IEventBus modBus = context.getModEventBus();
+        modBus.addListener(this::onCommonSetup);
+
+        ModBlocks.BLOCKS.register(modBus);
+        ModItems.ITEMS.register(modBus);
+        ModBlockEntities.BLOCK_ENTITIES.register(modBus);
+        ModMenuTypes.MENUS.register(modBus);
+        ModRecipeSerializers.RECIPE_SERIALIZERS.register(modBus);
+        ModRecipeTypes.RECIPE_TYPES.register(modBus);
+        context.registerConfig(ModConfig.Type.SERVER, AgesCraftingConfig.SERVER_SPEC);
+    }
+
+    private void onCommonSetup(FMLCommonSetupEvent event) {
+        event.enqueueWork(EnableVanillaRecipesCondition::register);
+    }
+
+    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ModEvents {
+        @SubscribeEvent
+        public static void addCreative(BuildCreativeModeTabContentsEvent event) {
+            if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+                event.accept(ModItems.WORKSPACE_TABLE_ITEM.get());
+                event.accept(ModItems.BARREL_ITEM.get());
+            }
+        }
+    }
+
+    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public static class ClientModEvents {
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            event.enqueueWork(() -> BlockEntityRenderers.register(
+                    ModBlockEntities.WORKSPACE_TABLE_BE.get(),
+                    WorkspaceTableRenderer::new
+            ));
+            event.enqueueWork(() -> MenuScreens.register(
+                    ModMenuTypes.BARREL.get(),
+                    BarrelScreen::new
+            ));
+        }
+    }
+}
