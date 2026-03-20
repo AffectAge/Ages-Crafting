@@ -1,0 +1,31 @@
+{
+  "type": "agescrafting:workspace_crafting",
+  "key": {
+    "P": {
+      "item": "minecraft:oak_planks"
+    },
+    "S": {
+      "item": "minecraft:oak_slab"
+    }
+  },
+  "pattern": {
+    "bottom": [
+      "PSP",
+      "P P",
+      "PSP"
+    ],
+    "middle": [
+      "   ",
+      "   ",
+      "   "
+    ],
+    "top": [
+      "   ",
+      "   ",
+      "   "
+    ]
+  },
+  "result": {
+    "item": "agescrafting:barrel"
+  }
+}
