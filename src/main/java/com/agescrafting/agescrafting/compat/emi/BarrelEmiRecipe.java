@@ -94,7 +94,7 @@ public class BarrelEmiRecipe implements EmiRecipe {
         }
 
         List<FluidStack> inputFluids = recipe.fluidIngredients();
-        int[] inputX = {10, 28, 46};
+        int[] inputX = {10};
         int inputCount = Math.min(inputX.length, inputFluids.size());
         for (int i = 0; i < inputCount; i++) {
             FluidStack inputFluid = inputFluids.get(i);
@@ -109,7 +109,7 @@ public class BarrelEmiRecipe implements EmiRecipe {
         }
 
         List<FluidStack> outputFluids = recipe.fluidResults();
-        int[] outputX = {120, 138, 156};
+        int[] outputX = {152};
         int outputCount = Math.min(outputX.length, outputFluids.size());
         for (int i = 0; i < outputCount; i++) {
             FluidStack outputFluid = outputFluids.get(i);
@@ -127,3 +127,4 @@ public class BarrelEmiRecipe implements EmiRecipe {
         }
     }
 }
+

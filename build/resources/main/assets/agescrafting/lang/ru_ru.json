@@ -49,5 +49,10 @@
   "item.agescrafting.bamboo_barrel": "Бамбуковая реалистичная бочка",
   "item.agescrafting.crimson_barrel": "Багровая реалистичная бочка",
   "item.agescrafting.warped_barrel": "Искаженная реалистичная бочка",
-  "itemGroup.agescrafting.main": "Ages Crafting"
+  "itemGroup.agescrafting.main": "Ages Crafting",
+  "tooltip.agescrafting.barrel.sealed_state": "Запечатана: %s",
+  "tooltip.agescrafting.barrel.state.sealed": "Да",
+  "tooltip.agescrafting.barrel.state.unsealed": "Нет",
+  "gui.agescrafting.barrel.rain_fill": "Собирает дождевую воду, если открыта и пуста",
+  "tooltip.agescrafting.barrel.rain_fill": "Наполнение дождем: открыта + пустые резервуары + дождь"
 }

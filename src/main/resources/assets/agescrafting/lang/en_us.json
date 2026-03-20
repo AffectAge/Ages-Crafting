@@ -49,5 +49,10 @@
   "item.agescrafting.bamboo_barrel": "Bamboo Aging Barrel",
   "item.agescrafting.crimson_barrel": "Crimson Aging Barrel",
   "item.agescrafting.warped_barrel": "Warped Aging Barrel",
-  "itemGroup.agescrafting.main": "Ages Crafting"
+  "itemGroup.agescrafting.main": "Ages Crafting",
+  "tooltip.agescrafting.barrel.sealed_state": "Sealed: %s",
+  "tooltip.agescrafting.barrel.state.sealed": "Yes",
+  "tooltip.agescrafting.barrel.state.unsealed": "No",
+  "gui.agescrafting.barrel.rain_fill": "Collects rainwater when open and empty",
+  "tooltip.agescrafting.barrel.rain_fill": "Rain fill: open + empty tanks + rain"
 }

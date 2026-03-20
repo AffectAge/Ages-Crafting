@@ -23,12 +23,15 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
     private static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(AgesCraftingMod.MODID, "barrel_progress");
     private static final String TAG_PROGRESS = "RecipeProgress";
     private static final String TAG_TOTAL = "RecipeTotal";
+    private static final String TAG_SEALED = "Sealed";
 
     @Override
     public void appendServerData(CompoundTag data, @NotNull BlockAccessor accessor) {
         if (!(accessor.getBlockEntity() instanceof BarrelBlockEntity barrel)) {
             return;
         }
+
+        data.putBoolean(TAG_SEALED, barrel.isSealed());
 
         int total = barrel.getRecipeTotalTicks();
         if (total <= 0) {
@@ -42,6 +45,14 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
     @Override
     public void appendTooltip(ITooltip tooltip, @NotNull BlockAccessor accessor, @NotNull IPluginConfig config) {
         CompoundTag data = accessor.getServerData();
+
+        boolean sealed = data.getBoolean(TAG_SEALED);
+        Component stateText = Component.translatable(sealed
+                ? "tooltip.agescrafting.barrel.state.sealed"
+                : "tooltip.agescrafting.barrel.state.unsealed");
+        tooltip.add(Component.translatable("tooltip.agescrafting.barrel.sealed_state", stateText));
+        tooltip.add(Component.translatable("tooltip.agescrafting.barrel.rain_fill"));
+
         if (!data.contains(TAG_TOTAL)) {
             return;
         }
@@ -62,3 +73,6 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
         return UID;
     }
 }
+
+
+

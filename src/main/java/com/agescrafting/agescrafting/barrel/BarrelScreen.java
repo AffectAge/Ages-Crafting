@@ -32,14 +32,14 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
     private static final int ICON_W = 18;
     private static final int ICON_H = 19;
 
-    private static final int INPUT_TANK_X = 10;
-    private static final int OUTPUT_TANK_X = 44;
+    private static final int INPUT_TANK_X = 28;
+    private static final int OUTPUT_TANK_X = 117;
     private static final int TANK_Y = 18;
     private static final int TANK_WIDTH = 14;
-    private static final int TANK_HEIGHT = 54;
+    private static final int TANK_HEIGHT = 52;
 
-    private static final int SEAL_BUTTON_X = 150;
-    private static final int SEAL_BUTTON_Y = 20;
+    private static final int SEAL_BUTTON_X = 6;
+    private static final int SEAL_BUTTON_Y = 39;
 
     private Button sealButton;
 
@@ -83,12 +83,10 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        guiGraphics.drawString(font, title, titleLabelX, titleLabelY, 0xFFE5DCCF, false);
-        guiGraphics.drawString(font, playerInventoryTitle, inventoryLabelX, inventoryLabelY, 0xFFCFC5B7, false);
-        guiGraphics.drawString(font, Component.translatable("gui.agescrafting.barrel.input_short"), 12, 8, 0xFFCFC5B7, false);
-        guiGraphics.drawString(font, Component.translatable("gui.agescrafting.barrel.output_short"), 46, 8, 0xFFCFC5B7, false);
+        guiGraphics.drawString(font, title, titleLabelX, titleLabelY, 0x404040, false);
+        guiGraphics.drawString(font, playerInventoryTitle, inventoryLabelX, inventoryLabelY, 0x404040, false);
         if (menu.isSealed()) {
-            guiGraphics.drawString(font, Component.translatable("gui.agescrafting.barrel.sealed"), 126, 8, 0xFFE0B7B7, false);
+            guiGraphics.drawString(font, Component.translatable("gui.agescrafting.barrel.sealed"), 126, 8, 0x404040, false);
         }
     }
 
@@ -156,13 +154,13 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
     private void renderTankTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         if (isMouseOverTank(mouseX, mouseY, INPUT_TANK_X, TANK_Y)) {
             renderSingleTankTooltip(guiGraphics, mouseX, mouseY, Component.translatable("gui.agescrafting.barrel.input_tank"),
-                    menu.getInputFluid(), menu.getInputFluidAmount(), menu.getInputTankCapacity());
+                    menu.getInputFluid(), menu.getInputFluidAmount(), menu.getInputTankCapacity(), true);
             return;
         }
 
         if (isMouseOverTank(mouseX, mouseY, OUTPUT_TANK_X, TANK_Y)) {
             renderSingleTankTooltip(guiGraphics, mouseX, mouseY, Component.translatable("gui.agescrafting.barrel.output_tank"),
-                    menu.getOutputFluid(), menu.getOutputFluidAmount(), menu.getOutputTankCapacity());
+                    menu.getOutputFluid(), menu.getOutputFluidAmount(), menu.getOutputTankCapacity(), false);
         }
     }
 
@@ -172,11 +170,14 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         return mouseX >= left && mouseX <= left + TANK_WIDTH && mouseY >= top && mouseY <= top + TANK_HEIGHT;
     }
 
-    private void renderSingleTankTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY, Component title, FluidStack fluid, int amount, int capacity) {
+    private void renderSingleTankTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY, Component title, FluidStack fluid, int amount, int capacity, boolean isInputTank) {
         List<Component> tooltip = new ArrayList<>();
         tooltip.add(title);
         if (fluid.isEmpty()) {
             tooltip.add(Component.translatable("gui.agescrafting.barrel.empty"));
+            if (isInputTank) {
+                tooltip.add(Component.translatable("gui.agescrafting.barrel.rain_fill"));
+            }
         } else {
             tooltip.add(fluid.getDisplayName());
             tooltip.add(Component.literal(amount + " / " + Math.max(1, capacity) + " mB"));
@@ -184,4 +185,10 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         guiGraphics.renderComponentTooltip(font, tooltip, mouseX, mouseY);
     }
 }
+
+
+
+
+
+
 

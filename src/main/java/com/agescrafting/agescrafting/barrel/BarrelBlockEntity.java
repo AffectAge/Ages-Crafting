@@ -23,6 +23,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -44,8 +45,8 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
     public static final int ITEM_GRID_COUNT = 9;
     public static final int TOTAL_SLOTS = ITEM_GRID_START + ITEM_GRID_COUNT;
 
-    private static final int INPUT_TANK_COUNT = 3;
-    private static final int OUTPUT_TANK_COUNT = 3;
+    private static final int INPUT_TANK_COUNT = 1;
+    private static final int OUTPUT_TANK_COUNT = 1;
 
     private static final String TAG_ITEMS = "items";
     private static final String TAG_TANK = "tank";
@@ -183,6 +184,7 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         }
 
         blockEntity.tickRecipe();
+        blockEntity.tickRainFill();
     }
 
     public ItemStackHandler getItemHandler() {
@@ -401,6 +403,38 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
 
         recipeStateDirty = true;
         markForSync();
+    }
+
+    
+    private void tickRainFill() {
+        if (level == null || level.isClientSide || sealed) {
+            return;
+        }
+
+        if (!AgesCraftingConfig.SERVER.barrelRainFillEnabled.get()) {
+            return;
+        }
+
+        int interval = Math.max(1, AgesCraftingConfig.SERVER.barrelRainFillIntervalTicks.get());
+        if (level.getGameTime() % interval != 0L) {
+            return;
+        }
+
+        if (getTotalInputAmount() > 0 || getTotalOutputAmount() > 0) {
+            return;
+        }
+
+        if (!level.isRainingAt(worldPosition.above())) {
+            return;
+        }
+
+        int amount = Math.max(1, AgesCraftingConfig.SERVER.barrelRainFillAmountMb.get());
+        int filled = fillIntoTanks(inputTanks, new FluidStack(Fluids.WATER, amount), IFluidHandler.FluidAction.EXECUTE);
+        if (filled > 0) {
+            recipeStateDirty = true;
+            setChanged();
+            markForSync();
+        }
     }
 
     private void tickRecipe() {
@@ -918,6 +952,15 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         return Math.max(1000, AgesCraftingConfig.SERVER.barrelTankCapacityMb.get());
     }
 }
+
+
+
+
+
+
+
+
+
 
 
 

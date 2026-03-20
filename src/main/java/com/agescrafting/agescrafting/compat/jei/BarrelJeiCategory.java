@@ -27,8 +27,8 @@ public class BarrelJeiCategory implements IRecipeCategory<BarrelRecipe> {
     private static final int TANK_Y = 18;
     private static final int TANK_W = 14;
     private static final int TANK_H = 54;
-    private static final int[] INPUT_TANK_X = {10, 28, 46};
-    private static final int[] OUTPUT_TANK_X = {120, 138, 156};
+    private static final int[] INPUT_TANK_X = {10};
+    private static final int[] OUTPUT_TANK_X = {152};
 
     public static final RecipeType<BarrelRecipe> TYPE = RecipeType.create(
             AgesCraftingMod.MODID,
@@ -129,3 +129,4 @@ public class BarrelJeiCategory implements IRecipeCategory<BarrelRecipe> {
         }
     }
 }
+
