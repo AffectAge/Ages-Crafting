@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
@@ -32,16 +33,17 @@ import org.jetbrains.annotations.Nullable;
 @SuppressWarnings("deprecation")
 public class BarrelBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
+    public static final BooleanProperty SEALED = BooleanProperty.create("sealed");
     private static final VoxelShape SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
     public BarrelBlock(Properties properties) {
         super(properties);
-        registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH));
+        registerDefaultState(stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(SEALED, false));
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
+        builder.add(FACING, SEALED);
     }
 
     @Override
@@ -76,7 +78,7 @@ public class BarrelBlock extends BaseEntityBlock {
 
     @Override
     public @NotNull BlockState getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext context) {
-        return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(SEALED, false);
     }
 
     @Override
@@ -99,7 +101,10 @@ public class BarrelBlock extends BaseEntityBlock {
 
         if (player.isShiftKeyDown() && heldItem.isEmpty()) {
             if (!level.isClientSide) {
-                blockEntity.toggleSealed();
+                boolean sealed = blockEntity.toggleSealed();
+                if (state.getValue(SEALED) != sealed) {
+                    level.setBlock(pos, state.setValue(SEALED, sealed), Block.UPDATE_ALL);
+                }
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
@@ -129,6 +134,3 @@ public class BarrelBlock extends BaseEntityBlock {
         super.onRemove(state, level, pos, newState, movedByPiston);
     }
 }
-
-
-

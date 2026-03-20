@@ -3,6 +3,7 @@ package com.agescrafting.agescrafting.registry;
 import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.barrel.BarrelBlockEntity;
 import com.agescrafting.agescrafting.workspace.WorkspaceTableBlockEntity;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -18,6 +19,6 @@ public class ModBlockEntities {
 
     public static final RegistryObject<BlockEntityType<BarrelBlockEntity>> BARREL_BE = BLOCK_ENTITIES.register(
             "barrel",
-            () -> BlockEntityType.Builder.of(BarrelBlockEntity::new, ModBlocks.BARREL.get()).build(null)
+            () -> BlockEntityType.Builder.of(BarrelBlockEntity::new, ModBlocks.BARREL_BLOCKS.stream().map(RegistryObject::get).toArray(Block[]::new)).build(null)
     );
 }

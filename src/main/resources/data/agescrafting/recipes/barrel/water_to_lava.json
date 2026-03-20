@@ -1,0 +1,13 @@
+{
+  "type": "agescrafting:barrel",
+  "fluid": {
+    "fluid": "minecraft:water",
+    "amount": 1000
+  },
+  "requires_sealed": true,
+  "duration_ticks": 1200,
+  "fluid_result": {
+    "fluid": "minecraft:lava",
+    "amount": 250
+  }
+}

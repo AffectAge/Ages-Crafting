@@ -2,6 +2,7 @@ package com.agescrafting.agescrafting.compat.jei;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.registry.ModBlocks;
+import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import com.agescrafting.agescrafting.workspace.WorkspaceCraftingRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -26,7 +27,10 @@ public class WorkspaceJeiPlugin implements IModPlugin {
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
-        registration.addRecipeCategories(new WorkspaceJeiCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(
+                new WorkspaceJeiCategory(registration.getJeiHelpers().getGuiHelper()),
+                new BarrelJeiCategory(registration.getJeiHelpers().getGuiHelper())
+        );
     }
 
     @Override
@@ -38,12 +42,20 @@ public class WorkspaceJeiPlugin implements IModPlugin {
 
         registration.addRecipes(
                 WorkspaceJeiCategory.TYPE,
-                new ArrayList<>(level.getRecipeManager().getAllRecipesFor(com.agescrafting.agescrafting.registry.ModRecipeTypes.WORKSPACE_CRAFTING.get()))
+                new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.WORKSPACE_CRAFTING.get()))
+        );
+
+        registration.addRecipes(
+                BarrelJeiCategory.TYPE,
+                new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.BARREL.get()))
         );
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.WORKSPACE_TABLE.get()), WorkspaceJeiCategory.TYPE);
+        for (var barrel : ModBlocks.BARREL_BLOCKS) {
+            registration.addRecipeCatalyst(new ItemStack(barrel.get()), BarrelJeiCategory.TYPE);
+        }
     }
 }

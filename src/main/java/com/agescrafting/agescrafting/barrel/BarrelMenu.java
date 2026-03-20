@@ -10,6 +10,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.SlotItemHandler;
@@ -19,8 +20,7 @@ public class BarrelMenu extends AbstractContainerMenu {
     private static final int BARREL_SLOT_COUNT = BarrelBlockEntity.TOTAL_SLOTS;
     private static final int PLAYER_SLOT_COUNT = 36;
     private static final int PLAYER_HOTBAR_COUNT = 9;
-    private static final int BARREL_FIRST_SLOT = 0;
-    private static final int PLAYER_FIRST_SLOT = BARREL_FIRST_SLOT + BARREL_SLOT_COUNT;
+    private static final int PLAYER_FIRST_SLOT = BARREL_SLOT_COUNT;
 
     private final BarrelBlockEntity blockEntity;
     private final ContainerData data;
@@ -67,12 +67,12 @@ public class BarrelMenu extends AbstractContainerMenu {
 
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 9; column++) {
-                addSlot(new Slot(playerInventory, column + row * 9 + 9, 8 + column * 18, 84 + row * 18));
+                addSlot(new Slot(playerInventory, column + row * 9 + 9, 8 + column * 18, 96 + row * 18));
             }
         }
 
         for (int hotbarSlot = 0; hotbarSlot < 9; hotbarSlot++) {
-            addSlot(new Slot(playerInventory, hotbarSlot, 8 + hotbarSlot * 18, 142));
+            addSlot(new Slot(playerInventory, hotbarSlot, 8 + hotbarSlot * 18, 154));
         }
 
         addDataSlots(data);
@@ -80,14 +80,22 @@ public class BarrelMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(@NotNull Player player) {
-        if (blockEntity.getLevel() == null) {
+        Level level = blockEntity.getLevel();
+        if (level == null) {
             return true;
         }
-        return stillValid(
-                net.minecraft.world.inventory.ContainerLevelAccess.create(blockEntity.getLevel(), blockEntity.getBlockPos()),
-                player,
-                ModBlocks.BARREL.get()
-        );
+
+        BlockPos pos = blockEntity.getBlockPos();
+        if (!(level.getBlockEntity(pos) instanceof BarrelBlockEntity)) {
+            return false;
+        }
+
+        boolean isBarrelBlock = ModBlocks.BARREL_BLOCKS.stream().anyMatch(b -> level.getBlockState(pos).is(b.get()));
+        if (!isBarrelBlock) {
+            return false;
+        }
+
+        return player.distanceToSqr(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D) <= 64.0D;
     }
 
     @Override
@@ -140,19 +148,31 @@ public class BarrelMenu extends AbstractContainerMenu {
     }
 
     public boolean isSealed() {
-        return data.get(2) == 1;
+        return data.get(4) == 1;
     }
 
-    public int getFluidAmount() {
+    public int getInputFluidAmount() {
         return data.get(0);
     }
 
-    public int getTankCapacity() {
+    public int getInputTankCapacity() {
         return Math.max(1, data.get(1));
     }
 
-    public FluidStack getFluid() {
-        return blockEntity.getFluid();
+    public int getOutputFluidAmount() {
+        return data.get(2);
+    }
+
+    public int getOutputTankCapacity() {
+        return Math.max(1, data.get(3));
+    }
+
+    public FluidStack getInputFluid() {
+        return blockEntity.getInputFluid();
+    }
+
+    public FluidStack getOutputFluid() {
+        return blockEntity.getOutputFluid();
     }
 
     private static BarrelBlockEntity getBlockEntity(Inventory playerInventory, BlockPos blockPos) {

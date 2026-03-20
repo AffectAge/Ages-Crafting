@@ -1,6 +1,7 @@
 package com.agescrafting.agescrafting.registry;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
+import com.agescrafting.agescrafting.barrel.recipe.BarrelRecipe;
 import com.agescrafting.agescrafting.workspace.WorkspaceCraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,6 +17,16 @@ public class ModRecipeTypes {
                 @Override
                 public String toString() {
                     return AgesCraftingMod.MODID + ":workspace_crafting";
+                }
+            }
+    );
+
+    public static final RegistryObject<RecipeType<BarrelRecipe>> BARREL = RECIPE_TYPES.register(
+            "barrel",
+            () -> new RecipeType<>() {
+                @Override
+                public String toString() {
+                    return AgesCraftingMod.MODID + ":barrel";
                 }
             }
     );

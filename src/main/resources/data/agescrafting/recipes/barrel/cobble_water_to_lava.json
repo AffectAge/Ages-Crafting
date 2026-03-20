@@ -1,0 +1,21 @@
+{
+  "type": "agescrafting:barrel",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:cobblestone"
+      },
+      "count": 4
+    }
+  ],
+  "fluid": {
+    "fluid": "minecraft:water",
+    "amount": 1000
+  },
+  "requires_sealed": true,
+  "duration_ticks": 2400,
+  "fluid_result": {
+    "fluid": "minecraft:lava",
+    "amount": 1000
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "agescrafting:barrel",
+  "ingredients": [
+    {
+      "ingredient": {
+        "item": "minecraft:gravel"
+      },
+      "count": 4
+    }
+  ],
+  "fluid": {
+    "fluid": "minecraft:water",
+    "amount": 250
+  },
+  "requires_sealed": false,
+  "duration_ticks": 0,
+  "item_results": [
+    {
+      "item": "minecraft:flint",
+      "count": 1
+    },
+    {
+      "item": "minecraft:sand",
+      "count": 1
+    }
+  ]
+}
