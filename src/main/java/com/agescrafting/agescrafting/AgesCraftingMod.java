@@ -3,6 +3,7 @@ package com.agescrafting.agescrafting;
 import com.agescrafting.agescrafting.barrel.BarrelBlockEntityRenderer;
 import com.agescrafting.agescrafting.barrel.BarrelScreen;
 import com.agescrafting.agescrafting.config.AgesCraftingConfig;
+import com.agescrafting.agescrafting.dryingrack.DryingRackBlockEntityRenderer;
 import com.agescrafting.agescrafting.recipe.condition.EnableVanillaRecipesCondition;
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import com.agescrafting.agescrafting.registry.ModBlocks;
@@ -56,6 +57,10 @@ public class AgesCraftingMod {
             event.enqueueWork(() -> BlockEntityRenderers.register(
                     ModBlockEntities.BARREL_BE.get(),
                     BarrelBlockEntityRenderer::new
+            ));
+            event.enqueueWork(() -> BlockEntityRenderers.register(
+                    ModBlockEntities.DRYING_RACK_BE.get(),
+                    DryingRackBlockEntityRenderer::new
             ));
             event.enqueueWork(() -> MenuScreens.register(
                     ModMenuTypes.BARREL.get(),

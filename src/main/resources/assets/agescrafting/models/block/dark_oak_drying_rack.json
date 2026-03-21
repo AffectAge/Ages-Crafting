@@ -1,0 +1,6 @@
+{
+  "parent": "agescrafting:block/drying_rack_base",
+  "textures": {
+    "all": "minecraft:block/dark_oak_log"
+  }
+}

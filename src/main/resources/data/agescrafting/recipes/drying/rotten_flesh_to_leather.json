@@ -1,0 +1,11 @@
+{
+  "type": "agescrafting:drying_rack",
+  "ingredient": {
+    "item": "minecraft:rotten_flesh"
+  },
+  "result": {
+    "item": "minecraft:leather",
+    "count": 1
+  },
+  "duration_ticks": 1200
+}
