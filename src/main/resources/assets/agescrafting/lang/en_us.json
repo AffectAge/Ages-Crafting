@@ -29,6 +29,7 @@
   "gui.agescrafting.barrel.recipe_not_sealed": "No sealing required",
   "gui.agescrafting.barrel.recipe_time": "Process time: %s s",
   "tooltip.agescrafting.barrel.progress": "Recipe progress: %s / %s s",
+  "tooltip.agescrafting.barrel.season_modifier": "Season modifier: %s",
   "block.agescrafting.spruce_barrel": "Spruce Aging Barrel",
   "block.agescrafting.birch_barrel": "Birch Aging Barrel",
   "block.agescrafting.jungle_barrel": "Jungle Aging Barrel",
@@ -51,8 +52,8 @@
   "item.agescrafting.warped_barrel": "Warped Aging Barrel",
   "itemGroup.agescrafting.main": "Ages Crafting",
   "tooltip.agescrafting.barrel.sealed_state": "Sealed: %s",
-  "tooltip.agescrafting.barrel.state.sealed": "Yes",
-  "tooltip.agescrafting.barrel.state.unsealed": "No",
+  "tooltip.agescrafting.barrel.state.sealed": "Sealed",
+  "tooltip.agescrafting.barrel.state.unsealed": "Unsealed",
   "gui.agescrafting.barrel.rain_fill": "Collects rainwater when open and empty",
   "tooltip.agescrafting.barrel.rain_fill": "Rain fill: open + empty tanks + rain"
 }

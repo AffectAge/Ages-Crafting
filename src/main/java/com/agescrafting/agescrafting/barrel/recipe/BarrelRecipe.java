@@ -1,5 +1,6 @@
 package com.agescrafting.agescrafting.barrel.recipe;
 
+import com.agescrafting.agescrafting.compat.sereneseasons.SereneSeasonsCompat;
 import com.agescrafting.agescrafting.registry.ModRecipeSerializers;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import com.google.gson.JsonArray;
@@ -19,6 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,7 @@ public class BarrelRecipe implements Recipe<Container> {
     private final int durationTicks;
     private final NonNullList<ItemStack> itemResults;
     private final List<FluidStack> fluidResults;
+    private final @Nullable SeasonMultipliers seasonMultipliers;
 
     public BarrelRecipe(
             ResourceLocation id,
@@ -39,7 +42,8 @@ public class BarrelRecipe implements Recipe<Container> {
             boolean requiresSealed,
             int durationTicks,
             NonNullList<ItemStack> itemResults,
-            List<FluidStack> fluidResults
+            List<FluidStack> fluidResults,
+            @Nullable SeasonMultipliers seasonMultipliers
     ) {
         this.id = id;
         this.itemIngredients = List.copyOf(itemIngredients);
@@ -49,6 +53,7 @@ public class BarrelRecipe implements Recipe<Container> {
         this.itemResults = NonNullList.create();
         this.itemResults.addAll(itemResults);
         this.fluidResults = copyFluids(fluidResults);
+        this.seasonMultipliers = seasonMultipliers;
     }
 
     @Override
@@ -124,6 +129,17 @@ public class BarrelRecipe implements Recipe<Container> {
         return durationTicks;
     }
 
+    public float getDurationMultiplier(@Nullable Level level) {
+        if (seasonMultipliers != null) {
+            return seasonMultipliers.forSeason(SereneSeasonsCompat.getSeasonGroup(level));
+        }
+        return SereneSeasonsCompat.getBarrelDurationMultiplier(level);
+    }
+
+    public boolean hasCustomSeasonMultipliers() {
+        return seasonMultipliers != null;
+    }
+
     public List<IngredientWithCount> itemIngredients() {
         return itemIngredients;
     }
@@ -195,6 +211,31 @@ public class BarrelRecipe implements Recipe<Container> {
         }
     }
 
+    public record SeasonMultipliers(float spring, float summer, float autumn, float winter) {
+        public SeasonMultipliers {
+            spring = sanitizeMultiplier(spring);
+            summer = sanitizeMultiplier(summer);
+            autumn = sanitizeMultiplier(autumn);
+            winter = sanitizeMultiplier(winter);
+        }
+
+        public float forSeason(SereneSeasonsCompat.SeasonGroup seasonGroup) {
+            return switch (seasonGroup) {
+                case SUMMER -> summer;
+                case AUTUMN -> autumn;
+                case WINTER -> winter;
+                case SPRING, UNKNOWN -> spring;
+            };
+        }
+
+        private static float sanitizeMultiplier(float value) {
+            if (!Float.isFinite(value)) {
+                return 1.0F;
+            }
+            return Math.max(0.05F, value);
+        }
+    }
+
     public static class Serializer implements RecipeSerializer<BarrelRecipe> {
         @Override
         public @NotNull BarrelRecipe fromJson(@NotNull ResourceLocation recipeId, @NotNull JsonObject json) {
@@ -219,8 +260,9 @@ public class BarrelRecipe implements Recipe<Container> {
             }
 
             List<FluidStack> fluidResults = readFluidListFromJson(json, "fluid_results", "fluid_result");
+            SeasonMultipliers seasonMultipliers = readSeasonMultipliers(json);
 
-            return new BarrelRecipe(recipeId, ingredients, fluidIngredients, requiresSealed, durationTicks, itemResults, fluidResults);
+            return new BarrelRecipe(recipeId, ingredients, fluidIngredients, requiresSealed, durationTicks, itemResults, fluidResults, seasonMultipliers);
         }
 
         @Override
@@ -242,7 +284,16 @@ public class BarrelRecipe implements Recipe<Container> {
             }
 
             List<FluidStack> fluidResults = readFluidList(buffer);
-            return new BarrelRecipe(recipeId, ingredients, fluidIngredients, requiresSealed, durationTicks, itemResults, fluidResults);
+            SeasonMultipliers seasonMultipliers = null;
+            if (buffer.readBoolean()) {
+                seasonMultipliers = new SeasonMultipliers(
+                        buffer.readFloat(),
+                        buffer.readFloat(),
+                        buffer.readFloat(),
+                        buffer.readFloat()
+                );
+            }
+            return new BarrelRecipe(recipeId, ingredients, fluidIngredients, requiresSealed, durationTicks, itemResults, fluidResults, seasonMultipliers);
         }
 
         @Override
@@ -263,6 +314,26 @@ public class BarrelRecipe implements Recipe<Container> {
             }
 
             writeFluidList(buffer, recipe.fluidResults);
+            buffer.writeBoolean(recipe.seasonMultipliers != null);
+            if (recipe.seasonMultipliers != null) {
+                buffer.writeFloat(recipe.seasonMultipliers.spring());
+                buffer.writeFloat(recipe.seasonMultipliers.summer());
+                buffer.writeFloat(recipe.seasonMultipliers.autumn());
+                buffer.writeFloat(recipe.seasonMultipliers.winter());
+            }
+        }
+
+        private static @Nullable SeasonMultipliers readSeasonMultipliers(JsonObject json) {
+            if (!json.has("season_multipliers")) {
+                return null;
+            }
+
+            JsonObject multipliersJson = GsonHelper.getAsJsonObject(json, "season_multipliers");
+            float spring = GsonHelper.getAsFloat(multipliersJson, "spring", 1.0F);
+            float summer = GsonHelper.getAsFloat(multipliersJson, "summer", 1.0F);
+            float autumn = GsonHelper.getAsFloat(multipliersJson, "autumn", 1.0F);
+            float winter = GsonHelper.getAsFloat(multipliersJson, "winter", 1.0F);
+            return new SeasonMultipliers(spring, summer, autumn, winter);
         }
 
         private static List<FluidStack> readFluidListFromJson(JsonObject json, String listKey, String singleKey) {

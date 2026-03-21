@@ -32,14 +32,25 @@ public class BarrelBlockEntityRenderer implements BlockEntityRenderer<BarrelBloc
             return;
         }
 
-        FluidStack fluid = barrel.getOutputFluid();
-        int amount = barrel.getOutputFluidAmount();
-        int capacity = barrel.getOutputTankCapacity();
+        FluidStack inputFluid = barrel.getInputFluid();
+        int inputAmount = barrel.getInputFluidAmount();
+        int inputCapacity = barrel.getInputTankCapacity();
 
-        if (fluid.isEmpty()) {
-            fluid = barrel.getInputFluid();
-            amount = barrel.getInputFluidAmount();
-            capacity = barrel.getInputTankCapacity();
+        FluidStack outputFluid = barrel.getOutputFluid();
+        int outputAmount = barrel.getOutputFluidAmount();
+        int outputCapacity = barrel.getOutputTankCapacity();
+
+        FluidStack fluid;
+        int amount;
+        int capacity;
+        if (outputAmount > inputAmount) {
+            fluid = outputFluid;
+            amount = outputAmount;
+            capacity = outputCapacity;
+        } else {
+            fluid = inputFluid;
+            amount = inputAmount;
+            capacity = inputCapacity;
         }
 
         if (fluid.isEmpty() || amount <= 0 || capacity <= 0) {
@@ -85,4 +96,5 @@ public class BarrelBlockEntityRenderer implements BlockEntityRenderer<BarrelBloc
         builder.vertex(matrix, maxX, y, minZ).color(r, g, b, a).uv(sprite.getU(maxX * 16.0F), sprite.getV(minZ * 16.0F)).overlayCoords(packedOverlay).uv2(packedLight).normal(0, 1, 0).endVertex();
     }
 }
+
 

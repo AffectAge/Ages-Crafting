@@ -3,6 +3,7 @@ package com.agescrafting.agescrafting.barrel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.narration.NarrationElementOutput;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.network.chat.Component;
@@ -25,9 +26,9 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
     private static final int PANEL_W = 176;
     private static final int PANEL_H = 178;
 
-    private static final int SEAL_ICON_U = 237;
+    private static final int SEAL_ICON_U = 200;
     private static final int SEAL_ICON_V = 1;
-    private static final int UNSEAL_ICON_U = 237;
+    private static final int UNSEAL_ICON_U = 200;
     private static final int UNSEAL_ICON_V = 21;
     private static final int ICON_W = 18;
     private static final int ICON_H = 19;
@@ -38,7 +39,7 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
     private static final int TANK_WIDTH = 14;
     private static final int TANK_HEIGHT = 52;
 
-    private static final int SEAL_BUTTON_X = 6;
+    private static final int SEAL_BUTTON_X = 5;
     private static final int SEAL_BUTTON_Y = 39;
 
     private Button sealButton;
@@ -53,13 +54,11 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
     @Override
     protected void init() {
         super.init();
-        sealButton = addRenderableWidget(
-                Button.builder(Component.empty(), button -> {
-                    if (minecraft != null && minecraft.gameMode != null) {
-                        minecraft.gameMode.handleInventoryButtonClick(menu.containerId, 0);
-                    }
-                }).bounds(leftPos + SEAL_BUTTON_X, topPos + SEAL_BUTTON_Y, ICON_W, ICON_H).build()
-        );
+        sealButton = addRenderableWidget(new InvisibleSealButton(leftPos + SEAL_BUTTON_X, topPos + SEAL_BUTTON_Y, ICON_W, ICON_H, button -> {
+            if (minecraft != null && minecraft.gameMode != null) {
+                minecraft.gameMode.handleInventoryButtonClick(menu.containerId, 0);
+            }
+        }));
     }
 
     @Override
@@ -71,6 +70,21 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
     }
 
     @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if (button == 1 && hasShiftDown() && minecraft != null && minecraft.gameMode != null) {
+            if (isMouseOverTank((int) mouseX, (int) mouseY, INPUT_TANK_X, TANK_Y)) {
+                minecraft.gameMode.handleInventoryButtonClick(menu.containerId, 1);
+                return true;
+            }
+            if (isMouseOverTank((int) mouseX, (int) mouseY, OUTPUT_TANK_X, TANK_Y)) {
+                minecraft.gameMode.handleInventoryButtonClick(menu.containerId, 2);
+                return true;
+            }
+        }
+        return super.mouseClicked(mouseX, mouseY, button);
+    }
+
+    @Override
     protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         int x = leftPos;
         int y = topPos;
@@ -78,7 +92,12 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         blitPanel(guiGraphics, x, y);
         renderTank(guiGraphics, x + INPUT_TANK_X, y + TANK_Y, menu.getInputFluid(), menu.getInputFluidAmount(), menu.getInputTankCapacity());
         renderTank(guiGraphics, x + OUTPUT_TANK_X, y + TANK_Y, menu.getOutputFluid(), menu.getOutputFluidAmount(), menu.getOutputTankCapacity());
-        blitSealIcon(guiGraphics, x + SEAL_BUTTON_X, y + SEAL_BUTTON_Y);
+        int sealX = x + SEAL_BUTTON_X;
+        int sealY = y + SEAL_BUTTON_Y;
+        blitSealIcon(guiGraphics, sealX, sealY);
+        if (isMouseOverSealButton(mouseX, mouseY)) {
+            guiGraphics.fill(sealX + 1, sealY + 1, sealX + ICON_W - 1, sealY + ICON_H - 1, 0x66FFFFFF);
+        }
     }
 
     @Override
@@ -86,7 +105,10 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         guiGraphics.drawString(font, title, titleLabelX, titleLabelY, 0x404040, false);
         guiGraphics.drawString(font, playerInventoryTitle, inventoryLabelX, inventoryLabelY, 0x404040, false);
         if (menu.isSealed()) {
-            guiGraphics.drawString(font, Component.translatable("gui.agescrafting.barrel.sealed"), 126, 8, 0x404040, false);
+            Component sealedText = Component.translatable("gui.agescrafting.barrel.sealed");
+            int sealedX = 48 + (54 - font.width(sealedText)) / 2;
+            int sealedY = 18 + 54 + 3;
+            guiGraphics.drawString(font, sealedText, sealedX, sealedY, 0xC02020, false);
         }
     }
 
@@ -101,9 +123,6 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
     }
 
     private void renderTank(GuiGraphics guiGraphics, int tankX, int tankY, FluidStack fluid, int amount, int capacity) {
-        guiGraphics.fill(tankX - 1, tankY - 1, tankX + TANK_WIDTH + 1, tankY + TANK_HEIGHT + 1, 0xFF6B6258);
-        guiGraphics.fill(tankX, tankY, tankX + TANK_WIDTH, tankY + TANK_HEIGHT, 0xFF120F0D);
-
         if (fluid.isEmpty() || amount <= 0) {
             return;
         }
@@ -164,10 +183,32 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         }
     }
 
+    private boolean isMouseOverSealButton(int mouseX, int mouseY) {
+        int left = leftPos + SEAL_BUTTON_X;
+        int top = topPos + SEAL_BUTTON_Y;
+        return mouseX >= left && mouseX <= left + ICON_W && mouseY >= top && mouseY <= top + ICON_H;
+    }
+
     private boolean isMouseOverTank(int mouseX, int mouseY, int tankX, int tankY) {
         int left = leftPos + tankX;
         int top = topPos + tankY;
         return mouseX >= left && mouseX <= left + TANK_WIDTH && mouseY >= top && mouseY <= top + TANK_HEIGHT;
+    }
+
+    private static final class InvisibleSealButton extends Button {
+        private InvisibleSealButton(int x, int y, int width, int height, OnPress onPress) {
+            super(x, y, width, height, Component.empty(), onPress, DEFAULT_NARRATION);
+        }
+
+        @Override
+        protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+            // no-op: visual comes from atlas icon in blitSealIcon
+        }
+
+        @Override
+        public void updateWidgetNarration(NarrationElementOutput narrationElementOutput) {
+            defaultButtonNarrationText(narrationElementOutput);
+        }
     }
 
     private void renderSingleTankTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY, Component title, FluidStack fluid, int amount, int capacity, boolean isInputTank) {
@@ -185,10 +226,5 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         guiGraphics.renderComponentTooltip(font, tooltip, mouseX, mouseY);
     }
 }
-
-
-
-
-
 
 

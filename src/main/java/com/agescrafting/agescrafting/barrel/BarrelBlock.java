@@ -134,3 +134,5 @@ public class BarrelBlock extends BaseEntityBlock {
         super.onRemove(state, level, pos, newState, movedByPiston);
     }
 }
+
+

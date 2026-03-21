@@ -65,6 +65,30 @@ public class BarrelMenu extends AbstractContainerMenu {
             }
         }
 
+        addSlot(new SlotItemHandler(blockEntity.getItemHandler(), BarrelBlockEntity.OUTPUT_ITEM_START, 136, 18) {
+            @Override
+            public boolean mayPlace(@NotNull ItemStack stack) {
+                return false;
+            }
+
+            @Override
+            public boolean mayPickup(Player player) {
+                return !isSealed();
+            }
+        });
+
+        addSlot(new SlotItemHandler(blockEntity.getItemHandler(), BarrelBlockEntity.OUTPUT_ITEM_START + 1, 136, 39) {
+            @Override
+            public boolean mayPlace(@NotNull ItemStack stack) {
+                return false;
+            }
+
+            @Override
+            public boolean mayPickup(Player player) {
+                return !isSealed();
+            }
+        });
+
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 9; column++) {
                 addSlot(new Slot(playerInventory, column + row * 9 + 9, 8 + column * 18, 96 + row * 18));
@@ -143,6 +167,12 @@ public class BarrelMenu extends AbstractContainerMenu {
         if (id == 0) {
             blockEntity.toggleSealed();
             return true;
+        }
+        if (id == 1) {
+            return !isSealed() && blockEntity.clearInputFluids();
+        }
+        if (id == 2) {
+            return !isSealed() && blockEntity.clearOutputFluids();
         }
         return super.clickMenuButton(player, id);
     }

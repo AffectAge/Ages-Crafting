@@ -2,6 +2,7 @@ package com.agescrafting.agescrafting.compat.jade;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.barrel.BarrelBlockEntity;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -24,6 +25,7 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
     private static final String TAG_PROGRESS = "RecipeProgress";
     private static final String TAG_TOTAL = "RecipeTotal";
     private static final String TAG_SEALED = "Sealed";
+    private static final String TAG_SEASON_MULTIPLIER = "SeasonMultiplier";
 
     @Override
     public void appendServerData(CompoundTag data, @NotNull BlockAccessor accessor) {
@@ -32,6 +34,9 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
         }
 
         data.putBoolean(TAG_SEALED, barrel.isSealed());
+        if (barrel.hasSeasonDurationModifier()) {
+            data.putFloat(TAG_SEASON_MULTIPLIER, barrel.getSeasonDurationMultiplierForDisplay());
+        }
 
         int total = barrel.getRecipeTotalTicks();
         if (total <= 0) {
@@ -49,9 +54,15 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
         boolean sealed = data.getBoolean(TAG_SEALED);
         Component stateText = Component.translatable(sealed
                 ? "tooltip.agescrafting.barrel.state.sealed"
-                : "tooltip.agescrafting.barrel.state.unsealed");
-        tooltip.add(Component.translatable("tooltip.agescrafting.barrel.sealed_state", stateText));
-        tooltip.add(Component.translatable("tooltip.agescrafting.barrel.rain_fill"));
+                : "tooltip.agescrafting.barrel.state.unsealed")
+                .withStyle(sealed ? ChatFormatting.RED : ChatFormatting.GREEN);
+        tooltip.add(stateText);
+
+        if (data.contains(TAG_SEASON_MULTIPLIER)) {
+            float seasonMultiplier = data.getFloat(TAG_SEASON_MULTIPLIER);
+            ChatFormatting color = seasonMultiplier < 1.0F ? ChatFormatting.GREEN : (seasonMultiplier > 1.0F ? ChatFormatting.RED : ChatFormatting.WHITE);
+            tooltip.add(Component.translatable("tooltip.agescrafting.barrel.season_modifier", String.format(Locale.ROOT, "x%.2f", seasonMultiplier)).withStyle(color));
+        }
 
         if (!data.contains(TAG_TOTAL)) {
             return;
@@ -73,6 +84,3 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
         return UID;
     }
 }
-
-
-

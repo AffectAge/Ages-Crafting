@@ -1,11 +1,13 @@
 package com.agescrafting.agescrafting.compat.emi;
 
 import com.agescrafting.agescrafting.barrel.recipe.BarrelRecipe;
+import com.agescrafting.agescrafting.config.AgesCraftingConfig;
 import dev.emi.emi.api.recipe.EmiRecipe;
 import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -19,6 +21,21 @@ import java.util.Locale;
 public class BarrelEmiRecipe implements EmiRecipe {
     private static final int DISPLAY_W = 176;
     private static final int DISPLAY_H = 98;
+
+    private static final ResourceLocation ATLAS = ResourceLocation.fromNamespaceAndPath("agescrafting", "gui/barrel_recipe.png");
+
+    private static final int ITEM_GRID_X = 48;
+    private static final int ITEM_GRID_Y = 18;
+    private static final int SLOT_STEP = 18;
+
+    private static final int OUTPUT_ITEM_X = 136;
+    private static final int OUTPUT_ITEM_Y = 18;
+
+    private static final int INPUT_TANK_X = 28;
+    private static final int OUTPUT_TANK_X = 117;
+    private static final int TANK_Y = 18;
+    private static final int TANK_W = 14;
+    private static final int TANK_H = 52;
 
     private final BarrelRecipe recipe;
     private final EmiRecipeCategory category;
@@ -45,7 +62,8 @@ public class BarrelEmiRecipe implements EmiRecipe {
             inputs.add(EmiIngredient.of(ingredient.ingredient(), ingredient.count()));
         }
 
-        for (FluidStack fluid : recipe.fluidIngredients()) {
+        if (!recipe.fluidIngredients().isEmpty()) {
+            FluidStack fluid = recipe.fluidIngredients().get(0);
             if (!fluid.isEmpty()) {
                 inputs.add(EmiStack.of(fluid.getFluid(), fluid.getAmount()));
             }
@@ -56,11 +74,13 @@ public class BarrelEmiRecipe implements EmiRecipe {
     @Override
     public List<EmiStack> getOutputs() {
         List<EmiStack> outputs = new ArrayList<>();
-        for (ItemStack stack : recipe.itemResults()) {
-            outputs.add(EmiStack.of(stack));
+        int itemOutCount = Math.min(2, recipe.itemResults().size());
+        for (int i = 0; i < itemOutCount; i++) {
+            outputs.add(EmiStack.of(recipe.itemResults().get(i)));
         }
 
-        for (FluidStack fluid : recipe.fluidResults()) {
+        if (!recipe.fluidResults().isEmpty()) {
+            FluidStack fluid = recipe.fluidResults().get(0);
             if (!fluid.isEmpty()) {
                 outputs.add(EmiStack.of(fluid.getFluid(), fluid.getAmount()));
             }
@@ -79,10 +99,14 @@ public class BarrelEmiRecipe implements EmiRecipe {
         return DISPLAY_H;
     }
 
+    private static int getDisplayCapacity(int recipeAmount) {
+        int configCapacity = Math.max(1000, AgesCraftingConfig.SERVER.barrelTankCapacityMb.get());
+        return Math.max(configCapacity, recipeAmount);
+    }
+
     @Override
     public void addWidgets(WidgetHolder widgets) {
-        widgets.addText(Component.translatable("gui.agescrafting.barrel.inputs"), 62, 6, 0x9A9A9A, false);
-        widgets.addText(Component.translatable("gui.agescrafting.barrel.outputs"), 98, 6, 0x9A9A9A, false);
+        widgets.addTexture(ATLAS, 0, 0, 0, 0, DISPLAY_W, DISPLAY_H, DISPLAY_W, DISPLAY_H, DISPLAY_W, DISPLAY_H);
 
         List<BarrelRecipe.IngredientWithCount> ingredients = recipe.itemIngredients();
         int displayCount = Math.min(9, ingredients.size());
@@ -90,40 +114,48 @@ public class BarrelEmiRecipe implements EmiRecipe {
             int row = i / 3;
             int col = i % 3;
             BarrelRecipe.IngredientWithCount ingredient = ingredients.get(i);
-            widgets.addSlot(EmiIngredient.of(ingredient.ingredient(), ingredient.count()), 62 + col * 18, 18 + row * 18).drawBack(true);
+            widgets.addSlot(EmiIngredient.of(ingredient.ingredient(), ingredient.count()), ITEM_GRID_X + col * SLOT_STEP, ITEM_GRID_Y + row * SLOT_STEP)
+                    .drawBack(true);
         }
 
-        List<FluidStack> inputFluids = recipe.fluidIngredients();
-        int[] inputX = {10};
-        int inputCount = Math.min(inputX.length, inputFluids.size());
-        for (int i = 0; i < inputCount; i++) {
-            FluidStack inputFluid = inputFluids.get(i);
-            widgets.addTank(EmiStack.of(inputFluid.getFluid(), inputFluid.getAmount()), inputX[i], 18, 14, 54, Math.max(1000, inputFluid.getAmount()));
+        if (!recipe.fluidIngredients().isEmpty()) {
+            FluidStack inputFluid = recipe.fluidIngredients().get(0);
+            if (!inputFluid.isEmpty()) {
+                widgets.addTank(EmiStack.of(inputFluid.getFluid(), inputFluid.getAmount()), INPUT_TANK_X, TANK_Y, TANK_W, TANK_H, getDisplayCapacity(inputFluid.getAmount()));
+            }
         }
 
         List<ItemStack> outputs = recipe.itemResults();
-        for (int i = 0; i < outputs.size(); i++) {
-            int row = i / 3;
-            int col = i % 3;
-            widgets.addSlot(EmiStack.of(outputs.get(i)), 98 + col * 18, 18 + row * 18).drawBack(true).recipeContext(this);
+        int itemOutCount = Math.min(2, outputs.size());
+        for (int i = 0; i < itemOutCount; i++) {
+            widgets.addSlot(EmiStack.of(outputs.get(i)), OUTPUT_ITEM_X, OUTPUT_ITEM_Y + i * SLOT_STEP)
+                    .drawBack(true)
+                    .recipeContext(this);
         }
 
-        List<FluidStack> outputFluids = recipe.fluidResults();
-        int[] outputX = {152};
-        int outputCount = Math.min(outputX.length, outputFluids.size());
-        for (int i = 0; i < outputCount; i++) {
-            FluidStack outputFluid = outputFluids.get(i);
-            widgets.addTank(EmiStack.of(outputFluid.getFluid(), outputFluid.getAmount()), outputX[i], 18, 14, 54, Math.max(1000, outputFluid.getAmount()));
+        if (!recipe.fluidResults().isEmpty()) {
+            FluidStack outputFluid = recipe.fluidResults().get(0);
+            if (!outputFluid.isEmpty()) {
+                widgets.addTank(EmiStack.of(outputFluid.getFluid(), outputFluid.getAmount()), OUTPUT_TANK_X, TANK_Y, TANK_W, TANK_H, getDisplayCapacity(outputFluid.getAmount()));
+            }
         }
 
         if (recipe.requiresSealed()) {
-            widgets.addText(Component.translatable("gui.agescrafting.barrel.recipe_requires_sealed"), 62, 74, 0xC96A6A, false);
-        } else {
-            widgets.addText(Component.translatable("gui.agescrafting.barrel.recipe_not_sealed"), 62, 74, 0x7FAF7F, false);
+            var font = Minecraft.getInstance().font;
+            Component sealed = Component.translatable("gui.agescrafting.barrel.sealed");
+            int sealedX = ITEM_GRID_X + (54 - font.width(sealed)) / 2;
+            int sealedY = ITEM_GRID_Y + 54 + 3;
+            widgets.addText(sealed, sealedX, sealedY, 0xC02020, false);
         }
 
         if (recipe.durationTicks() > 0) {
-            widgets.addText(Component.translatable("gui.agescrafting.barrel.recipe_time", String.format(Locale.ROOT, "%.1f", recipe.durationTicks() / 20.0F)), 62, 84, 0x9A9A9A, false);
+            widgets.addText(
+                    Component.translatable("gui.agescrafting.barrel.recipe_time", String.format(Locale.ROOT, "%.1f", recipe.durationTicks() / 20.0F)),
+                    62,
+                    84,
+                    0x404040,
+                    false
+            );
         }
     }
 }
