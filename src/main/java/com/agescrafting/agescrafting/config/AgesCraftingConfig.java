@@ -26,6 +26,9 @@ public final class AgesCraftingConfig {
         public final ForgeConfigSpec.DoubleValue barrelSeasonSummerMultiplier;
         public final ForgeConfigSpec.DoubleValue barrelSeasonAutumnMultiplier;
         public final ForgeConfigSpec.DoubleValue barrelSeasonWinterMultiplier;
+        public final ForgeConfigSpec.DoubleValue campfireRainExtinguishChancePerSecond;
+        public final ForgeConfigSpec.DoubleValue campfireRainCookTimeMultiplier;
+        public final ForgeConfigSpec.DoubleValue campfireAshCookPenaltyPerLevel;
 
         private Server(ForgeConfigSpec.Builder builder) {
             builder.push("recipes");
@@ -66,6 +69,18 @@ public final class AgesCraftingConfig {
                     .defineInRange("winter", 1.35D, 0.05D, 10.0D);
             builder.pop();
 
+            builder.pop();
+
+            builder.push("primitiveCampfire");
+            campfireRainExtinguishChancePerSecond = builder
+                    .comment("Chance per second that a lit primitive campfire extinguishes while directly exposed to rain (0.0 - 1.0).")
+                    .defineInRange("rainExtinguishChancePerSecond", 0.08D, 0.0D, 1.0D);
+            campfireRainCookTimeMultiplier = builder
+                    .comment("Cooking time multiplier while a lit primitive campfire is exposed to rain.")
+                    .defineInRange("rainCookTimeMultiplier", 1.50D, 1.0D, 10.0D);
+            campfireAshCookPenaltyPerLevel = builder
+                    .comment("Additional cooking time multiplier added per ash level. Final multiplier: 1 + ash * value.")
+                    .defineInRange("ashCookPenaltyPerLevel", 0.12D, 0.0D, 2.0D);
             builder.pop();
         }
     }

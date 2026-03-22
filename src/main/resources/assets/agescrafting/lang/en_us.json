@@ -59,6 +59,8 @@
   "tooltip.agescrafting.barrel.rain_fill": "Rain fill: open + empty tanks + rain",
   "block.agescrafting.drying_rack": "Aging Drying Rack",
   "item.agescrafting.drying_rack": "Aging Drying Rack",
+  "block.agescrafting.primitive_campfire": "Primitive Campfire",
+  "item.agescrafting.primitive_campfire": "Primitive Campfire",
   "block.agescrafting.spruce_drying_rack": "Spruce Aging Drying Rack",
   "block.agescrafting.birch_drying_rack": "Birch Aging Drying Rack",
   "block.agescrafting.jungle_drying_rack": "Jungle Aging Drying Rack",
@@ -81,5 +83,16 @@
   "item.agescrafting.warped_drying_rack": "Warped Aging Drying Rack",
   "tooltip.agescrafting.drying_rack.empty": "Empty",
   "tooltip.agescrafting.drying_rack.waiting": "No drying recipe",
-  "tooltip.agescrafting.drying_rack.progress": "Drying: %s / %s s"
+  "tooltip.agescrafting.drying_rack.progress": "Drying: %s / %s s",
+  "tooltip.agescrafting.primitive_campfire.state.lit": "Lit",
+  "tooltip.agescrafting.primitive_campfire.state.unlit": "Unlit",
+  "tooltip.agescrafting.primitive_campfire.fuel": "Fuel: %s / %s",
+  "tooltip.agescrafting.primitive_campfire.ash": "Ash: %s / %s",
+  "tooltip.agescrafting.primitive_campfire.empty": "No item on campfire",
+  "tooltip.agescrafting.primitive_campfire.cook_progress": "Cooking: %s / %s",
+  "tooltip.agescrafting.primitive_campfire.overcook_progress": "Overcooking: %s / %s",
+  "tooltip.agescrafting.primitive_campfire.overcooked": "Overcooked",
+  "emi.category.agescrafting.primitive_campfire": "Primitive Campfire",
+  "gui.agescrafting.primitive_campfire.cook_time": "Cook time: %s s",
+  "gui.agescrafting.primitive_campfire.overcook_time": "Overcook time: %s s"
 }

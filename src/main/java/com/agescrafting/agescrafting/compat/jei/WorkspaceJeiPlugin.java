@@ -1,6 +1,7 @@
 package com.agescrafting.agescrafting.compat.jei;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
+import com.agescrafting.agescrafting.compat.campfire.PrimitiveCampfireDisplayRecipe;
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import com.agescrafting.agescrafting.workspace.WorkspaceCraftingRecipe;
@@ -12,6 +13,8 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 import java.util.ArrayList;
@@ -30,7 +33,8 @@ public class WorkspaceJeiPlugin implements IModPlugin {
         registration.addRecipeCategories(
                 new WorkspaceJeiCategory(registration.getJeiHelpers().getGuiHelper()),
                 new BarrelJeiCategory(registration.getJeiHelpers().getGuiHelper()),
-                new DryingRackJeiCategory(registration.getJeiHelpers().getGuiHelper())
+                new DryingRackJeiCategory(registration.getJeiHelpers().getGuiHelper()),
+                new PrimitiveCampfireJeiCategory(registration.getJeiHelpers().getGuiHelper())
         );
     }
 
@@ -55,6 +59,25 @@ public class WorkspaceJeiPlugin implements IModPlugin {
                 DryingRackJeiCategory.TYPE,
                 new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.DRYING_RACK.get()))
         );
+
+        ArrayList<PrimitiveCampfireDisplayRecipe> campfireRecipes = new ArrayList<>();
+        for (var recipe : level.getRecipeManager().getAllRecipesFor(RecipeType.SMELTING)) {
+            if (recipe.getIngredients().isEmpty()) {
+                continue;
+            }
+            ItemStack output = recipe.getResultItem(level.registryAccess()).copy();
+            if (output.isEmpty()) {
+                continue;
+            }
+            campfireRecipes.add(new PrimitiveCampfireDisplayRecipe(
+                    recipe.getIngredients().get(0),
+                    output,
+                    new ItemStack(Items.CHARCOAL),
+                    recipe.getCookingTime(),
+                    200
+            ));
+        }
+        registration.addRecipes(PrimitiveCampfireJeiCategory.TYPE, campfireRecipes);
     }
 
     @Override
@@ -66,5 +89,6 @@ public class WorkspaceJeiPlugin implements IModPlugin {
         for (var dryingRack : ModBlocks.DRYING_RACK_BLOCKS) {
             registration.addRecipeCatalyst(new ItemStack(dryingRack.get()), DryingRackJeiCategory.TYPE);
         }
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.PRIMITIVE_CAMPFIRE.get()), PrimitiveCampfireJeiCategory.TYPE);
     }
 }

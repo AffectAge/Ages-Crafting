@@ -2,6 +2,7 @@ package com.agescrafting.agescrafting.registry;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.barrel.BarrelBlock;
+import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlock;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlock;
 import com.agescrafting.agescrafting.workspace.WorkspaceTableBlock;
 import net.minecraft.world.level.block.Block;
@@ -53,6 +54,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> DRYING_RACK = BLOCKS.register(
             "drying_rack",
             () -> new DryingRackBlock(BlockBehaviour.Properties.of().strength(1.5F).noOcclusion())
+    );
+
+    public static final RegistryObject<Block> PRIMITIVE_CAMPFIRE = BLOCKS.register(
+            "primitive_campfire",
+            () -> new PrimitiveCampfireBlock(BlockBehaviour.Properties.of().strength(0.5F).noOcclusion())
     );
 
     public static final RegistryObject<Block> SPRUCE_DRYING_RACK = registerDryingRack("spruce_drying_rack");

@@ -48,6 +48,7 @@ public class ModItems {
     );
 
     public static final RegistryObject<Item> DRYING_RACK_ITEM = registerBlockItem("drying_rack", ModBlocks.DRYING_RACK);
+    public static final RegistryObject<Item> PRIMITIVE_CAMPFIRE_ITEM = registerBlockItem("primitive_campfire", ModBlocks.PRIMITIVE_CAMPFIRE);
     public static final RegistryObject<Item> SPRUCE_DRYING_RACK_ITEM = registerBlockItem("spruce_drying_rack", ModBlocks.SPRUCE_DRYING_RACK);
     public static final RegistryObject<Item> BIRCH_DRYING_RACK_ITEM = registerBlockItem("birch_drying_rack", ModBlocks.BIRCH_DRYING_RACK);
     public static final RegistryObject<Item> JUNGLE_DRYING_RACK_ITEM = registerBlockItem("jungle_drying_rack", ModBlocks.JUNGLE_DRYING_RACK);

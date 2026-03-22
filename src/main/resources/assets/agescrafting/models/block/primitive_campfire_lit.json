@@ -1,0 +1,7 @@
+{
+  "parent": "agescrafting:block/primitive_campfire_normal",
+  "textures": {
+    "particle": "agescrafting:block/primitive_campfire_wheat_lit",
+    "tinder": "agescrafting:block/primitive_campfire_wheat_lit"
+  }
+}

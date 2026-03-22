@@ -59,6 +59,8 @@
   "tooltip.agescrafting.barrel.rain_fill": "Наполнение дождем: открыта + пустые резервуары + дождь",
   "block.agescrafting.drying_rack": "Сушильная стойка",
   "item.agescrafting.drying_rack": "Сушильная стойка",
+  "block.agescrafting.primitive_campfire": "Примитивный костер",
+  "item.agescrafting.primitive_campfire": "Примитивный костер",
   "block.agescrafting.spruce_drying_rack": "Еловая сушильная стойка",
   "block.agescrafting.birch_drying_rack": "Березовая сушильная стойка",
   "block.agescrafting.jungle_drying_rack": "Тропическая сушильная стойка",
@@ -81,5 +83,16 @@
   "item.agescrafting.warped_drying_rack": "Искаженная сушильная стойка",
   "tooltip.agescrafting.drying_rack.empty": "Пусто",
   "tooltip.agescrafting.drying_rack.waiting": "Нет рецепта сушки",
-  "tooltip.agescrafting.drying_rack.progress": "Сушка: %s / %s с"
+  "tooltip.agescrafting.drying_rack.progress": "Сушка: %s / %s с",
+  "tooltip.agescrafting.primitive_campfire.state.lit": "Горит",
+  "tooltip.agescrafting.primitive_campfire.state.unlit": "Не горит",
+  "tooltip.agescrafting.primitive_campfire.fuel": "Топливо: %s / %s",
+  "tooltip.agescrafting.primitive_campfire.ash": "Зола: %s / %s",
+  "tooltip.agescrafting.primitive_campfire.empty": "На костре нет предмета",
+  "tooltip.agescrafting.primitive_campfire.cook_progress": "Жарка: %s / %s",
+  "tooltip.agescrafting.primitive_campfire.overcook_progress": "Пережарка: %s / %s",
+  "tooltip.agescrafting.primitive_campfire.overcooked": "Пережарено",
+  "emi.category.agescrafting.primitive_campfire": "Примитивный костер",
+  "gui.agescrafting.primitive_campfire.cook_time": "Время жарки: %s с",
+  "gui.agescrafting.primitive_campfire.overcook_time": "Время пережарки: %s с"
 }

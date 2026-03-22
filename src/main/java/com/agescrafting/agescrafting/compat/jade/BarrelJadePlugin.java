@@ -2,6 +2,8 @@ package com.agescrafting.agescrafting.compat.jade;
 
 import com.agescrafting.agescrafting.barrel.BarrelBlock;
 import com.agescrafting.agescrafting.barrel.BarrelBlockEntity;
+import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlock;
+import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlockEntity;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlock;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlockEntity;
 import snownee.jade.api.IWailaClientRegistration;
@@ -15,11 +17,13 @@ public class BarrelJadePlugin implements IWailaPlugin {
     public void register(IWailaCommonRegistration registration) {
         registration.registerBlockDataProvider(BarrelJadeProvider.INSTANCE, BarrelBlockEntity.class);
         registration.registerBlockDataProvider(DryingRackJadeProvider.INSTANCE, DryingRackBlockEntity.class);
+        registration.registerBlockDataProvider(PrimitiveCampfireJadeProvider.INSTANCE, PrimitiveCampfireBlockEntity.class);
     }
 
     @Override
     public void registerClient(IWailaClientRegistration registration) {
         registration.registerBlockComponent(BarrelJadeProvider.INSTANCE, BarrelBlock.class);
         registration.registerBlockComponent(DryingRackJadeProvider.INSTANCE, DryingRackBlock.class);
+        registration.registerBlockComponent(PrimitiveCampfireJadeProvider.INSTANCE, PrimitiveCampfireBlock.class);
     }
 }

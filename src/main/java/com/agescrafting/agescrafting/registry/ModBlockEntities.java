@@ -2,6 +2,7 @@ package com.agescrafting.agescrafting.registry;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.barrel.BarrelBlockEntity;
+import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlockEntity;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlockEntity;
 import com.agescrafting.agescrafting.workspace.WorkspaceTableBlockEntity;
 import net.minecraft.world.level.block.Block;
@@ -26,5 +27,10 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<DryingRackBlockEntity>> DRYING_RACK_BE = BLOCK_ENTITIES.register(
             "drying_rack",
             () -> BlockEntityType.Builder.of(DryingRackBlockEntity::new, ModBlocks.DRYING_RACK_BLOCKS.stream().map(RegistryObject::get).toArray(Block[]::new)).build(null)
+    );
+
+    public static final RegistryObject<BlockEntityType<PrimitiveCampfireBlockEntity>> PRIMITIVE_CAMPFIRE_BE = BLOCK_ENTITIES.register(
+            "primitive_campfire",
+            () -> BlockEntityType.Builder.of(PrimitiveCampfireBlockEntity::new, ModBlocks.PRIMITIVE_CAMPFIRE.get()).build(null)
     );
 }

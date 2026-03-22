@@ -1,0 +1,16 @@
+{
+  "multipart": [
+    { "when": { "variant": "normal" }, "apply": { "model": "agescrafting:block/primitive_campfire_normal" } },
+    { "when": { "variant": "lit" }, "apply": { "model": "agescrafting:block/primitive_campfire_lit" } },
+    { "when": { "variant": "ash" }, "apply": { "model": "agescrafting:block/primitive_campfire_normal" } },
+
+    { "when": { "ash": "1" }, "apply": { "model": "agescrafting:block/primitive_campfire_ash_1" } },
+    { "when": { "ash": "2" }, "apply": { "model": "agescrafting:block/primitive_campfire_ash_2" } },
+    { "when": { "ash": "3" }, "apply": { "model": "agescrafting:block/primitive_campfire_ash_3" } },
+    { "when": { "ash": "4" }, "apply": { "model": "agescrafting:block/primitive_campfire_ash_4" } },
+    { "when": { "ash": "5" }, "apply": { "model": "agescrafting:block/primitive_campfire_ash_5" } },
+    { "when": { "ash": "6" }, "apply": { "model": "agescrafting:block/primitive_campfire_ash_6" } },
+    { "when": { "ash": "7" }, "apply": { "model": "agescrafting:block/primitive_campfire_ash_7" } },
+    { "when": { "ash": "8" }, "apply": { "model": "agescrafting:block/primitive_campfire_ash_8" } }
+  ]
+}

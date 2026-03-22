@@ -2,6 +2,7 @@ package com.agescrafting.agescrafting.compat.emi;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.barrel.recipe.BarrelRecipe;
+import com.agescrafting.agescrafting.compat.campfire.PrimitiveCampfireDisplayRecipe;
 import com.agescrafting.agescrafting.dryingrack.DryingRackRecipe;
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
@@ -12,6 +13,9 @@ import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
 public class WorkspaceEmiPlugin implements EmiPlugin {
@@ -30,6 +34,11 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
             EmiStack.of(ModBlocks.DRYING_RACK.get())
     );
 
+    public static final EmiRecipeCategory PRIMITIVE_CAMPFIRE_CATEGORY = new EmiRecipeCategory(
+            ResourceLocation.fromNamespaceAndPath(AgesCraftingMod.MODID, "primitive_campfire"),
+            EmiStack.of(ModBlocks.PRIMITIVE_CAMPFIRE.get())
+    );
+
     @Override
     public void register(EmiRegistry registry) {
         registry.addCategory(WORKSPACE_CATEGORY);
@@ -44,6 +53,9 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
         for (var dryingRack : ModBlocks.DRYING_RACK_BLOCKS) {
             registry.addWorkstation(DRYING_RACK_CATEGORY, EmiStack.of(dryingRack.get()));
         }
+
+        registry.addCategory(PRIMITIVE_CAMPFIRE_CATEGORY);
+        registry.addWorkstation(PRIMITIVE_CAMPFIRE_CATEGORY, EmiStack.of(ModBlocks.PRIMITIVE_CAMPFIRE.get()));
 
         Level level = Minecraft.getInstance().level;
         if (level == null) {
@@ -60,6 +72,26 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
 
         for (DryingRackRecipe recipe : level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.DRYING_RACK.get())) {
             registry.addRecipe(new DryingRackEmiRecipe(recipe, DRYING_RACK_CATEGORY));
+        }
+
+        for (var recipe : level.getRecipeManager().getAllRecipesFor(RecipeType.SMELTING)) {
+            if (recipe.getIngredients().isEmpty()) {
+                continue;
+            }
+            ItemStack output = recipe.getResultItem(level.registryAccess()).copy();
+            if (output.isEmpty()) {
+                continue;
+            }
+
+            PrimitiveCampfireDisplayRecipe display = new PrimitiveCampfireDisplayRecipe(
+                    recipe.getIngredients().get(0),
+                    output,
+                    new ItemStack(Items.CHARCOAL),
+                    recipe.getCookingTime(),
+                    200
+            );
+
+            registry.addRecipe(new PrimitiveCampfireEmiRecipe(recipe.getId(), display, PRIMITIVE_CAMPFIRE_CATEGORY));
         }
     }
 }
