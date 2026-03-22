@@ -111,7 +111,8 @@ public class BarrelJeiCategory implements IRecipeCategory<BarrelRecipe> {
         List<ItemStack> results = recipe.itemResults();
         int itemOutCount = Math.min(2, results.size());
         for (int i = 0; i < itemOutCount; i++) {
-            builder.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_ITEM_X, OUTPUT_ITEM_Y + i * SLOT_STEP)
+            int y = OUTPUT_ITEM_Y + i * SLOT_STEP + (i == 1 ? 3 : 0);
+            builder.addSlot(RecipeIngredientRole.OUTPUT, OUTPUT_ITEM_X, y)
                     .addItemStack(results.get(i));
         }
 
@@ -149,4 +150,6 @@ public class BarrelJeiCategory implements IRecipeCategory<BarrelRecipe> {
         }
     }
 }
+
+
 

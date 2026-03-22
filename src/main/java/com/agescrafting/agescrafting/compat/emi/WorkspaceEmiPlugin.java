@@ -2,6 +2,7 @@ package com.agescrafting.agescrafting.compat.emi;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.barrel.recipe.BarrelRecipe;
+import com.agescrafting.agescrafting.dryingrack.DryingRackRecipe;
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import com.agescrafting.agescrafting.workspace.WorkspaceCraftingRecipe;
@@ -24,6 +25,11 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
             EmiStack.of(ModBlocks.BARREL.get())
     );
 
+    public static final EmiRecipeCategory DRYING_RACK_CATEGORY = new EmiRecipeCategory(
+            ResourceLocation.fromNamespaceAndPath(AgesCraftingMod.MODID, "drying_rack"),
+            EmiStack.of(ModBlocks.DRYING_RACK.get())
+    );
+
     @Override
     public void register(EmiRegistry registry) {
         registry.addCategory(WORKSPACE_CATEGORY);
@@ -32,6 +38,11 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
         registry.addCategory(BARREL_CATEGORY);
         for (var barrel : ModBlocks.BARREL_BLOCKS) {
             registry.addWorkstation(BARREL_CATEGORY, EmiStack.of(barrel.get()));
+        }
+
+        registry.addCategory(DRYING_RACK_CATEGORY);
+        for (var dryingRack : ModBlocks.DRYING_RACK_BLOCKS) {
+            registry.addWorkstation(DRYING_RACK_CATEGORY, EmiStack.of(dryingRack.get()));
         }
 
         Level level = Minecraft.getInstance().level;
@@ -45,6 +56,10 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
 
         for (BarrelRecipe recipe : level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.BARREL.get())) {
             registry.addRecipe(new BarrelEmiRecipe(recipe, BARREL_CATEGORY));
+        }
+
+        for (DryingRackRecipe recipe : level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.DRYING_RACK.get())) {
+            registry.addRecipe(new DryingRackEmiRecipe(recipe, DRYING_RACK_CATEGORY));
         }
     }
 }

@@ -128,7 +128,8 @@ public class BarrelEmiRecipe implements EmiRecipe {
         List<ItemStack> outputs = recipe.itemResults();
         int itemOutCount = Math.min(2, outputs.size());
         for (int i = 0; i < itemOutCount; i++) {
-            widgets.addSlot(EmiStack.of(outputs.get(i)), OUTPUT_ITEM_X, OUTPUT_ITEM_Y + i * SLOT_STEP)
+            int y = OUTPUT_ITEM_Y + i * SLOT_STEP + (i == 1 ? 3 : 0);
+            widgets.addSlot(EmiStack.of(outputs.get(i)), OUTPUT_ITEM_X, y)
                     .drawBack(true)
                     .recipeContext(this);
         }
@@ -159,4 +160,6 @@ public class BarrelEmiRecipe implements EmiRecipe {
         }
     }
 }
+
+
 

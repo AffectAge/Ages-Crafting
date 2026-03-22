@@ -29,7 +29,8 @@ public class WorkspaceJeiPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(
                 new WorkspaceJeiCategory(registration.getJeiHelpers().getGuiHelper()),
-                new BarrelJeiCategory(registration.getJeiHelpers().getGuiHelper())
+                new BarrelJeiCategory(registration.getJeiHelpers().getGuiHelper()),
+                new DryingRackJeiCategory(registration.getJeiHelpers().getGuiHelper())
         );
     }
 
@@ -49,6 +50,11 @@ public class WorkspaceJeiPlugin implements IModPlugin {
                 BarrelJeiCategory.TYPE,
                 new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.BARREL.get()))
         );
+
+        registration.addRecipes(
+                DryingRackJeiCategory.TYPE,
+                new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.DRYING_RACK.get()))
+        );
     }
 
     @Override
@@ -56,6 +62,9 @@ public class WorkspaceJeiPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.WORKSPACE_TABLE.get()), WorkspaceJeiCategory.TYPE);
         for (var barrel : ModBlocks.BARREL_BLOCKS) {
             registration.addRecipeCatalyst(new ItemStack(barrel.get()), BarrelJeiCategory.TYPE);
+        }
+        for (var dryingRack : ModBlocks.DRYING_RACK_BLOCKS) {
+            registration.addRecipeCatalyst(new ItemStack(dryingRack.get()), DryingRackJeiCategory.TYPE);
         }
     }
 }
