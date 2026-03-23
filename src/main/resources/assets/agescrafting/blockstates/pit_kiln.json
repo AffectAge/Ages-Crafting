@@ -21,10 +21,6 @@
       "apply": { "model": "agescrafting:block/pit_kiln_active" }
     },
     {
-      "when": { "variant": "complete" },
-      "apply": { "model": "agescrafting:block/pit_kiln_complete" }
-    },
-    {
       "when": { "variant": "complete", "ash": "1" },
       "apply": { "model": "agescrafting:block/pit_kiln_ash_1" }
     },
