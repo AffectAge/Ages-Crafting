@@ -57,13 +57,13 @@ public class PitKilnBlock extends BaseEntityBlock {
 
     @Override
     public @NotNull RenderShape getRenderShape(@NotNull BlockState state) {
-        return RenderShape.MODEL;
+        return state.getValue(VARIANT) == Variant.RESULT ? RenderShape.INVISIBLE : RenderShape.MODEL;
     }
 
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
         Variant variant = state.getValue(VARIANT);
-        if (variant == Variant.EMPTY) {
+        if (variant == Variant.EMPTY || variant == Variant.RESULT) {
             return SHAPE_EMPTY;
         }
         if (variant == Variant.THATCH) {
@@ -166,7 +166,7 @@ public class PitKilnBlock extends BaseEntityBlock {
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
 
-            if (variant == Variant.EMPTY) {
+            if (variant == Variant.EMPTY || variant == Variant.RESULT) {
                 if (!level.isClientSide) {
                     ItemStack out = kiln.extractOutput();
                     if (!out.isEmpty()) {
@@ -190,8 +190,11 @@ public class PitKilnBlock extends BaseEntityBlock {
             return InteractionResult.PASS;
         }
 
-        if (variant == Variant.EMPTY) {
+        if (variant == Variant.EMPTY || variant == Variant.RESULT) {
             if (kiln.hasOutput()) {
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+            if (variant == Variant.RESULT) {
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
 
@@ -293,6 +296,7 @@ public class PitKilnBlock extends BaseEntityBlock {
 
     public enum Variant implements StringRepresentable {
         EMPTY("empty"),
+        RESULT("result"),
         THATCH("thatch"),
         WOOD("wood"),
         ACTIVE("active"),

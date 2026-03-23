@@ -116,7 +116,7 @@ public class PitKilnBlockEntity extends BlockEntity {
     public void reduceAsh(int amount) {
         ashLevel = Math.max(0, ashLevel - Math.max(1, amount));
         if (!active && ashLevel == 0) {
-            setVariant(PitKilnBlock.Variant.EMPTY);
+            setVariant(hasOutput() ? PitKilnBlock.Variant.RESULT : PitKilnBlock.Variant.EMPTY);
         } else {
             setVariant(active ? PitKilnBlock.Variant.ACTIVE : PitKilnBlock.Variant.COMPLETE);
         }

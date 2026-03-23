@@ -103,5 +103,6 @@
   "tooltip.agescrafting.pit_kiln.state.wood": "Covered with Logs",
   "tooltip.agescrafting.pit_kiln.state.active": "Firing",
   "tooltip.agescrafting.pit_kiln.state.complete": "Complete",
-  "tooltip.agescrafting.pit_kiln.progress": "Firing: %s / %s s"
+  "tooltip.agescrafting.pit_kiln.progress": "Firing: %s / %s s",
+  "tooltip.agescrafting.pit_kiln.state.result": "Result ready"
 }

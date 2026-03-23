@@ -5,6 +5,10 @@
       "apply": { "model": "agescrafting:block/pit_kiln_empty" }
     },
     {
+      "when": { "variant": "result" },
+      "apply": { "model": "agescrafting:block/pit_kiln_empty" }
+    },
+    {
       "when": { "variant": "thatch" },
       "apply": { "model": "agescrafting:block/pit_kiln_thatch" }
     },

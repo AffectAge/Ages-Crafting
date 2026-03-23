@@ -103,5 +103,6 @@
   "tooltip.agescrafting.pit_kiln.state.wood": "Накрыто брёвнами",
   "tooltip.agescrafting.pit_kiln.state.active": "Обжиг",
   "tooltip.agescrafting.pit_kiln.state.complete": "Готово",
-  "tooltip.agescrafting.pit_kiln.progress": "Обжиг: %s / %s с"
+  "tooltip.agescrafting.pit_kiln.progress": "Обжиг: %s / %s с",
+  "tooltip.agescrafting.pit_kiln.state.result": "Результат готов"
 }
