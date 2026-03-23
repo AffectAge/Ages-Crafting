@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "up": "agescrafting:block/primitive_campfire_wheat_lit",
+    "down": "agescrafting:block/primitive_campfire_wheat_lit",
+    "north": "agescrafting:block/primitive_campfire_wheat_lit",
+    "south": "agescrafting:block/primitive_campfire_wheat_lit",
+    "west": "agescrafting:block/primitive_campfire_wheat_lit",
+    "east": "agescrafting:block/primitive_campfire_wheat_lit",
+    "particle": "agescrafting:block/primitive_campfire_wheat_lit"
+  }
+}

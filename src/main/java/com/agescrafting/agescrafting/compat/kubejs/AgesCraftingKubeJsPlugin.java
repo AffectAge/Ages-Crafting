@@ -8,20 +8,19 @@ import net.minecraft.resources.ResourceLocation;
 
 public class AgesCraftingKubeJsPlugin extends KubeJSPlugin {
     private static final ResourceLocation WORKSPACE_CRAFTING_TYPE = ResourceLocation.fromNamespaceAndPath(AgesCraftingMod.MODID, "workspace_crafting");
+    private static final ResourceLocation PIT_KILN_TYPE = ResourceLocation.fromNamespaceAndPath(AgesCraftingMod.MODID, "pit_kiln");
 
     @Override
     public void registerRecipeSchemas(RegisterRecipeSchemasEvent event) {
-        // Register schema for the custom recipe type so scripts can add/remove it in KubeJS.
         event.register(WORKSPACE_CRAFTING_TYPE, JsonRecipeSchema.SCHEMA);
+        event.register(PIT_KILN_TYPE, JsonRecipeSchema.SCHEMA);
 
-        // Namespace functions: event.recipes.agescrafting.workspace_crafting(...)
         event.namespace(AgesCraftingMod.MODID).register("workspace_crafting", JsonRecipeSchema.SCHEMA);
-
-        // Short alias: event.recipes.agescrafting.workspace(...)
         event.namespace(AgesCraftingMod.MODID).register("workspace", JsonRecipeSchema.SCHEMA);
+        event.namespace(AgesCraftingMod.MODID).register("pit_kiln", JsonRecipeSchema.SCHEMA);
 
-        // Explicit map aliases to the real type id.
         event.mapRecipe(AgesCraftingMod.MODID + ":workspace_crafting", WORKSPACE_CRAFTING_TYPE);
         event.mapRecipe(AgesCraftingMod.MODID + ":workspace", WORKSPACE_CRAFTING_TYPE);
+        event.mapRecipe(AgesCraftingMod.MODID + ":pit_kiln", PIT_KILN_TYPE);
     }
 }

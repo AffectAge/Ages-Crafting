@@ -1,0 +1,16 @@
+{
+  "type": "agescrafting:pit_kiln",
+  "ingredient": {
+    "item": "minecraft:clay_ball"
+  },
+  "result": {
+    "item": "minecraft:brick",
+    "count": 1
+  },
+  "duration_ticks": 1200,
+  "failure_chance": 0.15,
+  "failure_result": {
+    "item": "minecraft:bone_meal",
+    "count": 1
+  }
+}

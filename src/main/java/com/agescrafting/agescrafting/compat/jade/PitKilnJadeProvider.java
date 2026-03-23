@@ -1,0 +1,105 @@
+package com.agescrafting.agescrafting.compat.jade;
+
+import com.agescrafting.agescrafting.AgesCraftingMod;
+import com.agescrafting.agescrafting.pitkiln.PitKilnBlock;
+import com.agescrafting.agescrafting.pitkiln.PitKilnBlockEntity;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.world.level.block.BaseFireBlock;
+import org.jetbrains.annotations.NotNull;
+import snownee.jade.api.BlockAccessor;
+import snownee.jade.api.IBlockComponentProvider;
+import snownee.jade.api.IServerDataProvider;
+import snownee.jade.api.ITooltip;
+import snownee.jade.api.config.IPluginConfig;
+import snownee.jade.api.ui.BoxStyle;
+import snownee.jade.api.ui.IElementHelper;
+
+import java.util.Locale;
+
+public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
+    INSTANCE;
+
+    private static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(AgesCraftingMod.MODID, "pit_kiln");
+    private static final String TAG_VARIANT = "Variant";
+    private static final String TAG_PROGRESS = "Progress";
+    private static final String TAG_TOTAL = "Total";
+    private static final String TAG_ASH = "Ash";
+
+    @Override
+    public void appendServerData(CompoundTag data, @NotNull BlockAccessor accessor) {
+        PitKilnBlockEntity kiln = resolveKiln(accessor);
+        if (kiln == null) {
+            return;
+        }
+
+        data.putString(TAG_VARIANT, kiln.getBlockState().getValue(PitKilnBlock.VARIANT).getSerializedName());
+        data.putInt(TAG_ASH, kiln.getAshLevel());
+        if (kiln.getTotalTicks() > 0) {
+            data.putInt(TAG_PROGRESS, kiln.getProgressTicks());
+            data.putInt(TAG_TOTAL, kiln.getTotalTicks());
+        }
+    }
+
+    @Override
+    public void appendTooltip(ITooltip tooltip, @NotNull BlockAccessor accessor, @NotNull IPluginConfig config) {
+        CompoundTag data = accessor.getServerData();
+        if (data.contains(TAG_VARIANT)) {
+            addFromData(tooltip, data.getString(TAG_VARIANT), data.getInt(TAG_PROGRESS), data.getInt(TAG_TOTAL), data.getInt(TAG_ASH));
+            return;
+        }
+
+        // Fallback for edge cases where server data is unavailable on first frame.
+        PitKilnBlockEntity kiln = resolveKiln(accessor);
+        if (kiln == null) {
+            return;
+        }
+
+        String variant = kiln.getBlockState().getValue(PitKilnBlock.VARIANT).getSerializedName();
+        addFromData(tooltip, variant, kiln.getProgressTicks(), kiln.getTotalTicks(), kiln.getAshLevel());
+    }
+
+    private static PitKilnBlockEntity resolveKiln(@NotNull BlockAccessor accessor) {
+        if (accessor.getBlockEntity() instanceof PitKilnBlockEntity kiln) {
+            return kiln;
+        }
+
+        if (accessor.getBlockState().getBlock() instanceof BaseFireBlock
+                && accessor.getLevel().getBlockState(accessor.getPosition().below()).getBlock() instanceof PitKilnBlock
+                && accessor.getLevel().getBlockEntity(accessor.getPosition().below()) instanceof PitKilnBlockEntity kiln) {
+            return kiln;
+        }
+
+        return null;
+    }
+
+    private static void addFromData(ITooltip tooltip, String variant, int progress, int total, int ash) {
+        if (variant == null || variant.isEmpty()) {
+            return;
+        }
+
+        tooltip.add(Component.translatable("tooltip.agescrafting.pit_kiln.state." + variant));
+        if (ash > 0) {
+            tooltip.add(Component.translatable("tooltip.agescrafting.primitive_campfire.ash", ash, PitKilnBlockEntity.MAX_ASH_LEVEL));
+        }
+
+        if (total <= 0) {
+            return;
+        }
+
+        int clampedTotal = Math.max(1, total);
+        int clampedProgress = Mth.clamp(progress, 0, clampedTotal);
+        float ratio = clampedProgress / (float) clampedTotal;
+        String progressSec = String.format(Locale.ROOT, "%.1f", clampedProgress / 20.0F);
+        String totalSec = String.format(Locale.ROOT, "%.1f", clampedTotal / 20.0F);
+        tooltip.add(Component.translatable("tooltip.agescrafting.pit_kiln.progress", progressSec, totalSec));
+        tooltip.add(IElementHelper.get().progress(ratio, Component.empty(), IElementHelper.get().progressStyle(), BoxStyle.DEFAULT, true));
+    }
+
+    @Override
+    public ResourceLocation getUid() {
+        return UID;
+    }
+}

@@ -34,7 +34,8 @@ public class WorkspaceJeiPlugin implements IModPlugin {
                 new WorkspaceJeiCategory(registration.getJeiHelpers().getGuiHelper()),
                 new BarrelJeiCategory(registration.getJeiHelpers().getGuiHelper()),
                 new DryingRackJeiCategory(registration.getJeiHelpers().getGuiHelper()),
-                new PrimitiveCampfireJeiCategory(registration.getJeiHelpers().getGuiHelper())
+                new PrimitiveCampfireJeiCategory(registration.getJeiHelpers().getGuiHelper()),
+                new PitKilnJeiCategory(registration.getJeiHelpers().getGuiHelper())
         );
     }
 
@@ -58,6 +59,11 @@ public class WorkspaceJeiPlugin implements IModPlugin {
         registration.addRecipes(
                 DryingRackJeiCategory.TYPE,
                 new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.DRYING_RACK.get()))
+        );
+
+        registration.addRecipes(
+                PitKilnJeiCategory.TYPE,
+                new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.PIT_KILN.get()))
         );
 
         ArrayList<PrimitiveCampfireDisplayRecipe> campfireRecipes = new ArrayList<>();
@@ -90,5 +96,6 @@ public class WorkspaceJeiPlugin implements IModPlugin {
             registration.addRecipeCatalyst(new ItemStack(dryingRack.get()), DryingRackJeiCategory.TYPE);
         }
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.PRIMITIVE_CAMPFIRE.get()), PrimitiveCampfireJeiCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.PIT_KILN.get()), PitKilnJeiCategory.TYPE);
     }
 }

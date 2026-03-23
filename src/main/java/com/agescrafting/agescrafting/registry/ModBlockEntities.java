@@ -4,6 +4,7 @@ import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.barrel.BarrelBlockEntity;
 import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlockEntity;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlockEntity;
+import com.agescrafting.agescrafting.pitkiln.PitKilnBlockEntity;
 import com.agescrafting.agescrafting.workspace.WorkspaceTableBlockEntity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -32,5 +33,10 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<PrimitiveCampfireBlockEntity>> PRIMITIVE_CAMPFIRE_BE = BLOCK_ENTITIES.register(
             "primitive_campfire",
             () -> BlockEntityType.Builder.of(PrimitiveCampfireBlockEntity::new, ModBlocks.PRIMITIVE_CAMPFIRE.get()).build(null)
+    );
+
+    public static final RegistryObject<BlockEntityType<PitKilnBlockEntity>> PIT_KILN_BE = BLOCK_ENTITIES.register(
+            "pit_kiln",
+            () -> BlockEntityType.Builder.of(PitKilnBlockEntity::new, ModBlocks.PIT_KILN.get()).build(null)
     );
 }

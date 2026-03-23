@@ -1,0 +1,56 @@
+{
+  "multipart": [
+    {
+      "when": { "variant": "empty" },
+      "apply": { "model": "agescrafting:block/pit_kiln_empty" }
+    },
+    {
+      "when": { "variant": "thatch" },
+      "apply": { "model": "agescrafting:block/pit_kiln_thatch" }
+    },
+    {
+      "when": { "variant": "wood" },
+      "apply": { "model": "agescrafting:block/pit_kiln_thatch" }
+    },
+    {
+      "when": { "variant": "active" },
+      "apply": { "model": "agescrafting:block/pit_kiln_active" }
+    },
+    {
+      "when": { "variant": "complete" },
+      "apply": { "model": "agescrafting:block/pit_kiln_complete" }
+    },
+    {
+      "when": { "variant": "complete", "ash": "1" },
+      "apply": { "model": "agescrafting:block/pit_kiln_ash_1" }
+    },
+    {
+      "when": { "variant": "complete", "ash": "2" },
+      "apply": { "model": "agescrafting:block/pit_kiln_ash_2" }
+    },
+    {
+      "when": { "variant": "complete", "ash": "3" },
+      "apply": { "model": "agescrafting:block/pit_kiln_ash_3" }
+    },
+    {
+      "when": { "variant": "complete", "ash": "4" },
+      "apply": { "model": "agescrafting:block/pit_kiln_ash_4" }
+    },
+    {
+      "when": { "variant": "complete", "ash": "5" },
+      "apply": { "model": "agescrafting:block/pit_kiln_ash_5" }
+    },
+    {
+      "when": { "variant": "complete", "ash": "6" },
+      "apply": { "model": "agescrafting:block/pit_kiln_ash_6" }
+    },
+    {
+      "when": { "variant": "complete", "ash": "7" },
+      "apply": { "model": "agescrafting:block/pit_kiln_ash_7" }
+    },
+    {
+      "when": { "variant": "complete", "ash": "8" },
+      "apply": { "model": "agescrafting:block/pit_kiln_ash_8" }
+    }
+  ]
+}

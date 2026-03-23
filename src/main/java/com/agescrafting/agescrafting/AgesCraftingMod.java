@@ -5,6 +5,7 @@ import com.agescrafting.agescrafting.barrel.BarrelScreen;
 import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlockEntityRenderer;
 import com.agescrafting.agescrafting.config.AgesCraftingConfig;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlockEntityRenderer;
+import com.agescrafting.agescrafting.pitkiln.PitKilnBlockEntityRenderer;
 import com.agescrafting.agescrafting.recipe.condition.EnableVanillaRecipesCondition;
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import com.agescrafting.agescrafting.registry.ModBlocks;
@@ -66,6 +67,10 @@ public class AgesCraftingMod {
             event.enqueueWork(() -> BlockEntityRenderers.register(
                     ModBlockEntities.PRIMITIVE_CAMPFIRE_BE.get(),
                     PrimitiveCampfireBlockEntityRenderer::new
+            ));
+            event.enqueueWork(() -> BlockEntityRenderers.register(
+                    ModBlockEntities.PIT_KILN_BE.get(),
+                    PitKilnBlockEntityRenderer::new
             ));
             event.enqueueWork(() -> MenuScreens.register(
                     ModMenuTypes.BARREL.get(),

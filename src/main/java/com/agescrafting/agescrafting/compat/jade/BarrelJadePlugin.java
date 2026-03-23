@@ -6,6 +6,9 @@ import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlock;
 import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlockEntity;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlock;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlockEntity;
+import com.agescrafting.agescrafting.pitkiln.PitKilnBlock;
+import com.agescrafting.agescrafting.pitkiln.PitKilnBlockEntity;
+import net.minecraft.world.level.block.BaseFireBlock;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
 import snownee.jade.api.IWailaPlugin;
@@ -18,6 +21,7 @@ public class BarrelJadePlugin implements IWailaPlugin {
         registration.registerBlockDataProvider(BarrelJadeProvider.INSTANCE, BarrelBlockEntity.class);
         registration.registerBlockDataProvider(DryingRackJadeProvider.INSTANCE, DryingRackBlockEntity.class);
         registration.registerBlockDataProvider(PrimitiveCampfireJadeProvider.INSTANCE, PrimitiveCampfireBlockEntity.class);
+        registration.registerBlockDataProvider(PitKilnJadeProvider.INSTANCE, PitKilnBlockEntity.class);
     }
 
     @Override
@@ -25,5 +29,7 @@ public class BarrelJadePlugin implements IWailaPlugin {
         registration.registerBlockComponent(BarrelJadeProvider.INSTANCE, BarrelBlock.class);
         registration.registerBlockComponent(DryingRackJadeProvider.INSTANCE, DryingRackBlock.class);
         registration.registerBlockComponent(PrimitiveCampfireJadeProvider.INSTANCE, PrimitiveCampfireBlock.class);
+        registration.registerBlockComponent(PitKilnJadeProvider.INSTANCE, PitKilnBlock.class);
+        registration.registerBlockComponent(PitKilnJadeProvider.INSTANCE, BaseFireBlock.class);
     }
 }

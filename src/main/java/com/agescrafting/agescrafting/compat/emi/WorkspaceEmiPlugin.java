@@ -4,6 +4,7 @@ import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.barrel.recipe.BarrelRecipe;
 import com.agescrafting.agescrafting.compat.campfire.PrimitiveCampfireDisplayRecipe;
 import com.agescrafting.agescrafting.dryingrack.DryingRackRecipe;
+import com.agescrafting.agescrafting.pitkiln.PitKilnRecipe;
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import com.agescrafting.agescrafting.workspace.WorkspaceCraftingRecipe;
@@ -39,6 +40,11 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
             EmiStack.of(ModBlocks.PRIMITIVE_CAMPFIRE.get())
     );
 
+    public static final EmiRecipeCategory PIT_KILN_CATEGORY = new EmiRecipeCategory(
+            ResourceLocation.fromNamespaceAndPath(AgesCraftingMod.MODID, "pit_kiln"),
+            EmiStack.of(ModBlocks.PIT_KILN.get())
+    );
+
     @Override
     public void register(EmiRegistry registry) {
         registry.addCategory(WORKSPACE_CATEGORY);
@@ -57,6 +63,9 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
         registry.addCategory(PRIMITIVE_CAMPFIRE_CATEGORY);
         registry.addWorkstation(PRIMITIVE_CAMPFIRE_CATEGORY, EmiStack.of(ModBlocks.PRIMITIVE_CAMPFIRE.get()));
 
+        registry.addCategory(PIT_KILN_CATEGORY);
+        registry.addWorkstation(PIT_KILN_CATEGORY, EmiStack.of(ModBlocks.PIT_KILN.get()));
+
         Level level = Minecraft.getInstance().level;
         if (level == null) {
             return;
@@ -72,6 +81,10 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
 
         for (DryingRackRecipe recipe : level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.DRYING_RACK.get())) {
             registry.addRecipe(new DryingRackEmiRecipe(recipe, DRYING_RACK_CATEGORY));
+        }
+
+        for (PitKilnRecipe recipe : level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.PIT_KILN.get())) {
+            registry.addRecipe(new PitKilnEmiRecipe(recipe, PIT_KILN_CATEGORY));
         }
 
         for (var recipe : level.getRecipeManager().getAllRecipesFor(RecipeType.SMELTING)) {

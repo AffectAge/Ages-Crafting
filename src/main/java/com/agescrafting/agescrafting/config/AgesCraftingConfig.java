@@ -29,6 +29,11 @@ public final class AgesCraftingConfig {
         public final ForgeConfigSpec.DoubleValue campfireRainExtinguishChancePerSecond;
         public final ForgeConfigSpec.DoubleValue campfireRainCookTimeMultiplier;
         public final ForgeConfigSpec.DoubleValue campfireAshCookPenaltyPerLevel;
+        public final ForgeConfigSpec.IntValue pitKilnMaxStackSize;
+        public final ForgeConfigSpec.DoubleValue pitKilnBaseRecipeDurationModifier;
+        public final ForgeConfigSpec.DoubleValue pitKilnVariableSpeedModifier;
+        public final ForgeConfigSpec.BooleanValue pitKilnExtinguishedByRain;
+        public final ForgeConfigSpec.IntValue pitKilnRainExtinguishTicks;
 
         private Server(ForgeConfigSpec.Builder builder) {
             builder.push("recipes");
@@ -68,7 +73,6 @@ public final class AgesCraftingConfig {
                     .comment("Global fallback barrel recipe duration multiplier for winter.")
                     .defineInRange("winter", 1.35D, 0.05D, 10.0D);
             builder.pop();
-
             builder.pop();
 
             builder.push("primitiveCampfire");
@@ -81,6 +85,24 @@ public final class AgesCraftingConfig {
             campfireAshCookPenaltyPerLevel = builder
                     .comment("Additional cooking time multiplier added per ash level. Final multiplier: 1 + ash * value.")
                     .defineInRange("ashCookPenaltyPerLevel", 0.12D, 0.0D, 2.0D);
+            builder.pop();
+
+            builder.push("pitKiln");
+            pitKilnMaxStackSize = builder
+                    .comment("Maximum stack size that can be placed into pit kiln input.")
+                    .defineInRange("maxStackSize", 8, 1, 64);
+            pitKilnBaseRecipeDurationModifier = builder
+                    .comment("Multiplicative modifier applied to all pit kiln recipe durations.")
+                    .defineInRange("baseRecipeDurationModifier", 1.0D, 0.01D, 20.0D);
+            pitKilnVariableSpeedModifier = builder
+                    .comment("Speed scalar for low item counts. 0.5 means one item takes 50% of full-stack duration.")
+                    .defineInRange("variableSpeedModifier", 0.5D, 0.0D, 1.0D);
+            pitKilnExtinguishedByRain = builder
+                    .comment("If true, active pit kilns are extinguished by rain after a delay.")
+                    .define("extinguishedByRain", true);
+            pitKilnRainExtinguishTicks = builder
+                    .comment("Ticks of direct rain exposure before an active pit kiln is extinguished.")
+                    .defineInRange("rainExtinguishTicks", 200, 1, 72000);
             builder.pop();
         }
     }

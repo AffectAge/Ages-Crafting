@@ -94,5 +94,14 @@
   "tooltip.agescrafting.primitive_campfire.overcooked": "Overcooked",
   "emi.category.agescrafting.primitive_campfire": "Primitive Campfire",
   "gui.agescrafting.primitive_campfire.cook_time": "Cook time: %s s",
-  "gui.agescrafting.primitive_campfire.overcook_time": "Overcook time: %s s"
+  "gui.agescrafting.primitive_campfire.overcook_time": "Overcook time: %s s",
+  "block.agescrafting.pit_kiln": "Pit Kiln",
+  "item.agescrafting.pit_kiln": "Pit Kiln",
+  "emi.category.agescrafting.pit_kiln": "Pit Kiln",
+  "tooltip.agescrafting.pit_kiln.state.empty": "Empty",
+  "tooltip.agescrafting.pit_kiln.state.thatch": "Covered with Thatch",
+  "tooltip.agescrafting.pit_kiln.state.wood": "Covered with Logs",
+  "tooltip.agescrafting.pit_kiln.state.active": "Firing",
+  "tooltip.agescrafting.pit_kiln.state.complete": "Complete",
+  "tooltip.agescrafting.pit_kiln.progress": "Firing: %s / %s s"
 }

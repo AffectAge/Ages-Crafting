@@ -94,5 +94,14 @@
   "tooltip.agescrafting.primitive_campfire.overcooked": "Пережарено",
   "emi.category.agescrafting.primitive_campfire": "Примитивный костер",
   "gui.agescrafting.primitive_campfire.cook_time": "Время жарки: %s с",
-  "gui.agescrafting.primitive_campfire.overcook_time": "Время пережарки: %s с"
+  "gui.agescrafting.primitive_campfire.overcook_time": "Время пережарки: %s с",
+  "block.agescrafting.pit_kiln": "Ямная печь",
+  "item.agescrafting.pit_kiln": "Ямная печь",
+  "emi.category.agescrafting.pit_kiln": "Ямная печь",
+  "tooltip.agescrafting.pit_kiln.state.empty": "Пусто",
+  "tooltip.agescrafting.pit_kiln.state.thatch": "Накрыто соломой",
+  "tooltip.agescrafting.pit_kiln.state.wood": "Накрыто брёвнами",
+  "tooltip.agescrafting.pit_kiln.state.active": "Обжиг",
+  "tooltip.agescrafting.pit_kiln.state.complete": "Готово",
+  "tooltip.agescrafting.pit_kiln.progress": "Обжиг: %s / %s с"
 }
