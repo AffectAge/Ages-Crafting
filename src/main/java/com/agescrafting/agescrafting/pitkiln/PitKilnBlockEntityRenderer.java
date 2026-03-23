@@ -23,7 +23,7 @@ public class PitKilnBlockEntityRenderer implements BlockEntityRenderer<PitKilnBl
 
     private static void renderInputInsidePit(PitKilnBlockEntity blockEntity, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
         PitKilnBlock.Variant variant = blockEntity.getBlockState().getValue(PitKilnBlock.VARIANT);
-        if (variant == PitKilnBlock.Variant.ACTIVE || variant == PitKilnBlock.Variant.COMPLETE) {
+        if (variant == PitKilnBlock.Variant.ACTIVE) {
             return;
         }
 
