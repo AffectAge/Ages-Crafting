@@ -1,8 +1,10 @@
 package com.agescrafting.agescrafting;
 
+import com.agescrafting.agescrafting.anvil.AnvilBlockEntityRenderer;
 import com.agescrafting.agescrafting.barrel.BarrelBlockEntityRenderer;
 import com.agescrafting.agescrafting.barrel.BarrelScreen;
 import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlockEntityRenderer;
+import com.agescrafting.agescrafting.choppingblock.ChoppingBlockBlockEntityRenderer;
 import com.agescrafting.agescrafting.config.AgesCraftingConfig;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlockEntityRenderer;
 import com.agescrafting.agescrafting.pitkiln.PitKilnBlockEntityRenderer;
@@ -57,6 +59,10 @@ public class AgesCraftingMod {
                     WorkspaceTableRenderer::new
             ));
             event.enqueueWork(() -> BlockEntityRenderers.register(
+                    ModBlockEntities.ANVIL_BE.get(),
+                    AnvilBlockEntityRenderer::new
+            ));
+            event.enqueueWork(() -> BlockEntityRenderers.register(
                     ModBlockEntities.BARREL_BE.get(),
                     BarrelBlockEntityRenderer::new
             ));
@@ -71,6 +77,10 @@ public class AgesCraftingMod {
             event.enqueueWork(() -> BlockEntityRenderers.register(
                     ModBlockEntities.PIT_KILN_BE.get(),
                     PitKilnBlockEntityRenderer::new
+            ));
+            event.enqueueWork(() -> BlockEntityRenderers.register(
+                    ModBlockEntities.CHOPPING_BLOCK_BE.get(),
+                    ChoppingBlockBlockEntityRenderer::new
             ));
             event.enqueueWork(() -> MenuScreens.register(
                     ModMenuTypes.BARREL.get(),

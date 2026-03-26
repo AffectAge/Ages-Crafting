@@ -1,7 +1,9 @@
 package com.agescrafting.agescrafting.compat.emi;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
+import com.agescrafting.agescrafting.anvil.AnvilRecipe;
 import com.agescrafting.agescrafting.barrel.recipe.BarrelRecipe;
+import com.agescrafting.agescrafting.choppingblock.ChoppingBlockRecipe;
 import com.agescrafting.agescrafting.compat.campfire.PrimitiveCampfireDisplayRecipe;
 import com.agescrafting.agescrafting.dryingrack.DryingRackRecipe;
 import com.agescrafting.agescrafting.pitkiln.PitKilnRecipe;
@@ -25,6 +27,11 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
             EmiStack.of(ModBlocks.WORKSPACE_TABLE.get())
     );
 
+    public static final EmiRecipeCategory ANVIL_CATEGORY = new EmiRecipeCategory(
+            ResourceLocation.fromNamespaceAndPath(AgesCraftingMod.MODID, "anvil"),
+            EmiStack.of(ModBlocks.STONE_ANVIL.get())
+    );
+
     public static final EmiRecipeCategory BARREL_CATEGORY = new EmiRecipeCategory(
             ResourceLocation.fromNamespaceAndPath(AgesCraftingMod.MODID, "barrel"),
             EmiStack.of(ModBlocks.BARREL.get())
@@ -45,10 +52,20 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
             EmiStack.of(ModBlocks.PIT_KILN.get())
     );
 
+    public static final EmiRecipeCategory CHOPPING_BLOCK_CATEGORY = new EmiRecipeCategory(
+            ResourceLocation.fromNamespaceAndPath(AgesCraftingMod.MODID, "chopping_block"),
+            EmiStack.of(ModBlocks.CHOPPING_BLOCK.get())
+    );
+
     @Override
     public void register(EmiRegistry registry) {
         registry.addCategory(WORKSPACE_CATEGORY);
         registry.addWorkstation(WORKSPACE_CATEGORY, EmiStack.of(ModBlocks.WORKSPACE_TABLE.get()));
+
+        registry.addCategory(ANVIL_CATEGORY);
+        for (var anvil : ModBlocks.ANVIL_BLOCKS) {
+            registry.addWorkstation(ANVIL_CATEGORY, EmiStack.of(anvil.get()));
+        }
 
         registry.addCategory(BARREL_CATEGORY);
         for (var barrel : ModBlocks.BARREL_BLOCKS) {
@@ -66,6 +83,11 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
         registry.addCategory(PIT_KILN_CATEGORY);
         registry.addWorkstation(PIT_KILN_CATEGORY, EmiStack.of(ModBlocks.PIT_KILN.get()));
 
+        registry.addCategory(CHOPPING_BLOCK_CATEGORY);
+        for (var choppingBlock : ModBlocks.CHOPPING_BLOCKS) {
+            registry.addWorkstation(CHOPPING_BLOCK_CATEGORY, EmiStack.of(choppingBlock.get()));
+        }
+
         Level level = Minecraft.getInstance().level;
         if (level == null) {
             return;
@@ -73,6 +95,10 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
 
         for (WorkspaceCraftingRecipe recipe : level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.WORKSPACE_CRAFTING.get())) {
             registry.addRecipe(new WorkspaceEmiRecipe(recipe, WORKSPACE_CATEGORY));
+        }
+
+        for (AnvilRecipe recipe : level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.ANVIL.get())) {
+            registry.addRecipe(new AnvilEmiRecipe(recipe, ANVIL_CATEGORY));
         }
 
         for (BarrelRecipe recipe : level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.BARREL.get())) {
@@ -85,6 +111,10 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
 
         for (PitKilnRecipe recipe : level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.PIT_KILN.get())) {
             registry.addRecipe(new PitKilnEmiRecipe(recipe, PIT_KILN_CATEGORY));
+        }
+
+        for (ChoppingBlockRecipe recipe : level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.CHOPPING_BLOCK.get())) {
+            registry.addRecipe(new ChoppingBlockEmiRecipe(recipe, CHOPPING_BLOCK_CATEGORY));
         }
 
         for (var recipe : level.getRecipeManager().getAllRecipesFor(RecipeType.SMELTING)) {
@@ -108,3 +138,4 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
         }
     }
 }
+

@@ -1,7 +1,9 @@
 package com.agescrafting.agescrafting.registry;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
+import com.agescrafting.agescrafting.anvil.AnvilRecipe;
 import com.agescrafting.agescrafting.barrel.recipe.BarrelRecipe;
+import com.agescrafting.agescrafting.choppingblock.ChoppingBlockRecipe;
 import com.agescrafting.agescrafting.dryingrack.DryingRackRecipe;
 import com.agescrafting.agescrafting.pitkiln.PitKilnRecipe;
 import com.agescrafting.agescrafting.workspace.WorkspaceCraftingRecipe;
@@ -18,6 +20,11 @@ public class ModRecipeSerializers {
             WorkspaceCraftingRecipe.Serializer::new
     );
 
+    public static final RegistryObject<RecipeSerializer<AnvilRecipe>> ANVIL = RECIPE_SERIALIZERS.register(
+            "anvil",
+            AnvilRecipe.Serializer::new
+    );
+
     public static final RegistryObject<RecipeSerializer<BarrelRecipe>> BARREL = RECIPE_SERIALIZERS.register(
             "barrel",
             BarrelRecipe.Serializer::new
@@ -31,5 +38,10 @@ public class ModRecipeSerializers {
     public static final RegistryObject<RecipeSerializer<PitKilnRecipe>> PIT_KILN = RECIPE_SERIALIZERS.register(
             "pit_kiln",
             PitKilnRecipe.Serializer::new
+    );
+
+    public static final RegistryObject<RecipeSerializer<ChoppingBlockRecipe>> CHOPPING_BLOCK = RECIPE_SERIALIZERS.register(
+            "chopping_block",
+            ChoppingBlockRecipe.Serializer::new
     );
 }

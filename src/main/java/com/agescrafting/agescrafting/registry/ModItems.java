@@ -17,6 +17,24 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.WORKSPACE_TABLE.get(), new Item.Properties())
     );
 
+    public static final RegistryObject<Item> STONE_ANVIL_ITEM = registerBlockItem("stone_anvil", ModBlocks.STONE_ANVIL);
+    public static final RegistryObject<Item> GRANITE_ANVIL_ITEM = registerBlockItem("granite_anvil", ModBlocks.GRANITE_ANVIL);
+    public static final RegistryObject<Item> DIORITE_ANVIL_ITEM = registerBlockItem("diorite_anvil", ModBlocks.DIORITE_ANVIL);
+    public static final RegistryObject<Item> ANDESITE_ANVIL_ITEM = registerBlockItem("andesite_anvil", ModBlocks.ANDESITE_ANVIL);
+    public static final RegistryObject<Item> DEEPSLATE_ANVIL_ITEM = registerBlockItem("deepslate_anvil", ModBlocks.DEEPSLATE_ANVIL);
+    public static final RegistryObject<Item> BASALT_ANVIL_ITEM = registerBlockItem("basalt_anvil", ModBlocks.BASALT_ANVIL);
+    public static final RegistryObject<Item> OBSIDIAN_ANVIL_ITEM = registerBlockItem("obsidian_anvil", ModBlocks.OBSIDIAN_ANVIL);
+
+    public static final List<RegistryObject<Item>> ANVIL_ITEMS = List.of(
+            STONE_ANVIL_ITEM,
+            GRANITE_ANVIL_ITEM,
+            DIORITE_ANVIL_ITEM,
+            ANDESITE_ANVIL_ITEM,
+            DEEPSLATE_ANVIL_ITEM,
+            BASALT_ANVIL_ITEM,
+            OBSIDIAN_ANVIL_ITEM
+    );
+
     public static final RegistryObject<Item> BARREL_ITEM = ITEMS.register(
             "barrel",
             () -> new BlockItem(ModBlocks.BARREL.get(), new Item.Properties())
@@ -50,6 +68,33 @@ public class ModItems {
     public static final RegistryObject<Item> DRYING_RACK_ITEM = registerBlockItem("drying_rack", ModBlocks.DRYING_RACK);
     public static final RegistryObject<Item> PRIMITIVE_CAMPFIRE_ITEM = registerBlockItem("primitive_campfire", ModBlocks.PRIMITIVE_CAMPFIRE);
     public static final RegistryObject<Item> PIT_KILN_ITEM = registerBlockItem("pit_kiln", ModBlocks.PIT_KILN);
+    public static final RegistryObject<Item> CHOPPING_BLOCK_ITEM = registerBlockItem("chopping_block", ModBlocks.CHOPPING_BLOCK);
+
+    public static final RegistryObject<Item> SPRUCE_CHOPPING_BLOCK_ITEM = registerBlockItem("spruce_chopping_block", ModBlocks.SPRUCE_CHOPPING_BLOCK);
+    public static final RegistryObject<Item> BIRCH_CHOPPING_BLOCK_ITEM = registerBlockItem("birch_chopping_block", ModBlocks.BIRCH_CHOPPING_BLOCK);
+    public static final RegistryObject<Item> JUNGLE_CHOPPING_BLOCK_ITEM = registerBlockItem("jungle_chopping_block", ModBlocks.JUNGLE_CHOPPING_BLOCK);
+    public static final RegistryObject<Item> ACACIA_CHOPPING_BLOCK_ITEM = registerBlockItem("acacia_chopping_block", ModBlocks.ACACIA_CHOPPING_BLOCK);
+    public static final RegistryObject<Item> DARK_OAK_CHOPPING_BLOCK_ITEM = registerBlockItem("dark_oak_chopping_block", ModBlocks.DARK_OAK_CHOPPING_BLOCK);
+    public static final RegistryObject<Item> MANGROVE_CHOPPING_BLOCK_ITEM = registerBlockItem("mangrove_chopping_block", ModBlocks.MANGROVE_CHOPPING_BLOCK);
+    public static final RegistryObject<Item> CHERRY_CHOPPING_BLOCK_ITEM = registerBlockItem("cherry_chopping_block", ModBlocks.CHERRY_CHOPPING_BLOCK);
+    public static final RegistryObject<Item> BAMBOO_CHOPPING_BLOCK_ITEM = registerBlockItem("bamboo_chopping_block", ModBlocks.BAMBOO_CHOPPING_BLOCK);
+    public static final RegistryObject<Item> CRIMSON_CHOPPING_BLOCK_ITEM = registerBlockItem("crimson_chopping_block", ModBlocks.CRIMSON_CHOPPING_BLOCK);
+    public static final RegistryObject<Item> WARPED_CHOPPING_BLOCK_ITEM = registerBlockItem("warped_chopping_block", ModBlocks.WARPED_CHOPPING_BLOCK);
+
+    public static final List<RegistryObject<Item>> CHOPPING_BLOCK_ITEMS = List.of(
+            CHOPPING_BLOCK_ITEM,
+            SPRUCE_CHOPPING_BLOCK_ITEM,
+            BIRCH_CHOPPING_BLOCK_ITEM,
+            JUNGLE_CHOPPING_BLOCK_ITEM,
+            ACACIA_CHOPPING_BLOCK_ITEM,
+            DARK_OAK_CHOPPING_BLOCK_ITEM,
+            MANGROVE_CHOPPING_BLOCK_ITEM,
+            CHERRY_CHOPPING_BLOCK_ITEM,
+            BAMBOO_CHOPPING_BLOCK_ITEM,
+            CRIMSON_CHOPPING_BLOCK_ITEM,
+            WARPED_CHOPPING_BLOCK_ITEM
+    );
+
     public static final RegistryObject<Item> SPRUCE_DRYING_RACK_ITEM = registerBlockItem("spruce_drying_rack", ModBlocks.SPRUCE_DRYING_RACK);
     public static final RegistryObject<Item> BIRCH_DRYING_RACK_ITEM = registerBlockItem("birch_drying_rack", ModBlocks.BIRCH_DRYING_RACK);
     public static final RegistryObject<Item> JUNGLE_DRYING_RACK_ITEM = registerBlockItem("jungle_drying_rack", ModBlocks.JUNGLE_DRYING_RACK);
@@ -60,6 +105,8 @@ public class ModItems {
     public static final RegistryObject<Item> BAMBOO_DRYING_RACK_ITEM = registerBlockItem("bamboo_drying_rack", ModBlocks.BAMBOO_DRYING_RACK);
     public static final RegistryObject<Item> CRIMSON_DRYING_RACK_ITEM = registerBlockItem("crimson_drying_rack", ModBlocks.CRIMSON_DRYING_RACK);
     public static final RegistryObject<Item> WARPED_DRYING_RACK_ITEM = registerBlockItem("warped_drying_rack", ModBlocks.WARPED_DRYING_RACK);
+
+    public static final RegistryObject<Item> WOOD_CHIPS = ITEMS.register("wood_chips", () -> new Item(new Item.Properties()));
 
     public static final List<RegistryObject<Item>> DRYING_RACK_ITEMS = List.of(
             DRYING_RACK_ITEM,

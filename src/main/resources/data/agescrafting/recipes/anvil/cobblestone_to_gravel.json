@@ -1,0 +1,14 @@
+{
+  "type": "agescrafting:anvil",
+  "ingredient": {
+    "item": "minecraft:cobblestone"
+  },
+  "tool": {
+    "tag": "minecraft:pickaxes"
+  },
+  "result": {
+    "item": "minecraft:gravel",
+    "count": 1
+  },
+  "hits": 4
+}

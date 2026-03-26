@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLL",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "L": {
+      "tag": "minecraft:crimson_stems"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "agescrafting:crimson_chopping_block",
+    "count": 1
+  }
+}

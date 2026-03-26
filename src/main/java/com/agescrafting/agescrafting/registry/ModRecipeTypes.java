@@ -1,7 +1,9 @@
 package com.agescrafting.agescrafting.registry;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
+import com.agescrafting.agescrafting.anvil.AnvilRecipe;
 import com.agescrafting.agescrafting.barrel.recipe.BarrelRecipe;
+import com.agescrafting.agescrafting.choppingblock.ChoppingBlockRecipe;
 import com.agescrafting.agescrafting.dryingrack.DryingRackRecipe;
 import com.agescrafting.agescrafting.pitkiln.PitKilnRecipe;
 import com.agescrafting.agescrafting.workspace.WorkspaceCraftingRecipe;
@@ -19,6 +21,16 @@ public class ModRecipeTypes {
                 @Override
                 public String toString() {
                     return AgesCraftingMod.MODID + ":workspace_crafting";
+                }
+            }
+    );
+
+    public static final RegistryObject<RecipeType<AnvilRecipe>> ANVIL = RECIPE_TYPES.register(
+            "anvil",
+            () -> new RecipeType<>() {
+                @Override
+                public String toString() {
+                    return AgesCraftingMod.MODID + ":anvil";
                 }
             }
     );
@@ -49,6 +61,16 @@ public class ModRecipeTypes {
                 @Override
                 public String toString() {
                     return AgesCraftingMod.MODID + ":pit_kiln";
+                }
+            }
+    );
+
+    public static final RegistryObject<RecipeType<ChoppingBlockRecipe>> CHOPPING_BLOCK = RECIPE_TYPES.register(
+            "chopping_block",
+            () -> new RecipeType<>() {
+                @Override
+                public String toString() {
+                    return AgesCraftingMod.MODID + ":chopping_block";
                 }
             }
     );

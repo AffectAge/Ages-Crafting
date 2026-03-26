@@ -32,10 +32,12 @@ public class WorkspaceJeiPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(
                 new WorkspaceJeiCategory(registration.getJeiHelpers().getGuiHelper()),
+                new AnvilJeiCategory(registration.getJeiHelpers().getGuiHelper()),
                 new BarrelJeiCategory(registration.getJeiHelpers().getGuiHelper()),
                 new DryingRackJeiCategory(registration.getJeiHelpers().getGuiHelper()),
                 new PrimitiveCampfireJeiCategory(registration.getJeiHelpers().getGuiHelper()),
-                new PitKilnJeiCategory(registration.getJeiHelpers().getGuiHelper())
+                new PitKilnJeiCategory(registration.getJeiHelpers().getGuiHelper()),
+                new ChoppingBlockJeiCategory(registration.getJeiHelpers().getGuiHelper())
         );
     }
 
@@ -52,6 +54,11 @@ public class WorkspaceJeiPlugin implements IModPlugin {
         );
 
         registration.addRecipes(
+                AnvilJeiCategory.TYPE,
+                new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.ANVIL.get()))
+        );
+
+        registration.addRecipes(
                 BarrelJeiCategory.TYPE,
                 new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.BARREL.get()))
         );
@@ -64,6 +71,11 @@ public class WorkspaceJeiPlugin implements IModPlugin {
         registration.addRecipes(
                 PitKilnJeiCategory.TYPE,
                 new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.PIT_KILN.get()))
+        );
+
+        registration.addRecipes(
+                ChoppingBlockJeiCategory.TYPE,
+                new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.CHOPPING_BLOCK.get()))
         );
 
         ArrayList<PrimitiveCampfireDisplayRecipe> campfireRecipes = new ArrayList<>();
@@ -89,6 +101,9 @@ public class WorkspaceJeiPlugin implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.WORKSPACE_TABLE.get()), WorkspaceJeiCategory.TYPE);
+        for (var anvil : ModBlocks.ANVIL_BLOCKS) {
+            registration.addRecipeCatalyst(new ItemStack(anvil.get()), AnvilJeiCategory.TYPE);
+        }
         for (var barrel : ModBlocks.BARREL_BLOCKS) {
             registration.addRecipeCatalyst(new ItemStack(barrel.get()), BarrelJeiCategory.TYPE);
         }
@@ -97,5 +112,8 @@ public class WorkspaceJeiPlugin implements IModPlugin {
         }
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.PRIMITIVE_CAMPFIRE.get()), PrimitiveCampfireJeiCategory.TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.PIT_KILN.get()), PitKilnJeiCategory.TYPE);
+        for (var choppingBlock : ModBlocks.CHOPPING_BLOCKS) {
+            registration.addRecipeCatalyst(new ItemStack(choppingBlock.get()), ChoppingBlockJeiCategory.TYPE);
+        }
     }
 }

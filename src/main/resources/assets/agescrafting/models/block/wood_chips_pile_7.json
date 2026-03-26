@@ -1,0 +1,21 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "chips": "minecraft:block/oak_planks",
+    "particle": "minecraft:block/oak_planks"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 7, 16],
+      "faces": {
+        "north": { "uv": [0, 0, 16, 16], "texture": "#chips" },
+        "east": { "uv": [0, 0, 16, 16], "texture": "#chips" },
+        "south": { "uv": [0, 0, 16, 16], "texture": "#chips" },
+        "west": { "uv": [0, 0, 16, 16], "texture": "#chips" },
+        "up": { "uv": [0, 0, 16, 16], "texture": "#chips" },
+        "down": { "uv": [0, 0, 16, 16], "texture": "#chips" }
+      }
+    }
+  ]
+}

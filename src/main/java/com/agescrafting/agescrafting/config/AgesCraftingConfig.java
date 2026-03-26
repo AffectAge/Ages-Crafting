@@ -34,6 +34,14 @@ public final class AgesCraftingConfig {
         public final ForgeConfigSpec.DoubleValue pitKilnVariableSpeedModifier;
         public final ForgeConfigSpec.BooleanValue pitKilnExtinguishedByRain;
         public final ForgeConfigSpec.IntValue pitKilnRainExtinguishTicks;
+        public final ForgeConfigSpec.IntValue choppingMinFoodLevel;
+        public final ForgeConfigSpec.DoubleValue choppingExhaustionPerHit;
+        public final ForgeConfigSpec.DoubleValue choppingSawdustChancePerHit;
+        public final ForgeConfigSpec.DoubleValue choppingScatterChipChancePerHit;
+        public final ForgeConfigSpec.BooleanValue choppingRequireShovelForSawdust;
+        public final ForgeConfigSpec.IntValue anvilMinFoodLevel;
+        public final ForgeConfigSpec.DoubleValue anvilExhaustionPerHit;
+        public final ForgeConfigSpec.DoubleValue anvilExhaustionPerComplete;
 
         private Server(ForgeConfigSpec.Builder builder) {
             builder.push("recipes");
@@ -103,6 +111,36 @@ public final class AgesCraftingConfig {
             pitKilnRainExtinguishTicks = builder
                     .comment("Ticks of direct rain exposure before an active pit kiln is extinguished.")
                     .defineInRange("rainExtinguishTicks", 200, 1, 72000);
+            builder.pop();
+
+            builder.push("choppingBlock");
+            choppingMinFoodLevel = builder
+                    .comment("Minimum food level required to use a chopping tool on chopping block.")
+                    .defineInRange("minFoodLevel", 6, 0, 20);
+            choppingExhaustionPerHit = builder
+                    .comment("Exhaustion added to player per successful chop hit.")
+                    .defineInRange("exhaustionPerHit", 0.12D, 0.0D, 4.0D);
+            choppingSawdustChancePerHit = builder
+                    .comment("Chance to add one sawdust level on successful chop.")
+                    .defineInRange("sawdustChancePerHit", 0.45D, 0.0D, 1.0D);
+            choppingScatterChipChancePerHit = builder
+                    .comment("Chance to spawn one wood chips item around block on successful chop.")
+                    .defineInRange("scatterChipChancePerHit", 0.25D, 0.0D, 1.0D);
+            choppingRequireShovelForSawdust = builder
+                    .comment("Require shovel item to clear sawdust from chopping block.")
+                    .define("requireShovelForSawdust", true);
+            builder.pop();
+
+            builder.push("anvil");
+            anvilMinFoodLevel = builder
+                    .comment("Minimum food level required to use anvil.")
+                    .defineInRange("minFoodLevel", 6, 0, 20);
+            anvilExhaustionPerHit = builder
+                    .comment("Exhaustion added per successful anvil hit.")
+                    .defineInRange("exhaustionPerHit", 0.10D, 0.0D, 4.0D);
+            anvilExhaustionPerComplete = builder
+                    .comment("Exhaustion added when anvil recipe completes.")
+                    .defineInRange("exhaustionPerComplete", 0.25D, 0.0D, 6.0D);
             builder.pop();
         }
     }

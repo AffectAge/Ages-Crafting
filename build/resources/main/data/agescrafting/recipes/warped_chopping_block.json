@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLL",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "L": {
+      "tag": "minecraft:warped_stems"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "agescrafting:warped_chopping_block",
+    "count": 1
+  }
+}

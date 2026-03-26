@@ -1,0 +1,8 @@
+{
+  "parent": "agescrafting:block/chopping_block_base",
+  "textures": {
+    "side": "minecraft:block/cherry_log",
+    "top": "minecraft:block/cherry_log_top",
+    "particle": "minecraft:block/cherry_log"
+  }
+}

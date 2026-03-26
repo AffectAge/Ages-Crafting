@@ -1,0 +1,15 @@
+{
+  "type": "agescrafting:chopping_block",
+  "ingredient": {
+    "item": "minecraft:oak_log"
+  },
+  "tool": {
+    "tag": "minecraft:axes"
+  },
+  "result": {
+    "item": "minecraft:oak_planks",
+    "count": 4
+  },
+  "chops_required": 6,
+  "durability_per_chop": 1
+}

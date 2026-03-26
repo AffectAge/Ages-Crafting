@@ -139,6 +139,49 @@ Adding Libraries to Inheritance
 Reading Input: C:\Users\Affect\Desktop\Ages Crafting\Ages Crafting\build\libs\agescrafting-1.0.0.jar
 Adding input to inheritance map
 Processing entries
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilBlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag; from net/minecraft/world/level/block/entity/BlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag;: getUpdateTag -> m_5995_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilBlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V: load -> m_142466_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilBlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V: saveAdditional -> m_183515_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilBlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/level/block/entity/BlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet;: getUpdatePacket -> m_58483_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilBlock/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V from net/minecraft/world/level/block/state/BlockBehaviour/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V: onRemove -> m_6810_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker; from net/minecraft/world/level/block/EntityBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker;: getTicker -> m_142354_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilBlock/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/Block/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState;: getStateForPlacement -> m_5573_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilBlock/newBlockEntity(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/entity/BlockEntity; from net/minecraft/world/level/block/EntityBlock/newBlockEntity(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/entity/BlockEntity;: newBlockEntity -> m_142194_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilBlock/getRenderShape(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/RenderShape; from net/minecraft/world/level/block/BaseEntityBlock/getRenderShape(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/RenderShape;: getRenderShape -> m_7514_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilBlock/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getShape -> m_5940_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilRecipe/canCraftInDimensions(II)Z from net/minecraft/world/item/crafting/Recipe/canCraftInDimensions(II)Z: canCraftInDimensions -> m_8004_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilRecipe/isSpecial()Z from net/minecraft/world/item/crafting/Recipe/isSpecial()Z: isSpecial -> m_5598_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilRecipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: getResultItem -> m_8043_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilRecipe/matches(Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Z from net/minecraft/world/item/crafting/Recipe/matches(Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Z: matches -> m_5818_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilRecipe/getId()Lnet/minecraft/resources/ResourceLocation; from net/minecraft/world/item/crafting/Recipe/getId()Lnet/minecraft/resources/ResourceLocation;: getId -> m_6423_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilRecipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: assemble -> m_5874_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilRecipe/getType()Lnet/minecraft/world/item/crafting/RecipeType; from net/minecraft/world/item/crafting/Recipe/getType()Lnet/minecraft/world/item/crafting/RecipeType;: getType -> m_6671_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilRecipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer; from net/minecraft/world/item/crafting/Recipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer;: getSerializer -> m_7707_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilBlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/blockentity/BlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: render -> m_6922_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilRecipe$Serializer/fromJson(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)Lnet/minecraft/world/item/crafting/Recipe; from net/minecraft/world/item/crafting/RecipeSerializer/fromJson(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)Lnet/minecraft/world/item/crafting/Recipe;: fromJson -> m_6729_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilRecipe$Serializer/fromNetwork(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/network/FriendlyByteBuf;)Lnet/minecraft/world/item/crafting/Recipe; from net/minecraft/world/item/crafting/RecipeSerializer/fromNetwork(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/network/FriendlyByteBuf;)Lnet/minecraft/world/item/crafting/Recipe;: fromNetwork -> m_8005_
+Conflicting propagated mapping for com/agescrafting/agescrafting/anvil/AnvilRecipe$Serializer/toNetwork(Lnet/minecraft/network/FriendlyByteBuf;Lnet/minecraft/world/item/crafting/Recipe;)V from net/minecraft/world/item/crafting/RecipeSerializer/toNetwork(Lnet/minecraft/network/FriendlyByteBuf;Lnet/minecraft/world/item/crafting/Recipe;)V: toNetwork -> m_6178_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelScreen/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from net/minecraft/client/gui/screens/inventory/AbstractContainerScreen/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelScreen/init()V from net/minecraft/client/gui/screens/inventory/AbstractContainerScreen/init()V: init -> m_7856_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelScreen/renderLabels(Lnet/minecraft/client/gui/GuiGraphics;II)V from net/minecraft/client/gui/screens/inventory/AbstractContainerScreen/renderLabels(Lnet/minecraft/client/gui/GuiGraphics;II)V: renderLabels -> m_280003_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelScreen/mouseClicked(DDI)Z from net/minecraft/client/gui/screens/inventory/AbstractContainerScreen/mouseClicked(DDI)Z: mouseClicked -> m_6375_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelScreen/renderBg(Lnet/minecraft/client/gui/GuiGraphics;FII)V from net/minecraft/client/gui/screens/inventory/AbstractContainerScreen/renderBg(Lnet/minecraft/client/gui/GuiGraphics;FII)V: renderBg -> m_7286_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelMenu/clickMenuButton(Lnet/minecraft/world/entity/player/Player;I)Z from net/minecraft/world/inventory/AbstractContainerMenu/clickMenuButton(Lnet/minecraft/world/entity/player/Player;I)Z: clickMenuButton -> m_6366_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelMenu/stillValid(Lnet/minecraft/world/entity/player/Player;)Z from net/minecraft/world/inventory/AbstractContainerMenu/stillValid(Lnet/minecraft/world/entity/player/Player;)Z: stillValid -> m_6875_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelMenu/quickMoveStack(Lnet/minecraft/world/entity/player/Player;I)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/inventory/AbstractContainerMenu/quickMoveStack(Lnet/minecraft/world/entity/player/Player;I)Lnet/minecraft/world/item/ItemStack;: quickMoveStack -> m_7648_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/blockentity/BlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: render -> m_6922_
+Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/blockentity/BlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: render -> m_6922_
+Conflicting propagated mapping for com/agescrafting/agescrafting/campfire/PrimitiveCampfireBlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/blockentity/BlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: render -> m_6922_
+Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/blockentity/BlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: render -> m_6922_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/blockentity/BlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: render -> m_6922_
+Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/blockentity/BlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: render -> m_6922_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag; from net/minecraft/world/level/block/entity/BlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag;: getUpdateTag -> m_5995_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V: load -> m_142466_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V: saveAdditional -> m_183515_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/level/block/entity/BlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet;: getUpdatePacket -> m_58483_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity/createMenu(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/entity/player/Player;)Lnet/minecraft/world/inventory/AbstractContainerMenu; from net/minecraft/world/inventory/MenuConstructor/createMenu(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/entity/player/Player;)Lnet/minecraft/world/inventory/AbstractContainerMenu;: createMenu -> m_7208_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity/getDisplayName()Lnet/minecraft/network/chat/Component; from net/minecraft/world/MenuProvider/getDisplayName()Lnet/minecraft/network/chat/Component;: getDisplayName -> m_5446_
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlock/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V from net/minecraft/world/level/block/state/BlockBehaviour/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V: onRemove -> m_6810_
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlock/rotate(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/state/BlockBehaviour/rotate(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState;: rotate -> m_6843_
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker; from net/minecraft/world/level/block/EntityBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker;: getTicker -> m_142354_
@@ -149,29 +192,27 @@ Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBl
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlock/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getShape -> m_5940_
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlock/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V from net/minecraft/world/level/block/Block/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V: createBlockStateDefinition -> m_7926_
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag; from net/minecraft/world/level/block/entity/BlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag;: getUpdateTag -> m_5995_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V: load -> m_142466_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V: saveAdditional -> m_183515_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/level/block/entity/BlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet;: getUpdatePacket -> m_58483_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity/createMenu(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/entity/player/Player;)Lnet/minecraft/world/inventory/AbstractContainerMenu; from net/minecraft/world/inventory/MenuConstructor/createMenu(ILnet/minecraft/world/entity/player/Inventory;Lnet/minecraft/world/entity/player/Player;)Lnet/minecraft/world/inventory/AbstractContainerMenu;: createMenu -> m_7208_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity/getDisplayName()Lnet/minecraft/network/chat/Component; from net/minecraft/world/MenuProvider/getDisplayName()Lnet/minecraft/network/chat/Component;: getDisplayName -> m_5446_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelScreen/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from net/minecraft/client/gui/screens/inventory/AbstractContainerScreen/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelScreen/init()V from net/minecraft/client/gui/screens/inventory/AbstractContainerScreen/init()V: init -> m_7856_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelScreen/renderLabels(Lnet/minecraft/client/gui/GuiGraphics;II)V from net/minecraft/client/gui/screens/inventory/AbstractContainerScreen/renderLabels(Lnet/minecraft/client/gui/GuiGraphics;II)V: renderLabels -> m_280003_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelScreen/mouseClicked(DDI)Z from net/minecraft/client/gui/screens/inventory/AbstractContainerScreen/mouseClicked(DDI)Z: mouseClicked -> m_6375_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelScreen/renderBg(Lnet/minecraft/client/gui/GuiGraphics;FII)V from net/minecraft/client/gui/screens/inventory/AbstractContainerScreen/renderBg(Lnet/minecraft/client/gui/GuiGraphics;FII)V: renderBg -> m_7286_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelMenu/clickMenuButton(Lnet/minecraft/world/entity/player/Player;I)Z from net/minecraft/world/inventory/AbstractContainerMenu/clickMenuButton(Lnet/minecraft/world/entity/player/Player;I)Z: clickMenuButton -> m_6366_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelMenu/stillValid(Lnet/minecraft/world/entity/player/Player;)Z from net/minecraft/world/inventory/AbstractContainerMenu/stillValid(Lnet/minecraft/world/entity/player/Player;)Z: stillValid -> m_6875_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelMenu/quickMoveStack(Lnet/minecraft/world/entity/player/Player;I)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/inventory/AbstractContainerMenu/quickMoveStack(Lnet/minecraft/world/entity/player/Player;I)Lnet/minecraft/world/item/ItemStack;: quickMoveStack -> m_7648_
-Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/blockentity/BlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: render -> m_6922_
-Conflicting propagated mapping for com/agescrafting/agescrafting/campfire/PrimitiveCampfireBlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/blockentity/BlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: render -> m_6922_
-Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/blockentity/BlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: render -> m_6922_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/blockentity/BlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: render -> m_6922_
-Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V from net/minecraft/client/renderer/blockentity/BlockEntityRenderer/render(Lnet/minecraft/world/level/block/entity/BlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V: render -> m_6922_
-Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity$3/getCount()I from net/minecraft/world/inventory/ContainerData/getCount()I: getCount -> m_6499_
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity$3/get(I)I from net/minecraft/world/inventory/ContainerData/get(I)I: get -> m_6413_
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelBlockEntity$3/set(II)V from net/minecraft/world/inventory/ContainerData/set(II)V: set -> m_8050_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/canCraftInDimensions(II)Z from net/minecraft/world/item/crafting/Recipe/canCraftInDimensions(II)Z: canCraftInDimensions -> m_8004_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/isSpecial()Z from net/minecraft/world/item/crafting/Recipe/isSpecial()Z: isSpecial -> m_5598_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: getResultItem -> m_8043_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/matches(Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Z from net/minecraft/world/item/crafting/Recipe/matches(Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Z: matches -> m_5818_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/getId()Lnet/minecraft/resources/ResourceLocation; from net/minecraft/world/item/crafting/Recipe/getId()Lnet/minecraft/resources/ResourceLocation;: getId -> m_6423_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: assemble -> m_5874_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/getType()Lnet/minecraft/world/item/crafting/RecipeType; from net/minecraft/world/item/crafting/Recipe/getType()Lnet/minecraft/world/item/crafting/RecipeType;: getType -> m_6671_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer; from net/minecraft/world/item/crafting/Recipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer;: getSerializer -> m_7707_
+Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/getContainerSize()I from net/minecraft/world/Container/getContainerSize()I: getContainerSize -> m_6643_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/setItem(ILnet/minecraft/world/item/ItemStack;)V from net/minecraft/world/Container/setItem(ILnet/minecraft/world/item/ItemStack;)V: setItem -> m_6836_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/removeItem(II)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/Container/removeItem(II)Lnet/minecraft/world/item/ItemStack;: removeItem -> m_7407_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/getItem(I)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/Container/getItem(I)Lnet/minecraft/world/item/ItemStack;: getItem -> m_8020_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/clearContent()V from net/minecraft/world/Clearable/clearContent()V: clearContent -> m_6211_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/isEmpty()Z from net/minecraft/world/Container/isEmpty()Z: isEmpty -> m_7983_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/setChanged()V from net/minecraft/world/Container/setChanged()V: setChanged -> m_6596_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/removeItemNoUpdate(I)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/Container/removeItemNoUpdate(I)Lnet/minecraft/world/item/ItemStack;: removeItemNoUpdate -> m_8016_
+Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/stillValid(Lnet/minecraft/world/entity/player/Player;)Z from net/minecraft/world/Container/stillValid(Lnet/minecraft/world/entity/player/Player;)Z: stillValid -> m_6542_
 Conflicting propagated mapping for net/minecraftforge/items/SlotItemHandler/set(Lnet/minecraft/world/item/ItemStack;)V from net/minecraft/world/inventory/Slot/set(Lnet/minecraft/world/item/ItemStack;)V: set -> m_5852_
 Conflicting propagated mapping for net/minecraftforge/items/SlotItemHandler/mayPlace(Lnet/minecraft/world/item/ItemStack;)Z from net/minecraft/world/inventory/Slot/mayPlace(Lnet/minecraft/world/item/ItemStack;)Z: mayPlace -> m_5857_
 Conflicting propagated mapping for net/minecraftforge/items/SlotItemHandler/remove(I)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/inventory/Slot/remove(I)Lnet/minecraft/world/item/ItemStack;: remove -> m_6201_
@@ -190,26 +231,9 @@ Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelMe
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelMenu$4/mayPickup(Lnet/minecraft/world/entity/player/Player;)Z from net/minecraftforge/items/SlotItemHandler/mayPickup(Lnet/minecraft/world/entity/player/Player;)Z: mayPickup -> m_8010_
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelScreen$InvisibleSealButton/updateWidgetNarration(Lnet/minecraft/client/gui/narration/NarrationElementOutput;)V from net/minecraft/client/gui/components/Button/updateWidgetNarration(Lnet/minecraft/client/gui/narration/NarrationElementOutput;)V: updateWidgetNarration -> m_168797_
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/BarrelScreen$InvisibleSealButton/renderWidget(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from net/minecraft/client/gui/components/AbstractButton/renderWidget(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: renderWidget -> m_87963_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/canCraftInDimensions(II)Z from net/minecraft/world/item/crafting/Recipe/canCraftInDimensions(II)Z: canCraftInDimensions -> m_8004_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/isSpecial()Z from net/minecraft/world/item/crafting/Recipe/isSpecial()Z: isSpecial -> m_5598_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: getResultItem -> m_8043_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/matches(Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Z from net/minecraft/world/item/crafting/Recipe/matches(Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Z: matches -> m_5818_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/getId()Lnet/minecraft/resources/ResourceLocation; from net/minecraft/world/item/crafting/Recipe/getId()Lnet/minecraft/resources/ResourceLocation;: getId -> m_6423_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: assemble -> m_5874_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/getType()Lnet/minecraft/world/item/crafting/RecipeType; from net/minecraft/world/item/crafting/Recipe/getType()Lnet/minecraft/world/item/crafting/RecipeType;: getType -> m_6671_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer; from net/minecraft/world/item/crafting/Recipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer;: getSerializer -> m_7707_
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe$Serializer/fromJson(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)Lnet/minecraft/world/item/crafting/Recipe; from net/minecraft/world/item/crafting/RecipeSerializer/fromJson(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)Lnet/minecraft/world/item/crafting/Recipe;: fromJson -> m_6729_
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe$Serializer/fromNetwork(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/network/FriendlyByteBuf;)Lnet/minecraft/world/item/crafting/Recipe; from net/minecraft/world/item/crafting/RecipeSerializer/fromNetwork(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/network/FriendlyByteBuf;)Lnet/minecraft/world/item/crafting/Recipe;: fromNetwork -> m_8005_
 Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipe$Serializer/toNetwork(Lnet/minecraft/network/FriendlyByteBuf;Lnet/minecraft/world/item/crafting/Recipe;)V from net/minecraft/world/item/crafting/RecipeSerializer/toNetwork(Lnet/minecraft/network/FriendlyByteBuf;Lnet/minecraft/world/item/crafting/Recipe;)V: toNetwork -> m_6178_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/getContainerSize()I from net/minecraft/world/Container/getContainerSize()I: getContainerSize -> m_6643_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/setItem(ILnet/minecraft/world/item/ItemStack;)V from net/minecraft/world/Container/setItem(ILnet/minecraft/world/item/ItemStack;)V: setItem -> m_6836_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/removeItem(II)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/Container/removeItem(II)Lnet/minecraft/world/item/ItemStack;: removeItem -> m_7407_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/getItem(I)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/Container/getItem(I)Lnet/minecraft/world/item/ItemStack;: getItem -> m_8020_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/clearContent()V from net/minecraft/world/Clearable/clearContent()V: clearContent -> m_6211_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/isEmpty()Z from net/minecraft/world/Container/isEmpty()Z: isEmpty -> m_7983_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/setChanged()V from net/minecraft/world/Container/setChanged()V: setChanged -> m_6596_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/removeItemNoUpdate(I)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/Container/removeItemNoUpdate(I)Lnet/minecraft/world/item/ItemStack;: removeItemNoUpdate -> m_8016_
-Conflicting propagated mapping for com/agescrafting/agescrafting/barrel/recipe/BarrelRecipeInput/stillValid(Lnet/minecraft/world/entity/player/Player;)Z from net/minecraft/world/Container/stillValid(Lnet/minecraft/world/entity/player/Player;)Z: stillValid -> m_6542_
 Conflicting propagated mapping for com/agescrafting/agescrafting/campfire/PrimitiveCampfireBlock/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V from net/minecraft/world/level/block/state/BlockBehaviour/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V: onRemove -> m_6810_
 Conflicting propagated mapping for com/agescrafting/agescrafting/campfire/PrimitiveCampfireBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker; from net/minecraft/world/level/block/EntityBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker;: getTicker -> m_142354_
 Conflicting propagated mapping for com/agescrafting/agescrafting/campfire/PrimitiveCampfireBlock/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/Block/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState;: getStateForPlacement -> m_5573_
@@ -224,18 +248,33 @@ Conflicting propagated mapping for com/agescrafting/agescrafting/campfire/Primit
 Conflicting propagated mapping for com/agescrafting/agescrafting/campfire/PrimitiveCampfireBlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V: load -> m_142466_
 Conflicting propagated mapping for com/agescrafting/agescrafting/campfire/PrimitiveCampfireBlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V: saveAdditional -> m_183515_
 Conflicting propagated mapping for com/agescrafting/agescrafting/campfire/PrimitiveCampfireBlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/level/block/entity/BlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet;: getUpdatePacket -> m_58483_
-Conflicting propagated mapping for dev/emi/emi/api/widget/Widget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from net/minecraft/client/gui/components/Renderable/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
-Conflicting propagated mapping for dev/emi/emi/api/widget/TextureWidget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from dev/emi/emi/api/widget/Widget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
-Conflicting propagated mapping for dev/emi/emi/api/widget/SlotWidget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from dev/emi/emi/api/widget/Widget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
-Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/canCraftInDimensions(II)Z from net/minecraft/world/item/crafting/Recipe/canCraftInDimensions(II)Z: canCraftInDimensions -> m_8004_
-Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/isSpecial()Z from net/minecraft/world/item/crafting/Recipe/isSpecial()Z: isSpecial -> m_5598_
-Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: getResultItem -> m_8043_
-Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/matches(Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Z from net/minecraft/world/item/crafting/Recipe/matches(Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Z: matches -> m_5818_
-Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/getId()Lnet/minecraft/resources/ResourceLocation; from net/minecraft/world/item/crafting/Recipe/getId()Lnet/minecraft/resources/ResourceLocation;: getId -> m_6423_
-Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: assemble -> m_5874_
-Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/getType()Lnet/minecraft/world/item/crafting/RecipeType; from net/minecraft/world/item/crafting/Recipe/getType()Lnet/minecraft/world/item/crafting/RecipeType;: getType -> m_6671_
-Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer; from net/minecraft/world/item/crafting/Recipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer;: getSerializer -> m_7707_
-Conflicting propagated mapping for dev/emi/emi/api/widget/TextWidget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from dev/emi/emi/api/widget/Widget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlock/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V from net/minecraft/world/level/block/state/BlockBehaviour/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V: onRemove -> m_6810_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker; from net/minecraft/world/level/block/EntityBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker;: getTicker -> m_142354_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlock/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/Block/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState;: getStateForPlacement -> m_5573_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlock/newBlockEntity(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/entity/BlockEntity; from net/minecraft/world/level/block/EntityBlock/newBlockEntity(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/entity/BlockEntity;: newBlockEntity -> m_142194_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlock/getRenderShape(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/RenderShape; from net/minecraft/world/level/block/BaseEntityBlock/getRenderShape(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/RenderShape;: getRenderShape -> m_7514_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlock/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getShape -> m_5940_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag; from net/minecraft/world/level/block/entity/BlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag;: getUpdateTag -> m_5995_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V: load -> m_142466_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V: saveAdditional -> m_183515_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/level/block/entity/BlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet;: getUpdatePacket -> m_58483_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockRecipe/canCraftInDimensions(II)Z from net/minecraft/world/item/crafting/Recipe/canCraftInDimensions(II)Z: canCraftInDimensions -> m_8004_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockRecipe/isSpecial()Z from net/minecraft/world/item/crafting/Recipe/isSpecial()Z: isSpecial -> m_5598_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockRecipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: getResultItem -> m_8043_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockRecipe/matches(Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Z from net/minecraft/world/item/crafting/Recipe/matches(Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Z: matches -> m_5818_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockRecipe/getId()Lnet/minecraft/resources/ResourceLocation; from net/minecraft/world/item/crafting/Recipe/getId()Lnet/minecraft/resources/ResourceLocation;: getId -> m_6423_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockRecipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: assemble -> m_5874_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockRecipe/getType()Lnet/minecraft/world/item/crafting/RecipeType; from net/minecraft/world/item/crafting/Recipe/getType()Lnet/minecraft/world/item/crafting/RecipeType;: getType -> m_6671_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockRecipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer; from net/minecraft/world/item/crafting/Recipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer;: getSerializer -> m_7707_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockRecipe$Serializer/fromJson(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)Lnet/minecraft/world/item/crafting/Recipe; from net/minecraft/world/item/crafting/RecipeSerializer/fromJson(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)Lnet/minecraft/world/item/crafting/Recipe;: fromJson -> m_6729_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockRecipe$Serializer/fromNetwork(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/network/FriendlyByteBuf;)Lnet/minecraft/world/item/crafting/Recipe; from net/minecraft/world/item/crafting/RecipeSerializer/fromNetwork(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/network/FriendlyByteBuf;)Lnet/minecraft/world/item/crafting/Recipe;: fromNetwork -> m_8005_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/ChoppingBlockRecipe$Serializer/toNetwork(Lnet/minecraft/network/FriendlyByteBuf;Lnet/minecraft/world/item/crafting/Recipe;)V from net/minecraft/world/item/crafting/RecipeSerializer/toNetwork(Lnet/minecraft/network/FriendlyByteBuf;Lnet/minecraft/world/item/crafting/Recipe;)V: toNetwork -> m_6178_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/WoodChipsPileBlock/canSurvive(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z from net/minecraft/world/level/block/state/BlockBehaviour/canSurvive(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z: canSurvive -> m_7898_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/WoodChipsPileBlock/updateShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/state/BlockBehaviour/updateShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;: updateShape -> m_7417_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/WoodChipsPileBlock/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getShape -> m_5940_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/WoodChipsPileBlock/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V from net/minecraft/world/level/block/Block/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V: createBlockStateDefinition -> m_7926_
+Conflicting propagated mapping for com/agescrafting/agescrafting/choppingblock/WoodChipsPileBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
 Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackRecipe/canCraftInDimensions(II)Z from net/minecraft/world/item/crafting/Recipe/canCraftInDimensions(II)Z: canCraftInDimensions -> m_8004_
 Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackRecipe/isSpecial()Z from net/minecraft/world/item/crafting/Recipe/isSpecial()Z: isSpecial -> m_5598_
 Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackRecipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: getResultItem -> m_8043_
@@ -244,6 +283,18 @@ Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/Dryi
 Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackRecipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: assemble -> m_5874_
 Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackRecipe/getType()Lnet/minecraft/world/item/crafting/RecipeType; from net/minecraft/world/item/crafting/Recipe/getType()Lnet/minecraft/world/item/crafting/RecipeType;: getType -> m_6671_
 Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackRecipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer; from net/minecraft/world/item/crafting/Recipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer;: getSerializer -> m_7707_
+Conflicting propagated mapping for dev/emi/emi/api/widget/Widget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from net/minecraft/client/gui/components/Renderable/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
+Conflicting propagated mapping for dev/emi/emi/api/widget/SlotWidget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from dev/emi/emi/api/widget/Widget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
+Conflicting propagated mapping for dev/emi/emi/api/widget/TextWidget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from dev/emi/emi/api/widget/Widget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
+Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/canCraftInDimensions(II)Z from net/minecraft/world/item/crafting/Recipe/canCraftInDimensions(II)Z: canCraftInDimensions -> m_8004_
+Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/isSpecial()Z from net/minecraft/world/item/crafting/Recipe/isSpecial()Z: isSpecial -> m_5598_
+Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: getResultItem -> m_8043_
+Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/matches(Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Z from net/minecraft/world/item/crafting/Recipe/matches(Lnet/minecraft/world/Container;Lnet/minecraft/world/level/Level;)Z: matches -> m_5818_
+Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/getId()Lnet/minecraft/resources/ResourceLocation; from net/minecraft/world/item/crafting/Recipe/getId()Lnet/minecraft/resources/ResourceLocation;: getId -> m_6423_
+Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/assemble(Lnet/minecraft/world/Container;Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: assemble -> m_5874_
+Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/getType()Lnet/minecraft/world/item/crafting/RecipeType; from net/minecraft/world/item/crafting/Recipe/getType()Lnet/minecraft/world/item/crafting/RecipeType;: getType -> m_6671_
+Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer; from net/minecraft/world/item/crafting/Recipe/getSerializer()Lnet/minecraft/world/item/crafting/RecipeSerializer;: getSerializer -> m_7707_
+Conflicting propagated mapping for dev/emi/emi/api/widget/TextureWidget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V from dev/emi/emi/api/widget/Widget/render(Lnet/minecraft/client/gui/GuiGraphics;IIF)V: render -> m_88315_
 Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceCraftingRecipe/canCraftInDimensions(II)Z from net/minecraft/world/item/crafting/Recipe/canCraftInDimensions(II)Z: canCraftInDimensions -> m_8004_
 Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceCraftingRecipe/isSpecial()Z from net/minecraft/world/item/crafting/Recipe/isSpecial()Z: isSpecial -> m_5598_
 Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceCraftingRecipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack; from net/minecraft/world/item/crafting/Recipe/getResultItem(Lnet/minecraft/core/RegistryAccess;)Lnet/minecraft/world/item/ItemStack;: getResultItem -> m_8043_
@@ -256,17 +307,6 @@ Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/Dryi
 Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V: load -> m_142466_
 Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V: saveAdditional -> m_183515_
 Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/level/block/entity/BlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet;: getUpdatePacket -> m_58483_
-Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag; from net/minecraft/world/level/block/entity/BlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag;: getUpdateTag -> m_5995_
-Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V: load -> m_142466_
-Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V: saveAdditional -> m_183515_
-Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/level/block/entity/BlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet;: getUpdatePacket -> m_58483_
-Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V from net/minecraft/world/level/block/state/BlockBehaviour/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V: onRemove -> m_6810_
-Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/rotate(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/state/BlockBehaviour/rotate(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState;: rotate -> m_6843_
-Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker; from net/minecraft/world/level/block/EntityBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker;: getTicker -> m_142354_
-Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/Block/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState;: getStateForPlacement -> m_5573_
-Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/newBlockEntity(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/entity/BlockEntity; from net/minecraft/world/level/block/EntityBlock/newBlockEntity(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/entity/BlockEntity;: newBlockEntity -> m_142194_
-Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/getRenderShape(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/RenderShape; from net/minecraft/world/level/block/BaseEntityBlock/getRenderShape(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/RenderShape;: getRenderShape -> m_7514_
-Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/canSurvive(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z from net/minecraft/world/level/block/state/BlockBehaviour/canSurvive(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z: canSurvive -> m_7898_
 Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlock$Variant/getSerializedName()Ljava/lang/String; from net/minecraft/util/StringRepresentable/getSerializedName()Ljava/lang/String;: getSerializedName -> m_7912_
 Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlock/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V from net/minecraft/world/level/block/state/BlockBehaviour/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V: onRemove -> m_6810_
 Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker; from net/minecraft/world/level/block/EntityBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker;: getTicker -> m_142354_
@@ -278,6 +318,17 @@ Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKiln
 Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlock/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getShape -> m_5940_
 Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlock/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V from net/minecraft/world/level/block/Block/createBlockStateDefinition(Lnet/minecraft/world/level/block/state/StateDefinition$Builder;)V: createBlockStateDefinition -> m_7926_
 Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
+Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag; from net/minecraft/world/level/block/entity/BlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag;: getUpdateTag -> m_5995_
+Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V: load -> m_142466_
+Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V: saveAdditional -> m_183515_
+Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnBlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/level/block/entity/BlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet;: getUpdatePacket -> m_58483_
+Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V from net/minecraft/world/level/block/state/BlockBehaviour/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V: onRemove -> m_6810_
+Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/rotate(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/state/BlockBehaviour/rotate(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Rotation;)Lnet/minecraft/world/level/block/state/BlockState;: rotate -> m_6843_
+Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker; from net/minecraft/world/level/block/EntityBlock/getTicker(Lnet/minecraft/world/level/Level;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntityType;)Lnet/minecraft/world/level/block/entity/BlockEntityTicker;: getTicker -> m_142354_
+Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/Block/getStateForPlacement(Lnet/minecraft/world/item/context/BlockPlaceContext;)Lnet/minecraft/world/level/block/state/BlockState;: getStateForPlacement -> m_5573_
+Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/newBlockEntity(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/entity/BlockEntity; from net/minecraft/world/level/block/EntityBlock/newBlockEntity(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/entity/BlockEntity;: newBlockEntity -> m_142194_
+Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/getRenderShape(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/RenderShape; from net/minecraft/world/level/block/BaseEntityBlock/getRenderShape(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/RenderShape;: getRenderShape -> m_7514_
+Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/canSurvive(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z from net/minecraft/world/level/block/state/BlockBehaviour/canSurvive(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelReader;Lnet/minecraft/core/BlockPos;)Z: canSurvive -> m_7898_
 Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/mirror(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Mirror;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/state/BlockBehaviour/mirror(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/Mirror;)Lnet/minecraft/world/level/block/state/BlockState;: mirror -> m_6943_
 Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/updateShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/block/state/BlockBehaviour/updateShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/Direction;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/core/BlockPos;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;: updateShape -> m_7417_
 Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/DryingRackBlock/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getShape -> m_5940_
@@ -289,15 +340,15 @@ Conflicting propagated mapping for com/agescrafting/agescrafting/dryingrack/Dryi
 Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe$Serializer/fromJson(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)Lnet/minecraft/world/item/crafting/Recipe; from net/minecraft/world/item/crafting/RecipeSerializer/fromJson(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)Lnet/minecraft/world/item/crafting/Recipe;: fromJson -> m_6729_
 Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe$Serializer/fromNetwork(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/network/FriendlyByteBuf;)Lnet/minecraft/world/item/crafting/Recipe; from net/minecraft/world/item/crafting/RecipeSerializer/fromNetwork(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/network/FriendlyByteBuf;)Lnet/minecraft/world/item/crafting/Recipe;: fromNetwork -> m_8005_
 Conflicting propagated mapping for com/agescrafting/agescrafting/pitkiln/PitKilnRecipe$Serializer/toNetwork(Lnet/minecraft/network/FriendlyByteBuf;Lnet/minecraft/world/item/crafting/Recipe;)V from net/minecraft/world/item/crafting/RecipeSerializer/toNetwork(Lnet/minecraft/network/FriendlyByteBuf;Lnet/minecraft/world/item/crafting/Recipe;)V: toNetwork -> m_6178_
-Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableBlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag; from net/minecraft/world/level/block/entity/BlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag;: getUpdateTag -> m_5995_
-Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableBlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V: load -> m_142466_
-Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableBlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V: saveAdditional -> m_183515_
-Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableBlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/level/block/entity/BlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet;: getUpdatePacket -> m_58483_
 Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableBlock/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V from net/minecraft/world/level/block/state/BlockBehaviour/onRemove(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Z)V: onRemove -> m_6810_
 Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableBlock/newBlockEntity(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/entity/BlockEntity; from net/minecraft/world/level/block/EntityBlock/newBlockEntity(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/entity/BlockEntity;: newBlockEntity -> m_142194_
 Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableBlock/getRenderShape(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/RenderShape; from net/minecraft/world/level/block/BaseEntityBlock/getRenderShape(Lnet/minecraft/world/level/block/state/BlockState;)Lnet/minecraft/world/level/block/RenderShape;: getRenderShape -> m_7514_
 Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableBlock/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape; from net/minecraft/world/level/block/state/BlockBehaviour/getShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;: getShape -> m_5940_
 Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableBlock/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult; from net/minecraft/world/level/block/state/BlockBehaviour/use(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/InteractionHand;Lnet/minecraft/world/phys/BlockHitResult;)Lnet/minecraft/world/InteractionResult;: use -> m_6227_
+Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableBlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag; from net/minecraft/world/level/block/entity/BlockEntity/getUpdateTag()Lnet/minecraft/nbt/CompoundTag;: getUpdateTag -> m_5995_
+Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableBlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/load(Lnet/minecraft/nbt/CompoundTag;)V: load -> m_142466_
+Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableBlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V from net/minecraft/world/level/block/entity/BlockEntity/saveAdditional(Lnet/minecraft/nbt/CompoundTag;)V: saveAdditional -> m_183515_
+Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceTableBlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet; from net/minecraft/world/level/block/entity/BlockEntity/getUpdatePacket()Lnet/minecraft/network/protocol/Packet;: getUpdatePacket -> m_58483_
 Conflicting propagated mapping for net/minecraftforge/network/IContainerFactory/create(ILnet/minecraft/world/entity/player/Inventory;)Lnet/minecraft/world/inventory/AbstractContainerMenu; from net/minecraft/world/inventory/MenuType$MenuSupplier/create(ILnet/minecraft/world/entity/player/Inventory;)Lnet/minecraft/world/inventory/AbstractContainerMenu;: create -> m_39994_
 Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceCraftingRecipe$Serializer/fromJson(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)Lnet/minecraft/world/item/crafting/Recipe; from net/minecraft/world/item/crafting/RecipeSerializer/fromJson(Lnet/minecraft/resources/ResourceLocation;Lcom/google/gson/JsonObject;)Lnet/minecraft/world/item/crafting/Recipe;: fromJson -> m_6729_
 Conflicting propagated mapping for com/agescrafting/agescrafting/workspace/WorkspaceCraftingRecipe$Serializer/fromNetwork(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/network/FriendlyByteBuf;)Lnet/minecraft/world/item/crafting/Recipe; from net/minecraft/world/item/crafting/RecipeSerializer/fromNetwork(Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/network/FriendlyByteBuf;)Lnet/minecraft/world/item/crafting/Recipe;: fromNetwork -> m_8005_
@@ -323,29 +374,48 @@ Writing Output: C:\Users\Affect\Desktop\Ages Crafting\Ages Crafting\build\reobfJ
   assets/agescrafting/
   assets/agescrafting/blockstates/
   assets/agescrafting/blockstates/acacia_barrel.json
+  assets/agescrafting/blockstates/acacia_chopping_block.json
   assets/agescrafting/blockstates/acacia_drying_rack.json
+  assets/agescrafting/blockstates/andesite_anvil.json
   assets/agescrafting/blockstates/bamboo_barrel.json
+  assets/agescrafting/blockstates/bamboo_chopping_block.json
   assets/agescrafting/blockstates/bamboo_drying_rack.json
   assets/agescrafting/blockstates/barrel.json
+  assets/agescrafting/blockstates/basalt_anvil.json
   assets/agescrafting/blockstates/birch_barrel.json
+  assets/agescrafting/blockstates/birch_chopping_block.json
   assets/agescrafting/blockstates/birch_drying_rack.json
   assets/agescrafting/blockstates/cherry_barrel.json
+  assets/agescrafting/blockstates/cherry_chopping_block.json
   assets/agescrafting/blockstates/cherry_drying_rack.json
+  assets/agescrafting/blockstates/chopping_block.json
   assets/agescrafting/blockstates/crimson_barrel.json
+  assets/agescrafting/blockstates/crimson_chopping_block.json
   assets/agescrafting/blockstates/crimson_drying_rack.json
   assets/agescrafting/blockstates/dark_oak_barrel.json
+  assets/agescrafting/blockstates/dark_oak_chopping_block.json
   assets/agescrafting/blockstates/dark_oak_drying_rack.json
+  assets/agescrafting/blockstates/deepslate_anvil.json
+  assets/agescrafting/blockstates/diorite_anvil.json
   assets/agescrafting/blockstates/drying_rack.json
+  assets/agescrafting/blockstates/granite_anvil.json
   assets/agescrafting/blockstates/jungle_barrel.json
+  assets/agescrafting/blockstates/jungle_chopping_block.json
   assets/agescrafting/blockstates/jungle_drying_rack.json
   assets/agescrafting/blockstates/mangrove_barrel.json
+  assets/agescrafting/blockstates/mangrove_chopping_block.json
   assets/agescrafting/blockstates/mangrove_drying_rack.json
+  assets/agescrafting/blockstates/obsidian_anvil.json
   assets/agescrafting/blockstates/pit_kiln.json
   assets/agescrafting/blockstates/primitive_campfire.json
   assets/agescrafting/blockstates/spruce_barrel.json
+  assets/agescrafting/blockstates/spruce_chopping_block.json
   assets/agescrafting/blockstates/spruce_drying_rack.json
+  assets/agescrafting/blockstates/stone_anvil.json
   assets/agescrafting/blockstates/warped_barrel.json
+  assets/agescrafting/blockstates/warped_chopping_block.json
   assets/agescrafting/blockstates/warped_drying_rack.json
+  assets/agescrafting/blockstates/wood_chips_pile.json
   assets/agescrafting/blockstates/workspace_table.json
   assets/agescrafting/gui/
   assets/agescrafting/gui/barrel.png
@@ -357,34 +427,59 @@ Writing Output: C:\Users\Affect\Desktop\Ages Crafting\Ages Crafting\build\reobfJ
   assets/agescrafting/models/block/
   assets/agescrafting/models/block/acacia_barrel.json
   assets/agescrafting/models/block/acacia_barrel_sealed.json
+  assets/agescrafting/models/block/acacia_chopping_block.json
   assets/agescrafting/models/block/acacia_drying_rack.json
+  assets/agescrafting/models/block/andesite_anvil.json
+  assets/agescrafting/models/block/anvil_base.json
   assets/agescrafting/models/block/bamboo_barrel.json
   assets/agescrafting/models/block/bamboo_barrel_sealed.json
+  assets/agescrafting/models/block/bamboo_chopping_block.json
   assets/agescrafting/models/block/bamboo_drying_rack.json
   assets/agescrafting/models/block/barrel.json
   assets/agescrafting/models/block/barrel_base.json
   assets/agescrafting/models/block/barrel_sealed.json
   assets/agescrafting/models/block/barrel_sealed_base.json
+  assets/agescrafting/models/block/basalt_anvil.json
   assets/agescrafting/models/block/birch_barrel.json
   assets/agescrafting/models/block/birch_barrel_sealed.json
+  assets/agescrafting/models/block/birch_chopping_block.json
   assets/agescrafting/models/block/birch_drying_rack.json
   assets/agescrafting/models/block/cherry_barrel.json
   assets/agescrafting/models/block/cherry_barrel_sealed.json
+  assets/agescrafting/models/block/cherry_chopping_block.json
   assets/agescrafting/models/block/cherry_drying_rack.json
+  assets/agescrafting/models/block/chopping_block.json
+  assets/agescrafting/models/block/chopping_block_base.json
+  assets/agescrafting/models/block/chopping_block_sawdust_1.json
+  assets/agescrafting/models/block/chopping_block_sawdust_2.json
+  assets/agescrafting/models/block/chopping_block_sawdust_3.json
+  assets/agescrafting/models/block/chopping_block_sawdust_4.json
+  assets/agescrafting/models/block/chopping_block_sawdust_5.json
+  assets/agescrafting/models/block/chopping_block_sawdust_6.json
+  assets/agescrafting/models/block/chopping_block_sawdust_7.json
+  assets/agescrafting/models/block/chopping_block_sawdust_8.json
   assets/agescrafting/models/block/crimson_barrel.json
   assets/agescrafting/models/block/crimson_barrel_sealed.json
+  assets/agescrafting/models/block/crimson_chopping_block.json
   assets/agescrafting/models/block/crimson_drying_rack.json
   assets/agescrafting/models/block/dark_oak_barrel.json
   assets/agescrafting/models/block/dark_oak_barrel_sealed.json
+  assets/agescrafting/models/block/dark_oak_chopping_block.json
   assets/agescrafting/models/block/dark_oak_drying_rack.json
+  assets/agescrafting/models/block/deepslate_anvil.json
+  assets/agescrafting/models/block/diorite_anvil.json
   assets/agescrafting/models/block/drying_rack.json
   assets/agescrafting/models/block/drying_rack_base.json
+  assets/agescrafting/models/block/granite_anvil.json
   assets/agescrafting/models/block/jungle_barrel.json
   assets/agescrafting/models/block/jungle_barrel_sealed.json
+  assets/agescrafting/models/block/jungle_chopping_block.json
   assets/agescrafting/models/block/jungle_drying_rack.json
   assets/agescrafting/models/block/mangrove_barrel.json
   assets/agescrafting/models/block/mangrove_barrel_sealed.json
+  assets/agescrafting/models/block/mangrove_chopping_block.json
   assets/agescrafting/models/block/mangrove_drying_rack.json
+  assets/agescrafting/models/block/obsidian_anvil.json
   assets/agescrafting/models/block/pit_kiln_active.json
   assets/agescrafting/models/block/pit_kiln_ash_1.json
   assets/agescrafting/models/block/pit_kiln_ash_2.json
@@ -394,10 +489,8 @@ Writing Output: C:\Users\Affect\Desktop\Ages Crafting\Ages Crafting\build\reobfJ
   assets/agescrafting/models/block/pit_kiln_ash_6.json
   assets/agescrafting/models/block/pit_kiln_ash_7.json
   assets/agescrafting/models/block/pit_kiln_ash_8.json
-  assets/agescrafting/models/block/pit_kiln_complete.json
   assets/agescrafting/models/block/pit_kiln_empty.json
   assets/agescrafting/models/block/pit_kiln_thatch.json
-  assets/agescrafting/models/block/primitive_campfire_ash_0.json
   assets/agescrafting/models/block/primitive_campfire_ash_1.json
   assets/agescrafting/models/block/primitive_campfire_ash_2.json
   assets/agescrafting/models/block/primitive_campfire_ash_3.json
@@ -410,36 +503,67 @@ Writing Output: C:\Users\Affect\Desktop\Ages Crafting\Ages Crafting\build\reobfJ
   assets/agescrafting/models/block/primitive_campfire_normal.json
   assets/agescrafting/models/block/spruce_barrel.json
   assets/agescrafting/models/block/spruce_barrel_sealed.json
+  assets/agescrafting/models/block/spruce_chopping_block.json
   assets/agescrafting/models/block/spruce_drying_rack.json
+  assets/agescrafting/models/block/stone_anvil.json
+  assets/agescrafting/models/block/tanning_rack.bbmodel
   assets/agescrafting/models/block/warped_barrel.json
   assets/agescrafting/models/block/warped_barrel_sealed.json
+  assets/agescrafting/models/block/warped_chopping_block.json
   assets/agescrafting/models/block/warped_drying_rack.json
+  assets/agescrafting/models/block/wood_chips_pile_1.json
+  assets/agescrafting/models/block/wood_chips_pile_2.json
+  assets/agescrafting/models/block/wood_chips_pile_3.json
+  assets/agescrafting/models/block/wood_chips_pile_4.json
+  assets/agescrafting/models/block/wood_chips_pile_5.json
+  assets/agescrafting/models/block/wood_chips_pile_6.json
+  assets/agescrafting/models/block/wood_chips_pile_7.json
+  assets/agescrafting/models/block/wood_chips_pile_8.json
   assets/agescrafting/models/block/workspace_table.json
   assets/agescrafting/models/item/
   assets/agescrafting/models/item/acacia_barrel.json
+  assets/agescrafting/models/item/acacia_chopping_block.json
   assets/agescrafting/models/item/acacia_drying_rack.json
+  assets/agescrafting/models/item/andesite_anvil.json
   assets/agescrafting/models/item/bamboo_barrel.json
+  assets/agescrafting/models/item/bamboo_chopping_block.json
   assets/agescrafting/models/item/bamboo_drying_rack.json
   assets/agescrafting/models/item/barrel.json
+  assets/agescrafting/models/item/basalt_anvil.json
   assets/agescrafting/models/item/birch_barrel.json
+  assets/agescrafting/models/item/birch_chopping_block.json
   assets/agescrafting/models/item/birch_drying_rack.json
   assets/agescrafting/models/item/cherry_barrel.json
+  assets/agescrafting/models/item/cherry_chopping_block.json
   assets/agescrafting/models/item/cherry_drying_rack.json
+  assets/agescrafting/models/item/chopping_block.json
   assets/agescrafting/models/item/crimson_barrel.json
+  assets/agescrafting/models/item/crimson_chopping_block.json
   assets/agescrafting/models/item/crimson_drying_rack.json
   assets/agescrafting/models/item/dark_oak_barrel.json
+  assets/agescrafting/models/item/dark_oak_chopping_block.json
   assets/agescrafting/models/item/dark_oak_drying_rack.json
+  assets/agescrafting/models/item/deepslate_anvil.json
+  assets/agescrafting/models/item/diorite_anvil.json
   assets/agescrafting/models/item/drying_rack.json
+  assets/agescrafting/models/item/granite_anvil.json
   assets/agescrafting/models/item/jungle_barrel.json
+  assets/agescrafting/models/item/jungle_chopping_block.json
   assets/agescrafting/models/item/jungle_drying_rack.json
   assets/agescrafting/models/item/mangrove_barrel.json
+  assets/agescrafting/models/item/mangrove_chopping_block.json
   assets/agescrafting/models/item/mangrove_drying_rack.json
+  assets/agescrafting/models/item/obsidian_anvil.json
   assets/agescrafting/models/item/pit_kiln.json
   assets/agescrafting/models/item/primitive_campfire.json
   assets/agescrafting/models/item/spruce_barrel.json
+  assets/agescrafting/models/item/spruce_chopping_block.json
   assets/agescrafting/models/item/spruce_drying_rack.json
+  assets/agescrafting/models/item/stone_anvil.json
   assets/agescrafting/models/item/warped_barrel.json
+  assets/agescrafting/models/item/warped_chopping_block.json
   assets/agescrafting/models/item/warped_drying_rack.json
+  assets/agescrafting/models/item/wood_chips.json
   assets/agescrafting/models/item/workspace_table.json
   assets/agescrafting/textures/
   assets/agescrafting/textures/block/
@@ -450,6 +574,12 @@ Writing Output: C:\Users\Affect\Desktop\Ages Crafting\Ages Crafting\build\reobfJ
   com/agescrafting/agescrafting/
   com/agescrafting/agescrafting/AgesCraftingMod$ClientModEvents.class
   com/agescrafting/agescrafting/AgesCraftingMod.class
+  com/agescrafting/agescrafting/anvil/
+  com/agescrafting/agescrafting/anvil/AnvilBlock.class
+  com/agescrafting/agescrafting/anvil/AnvilBlockEntity.class
+  com/agescrafting/agescrafting/anvil/AnvilBlockEntityRenderer.class
+  com/agescrafting/agescrafting/anvil/AnvilRecipe$Serializer.class
+  com/agescrafting/agescrafting/anvil/AnvilRecipe.class
   com/agescrafting/agescrafting/barrel/
   com/agescrafting/agescrafting/barrel/BarrelBlock.class
   com/agescrafting/agescrafting/barrel/BarrelBlockEntity$1.class
@@ -483,11 +613,20 @@ Writing Output: C:\Users\Affect\Desktop\Ages Crafting\Ages Crafting\build\reobfJ
   com/agescrafting/agescrafting/campfire/PrimitiveCampfireBlockEntity$Variant.class
   com/agescrafting/agescrafting/campfire/PrimitiveCampfireBlockEntity.class
   com/agescrafting/agescrafting/campfire/PrimitiveCampfireBlockEntityRenderer.class
+  com/agescrafting/agescrafting/choppingblock/
+  com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlock.class
+  com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlockEntity.class
+  com/agescrafting/agescrafting/choppingblock/ChoppingBlockBlockEntityRenderer.class
+  com/agescrafting/agescrafting/choppingblock/ChoppingBlockRecipe$Serializer.class
+  com/agescrafting/agescrafting/choppingblock/ChoppingBlockRecipe.class
+  com/agescrafting/agescrafting/choppingblock/WoodChipsPileBlock.class
   com/agescrafting/agescrafting/compat/
   com/agescrafting/agescrafting/compat/campfire/
   com/agescrafting/agescrafting/compat/campfire/PrimitiveCampfireDisplayRecipe.class
   com/agescrafting/agescrafting/compat/emi/
+  com/agescrafting/agescrafting/compat/emi/AnvilEmiRecipe.class
   com/agescrafting/agescrafting/compat/emi/BarrelEmiRecipe.class
+  com/agescrafting/agescrafting/compat/emi/ChoppingBlockEmiRecipe.class
   com/agescrafting/agescrafting/compat/emi/DryingRackEmiRecipe.class
   com/agescrafting/agescrafting/compat/emi/PitKilnEmiRecipe.class
   com/agescrafting/agescrafting/compat/emi/PrimitiveCampfireEmiRecipe.class
@@ -496,13 +635,17 @@ Writing Output: C:\Users\Affect\Desktop\Ages Crafting\Ages Crafting\build\reobfJ
   com/agescrafting/agescrafting/compat/gamestages/
   com/agescrafting/agescrafting/compat/gamestages/GameStagesCompat.class
   com/agescrafting/agescrafting/compat/jade/
+  com/agescrafting/agescrafting/compat/jade/AnvilJadeProvider.class
   com/agescrafting/agescrafting/compat/jade/BarrelJadePlugin.class
   com/agescrafting/agescrafting/compat/jade/BarrelJadeProvider.class
+  com/agescrafting/agescrafting/compat/jade/ChoppingBlockJadeProvider.class
   com/agescrafting/agescrafting/compat/jade/DryingRackJadeProvider.class
   com/agescrafting/agescrafting/compat/jade/PitKilnJadeProvider.class
   com/agescrafting/agescrafting/compat/jade/PrimitiveCampfireJadeProvider.class
   com/agescrafting/agescrafting/compat/jei/
+  com/agescrafting/agescrafting/compat/jei/AnvilJeiCategory.class
   com/agescrafting/agescrafting/compat/jei/BarrelJeiCategory.class
+  com/agescrafting/agescrafting/compat/jei/ChoppingBlockJeiCategory.class
   com/agescrafting/agescrafting/compat/jei/DryingRackJeiCategory.class
   com/agescrafting/agescrafting/compat/jei/PitKilnJeiCategory.class
   com/agescrafting/agescrafting/compat/jei/PrimitiveCampfireJeiCategory.class
@@ -548,6 +691,8 @@ Writing Output: C:\Users\Affect\Desktop\Ages Crafting\Ages Crafting\build\reobfJ
   com/agescrafting/agescrafting/registry/ModRecipeTypes$2.class
   com/agescrafting/agescrafting/registry/ModRecipeTypes$3.class
   com/agescrafting/agescrafting/registry/ModRecipeTypes$4.class
+  com/agescrafting/agescrafting/registry/ModRecipeTypes$5.class
+  com/agescrafting/agescrafting/registry/ModRecipeTypes$6.class
   com/agescrafting/agescrafting/registry/ModRecipeTypes.class
   com/agescrafting/agescrafting/workspace/
   com/agescrafting/agescrafting/workspace/WorkspaceClientForgeEvents.class
@@ -561,37 +706,59 @@ Writing Output: C:\Users\Affect\Desktop\Ages Crafting\Ages Crafting\build\reobfJ
   data/agescrafting/
   data/agescrafting/recipes/
   data/agescrafting/recipes/acacia_barrel.json
+  data/agescrafting/recipes/acacia_chopping_block.json
   data/agescrafting/recipes/acacia_drying_rack.json
+  data/agescrafting/recipes/andesite_anvil.json
+  data/agescrafting/recipes/anvil/
+  data/agescrafting/recipes/anvil/cobblestone_to_gravel.json
   data/agescrafting/recipes/bamboo_barrel.json
+  data/agescrafting/recipes/bamboo_chopping_block.json
   data/agescrafting/recipes/bamboo_drying_rack.json
   data/agescrafting/recipes/barrel.json
   data/agescrafting/recipes/barrel/
   data/agescrafting/recipes/barrel/cobble_water_to_lava.json
   data/agescrafting/recipes/barrel/wash_gravel.json
   data/agescrafting/recipes/barrel/water_to_lava.json
+  data/agescrafting/recipes/basalt_anvil.json
   data/agescrafting/recipes/birch_barrel.json
+  data/agescrafting/recipes/birch_chopping_block.json
   data/agescrafting/recipes/birch_drying_rack.json
   data/agescrafting/recipes/cherry_barrel.json
+  data/agescrafting/recipes/cherry_chopping_block.json
   data/agescrafting/recipes/cherry_drying_rack.json
+  data/agescrafting/recipes/chopping/
+  data/agescrafting/recipes/chopping/oak_log_to_planks.json
+  data/agescrafting/recipes/chopping_block.json
   data/agescrafting/recipes/crimson_barrel.json
+  data/agescrafting/recipes/crimson_chopping_block.json
   data/agescrafting/recipes/crimson_drying_rack.json
   data/agescrafting/recipes/dark_oak_barrel.json
+  data/agescrafting/recipes/dark_oak_chopping_block.json
   data/agescrafting/recipes/dark_oak_drying_rack.json
+  data/agescrafting/recipes/deepslate_anvil.json
+  data/agescrafting/recipes/diorite_anvil.json
   data/agescrafting/recipes/drying/
   data/agescrafting/recipes/drying/kelp_to_dried_kelp.json
   data/agescrafting/recipes/drying/rotten_flesh_to_leather.json
   data/agescrafting/recipes/drying_rack.json
+  data/agescrafting/recipes/granite_anvil.json
   data/agescrafting/recipes/jungle_barrel.json
+  data/agescrafting/recipes/jungle_chopping_block.json
   data/agescrafting/recipes/jungle_drying_rack.json
   data/agescrafting/recipes/mangrove_barrel.json
+  data/agescrafting/recipes/mangrove_chopping_block.json
   data/agescrafting/recipes/mangrove_drying_rack.json
+  data/agescrafting/recipes/obsidian_anvil.json
   data/agescrafting/recipes/pit_kiln.json
   data/agescrafting/recipes/pit_kiln/
   data/agescrafting/recipes/pit_kiln/clay_ball_to_brick.json
   data/agescrafting/recipes/primitive_campfire.json
   data/agescrafting/recipes/spruce_barrel.json
+  data/agescrafting/recipes/spruce_chopping_block.json
   data/agescrafting/recipes/spruce_drying_rack.json
+  data/agescrafting/recipes/stone_anvil.json
   data/agescrafting/recipes/warped_barrel.json
+  data/agescrafting/recipes/warped_chopping_block.json
   data/agescrafting/recipes/warped_drying_rack.json
   data/agescrafting/recipes/workspace_crafting/
   data/agescrafting/recipes/workspace_crafting/acacia_barrel.json

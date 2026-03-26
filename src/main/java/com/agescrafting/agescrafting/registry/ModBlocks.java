@@ -1,8 +1,11 @@
 package com.agescrafting.agescrafting.registry;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
+import com.agescrafting.agescrafting.anvil.AnvilBlock;
 import com.agescrafting.agescrafting.barrel.BarrelBlock;
 import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlock;
+import com.agescrafting.agescrafting.choppingblock.ChoppingBlockBlock;
+import com.agescrafting.agescrafting.choppingblock.WoodChipsPileBlock;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlock;
 import com.agescrafting.agescrafting.pitkiln.PitKilnBlock;
 import com.agescrafting.agescrafting.workspace.WorkspaceTableBlock;
@@ -20,6 +23,24 @@ public class ModBlocks {
     public static final RegistryObject<Block> WORKSPACE_TABLE = BLOCKS.register(
             "workspace_table",
             () -> new WorkspaceTableBlock(BlockBehaviour.Properties.of().strength(2.0F).noOcclusion())
+    );
+
+    public static final RegistryObject<Block> STONE_ANVIL = registerAnvil("stone_anvil");
+    public static final RegistryObject<Block> GRANITE_ANVIL = registerAnvil("granite_anvil");
+    public static final RegistryObject<Block> DIORITE_ANVIL = registerAnvil("diorite_anvil");
+    public static final RegistryObject<Block> ANDESITE_ANVIL = registerAnvil("andesite_anvil");
+    public static final RegistryObject<Block> DEEPSLATE_ANVIL = registerAnvil("deepslate_anvil");
+    public static final RegistryObject<Block> BASALT_ANVIL = registerAnvil("basalt_anvil");
+    public static final RegistryObject<Block> OBSIDIAN_ANVIL = registerAnvil("obsidian_anvil");
+
+    public static final List<RegistryObject<Block>> ANVIL_BLOCKS = List.of(
+            STONE_ANVIL,
+            GRANITE_ANVIL,
+            DIORITE_ANVIL,
+            ANDESITE_ANVIL,
+            DEEPSLATE_ANVIL,
+            BASALT_ANVIL,
+            OBSIDIAN_ANVIL
     );
 
     public static final RegistryObject<Block> BARREL = BLOCKS.register(
@@ -67,6 +88,41 @@ public class ModBlocks {
             () -> new PitKilnBlock(BlockBehaviour.Properties.of().strength(0.8F).noOcclusion())
     );
 
+    public static final RegistryObject<Block> CHOPPING_BLOCK = BLOCKS.register(
+            "chopping_block",
+            () -> new ChoppingBlockBlock(BlockBehaviour.Properties.of().strength(1.8F).noOcclusion())
+    );
+
+    public static final RegistryObject<Block> SPRUCE_CHOPPING_BLOCK = registerChoppingBlock("spruce_chopping_block");
+    public static final RegistryObject<Block> BIRCH_CHOPPING_BLOCK = registerChoppingBlock("birch_chopping_block");
+    public static final RegistryObject<Block> JUNGLE_CHOPPING_BLOCK = registerChoppingBlock("jungle_chopping_block");
+    public static final RegistryObject<Block> ACACIA_CHOPPING_BLOCK = registerChoppingBlock("acacia_chopping_block");
+    public static final RegistryObject<Block> DARK_OAK_CHOPPING_BLOCK = registerChoppingBlock("dark_oak_chopping_block");
+    public static final RegistryObject<Block> MANGROVE_CHOPPING_BLOCK = registerChoppingBlock("mangrove_chopping_block");
+    public static final RegistryObject<Block> CHERRY_CHOPPING_BLOCK = registerChoppingBlock("cherry_chopping_block");
+    public static final RegistryObject<Block> BAMBOO_CHOPPING_BLOCK = registerChoppingBlock("bamboo_chopping_block");
+    public static final RegistryObject<Block> CRIMSON_CHOPPING_BLOCK = registerChoppingBlock("crimson_chopping_block");
+    public static final RegistryObject<Block> WARPED_CHOPPING_BLOCK = registerChoppingBlock("warped_chopping_block");
+
+    public static final List<RegistryObject<Block>> CHOPPING_BLOCKS = List.of(
+            CHOPPING_BLOCK,
+            SPRUCE_CHOPPING_BLOCK,
+            BIRCH_CHOPPING_BLOCK,
+            JUNGLE_CHOPPING_BLOCK,
+            ACACIA_CHOPPING_BLOCK,
+            DARK_OAK_CHOPPING_BLOCK,
+            MANGROVE_CHOPPING_BLOCK,
+            CHERRY_CHOPPING_BLOCK,
+            BAMBOO_CHOPPING_BLOCK,
+            CRIMSON_CHOPPING_BLOCK,
+            WARPED_CHOPPING_BLOCK
+    );
+
+    public static final RegistryObject<Block> WOOD_CHIPS_PILE = BLOCKS.register(
+            "wood_chips_pile",
+            () -> new WoodChipsPileBlock(BlockBehaviour.Properties.of().strength(0.2F).noOcclusion())
+    );
+
     public static final RegistryObject<Block> SPRUCE_DRYING_RACK = registerDryingRack("spruce_drying_rack");
     public static final RegistryObject<Block> BIRCH_DRYING_RACK = registerDryingRack("birch_drying_rack");
     public static final RegistryObject<Block> JUNGLE_DRYING_RACK = registerDryingRack("jungle_drying_rack");
@@ -98,5 +154,13 @@ public class ModBlocks {
 
     private static RegistryObject<Block> registerDryingRack(String id) {
         return BLOCKS.register(id, () -> new DryingRackBlock(BlockBehaviour.Properties.of().strength(1.5F).noOcclusion()));
+    }
+
+    private static RegistryObject<Block> registerChoppingBlock(String id) {
+        return BLOCKS.register(id, () -> new ChoppingBlockBlock(BlockBehaviour.Properties.of().strength(1.8F).noOcclusion()));
+    }
+
+    private static RegistryObject<Block> registerAnvil(String id) {
+        return BLOCKS.register(id, () -> new AnvilBlock(BlockBehaviour.Properties.of().strength(3.0F).noOcclusion()));
     }
 }

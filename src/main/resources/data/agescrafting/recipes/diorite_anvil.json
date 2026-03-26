@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    " S ",
+    " S "
+  ],
+  "key": {
+    "S": { "item": "minecraft:diorite" }
+  },
+  "result": {
+    "item": "agescrafting:diorite_anvil",
+    "count": 1
+  }
+}
