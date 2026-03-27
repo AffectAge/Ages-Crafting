@@ -1,8 +1,8 @@
 {
   "parent": "block/block",
   "textures": {
-    "chips": "minecraft:block/oak_planks",
-    "particle": "minecraft:block/oak_planks"
+    "chips": "agescrafting:block/wood_chips_pile",
+    "particle": "agescrafting:block/wood_chips_pile"
   },
   "elements": [
     {

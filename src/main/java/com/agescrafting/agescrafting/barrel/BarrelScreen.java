@@ -33,13 +33,13 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
     private static final int ICON_W = 18;
     private static final int ICON_H = 19;
 
-    private static final int INPUT_TANK_X = 28;
-    private static final int OUTPUT_TANK_X = 117;
+    private static final int INPUT_TANK_X = 37;
+    private static final int OUTPUT_TANK_X = 126;
     private static final int TANK_Y = 18;
     private static final int TANK_WIDTH = 14;
     private static final int TANK_HEIGHT = 52;
 
-    private static final int SEAL_BUTTON_X = 5;
+    private static final int SEAL_BUTTON_X = 14;
     private static final int SEAL_BUTTON_Y = 39;
 
     private Button sealButton;
@@ -67,6 +67,7 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         renderTooltip(guiGraphics, mouseX, mouseY);
         renderTankTooltip(guiGraphics, mouseX, mouseY);
+        renderSealButtonTooltip(guiGraphics, mouseX, mouseY);
     }
 
     @Override
@@ -106,7 +107,7 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         guiGraphics.drawString(font, playerInventoryTitle, inventoryLabelX, inventoryLabelY, 0x404040, false);
         if (menu.isSealed()) {
             Component sealedText = Component.translatable("gui.agescrafting.barrel.sealed");
-            int sealedX = 48 + (54 - font.width(sealedText)) / 2;
+            int sealedX = 57 + (54 - font.width(sealedText)) / 2;
             int sealedY = 18 + 54 + 3;
             guiGraphics.drawString(font, sealedText, sealedX, sealedY, 0xC02020, false);
         }
@@ -183,6 +184,17 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         }
     }
 
+
+    private void renderSealButtonTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+        if (!isMouseOverSealButton(mouseX, mouseY)) {
+            return;
+        }
+
+        Component key = menu.isSealed()
+                ? Component.translatable("gui.agescrafting.barrel.seal_button.unseal")
+                : Component.translatable("gui.agescrafting.barrel.seal_button.seal");
+        guiGraphics.renderComponentTooltip(font, List.of(key), mouseX, mouseY);
+    }
     private boolean isMouseOverSealButton(int mouseX, int mouseY) {
         int left = leftPos + SEAL_BUTTON_X;
         int top = topPos + SEAL_BUTTON_Y;
@@ -226,5 +238,6 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         guiGraphics.renderComponentTooltip(font, tooltip, mouseX, mouseY);
     }
 }
+
 
 

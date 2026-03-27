@@ -1,3 +1,11 @@
 {
-  "parent": "agescrafting:block/jungle_barrel"
+  "parent": "agescrafting:block/jungle_barrel",
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "agescrafting:block/jungle_barrel_sealed"
+    }
+  ]
 }

@@ -5,6 +5,7 @@ import com.agescrafting.agescrafting.compat.campfire.PrimitiveCampfireDisplayRec
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -27,10 +28,12 @@ public class PrimitiveCampfireJeiCategory implements IRecipeCategory<PrimitiveCa
 
     private final IDrawable icon;
     private final IDrawable background;
+    private final IDrawableAnimated arrow;
 
     public PrimitiveCampfireJeiCategory(IGuiHelper guiHelper) {
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModBlocks.PRIMITIVE_CAMPFIRE.get()));
         this.background = guiHelper.createBlankDrawable(140, 44);
+        this.arrow = guiHelper.createAnimatedRecipeArrow(40);
     }
 
     @Override
@@ -73,20 +76,27 @@ public class PrimitiveCampfireJeiCategory implements IRecipeCategory<PrimitiveCa
     @Override
     public void draw(@NotNull PrimitiveCampfireDisplayRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
         var font = Minecraft.getInstance().font;
-        guiGraphics.drawString(font, "->", 40, 16, 0x7A7A7A, false);
-        guiGraphics.drawString(font, "->", 90, 16, 0x7A7A7A, false);
+        arrow.draw(guiGraphics, 30, 13);
+        arrow.draw(guiGraphics, 80, 13);
+        guiGraphics.fill(80, 13, 104, 30, 0x35B34735);
+
         guiGraphics.drawString(font,
-                Component.translatable("gui.agescrafting.primitive_campfire.cook_time", String.format(Locale.ROOT, "%.1f", recipe.cookTimeTicks() / 20.0F)),
+                Component.literal(formatClock(recipe.cookTimeTicks())),
                 8,
                 32,
                 0x5E5E5E,
                 false);
         guiGraphics.drawString(font,
-                Component.translatable("gui.agescrafting.primitive_campfire.overcook_time", String.format(Locale.ROOT, "%.1f", recipe.overcookTimeTicks() / 20.0F)),
+                Component.literal(formatClock(recipe.overcookTimeTicks())),
                 74,
                 32,
                 0x5E5E5E,
                 false);
     }
+    private static String formatClock(int ticks) {
+        int totalSeconds = Math.max(0, ticks / 20);
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+        return String.format(Locale.ROOT, "%02d:%02d", minutes, seconds);
+    }
 }
-

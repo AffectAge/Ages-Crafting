@@ -8,6 +8,7 @@ import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlock;
 import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlockEntity;
 import com.agescrafting.agescrafting.choppingblock.ChoppingBlockBlock;
 import com.agescrafting.agescrafting.choppingblock.ChoppingBlockBlockEntity;
+import com.agescrafting.agescrafting.choppingblock.WoodChipsPileBlock;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlock;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlockEntity;
 import com.agescrafting.agescrafting.pitkiln.PitKilnBlock;
@@ -39,5 +40,6 @@ public class BarrelJadePlugin implements IWailaPlugin {
         registration.registerBlockComponent(PitKilnJadeProvider.INSTANCE, PitKilnBlock.class);
         registration.registerBlockComponent(PitKilnJadeProvider.INSTANCE, BaseFireBlock.class);
         registration.registerBlockComponent(ChoppingBlockJadeProvider.INSTANCE, ChoppingBlockBlock.class);
+        registration.registerBlockComponent(WoodChipsPileJadeProvider.INSTANCE, WoodChipsPileBlock.class);
     }
 }

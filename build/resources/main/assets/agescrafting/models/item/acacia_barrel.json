@@ -1,3 +1,11 @@
 {
-  "parent": "agescrafting:block/acacia_barrel"
+  "parent": "agescrafting:block/acacia_barrel",
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "agescrafting:block/acacia_barrel_sealed"
+    }
+  ]
 }

@@ -1,3 +1,11 @@
 {
-  "parent": "agescrafting:block/spruce_barrel"
+  "parent": "agescrafting:block/spruce_barrel",
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "agescrafting:block/spruce_barrel_sealed"
+    }
+  ]
 }

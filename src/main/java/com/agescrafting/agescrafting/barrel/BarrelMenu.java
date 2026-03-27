@@ -34,7 +34,7 @@ public class BarrelMenu extends AbstractContainerMenu {
         this.blockEntity = blockEntity;
         this.data = blockEntity.getMenuData();
 
-        addSlot(new SlotItemHandler(blockEntity.getItemHandler(), BarrelBlockEntity.CONTAINER_SLOT, 6, 18) {
+        addSlot(new SlotItemHandler(blockEntity.getItemHandler(), BarrelBlockEntity.CONTAINER_SLOT, 15, 18) {
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return !isSealed() && stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
@@ -49,7 +49,7 @@ public class BarrelMenu extends AbstractContainerMenu {
         for (int row = 0; row < 3; row++) {
             for (int column = 0; column < 3; column++) {
                 int slotIndex = BarrelBlockEntity.ITEM_GRID_START + row * 3 + column;
-                int x = 48 + column * 18;
+                int x = 57 + column * 18;
                 int y = 18 + row * 18;
                 addSlot(new SlotItemHandler(blockEntity.getItemHandler(), slotIndex, x, y) {
                     @Override
@@ -65,7 +65,7 @@ public class BarrelMenu extends AbstractContainerMenu {
             }
         }
 
-        addSlot(new SlotItemHandler(blockEntity.getItemHandler(), BarrelBlockEntity.OUTPUT_ITEM_START, 136, 18) {
+        addSlot(new SlotItemHandler(blockEntity.getItemHandler(), BarrelBlockEntity.OUTPUT_ITEM_START, 145, 18) {
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return false;
@@ -77,7 +77,7 @@ public class BarrelMenu extends AbstractContainerMenu {
             }
         });
 
-        addSlot(new SlotItemHandler(blockEntity.getItemHandler(), BarrelBlockEntity.OUTPUT_ITEM_START + 1, 136, 39) {
+        addSlot(new SlotItemHandler(blockEntity.getItemHandler(), BarrelBlockEntity.OUTPUT_ITEM_START + 1, 145, 39) {
             @Override
             public boolean mayPlace(@NotNull ItemStack stack) {
                 return false;

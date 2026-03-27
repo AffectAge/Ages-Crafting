@@ -5,6 +5,7 @@ import com.agescrafting.agescrafting.dryingrack.DryingRackRecipe;
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -27,10 +28,12 @@ public class DryingRackJeiCategory implements IRecipeCategory<DryingRackRecipe> 
 
     private final IDrawable icon;
     private final IDrawable background;
+    private final IDrawableAnimated arrow;
 
     public DryingRackJeiCategory(IGuiHelper guiHelper) {
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModBlocks.DRYING_RACK.get()));
         this.background = guiHelper.createBlankDrawable(120, 44);
+        this.arrow = guiHelper.createAnimatedRecipeArrow(40);
     }
 
     @Override
@@ -70,13 +73,18 @@ public class DryingRackJeiCategory implements IRecipeCategory<DryingRackRecipe> 
     @Override
     public void draw(@NotNull DryingRackRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
         var font = Minecraft.getInstance().font;
-        guiGraphics.drawString(font, "->", 56, 16, 0x7A7A7A, false);
+        arrow.draw(guiGraphics, 47, 13);
         guiGraphics.drawString(font,
-                Component.translatable("gui.agescrafting.barrel.recipe_time", String.format(Locale.ROOT, "%.1f", recipe.durationTicks() / 20.0F)),
+                Component.literal(formatClock(recipe.durationTicks())),
                 12,
                 32,
                 0x5E5E5E,
                 false);
     }
+    private static String formatClock(int ticks) {
+        int totalSeconds = Math.max(0, ticks / 20);
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+        return String.format(Locale.ROOT, "%02d:%02d", minutes, seconds);
+    }
 }
-

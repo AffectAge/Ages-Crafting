@@ -5,6 +5,7 @@ import com.agescrafting.agescrafting.pitkiln.PitKilnRecipe;
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -26,9 +27,11 @@ public class PitKilnJeiCategory implements IRecipeCategory<PitKilnRecipe> {
     );
 
     private final IDrawable icon;
+    private final IDrawableAnimated arrow;
 
     public PitKilnJeiCategory(IGuiHelper guiHelper) {
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModBlocks.PIT_KILN.get()));
+        this.arrow = guiHelper.createAnimatedRecipeArrow(40);
     }
 
     @Override
@@ -73,7 +76,7 @@ public class PitKilnJeiCategory implements IRecipeCategory<PitKilnRecipe> {
     @Override
     public void draw(@NotNull PitKilnRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
         var font = Minecraft.getInstance().font;
-        guiGraphics.drawString(font, "->", 58, 16, 0x7A7A7A, false);
+        arrow.draw(guiGraphics, 47, 13);
 
         if (!recipe.failureResult().isEmpty() && recipe.failureChance() > 0.0F) {
             guiGraphics.drawString(font, "?", 103, 16, 0x8A4B2A, false);
@@ -81,11 +84,16 @@ public class PitKilnJeiCategory implements IRecipeCategory<PitKilnRecipe> {
         }
 
         guiGraphics.drawString(font,
-                Component.translatable("gui.agescrafting.barrel.recipe_time", String.format(Locale.ROOT, "%.1f", recipe.durationTicks() / 20.0F)),
+                Component.literal(formatClock(recipe.durationTicks())),
                 12,
                 42,
                 0x5E5E5E,
                 false);
     }
+    private static String formatClock(int ticks) {
+        int totalSeconds = Math.max(0, ticks / 20);
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+        return String.format(Locale.ROOT, "%02d:%02d", minutes, seconds);
+    }
 }
-

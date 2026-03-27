@@ -151,13 +151,16 @@ public class BarrelEmiRecipe implements EmiRecipe {
         }
 
         if (recipe.durationTicks() > 0) {
-            widgets.addText(
-                    Component.translatable("gui.agescrafting.barrel.recipe_time", String.format(Locale.ROOT, "%.1f", recipe.durationTicks() / 20.0F)),
-                    62 + X_OFFSET,
-                    84,
-                    0x5E5E5E,
-                    false
-            );
+            var font = Minecraft.getInstance().font;
+            Component time = Component.literal(formatClock(recipe.durationTicks()));
+            int timeX = ITEM_GRID_X + (54 - font.width(time)) / 2;
+            widgets.addText(time, timeX, 84, 0x5E5E5E, false);
         }
+    }
+    private static String formatClock(int ticks) {
+        int totalSeconds = Math.max(0, ticks / 20);
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+        return String.format(Locale.ROOT, "%02d:%02d", minutes, seconds);
     }
 }

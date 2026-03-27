@@ -3,10 +3,16 @@ package com.agescrafting.agescrafting.barrel;
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -32,6 +38,7 @@ import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation")
 public class BarrelBlock extends BaseEntityBlock {
+    public static final String SEALED_STACK_FLAG = "AgesCraftingSealed";
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty SEALED = BooleanProperty.create("sealed");
     private static final VoxelShape SHAPE = Block.box(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
@@ -55,6 +62,7 @@ public class BarrelBlock extends BaseEntityBlock {
     public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
         return SHAPE;
     }
+
     @Override
     public @NotNull VoxelShape getCollisionShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
         return getShape(state, level, pos, context);
@@ -82,7 +90,45 @@ public class BarrelBlock extends BaseEntityBlock {
 
     @Override
     public @NotNull BlockState getStateForPlacement(net.minecraft.world.item.context.BlockPlaceContext context) {
-        return defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(SEALED, false);
+        ItemStack stack = context.getItemInHand();
+        boolean sealed = stack.hasTag() && stack.getTag().getBoolean(SEALED_STACK_FLAG);
+
+        CompoundTag blockEntityTag = BlockItem.getBlockEntityData(stack);
+        if (blockEntityTag == null && stack.hasTag() && stack.getTag().contains("BlockEntityTag", Tag.TAG_COMPOUND)) {
+            blockEntityTag = stack.getTag().getCompound("BlockEntityTag");
+        }
+
+        if (blockEntityTag != null) {
+            sealed = blockEntityTag.getBoolean("sealed");
+        }
+
+        return defaultBlockState()
+                .setValue(FACING, context.getHorizontalDirection().getOpposite())
+                .setValue(SEALED, sealed);
+    }
+
+    @Override
+    public void setPlacedBy(@NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState state, @Nullable LivingEntity placer, @NotNull ItemStack stack) {
+        super.setPlacedBy(level, pos, state, placer, stack);
+
+        if (level.isClientSide) {
+            return;
+        }
+
+        CompoundTag blockEntityTag = BlockItem.getBlockEntityData(stack);
+        if (blockEntityTag == null && stack.hasTag() && stack.getTag().contains("BlockEntityTag", Tag.TAG_COMPOUND)) {
+            blockEntityTag = stack.getTag().getCompound("BlockEntityTag");
+        }
+        boolean sealed = (stack.hasTag() && stack.getTag().getBoolean(SEALED_STACK_FLAG))
+                || (blockEntityTag != null && blockEntityTag.getBoolean("sealed"));
+
+        if (level.getBlockEntity(pos) instanceof BarrelBlockEntity barrelBlockEntity) {
+            barrelBlockEntity.setSealedState(sealed);
+        }
+
+        if (state.getValue(SEALED) != sealed) {
+            level.setBlock(pos, state.setValue(SEALED, sealed), Block.UPDATE_ALL);
+        }
     }
 
     @Override
@@ -101,19 +147,23 @@ public class BarrelBlock extends BaseEntityBlock {
             return InteractionResult.PASS;
         }
 
-        ItemStack heldItem = player.getItemInHand(hand);
+        if (hand != InteractionHand.MAIN_HAND) {
+            return InteractionResult.PASS;
+        }
 
-        if (player.isShiftKeyDown() && heldItem.isEmpty()) {
+        if (player.isSecondaryUseActive() && player.getItemInHand(hand).isEmpty()) {
             if (!level.isClientSide) {
                 boolean sealed = blockEntity.toggleSealed();
                 if (state.getValue(SEALED) != sealed) {
                     level.setBlock(pos, state.setValue(SEALED, sealed), Block.UPDATE_ALL);
                 }
+                level.playSound(null, pos, sealed ? SoundEvents.BARREL_CLOSE : SoundEvents.BARREL_OPEN, SoundSource.BLOCKS, 0.9F, 1.0F);
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        if (!blockEntity.isSealed() && FluidUtil.interactWithFluidHandler(player, hand, level, pos, hit.getDirection())) {
+        ItemStack heldItem = player.getItemInHand(hand);
+        if (!blockEntity.isSealed() && !heldItem.isEmpty() && FluidUtil.interactWithFluidHandler(player, hand, level, pos, hit.getDirection())) {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
@@ -138,6 +188,3 @@ public class BarrelBlock extends BaseEntityBlock {
         super.onRemove(state, level, pos, newState, movedByPiston);
     }
 }
-
-
-

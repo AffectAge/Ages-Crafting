@@ -1,0 +1,22 @@
+{
+  "barrel.seal": {
+    "subtitle": "subtitle.agescrafting.barrel.seal",
+    "sounds": [
+      {
+        "name": "minecraft:block/barrel/close",
+        "volume": 0.9,
+        "pitch": 0.85
+      }
+    ]
+  },
+  "barrel.unseal": {
+    "subtitle": "subtitle.agescrafting.barrel.unseal",
+    "sounds": [
+      {
+        "name": "minecraft:block/barrel/open",
+        "volume": 0.9,
+        "pitch": 1.05
+      }
+    ]
+  }
+}

@@ -3,7 +3,8 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-		"wood": "block/oak_planks"
+		"wood": "minecraft:block/oak_planks",
+        "particle": "#wood"
 	},
 	"elements": [
 		{

@@ -2,7 +2,9 @@ package com.agescrafting.agescrafting.campfire;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import org.joml.Matrix4f;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -56,6 +58,30 @@ public class PrimitiveCampfireBlockEntityRenderer implements BlockEntityRenderer
             );
             poseStack.popPose();
         }
+
+        renderStatusMarker(blockEntity, poseStack, buffer, packedLight);
+    }
+
+    private static void renderStatusMarker(PrimitiveCampfireBlockEntity blockEntity, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        if (!blockEntity.hasCookItem() || (!blockEntity.isCooked() && !blockEntity.isOvercooked())) {
+            return;
+        }
+
+        Minecraft mc = Minecraft.getInstance();
+        Font font = mc.font;
+        int color = blockEntity.isOvercooked() ? 0xD94343 : 0x4BC35A;
+
+        poseStack.pushPose();
+        poseStack.translate(0.5D, 0.92D, 0.5D);
+        poseStack.mulPose(mc.getEntityRenderDispatcher().cameraOrientation());
+        poseStack.scale(-0.03F, -0.03F, 0.03F);
+
+        String marker = "!";
+        Matrix4f matrix = poseStack.last().pose();
+        float x = -font.width(marker) / 2.0F;
+        font.drawInBatch(marker, x, 0.0F, color, false, matrix, buffer, Font.DisplayMode.NORMAL, 0, packedLight);
+
+        poseStack.popPose();
     }
 
     private static void applyLogTransform(PoseStack poseStack, int i) {
@@ -74,5 +100,3 @@ public class PrimitiveCampfireBlockEntityRenderer implements BlockEntityRenderer
         poseStack.scale(0.38F, 0.95F, 0.38F);
     }
 }
-
-

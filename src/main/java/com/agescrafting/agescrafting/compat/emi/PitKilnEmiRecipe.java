@@ -61,7 +61,7 @@ public class PitKilnEmiRecipe implements EmiRecipe {
     @Override
     public void addWidgets(WidgetHolder widgets) {
         widgets.addSlot(EmiIngredient.of(recipe.ingredient()), 12, 12).drawBack(true);
-        widgets.addText(Component.literal("->"), 58, 16, 0x7A7A7A, false);
+        widgets.addFillingArrow(47, 13, Math.max(20, recipe.durationTicks()));
         widgets.addSlot(EmiStack.of(recipe.result()), 88, 12).drawBack(true).recipeContext(this);
 
         if (!recipe.failureResult().isEmpty() && recipe.failureChance() > 0.0F) {
@@ -71,12 +71,17 @@ public class PitKilnEmiRecipe implements EmiRecipe {
         }
 
         widgets.addText(
-                Component.translatable("gui.agescrafting.barrel.recipe_time", String.format(Locale.ROOT, "%.1f", recipe.durationTicks() / 20.0F)),
+                Component.literal(formatClock(recipe.durationTicks())),
                 12,
                 42,
                 0x5E5E5E,
                 false
         );
     }
+    private static String formatClock(int ticks) {
+        int totalSeconds = Math.max(0, ticks / 20);
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+        return String.format(Locale.ROOT, "%02d:%02d", minutes, seconds);
+    }
 }
-

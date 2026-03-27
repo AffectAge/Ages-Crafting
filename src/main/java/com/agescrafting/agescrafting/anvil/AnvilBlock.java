@@ -127,6 +127,10 @@ public class AnvilBlock extends BaseEntityBlock {
             }
 
             boolean completed = anvil.advanceProgress();
+            int durabilityCost = Math.max(0, recipe.durabilityPerHit());
+            if (!player.getAbilities().instabuild && held.isDamageableItem() && durabilityCost > 0) {
+                held.hurtAndBreak(durabilityCost, player, p -> p.broadcastBreakEvent(hand));
+            }
             level.playSound(null, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 0.8F, 0.95F + level.random.nextFloat() * 0.15F);
 
             if (completed) {

@@ -10,5 +10,6 @@
     "item": "minecraft:gravel",
     "count": 1
   },
-  "hits": 4
+  "hits": 4,
+  "durability_per_hit": 1
 }

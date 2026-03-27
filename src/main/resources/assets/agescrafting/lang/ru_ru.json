@@ -29,6 +29,8 @@
   "gui.agescrafting.barrel.recipe_requires_sealed": "Требуется запечатанная бочка",
   "gui.agescrafting.barrel.recipe_not_sealed": "Запечатывание не требуется",
   "gui.agescrafting.barrel.recipe_time": "Время процесса: %s с",
+  "gui.agescrafting.barrel.seal_button.seal": "Запечатать бочку (сохраняет содержимое и включает запечатанные рецепты)",
+  "gui.agescrafting.barrel.seal_button.unseal": "Распечатать бочку (обычное взаимодействие)",
   "tooltip.agescrafting.barrel.progress": "Прогресс рецепта: %s / %s с",
   "tooltip.agescrafting.barrel.season_modifier": "Сезонный множитель: %s",
   "block.agescrafting.spruce_barrel": "Еловая реалистичная бочка",
@@ -158,5 +160,8 @@
   "item.agescrafting.andesite_anvil": "Андезитовая наковальня",
   "item.agescrafting.deepslate_anvil": "Глубинносланцевая наковальня",
   "item.agescrafting.basalt_anvil": "Базальтовая наковальня",
-  "item.agescrafting.obsidian_anvil": "Обсидиановая наковальня"
+  "item.agescrafting.obsidian_anvil": "Обсидиановая наковальня",
+  "subtitle.agescrafting.barrel.seal": "Бочка запечатана",
+  "subtitle.agescrafting.barrel.unseal": "Бочка распечатана",
+  "tooltip.agescrafting.wood_chips_pile.layers": "Щепа: %s / %s"
 }

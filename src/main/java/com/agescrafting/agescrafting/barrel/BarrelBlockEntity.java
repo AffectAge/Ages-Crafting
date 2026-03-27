@@ -308,6 +308,23 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         return changed;
     }
 
+
+    public void setSealedState(boolean sealedValue) {
+        if (sealed == sealedValue) {
+            return;
+        }
+
+        sealed = sealedValue;
+        if (!sealed) {
+            resetRecipeProgress();
+        }
+
+        recipeStateDirty = true;
+        setChanged();
+        syncBlockSealState();
+        markForSync();
+    }
+
     public boolean toggleSealed() {
         sealed = !sealed;
 
@@ -327,6 +344,9 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         CompoundTag blockEntityTag = new CompoundTag();
         saveAdditional(blockEntityTag);
         BlockItem.setBlockEntityData(stack, getType(), blockEntityTag);
+        CompoundTag stackTag = stack.getOrCreateTag();
+        stackTag.putInt("CustomModelData", 1);
+        stackTag.putBoolean(BarrelBlock.SEALED_STACK_FLAG, true);
 
         return stack;
     }

@@ -1,3 +1,11 @@
 {
-  "parent": "agescrafting:block/mangrove_barrel"
+  "parent": "agescrafting:block/mangrove_barrel",
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "agescrafting:block/mangrove_barrel_sealed"
+    }
+  ]
 }

@@ -29,6 +29,8 @@
   "gui.agescrafting.barrel.recipe_requires_sealed": "Requires sealed barrel",
   "gui.agescrafting.barrel.recipe_not_sealed": "No sealing required",
   "gui.agescrafting.barrel.recipe_time": "Process time: %s s",
+  "gui.agescrafting.barrel.seal_button.seal": "Seal barrel (keeps contents and enables sealed recipes)",
+  "gui.agescrafting.barrel.seal_button.unseal": "Unseal barrel (allow normal interaction)",
   "tooltip.agescrafting.barrel.progress": "Recipe progress: %s / %s s",
   "tooltip.agescrafting.barrel.season_modifier": "Season modifier: %s",
   "block.agescrafting.spruce_barrel": "Spruce Aging Barrel",
@@ -158,5 +160,8 @@
   "item.agescrafting.andesite_anvil": "Andesite Anvil",
   "item.agescrafting.deepslate_anvil": "Deepslate Anvil",
   "item.agescrafting.basalt_anvil": "Basalt Anvil",
-  "item.agescrafting.obsidian_anvil": "Obsidian Anvil"
+  "item.agescrafting.obsidian_anvil": "Obsidian Anvil",
+  "subtitle.agescrafting.barrel.seal": "Barrel sealed",
+  "subtitle.agescrafting.barrel.unseal": "Barrel unsealed",
+  "tooltip.agescrafting.wood_chips_pile.layers": "Wood chips: %s / %s"
 }

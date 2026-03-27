@@ -1,3 +1,11 @@
 {
-  "parent": "agescrafting:block/crimson_barrel"
+  "parent": "agescrafting:block/crimson_barrel",
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "agescrafting:block/crimson_barrel_sealed"
+    }
+  ]
 }

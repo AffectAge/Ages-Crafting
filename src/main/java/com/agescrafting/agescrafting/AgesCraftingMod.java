@@ -16,6 +16,7 @@ import com.agescrafting.agescrafting.registry.ModItems;
 import com.agescrafting.agescrafting.registry.ModMenuTypes;
 import com.agescrafting.agescrafting.registry.ModRecipeSerializers;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
+import com.agescrafting.agescrafting.registry.ModSoundEvents;
 import com.agescrafting.agescrafting.workspace.WorkspaceTableRenderer;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -43,6 +44,7 @@ public class AgesCraftingMod {
         ModMenuTypes.MENUS.register(modBus);
         ModRecipeSerializers.RECIPE_SERIALIZERS.register(modBus);
         ModRecipeTypes.RECIPE_TYPES.register(modBus);
+        ModSoundEvents.SOUND_EVENTS.register(modBus);
         context.registerConfig(ModConfig.Type.SERVER, AgesCraftingConfig.SERVER_SPEC);
     }
 

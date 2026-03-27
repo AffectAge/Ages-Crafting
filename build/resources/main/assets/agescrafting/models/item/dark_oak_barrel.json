@@ -1,3 +1,11 @@
 {
-  "parent": "agescrafting:block/dark_oak_barrel"
+  "parent": "agescrafting:block/dark_oak_barrel",
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "agescrafting:block/dark_oak_barrel_sealed"
+    }
+  ]
 }

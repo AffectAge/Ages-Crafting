@@ -22,13 +22,15 @@ public class AnvilRecipe implements Recipe<Container> {
     private final Ingredient tool;
     private final ItemStack result;
     private final int hits;
+    private final int durabilityPerHit;
 
-    public AnvilRecipe(ResourceLocation id, Ingredient ingredient, Ingredient tool, ItemStack result, int hits) {
+    public AnvilRecipe(ResourceLocation id, Ingredient ingredient, Ingredient tool, ItemStack result, int hits, int durabilityPerHit) {
         this.id = id;
         this.ingredient = ingredient;
         this.tool = tool;
         this.result = result.copy();
         this.hits = Math.max(1, hits);
+        this.durabilityPerHit = Math.max(0, durabilityPerHit);
     }
 
     @Override
@@ -91,6 +93,10 @@ public class AnvilRecipe implements Recipe<Container> {
         return hits;
     }
 
+    public int durabilityPerHit() {
+        return durabilityPerHit;
+    }
+
     public static class Serializer implements RecipeSerializer<AnvilRecipe> {
         @Override
         public @NotNull AnvilRecipe fromJson(@NotNull ResourceLocation recipeId, @NotNull JsonObject json) {
@@ -98,7 +104,8 @@ public class AnvilRecipe implements Recipe<Container> {
             Ingredient tool = Ingredient.fromJson(GsonHelper.getAsJsonObject(json, "tool"));
             ItemStack result = net.minecraft.world.item.crafting.ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
             int hits = GsonHelper.getAsInt(json, "hits", 6);
-            return new AnvilRecipe(recipeId, ingredient, tool, result, hits);
+            int durabilityPerHit = GsonHelper.getAsInt(json, "durability_per_hit", 1);
+            return new AnvilRecipe(recipeId, ingredient, tool, result, hits, durabilityPerHit);
         }
 
         @Override
@@ -107,7 +114,8 @@ public class AnvilRecipe implements Recipe<Container> {
             Ingredient tool = Ingredient.fromNetwork(buffer);
             ItemStack result = buffer.readItem();
             int hits = buffer.readVarInt();
-            return new AnvilRecipe(recipeId, ingredient, tool, result, hits);
+            int durabilityPerHit = buffer.readVarInt();
+            return new AnvilRecipe(recipeId, ingredient, tool, result, hits, durabilityPerHit);
         }
 
         @Override
@@ -116,6 +124,7 @@ public class AnvilRecipe implements Recipe<Container> {
             recipe.tool().toNetwork(buffer);
             buffer.writeItem(recipe.result());
             buffer.writeVarInt(recipe.hits());
+            buffer.writeVarInt(recipe.durabilityPerHit());
         }
     }
 }

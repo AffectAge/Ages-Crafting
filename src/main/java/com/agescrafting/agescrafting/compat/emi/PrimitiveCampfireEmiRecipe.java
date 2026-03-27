@@ -57,25 +57,32 @@ public class PrimitiveCampfireEmiRecipe implements EmiRecipe {
     @Override
     public void addWidgets(WidgetHolder widgets) {
         widgets.addSlot(EmiIngredient.of(recipe.input()), 8, 12).drawBack(true);
-        widgets.addText(Component.literal("->"), 40, 16, 0x7A7A7A, false);
+        widgets.addFillingArrow(30, 13, Math.max(20, recipe.cookTimeTicks()));
         widgets.addSlot(EmiStack.of(recipe.cookedOutput()), 58, 12).drawBack(true).recipeContext(this);
-        widgets.addText(Component.literal("->"), 90, 16, 0x7A7A7A, false);
+
+        widgets.addFillingArrow(80, 13, Math.max(20, recipe.overcookTimeTicks()));
+        widgets.addDrawable(80, 13, 24, 17, (guiGraphics, mouseX, mouseY, delta) -> guiGraphics.fill(80, 13, 104, 30, 0x35B34735));
         widgets.addSlot(EmiStack.of(recipe.overcookedOutput()), 108, 12).drawBack(true).recipeContext(this);
 
         widgets.addText(
-                Component.translatable("gui.agescrafting.primitive_campfire.cook_time", String.format(Locale.ROOT, "%.1f", recipe.cookTimeTicks() / 20.0F)),
+                Component.literal(formatClock(recipe.cookTimeTicks())),
                 8,
                 32,
                 0x5E5E5E,
                 false
         );
         widgets.addText(
-                Component.translatable("gui.agescrafting.primitive_campfire.overcook_time", String.format(Locale.ROOT, "%.1f", recipe.overcookTimeTicks() / 20.0F)),
+                Component.literal(formatClock(recipe.overcookTimeTicks())),
                 74,
                 32,
                 0x5E5E5E,
                 false
         );
     }
+    private static String formatClock(int ticks) {
+        int totalSeconds = Math.max(0, ticks / 20);
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+        return String.format(Locale.ROOT, "%02d:%02d", minutes, seconds);
+    }
 }
-
