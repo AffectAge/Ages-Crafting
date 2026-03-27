@@ -146,10 +146,11 @@ public class BarrelJeiCategory implements IRecipeCategory<BarrelRecipe> {
         if (recipe.durationTicks() > 0) {
             guiGraphics.drawString(font,
                     Component.translatable("gui.agescrafting.barrel.recipe_time", String.format(Locale.ROOT, "%.1f", recipe.durationTicks() / 20.0F)),
-                    62, 84, 0x404040, false);
+                    62, 84, 0x5E5E5E, false);
         }
     }
 }
+
 
 
 

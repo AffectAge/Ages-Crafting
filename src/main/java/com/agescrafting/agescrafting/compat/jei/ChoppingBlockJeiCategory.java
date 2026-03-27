@@ -71,12 +71,13 @@ public class ChoppingBlockJeiCategory implements IRecipeCategory<ChoppingBlockRe
     @Override
     public void draw(@NotNull ChoppingBlockRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
         var font = Minecraft.getInstance().font;
-        guiGraphics.drawString(font, "->", 70, 22, 0x808080, false);
+        guiGraphics.drawString(font, "->", 70, 22, 0x7A7A7A, false);
         guiGraphics.drawString(font,
                 Component.translatable("gui.agescrafting.chopping_block.chops", recipe.chopsRequired()),
                 8,
                 42,
-                0x404040,
+                0x5E5E5E,
                 false);
     }
 }
+

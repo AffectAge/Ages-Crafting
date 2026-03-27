@@ -118,3 +118,4 @@ public class WorkspaceEmiRecipe implements EmiRecipe {
         widgets.addText(translated, x, y, 0x9A9A9A, false);
     }
 }
+

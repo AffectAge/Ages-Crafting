@@ -2,6 +2,7 @@ package com.agescrafting.agescrafting.compat.jade;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlockEntity;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -42,12 +43,12 @@ public enum DryingRackJadeProvider implements IBlockComponentProvider, IServerDa
     public void appendTooltip(ITooltip tooltip, @NotNull BlockAccessor accessor, @NotNull IPluginConfig config) {
         CompoundTag data = accessor.getServerData();
         if (!data.getBoolean(TAG_HAS_ITEM)) {
-            tooltip.add(Component.translatable("tooltip.agescrafting.drying_rack.empty"));
+            tooltip.add(Component.translatable("tooltip.agescrafting.drying_rack.empty").withStyle(ChatFormatting.DARK_GRAY));
             return;
         }
 
         if (!data.contains(TAG_TOTAL)) {
-            tooltip.add(Component.translatable("tooltip.agescrafting.drying_rack.waiting"));
+            tooltip.add(Component.translatable("tooltip.agescrafting.drying_rack.waiting").withStyle(ChatFormatting.RED));
             return;
         }
 
@@ -57,7 +58,7 @@ public enum DryingRackJadeProvider implements IBlockComponentProvider, IServerDa
 
         String progressSec = String.format(Locale.ROOT, "%.1f", progress / 20.0F);
         String totalSec = String.format(Locale.ROOT, "%.1f", total / 20.0F);
-        tooltip.add(Component.translatable("tooltip.agescrafting.drying_rack.progress", progressSec, totalSec));
+        tooltip.add(Component.translatable("tooltip.agescrafting.drying_rack.progress", progressSec, totalSec).withStyle(ChatFormatting.GRAY));
         tooltip.add(IElementHelper.get().progress(ratio, Component.empty(), IElementHelper.get().progressStyle(), BoxStyle.DEFAULT, true));
     }
 

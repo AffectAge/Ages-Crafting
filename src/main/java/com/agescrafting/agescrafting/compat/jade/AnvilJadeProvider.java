@@ -2,6 +2,7 @@ package com.agescrafting.agescrafting.compat.jade;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.anvil.AnvilBlockEntity;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -41,12 +42,12 @@ public enum AnvilJadeProvider implements IBlockComponentProvider, IServerDataPro
     public void appendTooltip(ITooltip tooltip, @NotNull BlockAccessor accessor, @NotNull IPluginConfig config) {
         CompoundTag data = accessor.getServerData();
         if (!data.getBoolean(TAG_HAS_ITEM)) {
-            tooltip.add(Component.translatable("tooltip.agescrafting.anvil.empty"));
+            tooltip.add(Component.translatable("tooltip.agescrafting.anvil.empty").withStyle(ChatFormatting.DARK_GRAY));
             return;
         }
 
         if (!data.contains(TAG_TOTAL)) {
-            tooltip.add(Component.translatable("tooltip.agescrafting.anvil.no_recipe"));
+            tooltip.add(Component.translatable("tooltip.agescrafting.anvil.no_recipe").withStyle(ChatFormatting.RED));
             return;
         }
 
@@ -54,7 +55,7 @@ public enum AnvilJadeProvider implements IBlockComponentProvider, IServerDataPro
         int progress = Mth.clamp(data.getInt(TAG_PROGRESS), 0, total);
         float ratio = progress / (float) total;
 
-        tooltip.add(Component.translatable("tooltip.agescrafting.anvil.progress", progress, total));
+        tooltip.add(Component.translatable("tooltip.agescrafting.anvil.progress", progress, total).withStyle(ChatFormatting.GRAY));
         tooltip.add(IElementHelper.get().progress(ratio, Component.empty(), IElementHelper.get().progressStyle(), BoxStyle.DEFAULT, true));
     }
 

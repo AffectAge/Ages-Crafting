@@ -3,11 +3,15 @@ package com.agescrafting.agescrafting.dryingrack;
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
@@ -114,6 +118,26 @@ public class DryingRackBlockEntity extends BlockEntity {
         resetProgress();
         setChanged();
         markForSync();
+        playRecipeCompleteFx();
+    }
+
+    private void playRecipeCompleteFx() {
+        if (level == null) {
+            return;
+        }
+
+        level.playSound(null, worldPosition, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 0.7F, 1.35F);
+        if (level instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(ParticleTypes.HAPPY_VILLAGER,
+                    worldPosition.getX() + 0.5D,
+                    worldPosition.getY() + 0.8D,
+                    worldPosition.getZ() + 0.5D,
+                    6,
+                    0.22D,
+                    0.1D,
+                    0.22D,
+                    0.0D);
+        }
     }
 
     private @Nullable DryingRackRecipe resolveRecipe() {

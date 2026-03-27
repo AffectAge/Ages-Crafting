@@ -55,15 +55,16 @@ public class AnvilEmiRecipe implements EmiRecipe {
     public void addWidgets(WidgetHolder widgets) {
         widgets.addSlot(EmiIngredient.of(recipe.ingredient()), 8, 18).drawBack(true);
         widgets.addSlot(EmiIngredient.of(recipe.tool()), 44, 18).drawBack(true);
-        widgets.addText(Component.literal("->"), 70, 22, 0x808080, false);
+        widgets.addText(Component.literal("->"), 70, 22, 0x7A7A7A, false);
         widgets.addSlot(EmiStack.of(recipe.result()), 92, 18).drawBack(true).recipeContext(this);
 
         widgets.addText(
                 Component.translatable("gui.agescrafting.anvil.hits", recipe.hits()),
                 8,
                 42,
-                0x404040,
+                0x5E5E5E,
                 false
         );
     }
 }
+

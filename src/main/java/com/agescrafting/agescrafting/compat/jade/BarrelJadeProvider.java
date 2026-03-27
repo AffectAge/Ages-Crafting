@@ -60,7 +60,7 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
 
         if (data.contains(TAG_SEASON_MULTIPLIER)) {
             float seasonMultiplier = data.getFloat(TAG_SEASON_MULTIPLIER);
-            ChatFormatting color = seasonMultiplier < 1.0F ? ChatFormatting.GREEN : (seasonMultiplier > 1.0F ? ChatFormatting.RED : ChatFormatting.WHITE);
+            ChatFormatting color = seasonMultiplier < 1.0F ? ChatFormatting.GREEN : (seasonMultiplier > 1.0F ? ChatFormatting.RED : ChatFormatting.GRAY);
             tooltip.add(Component.translatable("tooltip.agescrafting.barrel.season_modifier", String.format(Locale.ROOT, "x%.2f", seasonMultiplier)).withStyle(color));
         }
 
@@ -75,7 +75,7 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
         String progressSec = String.format(Locale.ROOT, "%.1f", progress / 20.0F);
         String totalSec = String.format(Locale.ROOT, "%.1f", total / 20.0F);
 
-        tooltip.add(Component.translatable("tooltip.agescrafting.barrel.progress", progressSec, totalSec));
+        tooltip.add(Component.translatable("tooltip.agescrafting.barrel.progress", progressSec, totalSec).withStyle(ChatFormatting.GRAY));
         tooltip.add(IElementHelper.get().progress(ratio, Component.empty(), IElementHelper.get().progressStyle(), BoxStyle.DEFAULT, true));
     }
 

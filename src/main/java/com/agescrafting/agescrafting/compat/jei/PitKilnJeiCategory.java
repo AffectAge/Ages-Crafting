@@ -73,7 +73,7 @@ public class PitKilnJeiCategory implements IRecipeCategory<PitKilnRecipe> {
     @Override
     public void draw(@NotNull PitKilnRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
         var font = Minecraft.getInstance().font;
-        guiGraphics.drawString(font, "->", 58, 16, 0x808080, false);
+        guiGraphics.drawString(font, "->", 58, 16, 0x7A7A7A, false);
 
         if (!recipe.failureResult().isEmpty() && recipe.failureChance() > 0.0F) {
             guiGraphics.drawString(font, "?", 103, 16, 0x8A4B2A, false);
@@ -84,7 +84,8 @@ public class PitKilnJeiCategory implements IRecipeCategory<PitKilnRecipe> {
                 Component.translatable("gui.agescrafting.barrel.recipe_time", String.format(Locale.ROOT, "%.1f", recipe.durationTicks() / 20.0F)),
                 12,
                 42,
-                0x404040,
+                0x5E5E5E,
                 false);
     }
 }
+

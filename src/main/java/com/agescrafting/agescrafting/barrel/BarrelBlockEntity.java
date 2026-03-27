@@ -7,6 +7,7 @@ import com.agescrafting.agescrafting.compat.sereneseasons.SereneSeasonsCompat;
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -20,6 +21,9 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -842,6 +846,7 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         setChanged();
         syncBlockSealState();
         markForSync();
+        playRecipeCompleteFx(recipe);
         return true;
     }
 
@@ -855,7 +860,27 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
             Block.popResource(level, worldPosition, remaining);
         }
     }
+    private void playRecipeCompleteFx(BarrelRecipe recipe) {
+        if (level == null) {
+            return;
+        }
 
+        level.playSound(null, worldPosition, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 0.8F, 0.95F + level.random.nextFloat() * 0.1F);
+        if (level instanceof ServerLevel serverLevel) {
+            boolean hasFluidOutput = recipe.fluidResults().stream().anyMatch(stack -> !stack.isEmpty() && stack.getAmount() > 0);
+            serverLevel.sendParticles(
+                    hasFluidOutput ? ParticleTypes.SPLASH : ParticleTypes.HAPPY_VILLAGER,
+                    worldPosition.getX() + 0.5D,
+                    worldPosition.getY() + 0.8D,
+                    worldPosition.getZ() + 0.5D,
+                    hasFluidOutput ? 10 : 6,
+                    0.26D,
+                    0.12D,
+                    0.26D,
+                    hasFluidOutput ? 0.02D : 0.0D
+            );
+        }
+    }
     private void resetRecipeProgress() {
         recipeProgress = 0;
         activeRecipeId = null;
@@ -1119,6 +1144,8 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         return fluid;
     }
 }
+
+
 
 
 

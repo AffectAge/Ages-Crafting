@@ -57,24 +57,25 @@ public class PrimitiveCampfireEmiRecipe implements EmiRecipe {
     @Override
     public void addWidgets(WidgetHolder widgets) {
         widgets.addSlot(EmiIngredient.of(recipe.input()), 8, 12).drawBack(true);
-        widgets.addText(Component.literal("->"), 40, 16, 0x808080, false);
+        widgets.addText(Component.literal("->"), 40, 16, 0x7A7A7A, false);
         widgets.addSlot(EmiStack.of(recipe.cookedOutput()), 58, 12).drawBack(true).recipeContext(this);
-        widgets.addText(Component.literal("->"), 90, 16, 0x808080, false);
+        widgets.addText(Component.literal("->"), 90, 16, 0x7A7A7A, false);
         widgets.addSlot(EmiStack.of(recipe.overcookedOutput()), 108, 12).drawBack(true).recipeContext(this);
 
         widgets.addText(
                 Component.translatable("gui.agescrafting.primitive_campfire.cook_time", String.format(Locale.ROOT, "%.1f", recipe.cookTimeTicks() / 20.0F)),
                 8,
                 32,
-                0x404040,
+                0x5E5E5E,
                 false
         );
         widgets.addText(
                 Component.translatable("gui.agescrafting.primitive_campfire.overcook_time", String.format(Locale.ROOT, "%.1f", recipe.overcookTimeTicks() / 20.0F)),
                 74,
                 32,
-                0x404040,
+                0x5E5E5E,
                 false
         );
     }
 }
+

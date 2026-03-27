@@ -3,6 +3,7 @@ package com.agescrafting.agescrafting.compat.jade;
 import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.pitkiln.PitKilnBlock;
 import com.agescrafting.agescrafting.pitkiln.PitKilnBlockEntity;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -80,9 +81,9 @@ public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataP
             return;
         }
 
-        tooltip.add(Component.translatable("tooltip.agescrafting.pit_kiln.state." + variant));
+        tooltip.add(Component.translatable("tooltip.agescrafting.pit_kiln.state." + variant).withStyle(ChatFormatting.GRAY));
         if (ash > 0) {
-            tooltip.add(Component.translatable("tooltip.agescrafting.primitive_campfire.ash", ash, PitKilnBlockEntity.MAX_ASH_LEVEL));
+            tooltip.add(Component.translatable("tooltip.agescrafting.primitive_campfire.ash", ash, PitKilnBlockEntity.MAX_ASH_LEVEL).withStyle(ChatFormatting.GRAY));
         }
 
         if (total <= 0) {
@@ -94,7 +95,7 @@ public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataP
         float ratio = clampedProgress / (float) clampedTotal;
         String progressSec = String.format(Locale.ROOT, "%.1f", clampedProgress / 20.0F);
         String totalSec = String.format(Locale.ROOT, "%.1f", clampedTotal / 20.0F);
-        tooltip.add(Component.translatable("tooltip.agescrafting.pit_kiln.progress", progressSec, totalSec));
+        tooltip.add(Component.translatable("tooltip.agescrafting.pit_kiln.progress", progressSec, totalSec).withStyle(ChatFormatting.GRAY));
         tooltip.add(IElementHelper.get().progress(ratio, Component.empty(), IElementHelper.get().progressStyle(), BoxStyle.DEFAULT, true));
     }
 

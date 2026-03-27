@@ -69,13 +69,14 @@ public class AnvilJeiCategory implements IRecipeCategory<AnvilRecipe> {
     @Override
     public void draw(@NotNull AnvilRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
         var font = Minecraft.getInstance().font;
-        guiGraphics.drawString(font, "->", 70, 22, 0x808080, false);
+        guiGraphics.drawString(font, "->", 70, 22, 0x7A7A7A, false);
         guiGraphics.drawString(font,
                 Component.translatable("gui.agescrafting.anvil.hits", recipe.hits()),
                 8,
                 42,
-                0x404040,
+                0x5E5E5E,
                 false);
     }
 }
+
 

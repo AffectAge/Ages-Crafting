@@ -5,7 +5,9 @@ import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -131,6 +133,7 @@ public class AnvilBlock extends BaseEntityBlock {
                     player.causeFoodExhaustion((float) Math.max(0.0D, AgesCraftingConfig.SERVER.anvilExhaustionPerComplete.get()));
                 }
                 level.playSound(null, pos, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 0.9F, 1.0F);
+                spawnRecipeCompleteFx(level, pos);
             }
         }
 
@@ -149,6 +152,20 @@ public class AnvilBlock extends BaseEntityBlock {
             }
         }
         super.onRemove(state, level, pos, newState, movedByPiston);
+    }
+
+    private static void spawnRecipeCompleteFx(Level level, BlockPos pos) {
+        if (level instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(ParticleTypes.CRIT,
+                    pos.getX() + 0.5D,
+                    pos.getY() + 0.95D,
+                    pos.getZ() + 0.5D,
+                    8,
+                    0.28D,
+                    0.12D,
+                    0.28D,
+                    0.01D);
+        }
     }
 
     private static void giveToPlayerOrDrop(Player player, ItemStack stack) {

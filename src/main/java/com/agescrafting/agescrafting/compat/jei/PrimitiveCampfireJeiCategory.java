@@ -73,19 +73,20 @@ public class PrimitiveCampfireJeiCategory implements IRecipeCategory<PrimitiveCa
     @Override
     public void draw(@NotNull PrimitiveCampfireDisplayRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
         var font = Minecraft.getInstance().font;
-        guiGraphics.drawString(font, "->", 40, 16, 0x808080, false);
-        guiGraphics.drawString(font, "->", 90, 16, 0x808080, false);
+        guiGraphics.drawString(font, "->", 40, 16, 0x7A7A7A, false);
+        guiGraphics.drawString(font, "->", 90, 16, 0x7A7A7A, false);
         guiGraphics.drawString(font,
                 Component.translatable("gui.agescrafting.primitive_campfire.cook_time", String.format(Locale.ROOT, "%.1f", recipe.cookTimeTicks() / 20.0F)),
                 8,
                 32,
-                0x404040,
+                0x5E5E5E,
                 false);
         guiGraphics.drawString(font,
                 Component.translatable("gui.agescrafting.primitive_campfire.overcook_time", String.format(Locale.ROOT, "%.1f", recipe.overcookTimeTicks() / 20.0F)),
                 74,
                 32,
-                0x404040,
+                0x5E5E5E,
                 false);
     }
 }
+

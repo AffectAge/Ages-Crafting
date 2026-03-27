@@ -55,15 +55,16 @@ public class DryingRackEmiRecipe implements EmiRecipe {
     @Override
     public void addWidgets(WidgetHolder widgets) {
         widgets.addSlot(EmiIngredient.of(recipe.ingredient()), 12, 12).drawBack(true);
-        widgets.addText(Component.literal("->"), 57, 16, 0x808080, false);
+        widgets.addText(Component.literal("->"), 57, 16, 0x7A7A7A, false);
         widgets.addSlot(EmiStack.of(recipe.result()), 88, 12).drawBack(true).recipeContext(this);
 
         widgets.addText(
                 Component.translatable("gui.agescrafting.barrel.recipe_time", String.format(Locale.ROOT, "%.1f", recipe.durationTicks() / 20.0F)),
                 12,
                 32,
-                0x404040,
+                0x5E5E5E,
                 false
         );
     }
 }
+

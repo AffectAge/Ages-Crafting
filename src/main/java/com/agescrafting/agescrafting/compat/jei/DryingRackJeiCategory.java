@@ -70,12 +70,13 @@ public class DryingRackJeiCategory implements IRecipeCategory<DryingRackRecipe> 
     @Override
     public void draw(@NotNull DryingRackRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
         var font = Minecraft.getInstance().font;
-        guiGraphics.drawString(font, "->", 56, 16, 0x808080, false);
+        guiGraphics.drawString(font, "->", 56, 16, 0x7A7A7A, false);
         guiGraphics.drawString(font,
                 Component.translatable("gui.agescrafting.barrel.recipe_time", String.format(Locale.ROOT, "%.1f", recipe.durationTicks() / 20.0F)),
                 12,
                 32,
-                0x404040,
+                0x5E5E5E,
                 false);
     }
 }
+

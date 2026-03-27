@@ -154,12 +154,13 @@ public class BarrelEmiRecipe implements EmiRecipe {
                     Component.translatable("gui.agescrafting.barrel.recipe_time", String.format(Locale.ROOT, "%.1f", recipe.durationTicks() / 20.0F)),
                     62,
                     84,
-                    0x404040,
+                    0x5E5E5E,
                     false
             );
         }
     }
 }
+
 
 
 

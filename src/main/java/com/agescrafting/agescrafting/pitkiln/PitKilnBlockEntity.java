@@ -4,6 +4,7 @@ import com.agescrafting.agescrafting.config.AgesCraftingConfig;
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -12,6 +13,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -368,6 +372,41 @@ public class PitKilnBlockEntity extends BlockEntity {
         extinguishFireAbove();
         setChanged();
         sync();
+        playRecipeCompleteFx(success);
+    }
+
+    private void playRecipeCompleteFx(boolean success) {
+        if (level == null) {
+            return;
+        }
+
+        level.playSound(null, worldPosition, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.9F, success ? 0.95F : 0.8F);
+        if (level instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(
+                    success ? ParticleTypes.CAMPFIRE_COSY_SMOKE : ParticleTypes.SMOKE,
+                    worldPosition.getX() + 0.5D,
+                    worldPosition.getY() + 1.05D,
+                    worldPosition.getZ() + 0.5D,
+                    success ? 12 : 8,
+                    0.28D,
+                    0.12D,
+                    0.28D,
+                    0.01D
+            );
+            if (success) {
+                serverLevel.sendParticles(
+                        ParticleTypes.ASH,
+                        worldPosition.getX() + 0.5D,
+                        worldPosition.getY() + 0.7D,
+                        worldPosition.getZ() + 0.5D,
+                        10,
+                        0.35D,
+                        0.05D,
+                        0.35D,
+                        0.0D
+                );
+            }
+        }
     }
 
     private void insertOutputOrDrop(ItemStack stack) {
@@ -539,4 +578,8 @@ public class PitKilnBlockEntity extends BlockEntity {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 }
+
+
+
+
 

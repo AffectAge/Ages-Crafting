@@ -3,6 +3,7 @@ package com.agescrafting.agescrafting.compat.jade;
 import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.choppingblock.ChoppingBlockBlock;
 import com.agescrafting.agescrafting.choppingblock.ChoppingBlockBlockEntity;
+import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -47,17 +48,17 @@ public enum ChoppingBlockJadeProvider implements IBlockComponentProvider, IServe
         int chips = data.getInt(TAG_CHIPS);
 
         if (!data.getBoolean(TAG_HAS_ITEM)) {
-            tooltip.add(Component.translatable("tooltip.agescrafting.chopping_block.empty"));
+            tooltip.add(Component.translatable("tooltip.agescrafting.chopping_block.empty").withStyle(ChatFormatting.DARK_GRAY));
             if (chips > 0) {
-                tooltip.add(Component.translatable("tooltip.agescrafting.chopping_block.sawdust", chips));
+                tooltip.add(Component.translatable("tooltip.agescrafting.chopping_block.sawdust", chips).withStyle(ChatFormatting.GRAY));
             }
             return;
         }
 
-        tooltip.add(Component.translatable("tooltip.agescrafting.chopping_block.sawdust", chips));
+        tooltip.add(Component.translatable("tooltip.agescrafting.chopping_block.sawdust", chips).withStyle(ChatFormatting.GRAY));
 
         if (!data.contains(TAG_TOTAL)) {
-            tooltip.add(Component.translatable("tooltip.agescrafting.chopping_block.no_recipe"));
+            tooltip.add(Component.translatable("tooltip.agescrafting.chopping_block.no_recipe").withStyle(ChatFormatting.RED));
             return;
         }
 
@@ -65,7 +66,7 @@ public enum ChoppingBlockJadeProvider implements IBlockComponentProvider, IServe
         int progress = Mth.clamp(data.getInt(TAG_PROGRESS), 0, total);
         float ratio = progress / (float) total;
 
-        tooltip.add(Component.translatable("tooltip.agescrafting.chopping_block.progress", progress, total));
+        tooltip.add(Component.translatable("tooltip.agescrafting.chopping_block.progress", progress, total).withStyle(ChatFormatting.GRAY));
         tooltip.add(IElementHelper.get().progress(ratio, Component.empty(), IElementHelper.get().progressStyle(), BoxStyle.DEFAULT, true));
     }
 

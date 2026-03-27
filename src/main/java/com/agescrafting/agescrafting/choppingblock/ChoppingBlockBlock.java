@@ -6,7 +6,9 @@ import com.agescrafting.agescrafting.registry.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -135,6 +137,7 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
                     Block.popResource(level, pos.above(), result);
                 }
                 level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 0.8F, 1.0F);
+                spawnRecipeCompleteFx(level, pos);
             }
         }
 
@@ -217,14 +220,23 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
         return new Direction[]{primary, right, left, back};
     }
 
+    private static void spawnRecipeCompleteFx(Level level, BlockPos pos) {
+        if (level instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(ParticleTypes.CRIT,
+                    pos.getX() + 0.5D,
+                    pos.getY() + 0.75D,
+                    pos.getZ() + 0.5D,
+                    10,
+                    0.32D,
+                    0.12D,
+                    0.32D,
+                    0.01D);
+        }
+    }
+
     private static void giveToPlayerOrDrop(Player player, ItemStack stack) {
         if (!player.addItem(stack)) {
             Block.popResource(player.level(), player.blockPosition(), stack);
         }
     }
 }
-
-
-
-
-
