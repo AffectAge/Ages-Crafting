@@ -34,7 +34,7 @@ import org.jetbrains.annotations.Nullable;
 
 @SuppressWarnings("deprecation")
 public class ChoppingBlockBlock extends BaseEntityBlock {
-    private static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D);
+    private static final VoxelShape SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 6.0D, 15.0D);
 
     public ChoppingBlockBlock(Properties properties) {
         super(properties);
@@ -48,6 +48,11 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
         return SHAPE;
+    }
+
+    @Override
+    public @NotNull VoxelShape getCollisionShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
+        return getShape(state, level, pos, context);
     }
 
     @Override
@@ -240,3 +245,4 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
         }
     }
 }
+

@@ -21,18 +21,19 @@ import java.util.Locale;
 public class BarrelEmiRecipe implements EmiRecipe {
     private static final int DISPLAY_W = 176;
     private static final int DISPLAY_H = 98;
+    private static final int X_OFFSET = 9;
 
     private static final ResourceLocation ATLAS = ResourceLocation.fromNamespaceAndPath("agescrafting", "gui/barrel_recipe.png");
 
-    private static final int ITEM_GRID_X = 48;
+    private static final int ITEM_GRID_X = 48 + X_OFFSET;
     private static final int ITEM_GRID_Y = 18;
     private static final int SLOT_STEP = 18;
 
-    private static final int OUTPUT_ITEM_X = 136;
+    private static final int OUTPUT_ITEM_X = 136 + X_OFFSET;
     private static final int OUTPUT_ITEM_Y = 18;
 
-    private static final int INPUT_TANK_X = 28;
-    private static final int OUTPUT_TANK_X = 117;
+    private static final int INPUT_TANK_X = 28 + X_OFFSET;
+    private static final int OUTPUT_TANK_X = 117 + X_OFFSET;
     private static final int TANK_Y = 18;
     private static final int TANK_W = 14;
     private static final int TANK_H = 52;
@@ -152,7 +153,7 @@ public class BarrelEmiRecipe implements EmiRecipe {
         if (recipe.durationTicks() > 0) {
             widgets.addText(
                     Component.translatable("gui.agescrafting.barrel.recipe_time", String.format(Locale.ROOT, "%.1f", recipe.durationTicks() / 20.0F)),
-                    62,
+                    62 + X_OFFSET,
                     84,
                     0x5E5E5E,
                     false
@@ -160,7 +161,3 @@ public class BarrelEmiRecipe implements EmiRecipe {
         }
     }
 }
-
-
-
-

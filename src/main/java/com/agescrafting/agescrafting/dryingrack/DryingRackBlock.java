@@ -65,6 +65,10 @@ public class DryingRackBlock extends BaseEntityBlock {
             default -> SHAPE_SOUTH;
         };
     }
+    @Override
+    public @NotNull VoxelShape getCollisionShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
+        return getShape(state, level, pos, context);
+    }
 
     @Override
     public @NotNull PushReaction getPistonPushReaction(@NotNull BlockState state) {
@@ -177,3 +181,4 @@ public class DryingRackBlock extends BaseEntityBlock {
         super.onRemove(state, level, pos, newState, movedByPiston);
     }
 }
+

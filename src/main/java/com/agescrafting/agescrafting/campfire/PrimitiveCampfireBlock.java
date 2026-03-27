@@ -37,7 +37,7 @@ public class PrimitiveCampfireBlock extends BaseEntityBlock {
     public static final EnumProperty<PrimitiveCampfireBlockEntity.Variant> VARIANT = EnumProperty.create("variant", PrimitiveCampfireBlockEntity.Variant.class);
     public static final IntegerProperty ASH = IntegerProperty.create("ash", 0, PrimitiveCampfireBlockEntity.MAX_ASH_LEVEL);
 
-    private static final VoxelShape SHAPE_TINDER = Block.box(2.0, 0.0, 2.0, 14.0, 5.0, 14.0);
+    private static final VoxelShape SHAPE_TINDER = Block.box(5.0, 0.0, 5.0, 11.0, 4.0, 11.0);
     private static final VoxelShape SHAPE_FULL = Block.box(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
 
     public PrimitiveCampfireBlock(Properties properties) {
@@ -65,6 +65,11 @@ public class PrimitiveCampfireBlock extends BaseEntityBlock {
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
         return state.getValue(VARIANT) == PrimitiveCampfireBlockEntity.Variant.LIT ? SHAPE_FULL : SHAPE_TINDER;
+    }
+
+    @Override
+    public @NotNull VoxelShape getCollisionShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
+        return getShape(state, level, pos, context);
     }
 
     @Override
@@ -216,3 +221,4 @@ public class PrimitiveCampfireBlock extends BaseEntityBlock {
         }
     }
 }
+

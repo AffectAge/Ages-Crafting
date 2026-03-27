@@ -71,6 +71,10 @@ public class PitKilnBlock extends BaseEntityBlock {
         }
         return Shapes.block();
     }
+    @Override
+    public @NotNull VoxelShape getCollisionShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
+        return getShape(state, level, pos, context);
+    }
 
     @Override
     public @NotNull BlockState getStateForPlacement(BlockPlaceContext context) {
@@ -319,3 +323,4 @@ public class PitKilnBlock extends BaseEntityBlock {
         }
     }
 }
+

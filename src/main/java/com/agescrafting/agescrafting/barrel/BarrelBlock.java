@@ -55,6 +55,10 @@ public class BarrelBlock extends BaseEntityBlock {
     public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
         return SHAPE;
     }
+    @Override
+    public @NotNull VoxelShape getCollisionShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {
+        return getShape(state, level, pos, context);
+    }
 
     @Override
     public @NotNull PushReaction getPistonPushReaction(@NotNull BlockState state) {
@@ -134,5 +138,6 @@ public class BarrelBlock extends BaseEntityBlock {
         super.onRemove(state, level, pos, newState, movedByPiston);
     }
 }
+
 
 
