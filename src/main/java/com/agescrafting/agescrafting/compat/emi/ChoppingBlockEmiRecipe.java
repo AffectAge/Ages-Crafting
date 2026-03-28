@@ -6,6 +6,7 @@ import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
@@ -13,6 +14,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class ChoppingBlockEmiRecipe implements EmiRecipe {
+    private static final int DISPLAY_W = 120;
+    private static final int DISPLAY_H = 58;
+    private static final ResourceLocation ATLAS = ResourceLocation.fromNamespaceAndPath("agescrafting", "gui/chopping_block_recipe.png");
+
     private final ChoppingBlockRecipe recipe;
     private final EmiRecipeCategory category;
 
@@ -43,26 +48,28 @@ public class ChoppingBlockEmiRecipe implements EmiRecipe {
 
     @Override
     public int getDisplayWidth() {
-        return 120;
+        return DISPLAY_W;
     }
 
     @Override
     public int getDisplayHeight() {
-        return 58;
+        return DISPLAY_H;
     }
 
     @Override
     public void addWidgets(WidgetHolder widgets) {
+        widgets.addTexture(ATLAS, 0, 0, 0, 0, DISPLAY_W, DISPLAY_H, DISPLAY_W, DISPLAY_H, DISPLAY_W, DISPLAY_H);
+
         widgets.addSlot(EmiIngredient.of(recipe.ingredient()), 8, 18).drawBack(true);
-        widgets.addSlot(EmiIngredient.of(recipe.tool()), 44, 18).drawBack(true);
+        widgets.addSlot(EmiIngredient.of(recipe.tool()), 32, 18).drawBack(true);
         widgets.addSlot(EmiStack.of(recipe.result()), 92, 18).drawBack(true).recipeContext(this);
 
-        widgets.addText(
-                Component.translatable("gui.agescrafting.chopping_block.chops", recipe.chopsRequired()),
-                30,
-                40,
-                0x5E5E5E,
-                false
-        );
+        var font = Minecraft.getInstance().font;
+        Component chops = Component.translatable("gui.agescrafting.chopping_block.chops", recipe.chopsRequired());
+        int textX = (DISPLAY_W - font.width(chops)) / 2;
+        widgets.addText(chops, textX, 40, 0x5E5E5E, false);
     }
 }
+
+
+

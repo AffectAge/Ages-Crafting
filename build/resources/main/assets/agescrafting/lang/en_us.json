@@ -107,6 +107,8 @@
   "tooltip.agescrafting.pit_kiln.state.complete": "Complete",
   "tooltip.agescrafting.pit_kiln.progress": "Firing: %s / %s s",
   "tooltip.agescrafting.pit_kiln.state.result": "Result ready",
+  "tooltip.agescrafting.pit_kiln.input": "Input: %sx %s",
+  "tooltip.agescrafting.pit_kiln.failure_result": "This item is produced with %s chance if the recipe fails",
   "item.agescrafting.chopping_block": "Chopping Block",
   "message.agescrafting.chopping_block.low_hunger": "Too hungry to chop",
   "item.agescrafting.wood_chips": "Wood Chips",
@@ -145,8 +147,7 @@
   "tooltip.agescrafting.anvil.no_recipe": "No valid anvil recipe",
   "item.agescrafting.anvil": "Anvil",
   "tooltip.agescrafting.anvil.progress": "Progress: %s / %s hits",
-  "message.agescrafting.anvil.low_hunger": "Too hungry to use anvil"
-,
+  "message.agescrafting.anvil.low_hunger": "Too hungry to use anvil",
   "block.agescrafting.stone_anvil": "Stone Anvil",
   "block.agescrafting.granite_anvil": "Granite Anvil",
   "block.agescrafting.diorite_anvil": "Diorite Anvil",
@@ -163,5 +164,6 @@
   "item.agescrafting.obsidian_anvil": "Obsidian Anvil",
   "subtitle.agescrafting.barrel.seal": "Barrel sealed",
   "subtitle.agescrafting.barrel.unseal": "Barrel unsealed",
-  "tooltip.agescrafting.wood_chips_pile.layers": "Wood chips: %s / %s"
+  "tooltip.agescrafting.wood_chips_pile.layers": "Wood chips: %s / %s",
+  "item.agescrafting.ash": "Ash"
 }

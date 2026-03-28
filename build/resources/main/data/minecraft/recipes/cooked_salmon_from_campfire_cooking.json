@@ -1,0 +1,15 @@
+{
+  "conditions": [
+    {
+      "type": "agescrafting:enable_vanilla_recipes"
+    }
+  ],
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "minecraft:salmon"
+  },
+  "result": "minecraft:cooked_salmon"
+}

@@ -1,0 +1,29 @@
+{
+  "conditions": [
+    {
+      "type": "agescrafting:enable_vanilla_recipes"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "decorations",
+  "key": {
+    "C": {
+      "item": "minecraft:soul_soil"
+    },
+    "L": {
+      "tag": "minecraft:logs_that_burn"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SCS",
+    "LLL"
+  ],
+  "result": {
+    "item": "minecraft:soul_campfire"
+  },
+  "show_notification": true
+}

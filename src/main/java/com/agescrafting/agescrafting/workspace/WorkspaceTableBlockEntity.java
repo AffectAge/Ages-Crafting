@@ -81,6 +81,7 @@ public class WorkspaceTableBlockEntity extends BlockEntity {
 
         if (items.get(index).isEmpty()) {
             items.set(index, held.split(1));
+            serverLevel.playSound(null, worldPosition, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 0.8F, 1.0F);
             recomputeBitmask();
             markUpdated();
             return InteractionResult.CONSUME;
@@ -232,3 +233,4 @@ public class WorkspaceTableBlockEntity extends BlockEntity {
         return -1;
     }
 }
+

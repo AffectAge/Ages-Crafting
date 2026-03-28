@@ -6,6 +6,7 @@ import dev.emi.emi.api.recipe.EmiRecipeCategory;
 import dev.emi.emi.api.stack.EmiIngredient;
 import dev.emi.emi.api.stack.EmiStack;
 import dev.emi.emi.api.widget.WidgetHolder;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.Nullable;
@@ -13,8 +14,18 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 
 public class PitKilnEmiRecipe implements EmiRecipe {
+    private static final int DISPLAY_W = 142;
+    private static final int DISPLAY_H = 52;
+    private static final int ARROW_X = 47;
+    private static final int ARROW_W = 24;
+    private static final int FAILURE_SLOT_X = 112;
+    private static final int FAILURE_SLOT_Y = 12;
+    private static final int SLOT_SIZE = 18;
+    private static final ResourceLocation ATLAS = ResourceLocation.fromNamespaceAndPath("agescrafting", "gui/pit_kiln_recipe.png");
+
     private final PitKilnRecipe recipe;
     private final EmiRecipeCategory category;
 
@@ -50,34 +61,40 @@ public class PitKilnEmiRecipe implements EmiRecipe {
 
     @Override
     public int getDisplayWidth() {
-        return 142;
+        return DISPLAY_W;
     }
 
     @Override
     public int getDisplayHeight() {
-        return 52;
+        return DISPLAY_H;
     }
 
     @Override
     public void addWidgets(WidgetHolder widgets) {
+        widgets.addTexture(ATLAS, 0, 0, 0, 0, DISPLAY_W, DISPLAY_H, DISPLAY_W, DISPLAY_H, DISPLAY_W, DISPLAY_H);
+
         widgets.addSlot(EmiIngredient.of(recipe.ingredient()), 12, 12).drawBack(true);
-        widgets.addFillingArrow(47, 13, Math.max(20, recipe.durationTicks()));
+        widgets.addFillingArrow(ARROW_X, 13, Math.max(20, recipe.durationTicks()));
         widgets.addSlot(EmiStack.of(recipe.result()), 88, 12).drawBack(true).recipeContext(this);
 
         if (!recipe.failureResult().isEmpty() && recipe.failureChance() > 0.0F) {
-            widgets.addText(Component.literal("?"), 103, 16, 0x8A4B2A, false);
-            widgets.addSlot(EmiStack.of(recipe.failureResult()), 112, 12).drawBack(true).recipeContext(this);
-            widgets.addText(Component.literal(String.format(Locale.ROOT, "Fail %.0f%%", recipe.failureChance() * 100.0F)), 12, 32, 0x8A4B2A, false);
+            widgets.addSlot(EmiStack.of(recipe.failureResult()), FAILURE_SLOT_X, FAILURE_SLOT_Y).drawBack(true).recipeContext(this);
+            int chancePercent = Math.round(recipe.failureChance() * 100.0F);
+            Component tooltipLine = Component.translatable("tooltip.agescrafting.pit_kiln.failure_result", Component.literal(chancePercent + "%").withStyle(net.minecraft.ChatFormatting.RED)).withStyle(net.minecraft.ChatFormatting.YELLOW);
+            widgets.addDrawable(0, 0, DISPLAY_W, DISPLAY_H, (guiGraphics, mouseX, mouseY, delta) -> {
+                if (mouseX >= FAILURE_SLOT_X && mouseX < FAILURE_SLOT_X + SLOT_SIZE
+                        && mouseY >= FAILURE_SLOT_Y && mouseY < FAILURE_SLOT_Y + SLOT_SIZE) {
+                    guiGraphics.renderTooltip(Minecraft.getInstance().font, List.of(tooltipLine), Optional.empty(), mouseX, mouseY);
+                }
+            });
         }
 
-        widgets.addText(
-                Component.literal(formatClock(recipe.durationTicks())),
-                12,
-                42,
-                0x5E5E5E,
-                false
-        );
+        var font = Minecraft.getInstance().font;
+        Component time = Component.literal(formatClock(recipe.durationTicks()));
+        int timeX = ARROW_X + (ARROW_W - font.width(time)) / 2;
+        widgets.addText(time, timeX, 32, 0x5E5E5E, false);
     }
+
     private static String formatClock(int ticks) {
         int totalSeconds = Math.max(0, ticks / 20);
         int minutes = totalSeconds / 60;
@@ -85,3 +102,5 @@ public class PitKilnEmiRecipe implements EmiRecipe {
         return String.format(Locale.ROOT, "%02d:%02d", minutes, seconds);
     }
 }
+
+

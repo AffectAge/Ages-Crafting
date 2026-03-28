@@ -8,6 +8,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.BaseFireBlock;
 import org.jetbrains.annotations.NotNull;
 import snownee.jade.api.BlockAccessor;
@@ -28,6 +29,7 @@ public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataP
     private static final String TAG_PROGRESS = "Progress";
     private static final String TAG_TOTAL = "Total";
     private static final String TAG_ASH = "Ash";
+    private static final String TAG_INPUT = "Input";
 
     @Override
     public void appendServerData(CompoundTag data, @NotNull BlockAccessor accessor) {
@@ -38,6 +40,12 @@ public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataP
 
         data.putString(TAG_VARIANT, kiln.getBlockState().getValue(PitKilnBlock.VARIANT).getSerializedName());
         data.putInt(TAG_ASH, kiln.getAshLevel());
+
+        ItemStack inputStack = kiln.getInputStack();
+        if (!inputStack.isEmpty()) {
+            data.put(TAG_INPUT, inputStack.save(new CompoundTag()));
+        }
+
         if (kiln.getTotalTicks() > 0) {
             data.putInt(TAG_PROGRESS, kiln.getProgressTicks());
             data.putInt(TAG_TOTAL, kiln.getTotalTicks());
@@ -48,7 +56,8 @@ public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataP
     public void appendTooltip(ITooltip tooltip, @NotNull BlockAccessor accessor, @NotNull IPluginConfig config) {
         CompoundTag data = accessor.getServerData();
         if (data.contains(TAG_VARIANT)) {
-            addFromData(tooltip, data.getString(TAG_VARIANT), data.getInt(TAG_PROGRESS), data.getInt(TAG_TOTAL), data.getInt(TAG_ASH));
+            ItemStack input = data.contains(TAG_INPUT) ? ItemStack.of(data.getCompound(TAG_INPUT)) : ItemStack.EMPTY;
+            addFromData(tooltip, data.getString(TAG_VARIANT), data.getInt(TAG_PROGRESS), data.getInt(TAG_TOTAL), data.getInt(TAG_ASH), input);
             return;
         }
 
@@ -59,7 +68,7 @@ public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataP
         }
 
         String variant = kiln.getBlockState().getValue(PitKilnBlock.VARIANT).getSerializedName();
-        addFromData(tooltip, variant, kiln.getProgressTicks(), kiln.getTotalTicks(), kiln.getAshLevel());
+        addFromData(tooltip, variant, kiln.getProgressTicks(), kiln.getTotalTicks(), kiln.getAshLevel(), kiln.getInputStack());
     }
 
     private static PitKilnBlockEntity resolveKiln(@NotNull BlockAccessor accessor) {
@@ -76,7 +85,7 @@ public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataP
         return null;
     }
 
-    private static void addFromData(ITooltip tooltip, String variant, int progress, int total, int ash) {
+    private static void addFromData(ITooltip tooltip, String variant, int progress, int total, int ash, ItemStack input) {
         if (variant == null || variant.isEmpty()) {
             return;
         }
@@ -84,6 +93,11 @@ public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataP
         tooltip.add(Component.translatable("tooltip.agescrafting.pit_kiln.state." + variant).withStyle(ChatFormatting.GRAY));
         if (ash > 0) {
             tooltip.add(Component.translatable("tooltip.agescrafting.primitive_campfire.ash", ash, PitKilnBlockEntity.MAX_ASH_LEVEL).withStyle(ChatFormatting.GRAY));
+        }
+
+        if (!input.isEmpty()) {
+            tooltip.add(IElementHelper.get().item(input));
+            tooltip.add(Component.translatable("tooltip.agescrafting.pit_kiln.input", input.getCount(), input.getHoverName()).withStyle(ChatFormatting.GRAY));
         }
 
         if (total <= 0) {
@@ -104,4 +118,3 @@ public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataP
         return UID;
     }
 }
-

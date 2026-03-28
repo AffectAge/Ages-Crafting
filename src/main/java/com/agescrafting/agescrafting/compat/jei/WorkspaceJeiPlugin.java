@@ -3,6 +3,7 @@ package com.agescrafting.agescrafting.compat.jei;
 import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.compat.campfire.PrimitiveCampfireDisplayRecipe;
 import com.agescrafting.agescrafting.registry.ModBlocks;
+import com.agescrafting.agescrafting.registry.ModItems;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import com.agescrafting.agescrafting.workspace.WorkspaceCraftingRecipe;
 import mezz.jei.api.IModPlugin;
@@ -13,7 +14,6 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
 
@@ -84,13 +84,13 @@ public class WorkspaceJeiPlugin implements IModPlugin {
                 continue;
             }
             ItemStack output = recipe.getResultItem(level.registryAccess()).copy();
-            if (output.isEmpty()) {
+            if (output.isEmpty() || !output.isEdible()) {
                 continue;
             }
             campfireRecipes.add(new PrimitiveCampfireDisplayRecipe(
                     recipe.getIngredients().get(0),
                     output,
-                    new ItemStack(Items.CHARCOAL),
+                    new ItemStack(ModItems.ASH.get()),
                     recipe.getCookingTime(),
                     200
             ));
@@ -117,4 +117,3 @@ public class WorkspaceJeiPlugin implements IModPlugin {
         }
     }
 }
-

@@ -14,17 +14,25 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
 
 public class PrimitiveCampfireJeiCategory implements IRecipeCategory<PrimitiveCampfireDisplayRecipe> {
+    private static final int FIRST_ARROW_X = 30;
+    private static final int SECOND_ARROW_X = 80;
+    private static final int ARROW_Y = 13;
+    private static final int ARROW_W = 24;
+
     public static final RecipeType<PrimitiveCampfireDisplayRecipe> TYPE = RecipeType.create(
             AgesCraftingMod.MODID,
             "primitive_campfire",
             PrimitiveCampfireDisplayRecipe.class
     );
+
+    private static final ResourceLocation ATLAS = ResourceLocation.fromNamespaceAndPath("agescrafting", "gui/primitive_campfire_recipe.png");
 
     private final IDrawable icon;
     private final IDrawable background;
@@ -32,7 +40,9 @@ public class PrimitiveCampfireJeiCategory implements IRecipeCategory<PrimitiveCa
 
     public PrimitiveCampfireJeiCategory(IGuiHelper guiHelper) {
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModBlocks.PRIMITIVE_CAMPFIRE.get()));
-        this.background = guiHelper.createBlankDrawable(140, 44);
+        this.background = guiHelper.drawableBuilder(ATLAS, 0, 0, 140, 44)
+                .setTextureSize(140, 44)
+                .build();
         this.arrow = guiHelper.createAnimatedRecipeArrow(40);
     }
 
@@ -75,24 +85,20 @@ public class PrimitiveCampfireJeiCategory implements IRecipeCategory<PrimitiveCa
 
     @Override
     public void draw(@NotNull PrimitiveCampfireDisplayRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        background.draw(guiGraphics, 0, 0);
         var font = Minecraft.getInstance().font;
-        arrow.draw(guiGraphics, 30, 13);
-        arrow.draw(guiGraphics, 80, 13);
-        guiGraphics.fill(80, 13, 104, 30, 0x35B34735);
+        arrow.draw(guiGraphics, FIRST_ARROW_X, ARROW_Y);
+        arrow.draw(guiGraphics, SECOND_ARROW_X, ARROW_Y);
 
-        guiGraphics.drawString(font,
-                Component.literal(formatClock(recipe.cookTimeTicks())),
-                8,
-                32,
-                0x5E5E5E,
-                false);
-        guiGraphics.drawString(font,
-                Component.literal(formatClock(recipe.overcookTimeTicks())),
-                74,
-                32,
-                0x5E5E5E,
-                false);
+        Component cookTime = Component.literal(formatClock(recipe.cookTimeTicks()));
+        int cookTimeX = FIRST_ARROW_X + (ARROW_W - font.width(cookTime)) / 2;
+        guiGraphics.drawString(font, cookTime, cookTimeX, 32, 0x5E5E5E, false);
+
+        Component overcookTime = Component.literal(formatClock(recipe.overcookTimeTicks()));
+        int overcookTimeX = SECOND_ARROW_X + (ARROW_W - font.width(overcookTime)) / 2;
+        guiGraphics.drawString(font, overcookTime, overcookTimeX, 32, 0x5E5E5E, false);
     }
+
     private static String formatClock(int ticks) {
         int totalSeconds = Math.max(0, ticks / 20);
         int minutes = totalSeconds / 60;

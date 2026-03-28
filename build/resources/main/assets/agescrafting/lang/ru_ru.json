@@ -107,6 +107,8 @@
   "tooltip.agescrafting.pit_kiln.state.complete": "Готово",
   "tooltip.agescrafting.pit_kiln.progress": "Обжиг: %s / %s с",
   "tooltip.agescrafting.pit_kiln.state.result": "Результат готов",
+  "tooltip.agescrafting.pit_kiln.input": "Вход: %sx %s",
+  "tooltip.agescrafting.pit_kiln.failure_result": "Этот предмет получится с шансом %s, если рецепт провалится",
   "tooltip.agescrafting.chopping_block.empty": "Пусто",
   "item.agescrafting.chopping_block": "Пень для рубки",
   "gui.agescrafting.chopping_block.chops": "Нужно ударов: %s",
@@ -145,8 +147,7 @@
   "gui.agescrafting.anvil.hits": "Нужно ударов: %s",
   "item.agescrafting.anvil": "Наковальня",
   "message.agescrafting.anvil.low_hunger": "Недостаточно сытости для наковальни",
-  "block.agescrafting.anvil": "Наковальня"
-,
+  "block.agescrafting.anvil": "Наковальня",
   "block.agescrafting.stone_anvil": "Каменная наковальня",
   "block.agescrafting.granite_anvil": "Гранитная наковальня",
   "block.agescrafting.diorite_anvil": "Диоритовая наковальня",
@@ -163,5 +164,6 @@
   "item.agescrafting.obsidian_anvil": "Обсидиановая наковальня",
   "subtitle.agescrafting.barrel.seal": "Бочка запечатана",
   "subtitle.agescrafting.barrel.unseal": "Бочка распечатана",
-  "tooltip.agescrafting.wood_chips_pile.layers": "Щепа: %s / %s"
+  "tooltip.agescrafting.wood_chips_pile.layers": "Щепа: %s / %s",
+  "item.agescrafting.ash": "Зола"
 }

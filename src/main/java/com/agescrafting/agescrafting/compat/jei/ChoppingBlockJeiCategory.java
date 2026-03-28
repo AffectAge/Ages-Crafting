@@ -13,6 +13,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
@@ -23,12 +24,16 @@ public class ChoppingBlockJeiCategory implements IRecipeCategory<ChoppingBlockRe
             ChoppingBlockRecipe.class
     );
 
+    private static final ResourceLocation ATLAS = ResourceLocation.fromNamespaceAndPath("agescrafting", "gui/chopping_block_recipe.png");
+
     private final IDrawable icon;
     private final IDrawable background;
 
     public ChoppingBlockJeiCategory(IGuiHelper guiHelper) {
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModBlocks.CHOPPING_BLOCK.get()));
-        this.background = guiHelper.createBlankDrawable(120, 58);
+        this.background = guiHelper.drawableBuilder(ATLAS, 0, 0, 120, 58)
+                .setTextureSize(120, 58)
+                .build();
     }
 
     @Override
@@ -61,7 +66,7 @@ public class ChoppingBlockJeiCategory implements IRecipeCategory<ChoppingBlockRe
         builder.addSlot(RecipeIngredientRole.INPUT, 8, 18)
                 .addIngredients(recipe.ingredient());
 
-        builder.addSlot(RecipeIngredientRole.CATALYST, 44, 18)
+        builder.addSlot(RecipeIngredientRole.CATALYST, 32, 18)
                 .addIngredients(recipe.tool());
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 92, 18)
@@ -70,12 +75,13 @@ public class ChoppingBlockJeiCategory implements IRecipeCategory<ChoppingBlockRe
 
     @Override
     public void draw(@NotNull ChoppingBlockRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        background.draw(guiGraphics, 0, 0);
         var font = Minecraft.getInstance().font;
-        guiGraphics.drawString(font,
-                Component.translatable("gui.agescrafting.chopping_block.chops", recipe.chopsRequired()),
-                30,
-                40,
-                0x5E5E5E,
-                false);
+        Component chops = Component.translatable("gui.agescrafting.chopping_block.chops", recipe.chopsRequired());
+        int textX = (getWidth() - font.width(chops)) / 2;
+        guiGraphics.drawString(font, chops, textX, 40, 0x5E5E5E, false);
     }
 }
+
+
+

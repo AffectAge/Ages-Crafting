@@ -135,7 +135,7 @@ public class PrimitiveCampfireBlock extends BaseEntityBlock {
         if (!held.isEmpty() && held.getItem() instanceof ShovelItem && campfire.getAshLevel() > 0) {
             if (!level.isClientSide) {
                 campfire.reduceAsh(1);
-                Block.popResource(level, pos, new ItemStack(Items.BONE_MEAL));
+                Block.popResource(level, pos, new ItemStack(com.agescrafting.agescrafting.registry.ModItems.ASH.get()));
                 held.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
                 level.playSound(null, pos, SoundEvents.SAND_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
@@ -221,4 +221,5 @@ public class PrimitiveCampfireBlock extends BaseEntityBlock {
         }
     }
 }
+
 

@@ -109,6 +109,8 @@ public class ModItems {
     public static final RegistryObject<Item> CRIMSON_DRYING_RACK_ITEM = registerBlockItem("crimson_drying_rack", ModBlocks.CRIMSON_DRYING_RACK);
     public static final RegistryObject<Item> WARPED_DRYING_RACK_ITEM = registerBlockItem("warped_drying_rack", ModBlocks.WARPED_DRYING_RACK);
 
+    public static final RegistryObject<Item> ASH = ITEMS.register("ash", () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> WOOD_CHIPS = ITEMS.register("wood_chips", () -> new Item(new Item.Properties()) {
         @Override
         public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
@@ -139,3 +141,5 @@ public class ModItems {
         return ITEMS.register(id, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 }
+
+
