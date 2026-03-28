@@ -8,7 +8,7 @@
   "gui.agescrafting.layer.bottom": "Нижний слой",
   "gui.agescrafting.layer.middle": "Средний слой",
   "gui.agescrafting.layer.top": "Верхний слой",
-  "gui.agescrafting.assembly_tool": "Инструмент сборки",
+  "gui.agescrafting.assembly_tool": "Инструмент",
   "gui.agescrafting.result": "Результат",
   "gui.agescrafting.stage_required": "Требуется стадия: %s",
   "message.agescrafting.stage_required": "Нужна стадия: %s",

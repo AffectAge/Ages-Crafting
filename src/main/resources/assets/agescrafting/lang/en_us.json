@@ -8,7 +8,7 @@
   "gui.agescrafting.layer.bottom": "Bottom",
   "gui.agescrafting.layer.middle": "Middle",
   "gui.agescrafting.layer.top": "Top",
-  "gui.agescrafting.assembly_tool": "Assembly Tool",
+  "gui.agescrafting.assembly_tool": "Tool",
   "gui.agescrafting.result": "Result",
   "gui.agescrafting.stage_required": "Requires Stage: %s",
   "message.agescrafting.stage_required": "Requires stage: %s",
