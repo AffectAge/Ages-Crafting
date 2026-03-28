@@ -64,6 +64,7 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
     private static final String TAG_SEALED = "sealed";
     private static final String TAG_RECIPE_PROGRESS = "recipeProgress";
     private static final String TAG_ACTIVE_RECIPE = "activeRecipe";
+    private static final int MAX_MENU_SYNC_TICKS = Short.MAX_VALUE;
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(TOTAL_SLOTS) {
         @Override
@@ -155,6 +156,8 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
                 case 2 -> getTotalOutputAmount();
                 case 3 -> getTotalOutputCapacity();
                 case 4 -> sealed ? 1 : 0;
+                case 5 -> getSyncedRecipeProgress();
+                case 6 -> getSyncedRecipeTotal();
                 default -> 0;
             };
         }
@@ -166,7 +169,7 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
 
         @Override
         public int getCount() {
-            return 5;
+            return 7;
         }
     };
 
@@ -178,6 +181,7 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
     private boolean suppressContainerSlotHooks;
 
     private int recipeProgress;
+    private int recipeTotalTicks;
     private @Nullable ResourceLocation activeRecipeId;
     private boolean recipeStateDirty = true;
 
@@ -232,11 +236,32 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         return sealed;
     }
 
+    private int getSyncedRecipeTotal() {
+        int total = getRecipeTotalTicks();
+        if (total <= 0) {
+            return 0;
+        }
+        return Math.min(MAX_MENU_SYNC_TICKS, total);
+    }
+
+    private int getSyncedRecipeProgress() {
+        int total = getRecipeTotalTicks();
+        if (total <= 0) {
+            return 0;
+        }
+
+        int syncedTotal = Math.min(MAX_MENU_SYNC_TICKS, total);
+        int progress = Math.max(0, Math.min(getRecipeProgressTicks(), total));
+        return (int) Math.round((progress / (double) total) * syncedTotal);
+    }
     public int getRecipeProgressTicks() {
         return Math.max(0, recipeProgress);
     }
 
     public int getRecipeTotalTicks() {
+        if (recipeTotalTicks > 0) {
+            return recipeTotalTicks;
+        }
         if (activeRecipeId == null || level == null) {
             return 0;
         }
@@ -580,6 +605,7 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         }
 
         int targetTicks = Math.max(1, Math.round(Math.max(1, recipe.durationTicks()) * getSeasonDurationMultiplier(recipe)));
+        recipeTotalTicks = targetTicks;
         recipeProgress++;
         if (recipeProgress >= targetTicks) {
             if (executeCraft(recipe, itemConsumption, fluidConsumption, maxCrafts)) {
@@ -599,8 +625,7 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
                 return activeRecipe;
             }
 
-            activeRecipeId = null;
-            recipeProgress = 0;
+            resetRecipeProgress();
         }
 
         if (!recipeStateDirty && level != null && level.getGameTime() % 20L != 0L) {
@@ -919,6 +944,7 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
     }
     private void resetRecipeProgress() {
         recipeProgress = 0;
+        recipeTotalTicks = 0;
         activeRecipeId = null;
         recipeStateDirty = true;
     }
@@ -1180,6 +1206,15 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         return fluid;
     }
 }
+
+
+
+
+
+
+
+
+
 
 
 

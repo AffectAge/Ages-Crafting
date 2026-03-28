@@ -63,6 +63,8 @@
   "tooltip.agescrafting.barrel.rain_fill": "Наполнение дождем: открыта + пустые резервуары + дождь",
   "tooltip.agescrafting.barrel.clear_tank_hint": "Shift + ПКМ: очистить этот резервуар",
   "tooltip.agescrafting.barrel.rain_fill_fluid": "Будет наполняться: %s",
+  "tooltip.agescrafting.barrel.item.seal_toggle": "Shift + ПКМ (пустая рука): запечатать / распечатать бочку",
+  "tooltip.agescrafting.barrel.item.sealed_storage": "В запечатанном виде бочка сохраняет предметы и жидкости",
   "block.agescrafting.drying_rack": "Сушильная стойка",
   "item.agescrafting.drying_rack": "Сушильная стойка",
   "block.agescrafting.primitive_campfire": "Примитивный костер",
@@ -100,6 +102,7 @@
   "tooltip.agescrafting.primitive_campfire.overcook_progress": "Пережарка: %s / %s",
   "tooltip.agescrafting.primitive_campfire.overcook_remaining": "До пережарки: %s",
   "tooltip.agescrafting.primitive_campfire.overcooked": "Пережарено",
+  "tooltip.agescrafting.primitive_campfire.log_burn_remaining": "Полено сгорит через: %s",
   "emi.category.agescrafting.primitive_campfire": "Примитивный костер",
   "gui.agescrafting.primitive_campfire.cook_time": "Время жарки: %s с",
   "gui.agescrafting.primitive_campfire.overcook_time": "Время пережарки: %s с",
@@ -173,6 +176,9 @@
   "tooltip.agescrafting.wood_chips_pile.layers": "Щепа: %s / %s",
   "item.agescrafting.ash": "Зола"
 }
+
+
+
 
 
 

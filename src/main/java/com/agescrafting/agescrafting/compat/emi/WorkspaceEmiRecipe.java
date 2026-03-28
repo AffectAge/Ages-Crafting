@@ -18,6 +18,10 @@ import java.util.List;
 import java.util.Optional;
 
 public class WorkspaceEmiRecipe implements EmiRecipe {
+    private static final ResourceLocation ATLAS = ResourceLocation.fromNamespaceAndPath("agescrafting", "gui/workspace_recipe.png");
+    private static final int DISPLAY_W = 190;
+    private static final int DISPLAY_H = 122;
+
     private static final int LAYER0_X = 8;
     private static final int LAYER1_X = 68;
     private static final int LAYER2_X = 128;
@@ -62,16 +66,18 @@ public class WorkspaceEmiRecipe implements EmiRecipe {
 
     @Override
     public int getDisplayWidth() {
-        return 190;
+        return DISPLAY_W;
     }
 
     @Override
     public int getDisplayHeight() {
-        return 122;
+        return DISPLAY_H;
     }
 
     @Override
     public void addWidgets(WidgetHolder widgets) {
+        widgets.addTexture(ATLAS, 0, 0, 0, 0, DISPLAY_W, DISPLAY_H, DISPLAY_W, DISPLAY_H, DISPLAY_W, DISPLAY_H);
+
         addCenteredText(widgets, "gui.agescrafting.layer.bottom", LAYER0_X + LAYER_SIZE / 2, 3);
         addCenteredText(widgets, "gui.agescrafting.layer.middle", LAYER1_X + LAYER_SIZE / 2, 3);
         addCenteredText(widgets, "gui.agescrafting.layer.top", LAYER2_X + LAYER_SIZE / 2, 3);
@@ -101,7 +107,6 @@ public class WorkspaceEmiRecipe implements EmiRecipe {
                 if (ingredient.isPresent()) {
                     widgets.addSlot(EmiIngredient.of(ingredient.get()), startX + x * 18, startY + z * 18).drawBack(true);
                 } else {
-                    // Draw an empty slot for clear 3x3x3 layer framing, matching JEI layout.
                     widgets.addSlot(EmiStack.EMPTY, startX + x * SLOT_STEP, startY + z * SLOT_STEP).drawBack(true);
                 }
             }
@@ -118,4 +123,3 @@ public class WorkspaceEmiRecipe implements EmiRecipe {
         widgets.addText(translated, x, y, 0x9A9A9A, false);
     }
 }
-

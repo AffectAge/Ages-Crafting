@@ -5,7 +5,7 @@ import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -65,6 +65,7 @@ public class WorkspaceTableBlockEntity extends BlockEntity {
             items.set(index, ItemStack.EMPTY);
             recomputeBitmask();
             Block.popResourceFromFace(serverLevel, worldPosition, hit.getDirection(), extracted);
+            serverLevel.playSound(null, worldPosition, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 0.8F, 1.0F);
             markUpdated();
             return InteractionResult.CONSUME;
         }
@@ -133,18 +134,43 @@ public class WorkspaceTableBlockEntity extends BlockEntity {
         serverLevel.setBlockAndUpdate(worldPosition, targetState);
         serverLevel.blockEntityChanged(worldPosition);
         serverLevel.playSound(null, worldPosition, SoundEvents.STONE_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
-        serverLevel.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, targetState),
-                worldPosition.getX() + 0.5,
-                worldPosition.getY() + 0.5,
-                worldPosition.getZ() + 0.5,
-                80,
-                0.25,
-                0.25,
-                0.25,
-                0.1);
+        serverLevel.playSound(null, worldPosition, SoundEvents.PLAYER_LEVELUP, SoundSource.BLOCKS, 0.45F, 1.35F);
+        spawnWorkspaceAssembleFx(serverLevel, targetState);
 
         flint.hurtAndBreak(1, player, breaker -> breaker.broadcastBreakEvent(hand));
         return InteractionResult.CONSUME;
+    }
+
+
+    private void spawnWorkspaceAssembleFx(ServerLevel serverLevel, BlockState targetState) {
+        double cx = worldPosition.getX() + 0.5D;
+        double cy = worldPosition.getY() + 0.5D;
+        double cz = worldPosition.getZ() + 0.5D;
+
+        for (Direction direction : Direction.values()) {
+            double dx = direction.getStepX();
+            double dy = direction.getStepY();
+            double dz = direction.getStepZ();
+
+            for (int i = 0; i < 8; i++) {
+                double px = cx + dx * 0.54D + (serverLevel.random.nextDouble() - 0.5D) * (dy == 0 ? 0.24D : 0.18D);
+                double py = cy + dy * 0.54D + (serverLevel.random.nextDouble() - 0.5D) * (dy == 0 ? 0.18D : 0.10D);
+                double pz = cz + dz * 0.54D + (serverLevel.random.nextDouble() - 0.5D) * (dy == 0 ? 0.24D : 0.18D);
+
+                double vx = -dx * 0.045D + (serverLevel.random.nextDouble() - 0.5D) * 0.012D;
+                double vy = -dy * 0.045D + 0.004D + (serverLevel.random.nextDouble() - 0.5D) * 0.012D;
+                double vz = -dz * 0.045D + (serverLevel.random.nextDouble() - 0.5D) * 0.012D;
+
+                serverLevel.sendParticles(ParticleTypes.HAPPY_VILLAGER, px, py, pz, 0, vx, vy, vz, 1.0D);
+            }
+        }
+
+        for (int i = 0; i < 20; i++) {
+            double vx = (serverLevel.random.nextDouble() - 0.5D) * 0.035D;
+            double vy = 0.045D + serverLevel.random.nextDouble() * 0.045D;
+            double vz = (serverLevel.random.nextDouble() - 0.5D) * 0.035D;
+            serverLevel.sendParticles(ParticleTypes.HAPPY_VILLAGER, cx, cy + 0.36D, cz, 0, vx, vy, vz, 1.0D);
+        }
     }
 
     private void markUpdated() {
@@ -233,4 +259,13 @@ public class WorkspaceTableBlockEntity extends BlockEntity {
         return -1;
     }
 }
+
+
+
+
+
+
+
+
+
 

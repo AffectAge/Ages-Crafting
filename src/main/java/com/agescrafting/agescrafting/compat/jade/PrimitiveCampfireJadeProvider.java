@@ -31,6 +31,8 @@ public enum PrimitiveCampfireJadeProvider implements IBlockComponentProvider, IS
     private static final String TAG_COOK_TOTAL = "CookTotal";
     private static final String TAG_OVERCOOK_PROGRESS = "OvercookProgress";
     private static final String TAG_OVERCOOK_TOTAL = "OvercookTotal";
+    private static final String TAG_BURN_REMAINING = "BurnRemaining";
+    private static final String TAG_BURN_TOTAL = "BurnTotal";
 
     @Override
     public void appendServerData(CompoundTag data, @NotNull BlockAccessor accessor) {
@@ -42,6 +44,8 @@ public enum PrimitiveCampfireJadeProvider implements IBlockComponentProvider, IS
                 == PrimitiveCampfireBlockEntity.Variant.LIT);
         data.putInt(TAG_FUEL, campfire.getFuelCount());
         data.putInt(TAG_ASH, campfire.getAshLevel());
+        data.putInt(TAG_BURN_REMAINING, campfire.getBurnTimeRemaining());
+        data.putInt(TAG_BURN_TOTAL, campfire.getBurnTimePerLogTicks());
 
         data.putBoolean(TAG_HAS_ITEM, campfire.hasCookItem());
         data.putBoolean(TAG_COOKED, campfire.isCooked());
@@ -67,6 +71,15 @@ public enum PrimitiveCampfireJadeProvider implements IBlockComponentProvider, IS
 
         tooltip.add(Component.translatable("tooltip.agescrafting.primitive_campfire.fuel", fuel, PrimitiveCampfireBlockEntity.MAX_FUEL));
         tooltip.add(Component.translatable("tooltip.agescrafting.primitive_campfire.ash", ash, PrimitiveCampfireBlockEntity.MAX_ASH_LEVEL));
+
+        int burnRemaining = Math.max(0, data.getInt(TAG_BURN_REMAINING));
+        if (active && burnRemaining > 0) {
+            int burnTotal = Math.max(1, data.getInt(TAG_BURN_TOTAL));
+            int burnProgress = Mth.clamp(burnTotal - burnRemaining, 0, burnTotal);
+            float burnRatio = burnProgress / (float) burnTotal;
+            tooltip.add(Component.translatable("tooltip.agescrafting.primitive_campfire.log_burn_remaining", JadeTimeFormat.formatRemainingTicks(burnProgress, burnTotal)).withStyle(ChatFormatting.GRAY));
+            tooltip.add(IElementHelper.get().progress(burnRatio, Component.empty(), IElementHelper.get().progressStyle(), BoxStyle.DEFAULT, true));
+        }
 
         if (!data.getBoolean(TAG_HAS_ITEM)) {
             tooltip.add(Component.translatable("tooltip.agescrafting.primitive_campfire.empty"));
@@ -99,4 +112,3 @@ public enum PrimitiveCampfireJadeProvider implements IBlockComponentProvider, IS
         return UID;
     }
 }
-

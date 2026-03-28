@@ -46,7 +46,6 @@ public class PrimitiveCampfireBlock extends BaseEntityBlock {
                 .setValue(VARIANT, PrimitiveCampfireBlockEntity.Variant.NORMAL)
                 .setValue(ASH, 0));
     }
-
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(VARIANT, ASH);
@@ -61,6 +60,8 @@ public class PrimitiveCampfireBlock extends BaseEntityBlock {
     public int getLightEmission(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos) {
         return state.getValue(VARIANT) == PrimitiveCampfireBlockEntity.Variant.LIT ? 13 : 0;
     }
+
+
 
     @Override
     public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull CollisionContext context) {

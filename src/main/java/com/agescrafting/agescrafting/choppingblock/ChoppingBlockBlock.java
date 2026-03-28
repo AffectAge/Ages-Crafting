@@ -130,6 +130,8 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
             }
 
             boolean completed = chopping.advanceProgress();
+            level.playSound(null, pos, SoundEvents.WOOD_HIT, SoundSource.BLOCKS, 0.85F, 1.0F);
+            spawnHitFx(level, pos);
             int durabilityCost = Math.max(0, recipe.durabilityPerChop());
             if (!player.getAbilities().instabuild && held.isDamageableItem() && durabilityCost > 0) {
                 held.hurtAndBreak(durabilityCost, player, p -> p.broadcastBreakEvent(hand));
@@ -237,7 +239,20 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
         level.addFreshEntity(entity);
     }
 
-    private static void spawnRecipeCompleteFx(Level level, BlockPos pos) {
+
+    private static void spawnHitFx(Level level, BlockPos pos) {
+        if (level instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(ParticleTypes.HAPPY_VILLAGER,
+                    pos.getX() + 0.5D,
+                    pos.getY() + 0.72D,
+                    pos.getZ() + 0.5D,
+                    6,
+                    0.24D,
+                    0.10D,
+                    0.24D,
+                    0.01D);
+        }
+    }    private static void spawnRecipeCompleteFx(Level level, BlockPos pos) {
         if (level instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(ParticleTypes.CRIT,
                     pos.getX() + 0.5D,
@@ -257,6 +272,8 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
         }
     }
 }
+
+
 
 
 

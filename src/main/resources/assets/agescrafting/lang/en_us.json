@@ -63,6 +63,8 @@
   "tooltip.agescrafting.barrel.rain_fill": "Rain fill: open + empty tanks + rain",
   "tooltip.agescrafting.barrel.clear_tank_hint": "Shift + Right Click: clear this tank",
   "tooltip.agescrafting.barrel.rain_fill_fluid": "Rain fluid: %s",
+  "tooltip.agescrafting.barrel.item.seal_toggle": "Shift + Right Click (empty hand): seal / unseal the barrel",
+  "tooltip.agescrafting.barrel.item.sealed_storage": "When sealed, the barrel keeps items and fluids inside",
   "block.agescrafting.drying_rack": "Aging Drying Rack",
   "item.agescrafting.drying_rack": "Aging Drying Rack",
   "block.agescrafting.primitive_campfire": "Primitive Campfire",
@@ -100,6 +102,7 @@
   "tooltip.agescrafting.primitive_campfire.overcook_progress": "Overcooking: %s / %s",
   "tooltip.agescrafting.primitive_campfire.overcook_remaining": "Overcook left: %s",
   "tooltip.agescrafting.primitive_campfire.overcooked": "Overcooked",
+  "tooltip.agescrafting.primitive_campfire.log_burn_remaining": "Log burns out in: %s",
   "emi.category.agescrafting.primitive_campfire": "Primitive Campfire",
   "gui.agescrafting.primitive_campfire.cook_time": "Cook time: %s s",
   "gui.agescrafting.primitive_campfire.overcook_time": "Overcook time: %s s",
@@ -173,6 +176,9 @@
   "tooltip.agescrafting.wood_chips_pile.layers": "Wood chips: %s / %s",
   "item.agescrafting.ash": "Ash"
 }
+
+
+
 
 
 

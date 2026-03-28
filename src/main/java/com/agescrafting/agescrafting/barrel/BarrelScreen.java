@@ -48,6 +48,14 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
     private static final int SEAL_BUTTON_X = 14;
     private static final int SEAL_BUTTON_Y = 39;
 
+    private static final int PROGRESS_X = 115;
+    private static final int PROGRESS_Y = 17;
+    private static final int PROGRESS_W = 5;
+    private static final int PROGRESS_H = 54;
+    private static final int PROGRESS_TRACK_U = 184;
+    private static final int PROGRESS_TRACK_V = 0;
+    private static final int PROGRESS_FILL_U = 190;
+    private static final int PROGRESS_FILL_V = 0;
     private Button sealButton;
 
     public BarrelScreen(BarrelMenu menu, Inventory inventory, Component title) {
@@ -102,6 +110,7 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         int sealX = x + SEAL_BUTTON_X;
         int sealY = y + SEAL_BUTTON_Y;
         blitSealIcon(guiGraphics, sealX, sealY);
+        renderProgress(guiGraphics, x + PROGRESS_X, y + PROGRESS_Y);
         if (isMouseOverSealButton(mouseX, mouseY)) {
             guiGraphics.fill(sealX + 1, sealY + 1, sealX + ICON_W - 1, sealY + ICON_H - 1, 0x66FFFFFF);
         }
@@ -129,6 +138,24 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         guiGraphics.blit(ATLAS, x, y, u, v, ICON_W, ICON_H, ATLAS_WIDTH, ATLAS_HEIGHT);
     }
 
+    private void renderProgress(GuiGraphics guiGraphics, int x, int y) {
+        guiGraphics.blit(ATLAS, x, y, PROGRESS_TRACK_U, PROGRESS_TRACK_V, PROGRESS_W, PROGRESS_H, ATLAS_WIDTH, ATLAS_HEIGHT);
+
+        int total = menu.getRecipeTotal();
+        if (total <= 0) {
+            return;
+        }
+
+        int progress = Math.max(0, Math.min(menu.getRecipeProgress(), total));
+        int fillHeight = (int) Math.round((progress / (double) total) * PROGRESS_H);
+        if (fillHeight <= 0) {
+            return;
+        }
+
+        int dstY = y + (PROGRESS_H - fillHeight);
+        int srcV = PROGRESS_FILL_V + (PROGRESS_H - fillHeight);
+        guiGraphics.blit(ATLAS, x, dstY, PROGRESS_FILL_U, srcV, PROGRESS_W, fillHeight, ATLAS_WIDTH, ATLAS_HEIGHT);
+    }
     private void renderTank(GuiGraphics guiGraphics, int tankX, int tankY, FluidStack fluid, int amount, int capacity) {
         if (fluid.isEmpty() || amount <= 0) {
             return;
@@ -262,6 +289,11 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         guiGraphics.renderComponentTooltip(font, tooltip, mouseX, mouseY);
     }
 }
+
+
+
+
+
 
 
 

@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -26,13 +27,17 @@ public class BarrelMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public BarrelMenu(int containerId, Inventory playerInventory, FriendlyByteBuf buffer) {
-        this(containerId, playerInventory, getBlockEntity(playerInventory, buffer.readBlockPos()));
+        this(containerId, playerInventory, getBlockEntity(playerInventory, buffer.readBlockPos()), new SimpleContainerData(7));
     }
 
     public BarrelMenu(int containerId, Inventory playerInventory, BarrelBlockEntity blockEntity) {
+        this(containerId, playerInventory, blockEntity, blockEntity.getMenuData());
+    }
+
+    private BarrelMenu(int containerId, Inventory playerInventory, BarrelBlockEntity blockEntity, ContainerData data) {
         super(ModMenuTypes.BARREL.get(), containerId);
         this.blockEntity = blockEntity;
-        this.data = blockEntity.getMenuData();
+        this.data = data;
 
         addSlot(new SlotItemHandler(blockEntity.getItemHandler(), BarrelBlockEntity.CONTAINER_SLOT, 15, 18) {
             @Override
@@ -205,6 +210,14 @@ public class BarrelMenu extends AbstractContainerMenu {
         return blockEntity.getOutputFluid();
     }
 
+    public int getRecipeProgress() {
+        return Math.max(0, data.get(5));
+    }
+
+    public int getRecipeTotal() {
+        return Math.max(0, data.get(6));
+    }
+
     private static BarrelBlockEntity getBlockEntity(Inventory playerInventory, BlockPos blockPos) {
         if (playerInventory.player.level().getBlockEntity(blockPos) instanceof BarrelBlockEntity barrelBlockEntity) {
             return barrelBlockEntity;
@@ -212,4 +225,3 @@ public class BarrelMenu extends AbstractContainerMenu {
         throw new IllegalStateException("Barrel block entity is missing at " + blockPos);
     }
 }
-

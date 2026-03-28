@@ -27,6 +27,8 @@ public class BarrelBlockItem extends BlockItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, level, tooltip, flag);
+        tooltip.add(Component.translatable("tooltip.agescrafting.barrel.item.seal_toggle").withStyle(ChatFormatting.YELLOW));
+        tooltip.add(Component.translatable("tooltip.agescrafting.barrel.item.sealed_storage").withStyle(ChatFormatting.GRAY));
 
         CompoundTag blockEntityTag = BlockItem.getBlockEntityData(stack);
         if (blockEntityTag == null && stack.hasTag() && stack.getTag().contains("BlockEntityTag", Tag.TAG_COMPOUND)) {
@@ -86,3 +88,4 @@ public class BarrelBlockItem extends BlockItem {
         return amount;
     }
 }
+

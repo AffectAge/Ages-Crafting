@@ -13,6 +13,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.jetbrains.annotations.NotNull;
@@ -22,6 +23,8 @@ import java.util.Optional;
 public class WorkspaceJeiCategory implements IRecipeCategory<WorkspaceCraftingRecipe> {
     private static final int RECIPE_WIDTH = 190;
     private static final int RECIPE_HEIGHT = 122;
+    private static final ResourceLocation ATLAS = ResourceLocation.fromNamespaceAndPath("agescrafting", "gui/workspace_recipe.png");
+
     private static final int LAYER0_X = 8;
     private static final int LAYER1_X = 68;
     private static final int LAYER2_X = 128;
@@ -36,9 +39,13 @@ public class WorkspaceJeiCategory implements IRecipeCategory<WorkspaceCraftingRe
     );
 
     private final IDrawable icon;
+    private final IDrawable background;
 
     public WorkspaceJeiCategory(IGuiHelper guiHelper) {
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModBlocks.WORKSPACE_TABLE.get()));
+        this.background = guiHelper.drawableBuilder(ATLAS, 0, 0, RECIPE_WIDTH, RECIPE_HEIGHT)
+                .setTextureSize(RECIPE_WIDTH, RECIPE_HEIGHT)
+                .build();
     }
 
     @Override
@@ -96,6 +103,7 @@ public class WorkspaceJeiCategory implements IRecipeCategory<WorkspaceCraftingRe
 
     @Override
     public void draw(@NotNull WorkspaceCraftingRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        background.draw(guiGraphics, 0, 0);
         drawCentered(guiGraphics, "gui.agescrafting.layer.bottom", LAYER0_X + LAYER_SIZE / 2, 3);
         drawCentered(guiGraphics, "gui.agescrafting.layer.middle", LAYER1_X + LAYER_SIZE / 2, 3);
         drawCentered(guiGraphics, "gui.agescrafting.layer.top", LAYER2_X + LAYER_SIZE / 2, 3);
@@ -115,4 +123,3 @@ public class WorkspaceJeiCategory implements IRecipeCategory<WorkspaceCraftingRe
         guiGraphics.drawString(font, text, x, y, 0x9A9A9A, false);
     }
 }
-

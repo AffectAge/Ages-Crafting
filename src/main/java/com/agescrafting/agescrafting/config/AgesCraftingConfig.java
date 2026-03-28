@@ -29,6 +29,7 @@ public final class AgesCraftingConfig {
         public final ForgeConfigSpec.DoubleValue campfireRainExtinguishChancePerSecond;
         public final ForgeConfigSpec.DoubleValue campfireRainCookTimeMultiplier;
         public final ForgeConfigSpec.DoubleValue campfireAshCookPenaltyPerLevel;
+        public final ForgeConfigSpec.IntValue campfireLogBurnTimeTicks;
         public final ForgeConfigSpec.IntValue pitKilnMaxStackSize;
         public final ForgeConfigSpec.DoubleValue pitKilnBaseRecipeDurationModifier;
         public final ForgeConfigSpec.DoubleValue pitKilnVariableSpeedModifier;
@@ -93,6 +94,9 @@ public final class AgesCraftingConfig {
             campfireAshCookPenaltyPerLevel = builder
                     .comment("Additional cooking time multiplier added per ash level. Final multiplier: 1 + ash * value.")
                     .defineInRange("ashCookPenaltyPerLevel", 0.12D, 0.0D, 2.0D);
+            campfireLogBurnTimeTicks = builder
+                    .comment("Burn time in ticks for one log in primitive campfire. Vanilla furnace log equivalent is 300.")
+                    .defineInRange("logBurnTimeTicks", 300, 1, 72000);
             builder.pop();
 
             builder.push("pitKiln");
@@ -145,3 +149,4 @@ public final class AgesCraftingConfig {
         }
     }
 }
+

@@ -29,6 +29,8 @@ public class BarrelJeiCategory implements IRecipeCategory<BarrelRecipe> {
     private static final int X_OFFSET = 9;
 
     private static final ResourceLocation ATLAS = ResourceLocation.fromNamespaceAndPath("agescrafting", "gui/barrel_recipe.png");
+    private static final int ATLAS_WIDTH = 176;
+    private static final int ATLAS_HEIGHT = 160;
 
     private static final int ITEM_GRID_X = 48 + X_OFFSET;
     private static final int ITEM_GRID_Y = 18;
@@ -43,6 +45,15 @@ public class BarrelJeiCategory implements IRecipeCategory<BarrelRecipe> {
     private static final int TANK_W = 14;
     private static final int TANK_H = 52;
 
+    private static final int PROGRESS_X = 115;
+    private static final int PROGRESS_Y = 17;
+    private static final int PROGRESS_W = 5;
+    private static final int PROGRESS_H = 54;
+    private static final int PROGRESS_TRACK_U = 0;
+    private static final int PROGRESS_TRACK_V = 99;
+    private static final int PROGRESS_FILL_U = 8;
+    private static final int PROGRESS_FILL_V = 99;
+
     public static final RecipeType<BarrelRecipe> TYPE = RecipeType.create(
             AgesCraftingMod.MODID,
             "barrel",
@@ -55,7 +66,7 @@ public class BarrelJeiCategory implements IRecipeCategory<BarrelRecipe> {
     public BarrelJeiCategory(IGuiHelper guiHelper) {
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModBlocks.BARREL.get()));
         this.background = guiHelper.drawableBuilder(ATLAS, 0, 0, RECIPE_WIDTH, RECIPE_HEIGHT)
-                .setTextureSize(RECIPE_WIDTH, RECIPE_HEIGHT)
+                .setTextureSize(ATLAS_WIDTH, ATLAS_HEIGHT)
                 .build();
     }
 
@@ -136,6 +147,14 @@ public class BarrelJeiCategory implements IRecipeCategory<BarrelRecipe> {
     public void draw(@NotNull BarrelRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
         background.draw(guiGraphics, 0, 0);
 
+        guiGraphics.blit(ATLAS, PROGRESS_X, PROGRESS_Y, PROGRESS_TRACK_U, PROGRESS_TRACK_V, PROGRESS_W, PROGRESS_H, ATLAS_WIDTH, ATLAS_HEIGHT);
+        int animatedHeight = getAnimatedProgressHeight();
+        if (animatedHeight > 0) {
+            int dstY = PROGRESS_Y + (PROGRESS_H - animatedHeight);
+            int srcV = PROGRESS_FILL_V + (PROGRESS_H - animatedHeight);
+            guiGraphics.blit(ATLAS, PROGRESS_X, dstY, PROGRESS_FILL_U, srcV, PROGRESS_W, animatedHeight, ATLAS_WIDTH, ATLAS_HEIGHT);
+        }
+
         var font = Minecraft.getInstance().font;
         if (recipe.requiresSealed()) {
             Component sealed = Component.translatable("gui.agescrafting.barrel.sealed");
@@ -150,6 +169,14 @@ public class BarrelJeiCategory implements IRecipeCategory<BarrelRecipe> {
             guiGraphics.drawString(font, time, timeX, 84, 0x5E5E5E, false);
         }
     }
+
+    private static int getAnimatedProgressHeight() {
+        int cycleTicks = 40;
+        long cycleMs = cycleTicks * 50L;
+        long elapsed = System.currentTimeMillis() % cycleMs;
+        return (int) Math.round((elapsed / (double) cycleMs) * PROGRESS_H);
+    }
+
     private static String formatClock(int ticks) {
         int totalSeconds = Math.max(0, ticks / 20);
         int minutes = totalSeconds / 60;
@@ -157,3 +184,6 @@ public class BarrelJeiCategory implements IRecipeCategory<BarrelRecipe> {
         return String.format(Locale.ROOT, "%02d:%02d", minutes, seconds);
     }
 }
+
+
+

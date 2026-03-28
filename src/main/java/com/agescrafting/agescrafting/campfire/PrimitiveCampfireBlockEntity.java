@@ -26,7 +26,6 @@ import org.jetbrains.annotations.Nullable;
 public class PrimitiveCampfireBlockEntity extends BlockEntity {
     public static final int MAX_FUEL = 8;
     public static final int MAX_ASH_LEVEL = 8;
-    private static final int BURN_TIME_PER_LOG = 200;
     private static final float ASH_CHANCE_ON_LOG_BURN = 0.45F;
     private static final int OVERCOOK_TICKS = 200;
     private static final int RAIN_CHECK_INTERVAL_TICKS = 20;
@@ -68,7 +67,7 @@ public class PrimitiveCampfireBlockEntity extends BlockEntity {
         super(ModBlockEntities.PRIMITIVE_CAMPFIRE_BE.get(), pos, state);
     }
 
-    public static void serverTick(Level level, BlockPos pos, BlockState state, PrimitiveCampfireBlockEntity be) {
+        public static void serverTick(Level level, BlockPos pos, BlockState state, PrimitiveCampfireBlockEntity be) {
         be.tickServer(level);
     }
 
@@ -121,7 +120,7 @@ public class PrimitiveCampfireBlockEntity extends BlockEntity {
 
         active = true;
         if (burnTime <= 0) {
-            burnTime = BURN_TIME_PER_LOG;
+            burnTime = getBurnTimePerLog();
         }
         setVariant(Variant.LIT);
         setChanged();
@@ -302,7 +301,7 @@ public class PrimitiveCampfireBlockEntity extends BlockEntity {
             return;
         }
 
-        burnTime = BURN_TIME_PER_LOG;
+        burnTime = getBurnTimePerLog();
         setVariant(Variant.LIT);
         setChanged();
         sync();
@@ -416,7 +415,18 @@ public class PrimitiveCampfireBlockEntity extends BlockEntity {
         return -1;
     }
 
-    private void sync() {
+
+    public int getBurnTimeRemaining() {
+        return Math.max(0, burnTime);
+    }
+
+    public int getBurnTimePerLogTicks() {
+        return getBurnTimePerLog();
+    }
+
+    private static int getBurnTimePerLog() {
+        return Math.max(1, AgesCraftingConfig.SERVER.campfireLogBurnTimeTicks.get());
+    }    private void sync() {
         if (level == null || level.isClientSide) {
             return;
         }
@@ -498,6 +508,7 @@ public class PrimitiveCampfireBlockEntity extends BlockEntity {
         OVERCOOKED
     }
 }
+
 
 
 

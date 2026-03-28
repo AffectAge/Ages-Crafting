@@ -24,6 +24,8 @@ public class BarrelEmiRecipe implements EmiRecipe {
     private static final int X_OFFSET = 9;
 
     private static final ResourceLocation ATLAS = ResourceLocation.fromNamespaceAndPath("agescrafting", "gui/barrel_recipe.png");
+    private static final int ATLAS_WIDTH = 176;
+    private static final int ATLAS_HEIGHT = 160;
 
     private static final int ITEM_GRID_X = 48 + X_OFFSET;
     private static final int ITEM_GRID_Y = 18;
@@ -37,6 +39,15 @@ public class BarrelEmiRecipe implements EmiRecipe {
     private static final int TANK_Y = 18;
     private static final int TANK_W = 14;
     private static final int TANK_H = 52;
+
+    private static final int PROGRESS_X = 115;
+    private static final int PROGRESS_Y = 17;
+    private static final int PROGRESS_W = 5;
+    private static final int PROGRESS_H = 54;
+    private static final int PROGRESS_TRACK_U = 0;
+    private static final int PROGRESS_TRACK_V = 99;
+    private static final int PROGRESS_FILL_U = 8;
+    private static final int PROGRESS_FILL_V = 99;
 
     private final BarrelRecipe recipe;
     private final EmiRecipeCategory category;
@@ -107,7 +118,7 @@ public class BarrelEmiRecipe implements EmiRecipe {
 
     @Override
     public void addWidgets(WidgetHolder widgets) {
-        widgets.addTexture(ATLAS, 0, 0, 0, 0, DISPLAY_W, DISPLAY_H, DISPLAY_W, DISPLAY_H, DISPLAY_W, DISPLAY_H);
+        widgets.addTexture(ATLAS, 0, 0, 0, 0, DISPLAY_W, DISPLAY_H, DISPLAY_W, DISPLAY_H, ATLAS_WIDTH, ATLAS_HEIGHT);
 
         List<BarrelRecipe.IngredientWithCount> ingredients = recipe.itemIngredients();
         int displayCount = Math.min(9, ingredients.size());
@@ -142,6 +153,16 @@ public class BarrelEmiRecipe implements EmiRecipe {
             }
         }
 
+        widgets.addDrawable(PROGRESS_X, PROGRESS_Y, PROGRESS_W, PROGRESS_H, (guiGraphics, mouseX, mouseY, delta) -> {
+            guiGraphics.blit(ATLAS, PROGRESS_X, PROGRESS_Y, PROGRESS_TRACK_U, PROGRESS_TRACK_V, PROGRESS_W, PROGRESS_H, ATLAS_WIDTH, ATLAS_HEIGHT);
+            int animatedHeight = getAnimatedProgressHeight();
+            if (animatedHeight > 0) {
+                int dstY = PROGRESS_Y + (PROGRESS_H - animatedHeight);
+                int srcV = PROGRESS_FILL_V + (PROGRESS_H - animatedHeight);
+                guiGraphics.blit(ATLAS, PROGRESS_X, dstY, PROGRESS_FILL_U, srcV, PROGRESS_W, animatedHeight, ATLAS_WIDTH, ATLAS_HEIGHT);
+            }
+        });
+
         if (recipe.requiresSealed()) {
             var font = Minecraft.getInstance().font;
             Component sealed = Component.translatable("gui.agescrafting.barrel.sealed");
@@ -157,6 +178,14 @@ public class BarrelEmiRecipe implements EmiRecipe {
             widgets.addText(time, timeX, 84, 0x5E5E5E, false);
         }
     }
+
+    private static int getAnimatedProgressHeight() {
+        int cycleTicks = 40;
+        long cycleMs = cycleTicks * 50L;
+        long elapsed = System.currentTimeMillis() % cycleMs;
+        return (int) Math.round((elapsed / (double) cycleMs) * PROGRESS_H);
+    }
+
     private static String formatClock(int ticks) {
         int totalSeconds = Math.max(0, ticks / 20);
         int minutes = totalSeconds / 60;
@@ -164,3 +193,6 @@ public class BarrelEmiRecipe implements EmiRecipe {
         return String.format(Locale.ROOT, "%02d:%02d", minutes, seconds);
     }
 }
+
+
+
