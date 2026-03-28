@@ -96,7 +96,6 @@ public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataP
 
         if (!input.isEmpty()) {
             tooltip.add(IElementHelper.get().item(input));
-            tooltip.add(Component.translatable("tooltip.agescrafting.pit_kiln.input", input.getCount(), input.getHoverName()).withStyle(ChatFormatting.GRAY));
         }
 
         if (total <= 0) {
@@ -115,4 +114,5 @@ public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataP
         return UID;
     }
 }
+
 
