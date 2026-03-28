@@ -82,7 +82,7 @@ public enum PrimitiveCampfireJadeProvider implements IBlockComponentProvider, IS
             int total = Math.max(1, data.getInt(TAG_OVERCOOK_TOTAL));
             int progress = Mth.clamp(data.getInt(TAG_OVERCOOK_PROGRESS), 0, total);
             float ratio = progress / (float) total;
-            tooltip.add(Component.translatable("tooltip.agescrafting.primitive_campfire.overcook_progress", progress, total));
+            tooltip.add(Component.translatable("tooltip.agescrafting.primitive_campfire.overcook_remaining", JadeTimeFormat.formatRemainingTicks(progress, total)).withStyle(ChatFormatting.GRAY));
             tooltip.add(IElementHelper.get().progress(ratio, Component.empty(), IElementHelper.get().progressStyle(), BoxStyle.DEFAULT, true));
             return;
         }
@@ -90,7 +90,7 @@ public enum PrimitiveCampfireJadeProvider implements IBlockComponentProvider, IS
         int total = Math.max(1, data.getInt(TAG_COOK_TOTAL));
         int progress = Mth.clamp(data.getInt(TAG_COOK_PROGRESS), 0, total);
         float ratio = progress / (float) total;
-        tooltip.add(Component.translatable("tooltip.agescrafting.primitive_campfire.cook_progress", progress, total));
+        tooltip.add(Component.translatable("tooltip.agescrafting.primitive_campfire.cook_remaining", JadeTimeFormat.formatRemainingTicks(progress, total)).withStyle(ChatFormatting.GRAY));
         tooltip.add(IElementHelper.get().progress(ratio, Component.empty(), IElementHelper.get().progressStyle(), BoxStyle.DEFAULT, true));
     }
 
@@ -99,3 +99,4 @@ public enum PrimitiveCampfireJadeProvider implements IBlockComponentProvider, IS
         return UID;
     }
 }
+

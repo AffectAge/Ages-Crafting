@@ -2,6 +2,7 @@ package com.agescrafting.agescrafting.anvil;
 
 import com.agescrafting.agescrafting.config.AgesCraftingConfig;
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
+import com.agescrafting.agescrafting.sound.DeviceRecipeSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -100,7 +101,7 @@ public class AnvilBlock extends BaseEntityBlock {
                 if (!player.getAbilities().instabuild) {
                     held.shrink(1);
                 }
-                level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 0.8F, 1.0F);
+                DeviceRecipeSounds.playStart(level, pos);
                 return InteractionResult.CONSUME;
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
@@ -131,7 +132,6 @@ public class AnvilBlock extends BaseEntityBlock {
             if (!player.getAbilities().instabuild && held.isDamageableItem() && durabilityCost > 0) {
                 held.hurtAndBreak(durabilityCost, player, p -> p.broadcastBreakEvent(hand));
             }
-            level.playSound(null, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 0.8F, 0.95F + level.random.nextFloat() * 0.15F);
 
             if (completed) {
                 ItemStack result = anvil.consumeForResult();
@@ -141,7 +141,7 @@ public class AnvilBlock extends BaseEntityBlock {
                 if (!player.getAbilities().instabuild) {
                     player.causeFoodExhaustion((float) Math.max(0.0D, AgesCraftingConfig.SERVER.anvilExhaustionPerComplete.get()));
                 }
-                level.playSound(null, pos, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 0.9F, 1.0F);
+                DeviceRecipeSounds.playFinish(level, pos);
                 spawnRecipeCompleteFx(level, pos);
             }
         }
@@ -183,4 +183,10 @@ public class AnvilBlock extends BaseEntityBlock {
         }
     }
 }
+
+
+
+
+
+
 

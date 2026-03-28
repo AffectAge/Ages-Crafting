@@ -19,7 +19,6 @@ import snownee.jade.api.config.IPluginConfig;
 import snownee.jade.api.ui.BoxStyle;
 import snownee.jade.api.ui.IElementHelper;
 
-import java.util.Locale;
 
 public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
     INSTANCE;
@@ -107,9 +106,7 @@ public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataP
         int clampedTotal = Math.max(1, total);
         int clampedProgress = Mth.clamp(progress, 0, clampedTotal);
         float ratio = clampedProgress / (float) clampedTotal;
-        int progressSec = Mth.floor(clampedProgress / 20.0F);
-        int totalSec = Mth.ceil(clampedTotal / 20.0F);
-        tooltip.add(Component.translatable("tooltip.agescrafting.pit_kiln.progress", progressSec, totalSec).withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("tooltip.agescrafting.time_remaining", JadeTimeFormat.formatRemainingTicks(clampedProgress, clampedTotal)).withStyle(ChatFormatting.GRAY));
         tooltip.add(IElementHelper.get().progress(ratio, Component.empty(), IElementHelper.get().progressStyle(), BoxStyle.DEFAULT, true));
     }
 
@@ -118,3 +115,4 @@ public enum PitKilnJadeProvider implements IBlockComponentProvider, IServerDataP
         return UID;
     }
 }
+

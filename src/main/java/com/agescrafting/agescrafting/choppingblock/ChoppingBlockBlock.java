@@ -3,6 +3,7 @@ package com.agescrafting.agescrafting.choppingblock;
 import com.agescrafting.agescrafting.config.AgesCraftingConfig;
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import com.agescrafting.agescrafting.registry.ModItems;
+import com.agescrafting.agescrafting.sound.DeviceRecipeSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -13,6 +14,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -102,7 +104,7 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
                 if (!player.getAbilities().instabuild) {
                     held.shrink(1);
                 }
-                level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 0.8F, 1.0F);
+                DeviceRecipeSounds.playStart(level, pos);
                 return InteractionResult.CONSUME;
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
@@ -133,7 +135,6 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
             if (!player.getAbilities().instabuild && held.isDamageableItem() && durabilityCost > 0) {
                 held.hurtAndBreak(durabilityCost, player, p -> p.broadcastBreakEvent(hand));
             }
-            level.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 0.9F, 0.9F + level.random.nextFloat() * 0.2F);
             tryAccumulateWoodChips(level, pos, hit);
 
             if (completed) {
@@ -141,7 +142,7 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
                 if (!result.isEmpty()) {
                     Block.popResource(level, pos.above(), result);
                 }
-                level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 0.8F, 1.0F);
+                DeviceRecipeSounds.playFinish(level, pos);
                 spawnRecipeCompleteFx(level, pos);
             }
         }
@@ -204,7 +205,7 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
 
         double dropChance = AgesCraftingConfig.SERVER.choppingScatterChipChancePerHit.get();
         if (dropChance > 0.0D && level.random.nextDouble() <= dropChance) {
-            Block.popResource(level, pos, new ItemStack(ModItems.WOOD_CHIPS.get()));
+            spawnScatteredWoodChips(level, pos);
         }
     }
 
@@ -223,6 +224,18 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
         Direction left = primary.getCounterClockWise();
         Direction back = primary.getOpposite();
         return new Direction[]{primary, right, left, back};
+    }
+
+    private static void spawnScatteredWoodChips(Level level, BlockPos pos) {
+        ItemEntity entity = new ItemEntity(
+                level,
+                pos.getX() + 0.5D + (level.random.nextDouble() - 0.5D) * 0.8D,
+                pos.getY() + 0.22D,
+                pos.getZ() + 0.5D + (level.random.nextDouble() - 0.5D) * 0.8D,
+                new ItemStack(ModItems.WOOD_CHIPS.get())
+        );
+        entity.setDeltaMovement((level.random.nextDouble() - 0.5D) * 0.06D, 0.1D + level.random.nextDouble() * 0.04D, (level.random.nextDouble() - 0.5D) * 0.06D);
+        level.addFreshEntity(entity);
     }
 
     private static void spawnRecipeCompleteFx(Level level, BlockPos pos) {
@@ -245,4 +258,10 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
         }
     }
 }
+
+
+
+
+
+
 

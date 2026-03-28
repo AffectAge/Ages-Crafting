@@ -72,10 +72,7 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
         int progress = Mth.clamp(data.getInt(TAG_PROGRESS), 0, total);
         float ratio = progress / (float) total;
 
-        int progressSec = Mth.floor(progress / 20.0F);
-        int totalSec = Mth.ceil(total / 20.0F);
-
-        tooltip.add(Component.translatable("tooltip.agescrafting.barrel.progress", progressSec, totalSec).withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("tooltip.agescrafting.time_remaining", JadeTimeFormat.formatRemainingTicks(progress, total)).withStyle(ChatFormatting.GRAY));
         tooltip.add(IElementHelper.get().progress(ratio, Component.empty(), IElementHelper.get().progressStyle(), BoxStyle.DEFAULT, true));
     }
 
@@ -84,4 +81,5 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
         return UID;
     }
 }
+
 

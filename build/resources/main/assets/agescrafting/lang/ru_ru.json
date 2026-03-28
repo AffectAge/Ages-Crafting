@@ -32,6 +32,8 @@
   "gui.agescrafting.barrel.seal_button.seal": "Запечатать бочку (сохраняет содержимое и включает запечатанные рецепты)",
   "gui.agescrafting.barrel.seal_button.unseal": "Распечатать бочку (обычное взаимодействие)",
   "tooltip.agescrafting.barrel.progress": "Прогресс рецепта: %s / %s с",
+  "tooltip.agescrafting.barrel.contains_compact": "Содержит: 🪣 %s мБ / 📦 %s",
+  "tooltip.agescrafting.time_remaining": "Осталось: %s",
   "tooltip.agescrafting.barrel.season_modifier": "Сезонный множитель: %s",
   "block.agescrafting.spruce_barrel": "Еловая реалистичная бочка",
   "block.agescrafting.birch_barrel": "Березовая реалистичная бочка",
@@ -92,7 +94,9 @@
   "tooltip.agescrafting.primitive_campfire.ash": "Зола: %s / %s",
   "tooltip.agescrafting.primitive_campfire.empty": "На костре нет предмета",
   "tooltip.agescrafting.primitive_campfire.cook_progress": "Жарка: %s / %s",
+  "tooltip.agescrafting.primitive_campfire.cook_remaining": "До готовности: %s",
   "tooltip.agescrafting.primitive_campfire.overcook_progress": "Пережарка: %s / %s",
+  "tooltip.agescrafting.primitive_campfire.overcook_remaining": "До пережарки: %s",
   "tooltip.agescrafting.primitive_campfire.overcooked": "Пережарено",
   "emi.category.agescrafting.primitive_campfire": "Примитивный костер",
   "gui.agescrafting.primitive_campfire.cook_time": "Время жарки: %s с",
@@ -167,3 +171,5 @@
   "tooltip.agescrafting.wood_chips_pile.layers": "Щепа: %s / %s",
   "item.agescrafting.ash": "Зола"
 }
+
+

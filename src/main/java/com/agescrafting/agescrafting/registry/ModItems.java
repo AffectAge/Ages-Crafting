@@ -1,6 +1,7 @@
 package com.agescrafting.agescrafting.registry;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
+import com.agescrafting.agescrafting.barrel.BarrelBlockItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -40,7 +41,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> BARREL_ITEM = ITEMS.register(
             "barrel",
-            () -> new BlockItem(ModBlocks.BARREL.get(), new Item.Properties())
+            () -> new BarrelBlockItem(ModBlocks.BARREL.get(), new Item.Properties())
     );
 
     public static final RegistryObject<Item> SPRUCE_BARREL_ITEM = registerBarrelItem("spruce_barrel", ModBlocks.SPRUCE_BARREL);
@@ -134,12 +135,16 @@ public class ModItems {
     );
 
     private static RegistryObject<Item> registerBarrelItem(String id, RegistryObject<net.minecraft.world.level.block.Block> block) {
-        return ITEMS.register(id, () -> new BlockItem(block.get(), new Item.Properties()));
+        return ITEMS.register(id, () -> new BarrelBlockItem(block.get(), new Item.Properties()));
     }
 
     private static RegistryObject<Item> registerBlockItem(String id, RegistryObject<net.minecraft.world.level.block.Block> block) {
         return ITEMS.register(id, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 }
+
+
+
+
 
 

@@ -32,6 +32,8 @@
   "gui.agescrafting.barrel.seal_button.seal": "Seal barrel (keeps contents and enables sealed recipes)",
   "gui.agescrafting.barrel.seal_button.unseal": "Unseal barrel (allow normal interaction)",
   "tooltip.agescrafting.barrel.progress": "Recipe progress: %s / %s s",
+  "tooltip.agescrafting.barrel.contains_compact": "Contains: 🪣 %s mB / 📦 %s",
+  "tooltip.agescrafting.time_remaining": "Remaining: %s",
   "tooltip.agescrafting.barrel.season_modifier": "Season modifier: %s",
   "block.agescrafting.spruce_barrel": "Spruce Aging Barrel",
   "block.agescrafting.birch_barrel": "Birch Aging Barrel",
@@ -92,7 +94,9 @@
   "tooltip.agescrafting.primitive_campfire.ash": "Ash: %s / %s",
   "tooltip.agescrafting.primitive_campfire.empty": "No item on campfire",
   "tooltip.agescrafting.primitive_campfire.cook_progress": "Cooking: %s / %s",
+  "tooltip.agescrafting.primitive_campfire.cook_remaining": "Cooking left: %s",
   "tooltip.agescrafting.primitive_campfire.overcook_progress": "Overcooking: %s / %s",
+  "tooltip.agescrafting.primitive_campfire.overcook_remaining": "Overcook left: %s",
   "tooltip.agescrafting.primitive_campfire.overcooked": "Overcooked",
   "emi.category.agescrafting.primitive_campfire": "Primitive Campfire",
   "gui.agescrafting.primitive_campfire.cook_time": "Cook time: %s s",
@@ -167,3 +171,5 @@
   "tooltip.agescrafting.wood_chips_pile.layers": "Wood chips: %s / %s",
   "item.agescrafting.ash": "Ash"
 }
+
+

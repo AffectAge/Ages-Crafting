@@ -1,6 +1,7 @@
 package com.agescrafting.agescrafting.pitkiln;
 
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
+import com.agescrafting.agescrafting.sound.DeviceRecipeSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -96,7 +97,7 @@ public class PitKilnBlock extends BaseEntityBlock {
                     kiln.reduceAsh(1);
                     Block.popResource(level, pos, new ItemStack(com.agescrafting.agescrafting.registry.ModItems.ASH.get()));
                     held.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
-                    level.playSound(null, pos, SoundEvents.SAND_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    level.playSound(null, pos, SoundEvents.SAND_FALL, SoundSource.BLOCKS, 0.7F, 1.2F);
                 }
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
@@ -119,7 +120,7 @@ public class PitKilnBlock extends BaseEntityBlock {
 
         if (!held.isEmpty() && (held.is(Items.FLINT_AND_STEEL) || held.is(Items.FIRE_CHARGE))) {
             if (variant == Variant.WOOD && canIgnite(level, pos) && !level.isClientSide && kiln.ignite()) {
-                level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                DeviceRecipeSounds.playStart(level, pos);
                 if (!player.getAbilities().instabuild) {
                     if (held.is(Items.FLINT_AND_STEEL)) {
                         held.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
@@ -323,5 +324,7 @@ public class PitKilnBlock extends BaseEntityBlock {
         }
     }
 }
+
+
 
 

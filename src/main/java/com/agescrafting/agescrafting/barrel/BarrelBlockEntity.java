@@ -6,6 +6,7 @@ import com.agescrafting.agescrafting.config.AgesCraftingConfig;
 import com.agescrafting.agescrafting.compat.sereneseasons.SereneSeasonsCompat;
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
+import com.agescrafting.agescrafting.sound.DeviceRecipeSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -22,7 +23,6 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -885,7 +885,7 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
             return;
         }
 
-        level.playSound(null, worldPosition, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 0.8F, 0.95F + level.random.nextFloat() * 0.1F);
+        DeviceRecipeSounds.playFinish(level, worldPosition);
         if (level instanceof ServerLevel serverLevel) {
             boolean hasFluidOutput = recipe.fluidResults().stream().anyMatch(stack -> !stack.isEmpty() && stack.getAmount() > 0);
             serverLevel.sendParticles(
@@ -1164,6 +1164,10 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         return fluid;
     }
 }
+
+
+
+
 
 
 
