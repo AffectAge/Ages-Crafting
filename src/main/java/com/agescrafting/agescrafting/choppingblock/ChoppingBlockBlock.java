@@ -3,7 +3,6 @@ package com.agescrafting.agescrafting.choppingblock;
 import com.agescrafting.agescrafting.config.AgesCraftingConfig;
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import com.agescrafting.agescrafting.registry.ModItems;
-import com.agescrafting.agescrafting.sound.DeviceRecipeSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -104,7 +103,7 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
                 if (!player.getAbilities().instabuild) {
                     held.shrink(1);
                 }
-                DeviceRecipeSounds.playStart(level, pos);
+                level.playSound(null, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 0.8F, 1.0F);
                 return InteractionResult.CONSUME;
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
@@ -142,7 +141,7 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
                 if (!result.isEmpty()) {
                     Block.popResource(level, pos.above(), result);
                 }
-                DeviceRecipeSounds.playFinish(level, pos);
+                level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS, 0.85F, 1.0F);
                 spawnRecipeCompleteFx(level, pos);
             }
         }
@@ -258,6 +257,7 @@ public class ChoppingBlockBlock extends BaseEntityBlock {
         }
     }
 }
+
 
 
 

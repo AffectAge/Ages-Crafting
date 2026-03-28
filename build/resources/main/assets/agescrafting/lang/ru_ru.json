@@ -61,6 +61,8 @@
   "tooltip.agescrafting.barrel.state.unsealed": "Unsealed",
   "gui.agescrafting.barrel.rain_fill": "Собирает дождевую воду, если открыта и пуста",
   "tooltip.agescrafting.barrel.rain_fill": "Наполнение дождем: открыта + пустые резервуары + дождь",
+  "tooltip.agescrafting.barrel.clear_tank_hint": "Shift + ПКМ: очистить этот резервуар",
+  "tooltip.agescrafting.barrel.rain_fill_fluid": "Жидкость дождя: %s",
   "block.agescrafting.drying_rack": "Сушильная стойка",
   "item.agescrafting.drying_rack": "Сушильная стойка",
   "block.agescrafting.primitive_campfire": "Примитивный костер",
@@ -171,5 +173,7 @@
   "tooltip.agescrafting.wood_chips_pile.layers": "Щепа: %s / %s",
   "item.agescrafting.ash": "Зола"
 }
+
+
 
 

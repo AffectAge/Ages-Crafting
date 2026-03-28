@@ -11,7 +11,8 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import com.agescrafting.agescrafting.registry.ModItems;
-import com.agescrafting.agescrafting.sound.DeviceRecipeSounds;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
@@ -331,7 +332,7 @@ public class PrimitiveCampfireBlockEntity extends BlockEntity {
 
             cookStack = recipe.getResultItem(level.registryAccess()).copy();
             cookStage = CookStage.COOKED;
-            DeviceRecipeSounds.playFinish(level, worldPosition);
+            level.playSound(null, worldPosition, SoundEvents.CAMPFIRE_CRACKLE, SoundSource.BLOCKS, 0.65F, 1.15F);
             cookProgress = 0;
             overcookProgress = 0;
             setChanged();
@@ -497,6 +498,8 @@ public class PrimitiveCampfireBlockEntity extends BlockEntity {
         OVERCOOKED
     }
 }
+
+
 
 
 

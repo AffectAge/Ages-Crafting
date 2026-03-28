@@ -13,7 +13,7 @@
     "amount": 250
   },
   "requires_sealed": false,
-  "duration_ticks": 0,
+  "duration_ticks": 200,
   "item_results": [
     {
       "item": "minecraft:flint",
@@ -25,3 +25,4 @@
     }
   ]
 }
+

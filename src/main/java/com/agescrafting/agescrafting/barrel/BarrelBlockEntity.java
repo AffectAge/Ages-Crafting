@@ -6,7 +6,6 @@ import com.agescrafting.agescrafting.config.AgesCraftingConfig;
 import com.agescrafting.agescrafting.compat.sereneseasons.SereneSeasonsCompat;
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
-import com.agescrafting.agescrafting.sound.DeviceRecipeSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -23,6 +22,7 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -241,7 +241,7 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
             return 0;
         }
         BarrelRecipe recipe = findRecipeById(activeRecipeId);
-        if (recipe == null || !recipe.requiresSealed()) {
+        if (recipe == null) {
             return 0;
         }
         int baseTicks = Math.max(1, recipe.durationTicks());
@@ -562,36 +562,32 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
             return;
         }
 
-        if (!hasExactRecipeInputs(itemConsumption, fluidConsumption)) {
+        int maxCrafts = computeMaxCrafts(itemConsumption, fluidConsumption);
+        if (maxCrafts <= 0) {
             resetRecipeProgress();
             return;
         }
 
-        if (!canAcceptItemResults(recipe.itemResults())) {
+        while (maxCrafts > 0
+                && (!canAcceptItemResults(recipe.itemResults(), maxCrafts)
+                || !canAcceptFluidResults(recipe.fluidResults(), maxCrafts))) {
+            maxCrafts--;
+        }
+
+        if (maxCrafts <= 0) {
             resetRecipeProgress();
             return;
         }
 
-        if (!canAcceptFluidResults(recipe.fluidResults())) {
-            resetRecipeProgress();
-            return;
-        }
-
-        if (recipe.requiresSealed()) {
-            int targetTicks = Math.max(1, Math.round(Math.max(1, recipe.durationTicks()) * getSeasonDurationMultiplier(recipe)));
-            recipeProgress++;
-            if (recipeProgress >= targetTicks) {
-                if (executeCraft(recipe, itemConsumption, fluidConsumption)) {
-                    recipeProgress = 0;
-                } else {
-                    resetRecipeProgress();
-                }
+        int targetTicks = Math.max(1, Math.round(Math.max(1, recipe.durationTicks()) * getSeasonDurationMultiplier(recipe)));
+        recipeProgress++;
+        if (recipeProgress >= targetTicks) {
+            if (executeCraft(recipe, itemConsumption, fluidConsumption, maxCrafts)) {
+                recipeProgress = 0;
+            } else {
+                resetRecipeProgress();
             }
-            return;
         }
-
-        executeCraft(recipe, itemConsumption, fluidConsumption);
-        recipeProgress = 0;
     }
 
     private @Nullable BarrelRecipe resolveActiveRecipe() {
@@ -716,24 +712,38 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         return consume;
     }
 
-    private boolean hasExactRecipeInputs(int[] itemConsumption, int[] fluidConsumption) {
+    private int computeMaxCrafts(int[] itemConsumption, int[] fluidConsumption) {
+        int maxCrafts = Integer.MAX_VALUE;
+        boolean hasRequirement = false;
+
         for (int slot = 0; slot < ITEM_GRID_COUNT; slot++) {
-            int available = itemHandler.getStackInSlot(ITEM_GRID_START + slot).getCount();
-            if (available != itemConsumption[slot]) {
-                return false;
+            int consume = itemConsumption[slot];
+            if (consume <= 0) {
+                continue;
             }
+            hasRequirement = true;
+            int available = itemHandler.getStackInSlot(ITEM_GRID_START + slot).getCount();
+            maxCrafts = Math.min(maxCrafts, available / consume);
         }
 
         for (int tankIndex = 0; tankIndex < INPUT_TANK_COUNT; tankIndex++) {
-            int available = inputTanks[tankIndex].getFluidAmount();
-            if (available != fluidConsumption[tankIndex]) {
-                return false;
+            int consume = fluidConsumption[tankIndex];
+            if (consume <= 0) {
+                continue;
             }
+            hasRequirement = true;
+            int available = inputTanks[tankIndex].getFluidAmount();
+            maxCrafts = Math.min(maxCrafts, available / consume);
         }
 
-        return true;
+        if (!hasRequirement) {
+            return 1;
+        }
+
+        return Math.max(0, maxCrafts);
     }
-    private boolean canAcceptItemResults(List<ItemStack> results) {
+
+    private boolean canAcceptItemResults(List<ItemStack> results, int crafts) {
         if (results.isEmpty()) {
             return true;
         }
@@ -743,48 +753,50 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
             simulated[i] = itemHandler.getStackInSlot(OUTPUT_ITEM_START + i).copy();
         }
 
-        for (ItemStack result : results) {
-            if (result.isEmpty()) {
-                continue;
-            }
-
-            ItemStack remaining = result.copy();
-            for (int slot = 0; slot < OUTPUT_ITEM_COUNT && !remaining.isEmpty(); slot++) {
-                ItemStack target = simulated[slot];
-                if (target.isEmpty() || !ItemStack.isSameItemSameTags(target, remaining)) {
+        for (int craft = 0; craft < crafts; craft++) {
+            for (ItemStack result : results) {
+                if (result.isEmpty()) {
                     continue;
                 }
 
-                int maxStack = Math.min(target.getMaxStackSize(), 64);
-                int free = maxStack - target.getCount();
-                if (free <= 0) {
-                    continue;
+                ItemStack remaining = result.copy();
+                for (int slot = 0; slot < OUTPUT_ITEM_COUNT && !remaining.isEmpty(); slot++) {
+                    ItemStack target = simulated[slot];
+                    if (target.isEmpty() || !ItemStack.isSameItemSameTags(target, remaining)) {
+                        continue;
+                    }
+
+                    int maxStack = Math.min(target.getMaxStackSize(), 64);
+                    int free = maxStack - target.getCount();
+                    if (free <= 0) {
+                        continue;
+                    }
+
+                    int move = Math.min(free, remaining.getCount());
+                    target.grow(move);
+                    remaining.shrink(move);
                 }
 
-                int move = Math.min(free, remaining.getCount());
-                target.grow(move);
-                remaining.shrink(move);
-            }
-
-            for (int slot = 0; slot < OUTPUT_ITEM_COUNT && !remaining.isEmpty(); slot++) {
-                if (!simulated[slot].isEmpty()) {
-                    continue;
+                for (int slot = 0; slot < OUTPUT_ITEM_COUNT && !remaining.isEmpty(); slot++) {
+                    if (!simulated[slot].isEmpty()) {
+                        continue;
+                    }
+                    int move = Math.min(remaining.getCount(), Math.min(remaining.getMaxStackSize(), 64));
+                    simulated[slot] = remaining.copy();
+                    simulated[slot].setCount(move);
+                    remaining.shrink(move);
                 }
-                int move = Math.min(remaining.getCount(), Math.min(remaining.getMaxStackSize(), 64));
-                simulated[slot] = remaining.copy();
-                simulated[slot].setCount(move);
-                remaining.shrink(move);
-            }
 
-            if (!remaining.isEmpty()) {
-                return false;
+                if (!remaining.isEmpty()) {
+                    return false;
+                }
             }
         }
 
         return true;
     }
 
-    private boolean canAcceptFluidResults(List<FluidStack> results) {
+    private boolean canAcceptFluidResults(List<FluidStack> results, int crafts) {
         if (results.isEmpty()) {
             return true;
         }
@@ -797,7 +809,7 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         }
 
         for (FluidStack result : results) {
-            int remaining = result.getAmount();
+            int remaining = result.getAmount() * crafts;
 
             for (int i = 0; i < OUTPUT_TANK_COUNT && remaining > 0; i++) {
                 if (simulatedAmounts[i] <= 0 || !simulatedFluids[i].isFluidEqual(result)) {
@@ -827,28 +839,30 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         return true;
     }
 
-    private boolean executeCraft(BarrelRecipe recipe, int[] itemConsumption, int[] fluidConsumption) {
+    private boolean executeCraft(BarrelRecipe recipe, int[] itemConsumption, int[] fluidConsumption, int crafts) {
         if (level == null) {
             return false;
         }
 
         for (int slot = 0; slot < ITEM_GRID_COUNT; slot++) {
-            int amount = itemConsumption[slot];
+            int amount = itemConsumption[slot] * crafts;
             if (amount > 0) {
                 itemHandler.extractItem(ITEM_GRID_START + slot, amount, false);
             }
         }
 
         for (int i = 0; i < INPUT_TANK_COUNT; i++) {
-            int amount = fluidConsumption[i];
+            int amount = fluidConsumption[i] * crafts;
             if (amount > 0) {
                 inputTanks[i].drain(amount, IFluidHandler.FluidAction.EXECUTE);
             }
         }
 
-        for (ItemStack result : recipe.itemResults()) {
-            if (!result.isEmpty()) {
-                insertResultIntoOutputOrDrop(result.copy());
+        for (int craft = 0; craft < crafts; craft++) {
+            for (ItemStack result : recipe.itemResults()) {
+                if (!result.isEmpty()) {
+                    insertResultIntoOutputOrDrop(result.copy());
+                }
             }
         }
 
@@ -856,8 +870,10 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
             if (resultFluid.isEmpty()) {
                 continue;
             }
-            int filled = fillIntoTanks(outputTanks, resultFluid, IFluidHandler.FluidAction.EXECUTE);
-            if (filled < resultFluid.getAmount()) {
+            FluidStack batchedResult = resultFluid.copy();
+            batchedResult.setAmount(resultFluid.getAmount() * crafts);
+            int filled = fillIntoTanks(outputTanks, batchedResult, IFluidHandler.FluidAction.EXECUTE);
+            if (filled < batchedResult.getAmount()) {
                 return false;
             }
         }
@@ -885,7 +901,7 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
             return;
         }
 
-        DeviceRecipeSounds.playFinish(level, worldPosition);
+        level.playSound(null, worldPosition, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 0.8F, 0.95F + level.random.nextFloat() * 0.1F);
         if (level instanceof ServerLevel serverLevel) {
             boolean hasFluidOutput = recipe.fluidResults().stream().anyMatch(stack -> !stack.isEmpty() && stack.getAmount() > 0);
             serverLevel.sendParticles(
@@ -1164,6 +1180,15 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         return fluid;
     }
 }
+
+
+
+
+
+
+
+
+
 
 
 

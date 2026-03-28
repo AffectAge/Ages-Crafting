@@ -1,7 +1,6 @@
 package com.agescrafting.agescrafting.dryingrack;
 
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
-import com.agescrafting.agescrafting.sound.DeviceRecipeSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -158,7 +157,7 @@ public class DryingRackBlock extends BaseEntityBlock {
             if (!player.getAbilities().instabuild) {
                 held.shrink(1);
             }
-            DeviceRecipeSounds.playStart(level, pos);
+            level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 0.8F, 1.0F);
         }
 
         return InteractionResult.sidedSuccess(level.isClientSide);
@@ -182,6 +181,7 @@ public class DryingRackBlock extends BaseEntityBlock {
         super.onRemove(state, level, pos, newState, movedByPiston);
     }
 }
+
 
 
 

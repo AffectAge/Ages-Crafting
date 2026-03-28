@@ -49,7 +49,7 @@ public class BarrelRecipe implements Recipe<Container> {
         this.itemIngredients = List.copyOf(itemIngredients);
         this.fluidIngredients = copyFluids(fluidIngredients);
         this.requiresSealed = requiresSealed;
-        this.durationTicks = Math.max(0, durationTicks);
+        this.durationTicks = Math.max(1, durationTicks);
         this.itemResults = NonNullList.create();
         this.itemResults.addAll(itemResults);
         this.fluidResults = copyFluids(fluidResults);
@@ -250,7 +250,10 @@ public class BarrelRecipe implements Recipe<Container> {
 
             List<FluidStack> fluidIngredients = readFluidListFromJson(json, "fluids", "fluid");
             boolean requiresSealed = GsonHelper.getAsBoolean(json, "requires_sealed", false);
-            int durationTicks = GsonHelper.getAsInt(json, "duration_ticks", 0);
+            int durationTicks = GsonHelper.getAsInt(json, "duration_ticks");
+            if (durationTicks <= 0) {
+                throw new IllegalArgumentException("Barrel recipe " + recipeId + " must define duration_ticks > 0");
+            }
 
             NonNullList<ItemStack> itemResults = NonNullList.create();
             JsonArray itemResultArray = GsonHelper.getAsJsonArray(json, "item_results", new JsonArray());
@@ -423,3 +426,4 @@ public class BarrelRecipe implements Recipe<Container> {
         return copy;
     }
 }
+

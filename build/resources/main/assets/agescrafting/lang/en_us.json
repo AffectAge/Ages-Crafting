@@ -61,6 +61,8 @@
   "tooltip.agescrafting.barrel.state.unsealed": "Unsealed",
   "gui.agescrafting.barrel.rain_fill": "Collects rainwater when open and empty",
   "tooltip.agescrafting.barrel.rain_fill": "Rain fill: open + empty tanks + rain",
+  "tooltip.agescrafting.barrel.clear_tank_hint": "Shift + Right Click: clear this tank",
+  "tooltip.agescrafting.barrel.rain_fill_fluid": "Rain fluid: %s",
   "block.agescrafting.drying_rack": "Aging Drying Rack",
   "item.agescrafting.drying_rack": "Aging Drying Rack",
   "block.agescrafting.primitive_campfire": "Primitive Campfire",
@@ -171,5 +173,7 @@
   "tooltip.agescrafting.wood_chips_pile.layers": "Wood chips: %s / %s",
   "item.agescrafting.ash": "Ash"
 }
+
+
 
 

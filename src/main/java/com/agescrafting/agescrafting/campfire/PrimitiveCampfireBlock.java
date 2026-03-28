@@ -1,7 +1,6 @@
 package com.agescrafting.agescrafting.campfire;
 
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
-import com.agescrafting.agescrafting.sound.DeviceRecipeSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
@@ -111,7 +110,7 @@ public class PrimitiveCampfireBlock extends BaseEntityBlock {
 
         if (!held.isEmpty() && (held.is(Items.FLINT_AND_STEEL) || held.is(Items.FIRE_CHARGE))) {
             if (!level.isClientSide && campfire.tryIgnite()) {
-                DeviceRecipeSounds.playStart(level, pos);
+                level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 0.8F, 1.0F);
                 if (!player.getAbilities().instabuild) {
                     if (held.is(Items.FLINT_AND_STEEL)) {
                         held.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
@@ -148,7 +147,7 @@ public class PrimitiveCampfireBlock extends BaseEntityBlock {
                 if (!player.getAbilities().instabuild) {
                     held.shrink(1);
                 }
-                DeviceRecipeSounds.playStart(level, pos);
+                level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 0.8F, 1.0F);
                 return InteractionResult.CONSUME;
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
@@ -222,6 +221,8 @@ public class PrimitiveCampfireBlock extends BaseEntityBlock {
         }
     }
 }
+
+
 
 
 

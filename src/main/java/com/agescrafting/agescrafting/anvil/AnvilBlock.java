@@ -2,7 +2,6 @@ package com.agescrafting.agescrafting.anvil;
 
 import com.agescrafting.agescrafting.config.AgesCraftingConfig;
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
-import com.agescrafting.agescrafting.sound.DeviceRecipeSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -101,7 +100,7 @@ public class AnvilBlock extends BaseEntityBlock {
                 if (!player.getAbilities().instabuild) {
                     held.shrink(1);
                 }
-                DeviceRecipeSounds.playStart(level, pos);
+                level.playSound(null, pos, SoundEvents.ANVIL_PLACE, SoundSource.BLOCKS, 0.75F, 1.0F);
                 return InteractionResult.CONSUME;
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
@@ -141,7 +140,7 @@ public class AnvilBlock extends BaseEntityBlock {
                 if (!player.getAbilities().instabuild) {
                     player.causeFoodExhaustion((float) Math.max(0.0D, AgesCraftingConfig.SERVER.anvilExhaustionPerComplete.get()));
                 }
-                DeviceRecipeSounds.playFinish(level, pos);
+                level.playSound(null, pos, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 0.9F, 1.0F);
                 spawnRecipeCompleteFx(level, pos);
             }
         }
@@ -183,6 +182,7 @@ public class AnvilBlock extends BaseEntityBlock {
         }
     }
 }
+
 
 
 

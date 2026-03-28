@@ -3,7 +3,6 @@ package com.agescrafting.agescrafting.pitkiln;
 import com.agescrafting.agescrafting.config.AgesCraftingConfig;
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
-import com.agescrafting.agescrafting.sound.DeviceRecipeSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -15,6 +14,8 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -379,7 +380,7 @@ public class PitKilnBlockEntity extends BlockEntity {
             return;
         }
 
-        DeviceRecipeSounds.playFinish(level, worldPosition);
+        level.playSound(null, worldPosition, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.9F, success ? 0.95F : 0.8F);
         if (level instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(
                     success ? ParticleTypes.CAMPFIRE_COSY_SMOKE : ParticleTypes.SMOKE,
@@ -577,6 +578,8 @@ public class PitKilnBlockEntity extends BlockEntity {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 }
+
+
 
 
 

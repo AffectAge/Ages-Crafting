@@ -1,5 +1,8 @@
 package com.agescrafting.agescrafting.barrel;
 
+import com.agescrafting.agescrafting.config.AgesCraftingConfig;
+
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -10,8 +13,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -207,6 +213,20 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
         return mouseX >= left && mouseX <= left + TANK_WIDTH && mouseY >= top && mouseY <= top + TANK_HEIGHT;
     }
 
+    private Component getConfiguredRainFillFluidName() {
+        String configuredId = AgesCraftingConfig.SERVER.barrelRainFillFluid.get();
+        ResourceLocation id = ResourceLocation.tryParse(configuredId);
+        if (id == null) {
+            return Fluids.WATER.getFluidType().getDescription();
+        }
+
+        Fluid fluid = ForgeRegistries.FLUIDS.getValue(id);
+        if (fluid == null || fluid == Fluids.EMPTY) {
+            return Fluids.WATER.getFluidType().getDescription();
+        }
+
+        return fluid.getFluidType().getDescription();
+    }
     private static final class InvisibleSealButton extends Button {
         private InvisibleSealButton(int x, int y, int width, int height, OnPress onPress) {
             super(x, y, width, height, Component.empty(), onPress, DEFAULT_NARRATION);
@@ -226,18 +246,30 @@ public class BarrelScreen extends AbstractContainerScreen<BarrelMenu> {
     private void renderSingleTankTooltip(GuiGraphics guiGraphics, int mouseX, int mouseY, Component title, FluidStack fluid, int amount, int capacity, boolean isInputTank) {
         List<Component> tooltip = new ArrayList<>();
         tooltip.add(title);
+        tooltip.add(Component.translatable("tooltip.agescrafting.barrel.clear_tank_hint").withStyle(ChatFormatting.YELLOW));
+
         if (fluid.isEmpty()) {
             tooltip.add(Component.translatable("gui.agescrafting.barrel.empty"));
             if (isInputTank) {
-                tooltip.add(Component.translatable("gui.agescrafting.barrel.rain_fill"));
+                tooltip.add(Component.translatable("gui.agescrafting.barrel.rain_fill").withStyle(ChatFormatting.YELLOW));
+                tooltip.add(Component.translatable("tooltip.agescrafting.barrel.rain_fill_fluid", getConfiguredRainFillFluidName()).withStyle(ChatFormatting.YELLOW));
             }
         } else {
             tooltip.add(fluid.getDisplayName());
             tooltip.add(Component.literal(amount + " / " + Math.max(1, capacity) + " mB"));
         }
+
         guiGraphics.renderComponentTooltip(font, tooltip, mouseX, mouseY);
     }
 }
+
+
+
+
+
+
+
+
 
 
 
