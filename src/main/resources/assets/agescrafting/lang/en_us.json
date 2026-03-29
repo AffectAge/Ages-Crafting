@@ -118,6 +118,7 @@
   "tooltip.agescrafting.pit_kiln.state.result": "Result ready",
   "tooltip.agescrafting.pit_kiln.input": "Input: %sx %s",
   "tooltip.agescrafting.pit_kiln.failure_result": "This item is produced with %s chance if the recipe fails",
+  "tooltip.agescrafting.tanning_rack.failure_result": "This item is produced with %s chance on each hit if tanning fails",
   "item.agescrafting.chopping_block": "Chopping Block",
   "message.agescrafting.chopping_block.low_hunger": "Too hungry to chop",
   "item.agescrafting.wood_chips": "Wood Chips",
@@ -174,12 +175,42 @@
   "subtitle.agescrafting.barrel.seal": "Barrel sealed",
   "subtitle.agescrafting.barrel.unseal": "Barrel unsealed",
   "tooltip.agescrafting.wood_chips_pile.layers": "Wood chips: %s / %s",
-  "item.agescrafting.ash": "Ash"
+  "item.agescrafting.ash": "Ash",
+  "block.agescrafting.spruce_tanning_rack": "Spruce Tanning Rack",
+  "item.agescrafting.birch_tanning_rack": "Birch Tanning Rack",
+  "item.agescrafting.jungle_tanning_rack": "Jungle Tanning Rack",
+  "block.agescrafting.bamboo_tanning_rack": "Bamboo Tanning Rack",
+  "item.agescrafting.dark_oak_tanning_rack": "Dark Oak Tanning Rack",
+  "item.agescrafting.bamboo_tanning_rack": "Bamboo Tanning Rack",
+  "block.agescrafting.dark_oak_tanning_rack": "Dark Oak Tanning Rack",
+  "block.agescrafting.birch_tanning_rack": "Birch Tanning Rack",
+  "item.agescrafting.cherry_tanning_rack": "Cherry Tanning Rack",
+  "item.agescrafting.mangrove_tanning_rack": "Mangrove Tanning Rack",
+  "block.agescrafting.jungle_tanning_rack": "Jungle Tanning Rack",
+  "block.agescrafting.acacia_tanning_rack": "Acacia Tanning Rack",
+  "block.agescrafting.cherry_tanning_rack": "Cherry Tanning Rack",
+  "item.agescrafting.crimson_tanning_rack": "Crimson Tanning Rack",
+  "item.agescrafting.warped_tanning_rack": "Warped Tanning Rack",
+  "item.agescrafting.spruce_tanning_rack": "Spruce Tanning Rack",
+  "item.agescrafting.tanning_rack": "Tanning Rack",
+  "block.agescrafting.tanning_rack": "Tanning Rack",
+  "block.agescrafting.warped_tanning_rack": "Warped Tanning Rack",
+  "item.agescrafting.acacia_tanning_rack": "Acacia Tanning Rack",
+  "block.agescrafting.mangrove_tanning_rack": "Mangrove Tanning Rack",
+  "block.agescrafting.crimson_tanning_rack": "Crimson Tanning Rack",
+  "tooltip.agescrafting.tanning_rack.stage": "Stage: %s",
+  "tooltip.agescrafting.tanning_rack.no_recipe": "No tanning recipe",
+  "tooltip.agescrafting.tanning_rack.empty": "Empty",
+  "item.agescrafting.raw_hide": "Raw Hide",
+  "item.agescrafting.tanned_leather": "Tanned Leather",
+  "item.agescrafting.soaked_hide": "Soaked Hide",
+  "item.agescrafting.scraped_hide": "Scraped Hide",
+  "gui.agescrafting.tanning_rack.hits": "Required hits: %s",
+  "gui.agescrafting.tanning_rack.fail": "Fail chance: %s%%",
+  "tooltip.agescrafting.tanning_rack.progress": "Tanning: %s / %s hits",
+  "emi.category.agescrafting.tanning_rack": "Tanning Rack",
+  "tooltip.agescrafting.tanning_rack.progress_percent": "Progress: %s%%"
 }
-
-
-
-
 
 
 

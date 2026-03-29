@@ -7,6 +7,7 @@ import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlockEntity;
 import com.agescrafting.agescrafting.choppingblock.ChoppingBlockBlockEntity;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlockEntity;
 import com.agescrafting.agescrafting.pitkiln.PitKilnBlockEntity;
+import com.agescrafting.agescrafting.tanningrack.TanningRackBlockEntity;
 import com.agescrafting.agescrafting.workspace.WorkspaceTableBlockEntity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -35,6 +36,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<DryingRackBlockEntity>> DRYING_RACK_BE = BLOCK_ENTITIES.register(
             "drying_rack",
             () -> BlockEntityType.Builder.of(DryingRackBlockEntity::new, ModBlocks.DRYING_RACK_BLOCKS.stream().map(RegistryObject::get).toArray(Block[]::new)).build(null)
+    );
+
+    public static final RegistryObject<BlockEntityType<TanningRackBlockEntity>> TANNING_RACK_BE = BLOCK_ENTITIES.register(
+            "tanning_rack",
+            () -> BlockEntityType.Builder.of(TanningRackBlockEntity::new, ModBlocks.TANNING_RACK_BLOCKS.stream().map(RegistryObject::get).toArray(Block[]::new)).build(null)
     );
 
     public static final RegistryObject<BlockEntityType<PrimitiveCampfireBlockEntity>> PRIMITIVE_CAMPFIRE_BE = BLOCK_ENTITIES.register(

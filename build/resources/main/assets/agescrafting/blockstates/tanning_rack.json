@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "agescrafting:block/tanning_rack_oak",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "agescrafting:block/tanning_rack_oak",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "agescrafting:block/tanning_rack_oak"
+    },
+    "facing=west": {
+      "model": "agescrafting:block/tanning_rack_oak",
+      "y": 90
+    }
+  }
+}

@@ -6,6 +6,7 @@ import com.agescrafting.agescrafting.barrel.recipe.BarrelRecipe;
 import com.agescrafting.agescrafting.choppingblock.ChoppingBlockRecipe;
 import com.agescrafting.agescrafting.dryingrack.DryingRackRecipe;
 import com.agescrafting.agescrafting.pitkiln.PitKilnRecipe;
+import com.agescrafting.agescrafting.tanningrack.TanningRackRecipe;
 import com.agescrafting.agescrafting.workspace.WorkspaceCraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.registries.DeferredRegister;
@@ -33,6 +34,11 @@ public class ModRecipeSerializers {
     public static final RegistryObject<RecipeSerializer<DryingRackRecipe>> DRYING_RACK = RECIPE_SERIALIZERS.register(
             "drying_rack",
             DryingRackRecipe.Serializer::new
+    );
+
+    public static final RegistryObject<RecipeSerializer<TanningRackRecipe>> TANNING_RACK = RECIPE_SERIALIZERS.register(
+            "tanning_rack",
+            TanningRackRecipe.Serializer::new
     );
 
     public static final RegistryObject<RecipeSerializer<PitKilnRecipe>> PIT_KILN = RECIPE_SERIALIZERS.register(

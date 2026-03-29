@@ -17,6 +17,7 @@ import com.agescrafting.agescrafting.registry.ModMenuTypes;
 import com.agescrafting.agescrafting.registry.ModRecipeSerializers;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import com.agescrafting.agescrafting.registry.ModSoundEvents;
+import com.agescrafting.agescrafting.tanningrack.TanningRackBlockEntityRenderer;
 import com.agescrafting.agescrafting.workspace.WorkspaceTableRenderer;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
@@ -71,6 +72,10 @@ public class AgesCraftingMod {
             event.enqueueWork(() -> BlockEntityRenderers.register(
                     ModBlockEntities.DRYING_RACK_BE.get(),
                     DryingRackBlockEntityRenderer::new
+            ));
+            event.enqueueWork(() -> BlockEntityRenderers.register(
+                    ModBlockEntities.TANNING_RACK_BE.get(),
+                    TanningRackBlockEntityRenderer::new
             ));
             event.enqueueWork(() -> BlockEntityRenderers.register(
                     ModBlockEntities.PRIMITIVE_CAMPFIRE_BE.get(),

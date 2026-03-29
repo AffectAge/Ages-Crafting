@@ -13,6 +13,8 @@ import com.agescrafting.agescrafting.dryingrack.DryingRackBlock;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlockEntity;
 import com.agescrafting.agescrafting.pitkiln.PitKilnBlock;
 import com.agescrafting.agescrafting.pitkiln.PitKilnBlockEntity;
+import com.agescrafting.agescrafting.tanningrack.TanningRackBlock;
+import com.agescrafting.agescrafting.tanningrack.TanningRackBlockEntity;
 import net.minecraft.world.level.block.BaseFireBlock;
 import snownee.jade.api.IWailaClientRegistration;
 import snownee.jade.api.IWailaCommonRegistration;
@@ -26,6 +28,7 @@ public class BarrelJadePlugin implements IWailaPlugin {
         registration.registerBlockDataProvider(AnvilJadeProvider.INSTANCE, AnvilBlockEntity.class);
         registration.registerBlockDataProvider(BarrelJadeProvider.INSTANCE, BarrelBlockEntity.class);
         registration.registerBlockDataProvider(DryingRackJadeProvider.INSTANCE, DryingRackBlockEntity.class);
+        registration.registerBlockDataProvider(TanningRackJadeProvider.INSTANCE, TanningRackBlockEntity.class);
         registration.registerBlockDataProvider(PrimitiveCampfireJadeProvider.INSTANCE, PrimitiveCampfireBlockEntity.class);
         registration.registerBlockDataProvider(PitKilnJadeProvider.INSTANCE, PitKilnBlockEntity.class);
         registration.registerBlockDataProvider(ChoppingBlockJadeProvider.INSTANCE, ChoppingBlockBlockEntity.class);
@@ -36,6 +39,7 @@ public class BarrelJadePlugin implements IWailaPlugin {
         registration.registerBlockComponent(AnvilJadeProvider.INSTANCE, AnvilBlock.class);
         registration.registerBlockComponent(BarrelJadeProvider.INSTANCE, BarrelBlock.class);
         registration.registerBlockComponent(DryingRackJadeProvider.INSTANCE, DryingRackBlock.class);
+        registration.registerBlockComponent(TanningRackJadeProvider.INSTANCE, TanningRackBlock.class);
         registration.registerBlockComponent(PrimitiveCampfireJadeProvider.INSTANCE, PrimitiveCampfireBlock.class);
         registration.registerBlockComponent(PitKilnJadeProvider.INSTANCE, PitKilnBlock.class);
         registration.registerBlockComponent(PitKilnJadeProvider.INSTANCE, BaseFireBlock.class);

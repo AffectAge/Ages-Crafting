@@ -10,6 +10,7 @@ import com.agescrafting.agescrafting.pitkiln.PitKilnRecipe;
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import com.agescrafting.agescrafting.registry.ModItems;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
+import com.agescrafting.agescrafting.tanningrack.TanningRackRecipe;
 import com.agescrafting.agescrafting.workspace.WorkspaceCraftingRecipe;
 import dev.emi.emi.api.EmiPlugin;
 import dev.emi.emi.api.EmiRegistry;
@@ -40,6 +41,11 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
     public static final EmiRecipeCategory DRYING_RACK_CATEGORY = new EmiRecipeCategory(
             ResourceLocation.fromNamespaceAndPath(AgesCraftingMod.MODID, "drying_rack"),
             EmiStack.of(ModBlocks.DRYING_RACK.get())
+    );
+
+    public static final EmiRecipeCategory TANNING_RACK_CATEGORY = new EmiRecipeCategory(
+            ResourceLocation.fromNamespaceAndPath(AgesCraftingMod.MODID, "tanning_rack"),
+            EmiStack.of(ModBlocks.TANNING_RACK.get())
     );
 
     public static final EmiRecipeCategory PRIMITIVE_CAMPFIRE_CATEGORY = new EmiRecipeCategory(
@@ -77,6 +83,11 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
             registry.addWorkstation(DRYING_RACK_CATEGORY, EmiStack.of(dryingRack.get()));
         }
 
+        registry.addCategory(TANNING_RACK_CATEGORY);
+        for (var tanningRack : ModBlocks.TANNING_RACK_BLOCKS) {
+            registry.addWorkstation(TANNING_RACK_CATEGORY, EmiStack.of(tanningRack.get()));
+        }
+
         registry.addCategory(PRIMITIVE_CAMPFIRE_CATEGORY);
         registry.addWorkstation(PRIMITIVE_CAMPFIRE_CATEGORY, EmiStack.of(ModBlocks.PRIMITIVE_CAMPFIRE.get()));
 
@@ -107,6 +118,10 @@ public class WorkspaceEmiPlugin implements EmiPlugin {
 
         for (DryingRackRecipe recipe : level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.DRYING_RACK.get())) {
             registry.addRecipe(new DryingRackEmiRecipe(recipe, DRYING_RACK_CATEGORY));
+        }
+
+        for (TanningRackRecipe recipe : level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.TANNING_RACK.get())) {
+            registry.addRecipe(new TanningRackEmiRecipe(recipe, TANNING_RACK_CATEGORY));
         }
 
         for (PitKilnRecipe recipe : level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.PIT_KILN.get())) {

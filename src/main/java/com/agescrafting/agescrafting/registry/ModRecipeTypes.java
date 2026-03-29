@@ -6,6 +6,7 @@ import com.agescrafting.agescrafting.barrel.recipe.BarrelRecipe;
 import com.agescrafting.agescrafting.choppingblock.ChoppingBlockRecipe;
 import com.agescrafting.agescrafting.dryingrack.DryingRackRecipe;
 import com.agescrafting.agescrafting.pitkiln.PitKilnRecipe;
+import com.agescrafting.agescrafting.tanningrack.TanningRackRecipe;
 import com.agescrafting.agescrafting.workspace.WorkspaceCraftingRecipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -51,6 +52,16 @@ public class ModRecipeTypes {
                 @Override
                 public String toString() {
                     return AgesCraftingMod.MODID + ":drying_rack";
+                }
+            }
+    );
+
+    public static final RegistryObject<RecipeType<TanningRackRecipe>> TANNING_RACK = RECIPE_TYPES.register(
+            "tanning_rack",
+            () -> new RecipeType<>() {
+                @Override
+                public String toString() {
+                    return AgesCraftingMod.MODID + ":tanning_rack";
                 }
             }
     );

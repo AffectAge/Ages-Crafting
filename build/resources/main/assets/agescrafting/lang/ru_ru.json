@@ -8,7 +8,7 @@
   "gui.agescrafting.layer.bottom": "Нижний слой",
   "gui.agescrafting.layer.middle": "Средний слой",
   "gui.agescrafting.layer.top": "Верхний слой",
-  "gui.agescrafting.assembly_tool": "Инструмент сборки",
+  "gui.agescrafting.assembly_tool": "Инструмент",
   "gui.agescrafting.result": "Результат",
   "gui.agescrafting.stage_required": "Требуется стадия: %s",
   "message.agescrafting.stage_required": "Нужна стадия: %s",
@@ -118,6 +118,7 @@
   "tooltip.agescrafting.pit_kiln.state.result": "Результат готов",
   "tooltip.agescrafting.pit_kiln.input": "Вход: %sx %s",
   "tooltip.agescrafting.pit_kiln.failure_result": "Этот предмет получится с шансом %s, если рецепт провалится",
+  "tooltip.agescrafting.tanning_rack.failure_result": "Этот предмет получится с шансом %s при каждом ударе, если дубление провалится",
   "tooltip.agescrafting.chopping_block.empty": "Пусто",
   "item.agescrafting.chopping_block": "Пень для рубки",
   "gui.agescrafting.chopping_block.chops": "Нужно ударов: %s",
@@ -174,12 +175,42 @@
   "subtitle.agescrafting.barrel.seal": "Бочка запечатана",
   "subtitle.agescrafting.barrel.unseal": "Бочка распечатана",
   "tooltip.agescrafting.wood_chips_pile.layers": "Щепа: %s / %s",
-  "item.agescrafting.ash": "Зола"
+  "item.agescrafting.ash": "Зола",
+  "block.agescrafting.spruce_tanning_rack": "Еловая дубильная стойка",
+  "item.agescrafting.birch_tanning_rack": "Березовая дубильная стойка",
+  "item.agescrafting.jungle_tanning_rack": "Тропическая дубильная стойка",
+  "block.agescrafting.bamboo_tanning_rack": "Бамбуковая дубильная стойка",
+  "item.agescrafting.dark_oak_tanning_rack": "Дубильная стойка из тёмного дуба",
+  "item.agescrafting.bamboo_tanning_rack": "Бамбуковая дубильная стойка",
+  "block.agescrafting.dark_oak_tanning_rack": "Дубильная стойка из тёмного дуба",
+  "block.agescrafting.birch_tanning_rack": "Березовая дубильная стойка",
+  "item.agescrafting.cherry_tanning_rack": "Вишневая дубильная стойка",
+  "item.agescrafting.mangrove_tanning_rack": "Мангровая дубильная стойка",
+  "block.agescrafting.jungle_tanning_rack": "Тропическая дубильная стойка",
+  "block.agescrafting.acacia_tanning_rack": "Акациевая дубильная стойка",
+  "block.agescrafting.cherry_tanning_rack": "Вишневая дубильная стойка",
+  "item.agescrafting.crimson_tanning_rack": "Багровая дубильная стойка",
+  "item.agescrafting.warped_tanning_rack": "Искаженная дубильная стойка",
+  "item.agescrafting.spruce_tanning_rack": "Еловая дубильная стойка",
+  "item.agescrafting.tanning_rack": "Дубильная стойка",
+  "block.agescrafting.tanning_rack": "Дубильная стойка",
+  "block.agescrafting.warped_tanning_rack": "Искаженная дубильная стойка",
+  "item.agescrafting.acacia_tanning_rack": "Акациевая дубильная стойка",
+  "block.agescrafting.mangrove_tanning_rack": "Мангровая дубильная стойка",
+  "block.agescrafting.crimson_tanning_rack": "Багровая дубильная стойка",
+  "tooltip.agescrafting.tanning_rack.stage": "Стадия: %s",
+  "tooltip.agescrafting.tanning_rack.no_recipe": "Нет подходящего рецепта дубления",
+  "tooltip.agescrafting.tanning_rack.empty": "Пусто",
+  "item.agescrafting.raw_hide": "Сырая шкура",
+  "item.agescrafting.tanned_leather": "Выдубленная кожа",
+  "item.agescrafting.soaked_hide": "Замоченная шкура",
+  "item.agescrafting.scraped_hide": "Очищенная шкура",
+  "gui.agescrafting.tanning_rack.hits": "Нужно ударов: %s",
+  "gui.agescrafting.tanning_rack.fail": "Шанс провала: %s%%",
+  "tooltip.agescrafting.tanning_rack.progress": "Дубление: %s / %s ударов",
+  "emi.category.agescrafting.tanning_rack": "Дубильная стойка",
+  "tooltip.agescrafting.tanning_rack.progress_percent": "Прогресс: %s%%"
 }
-
-
-
-
 
 
 

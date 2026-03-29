@@ -8,6 +8,7 @@ import com.agescrafting.agescrafting.choppingblock.ChoppingBlockBlock;
 import com.agescrafting.agescrafting.choppingblock.WoodChipsPileBlock;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlock;
 import com.agescrafting.agescrafting.pitkiln.PitKilnBlock;
+import com.agescrafting.agescrafting.tanningrack.TanningRackBlock;
 import com.agescrafting.agescrafting.workspace.WorkspaceTableBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -78,6 +79,61 @@ public class ModBlocks {
             () -> new DryingRackBlock(BlockBehaviour.Properties.of().strength(1.5F).noOcclusion())
     );
 
+    public static final RegistryObject<Block> SPRUCE_DRYING_RACK = registerDryingRack("spruce_drying_rack");
+    public static final RegistryObject<Block> BIRCH_DRYING_RACK = registerDryingRack("birch_drying_rack");
+    public static final RegistryObject<Block> JUNGLE_DRYING_RACK = registerDryingRack("jungle_drying_rack");
+    public static final RegistryObject<Block> ACACIA_DRYING_RACK = registerDryingRack("acacia_drying_rack");
+    public static final RegistryObject<Block> DARK_OAK_DRYING_RACK = registerDryingRack("dark_oak_drying_rack");
+    public static final RegistryObject<Block> MANGROVE_DRYING_RACK = registerDryingRack("mangrove_drying_rack");
+    public static final RegistryObject<Block> CHERRY_DRYING_RACK = registerDryingRack("cherry_drying_rack");
+    public static final RegistryObject<Block> BAMBOO_DRYING_RACK = registerDryingRack("bamboo_drying_rack");
+    public static final RegistryObject<Block> CRIMSON_DRYING_RACK = registerDryingRack("crimson_drying_rack");
+    public static final RegistryObject<Block> WARPED_DRYING_RACK = registerDryingRack("warped_drying_rack");
+
+    public static final List<RegistryObject<Block>> DRYING_RACK_BLOCKS = List.of(
+            DRYING_RACK,
+            SPRUCE_DRYING_RACK,
+            BIRCH_DRYING_RACK,
+            JUNGLE_DRYING_RACK,
+            ACACIA_DRYING_RACK,
+            DARK_OAK_DRYING_RACK,
+            MANGROVE_DRYING_RACK,
+            CHERRY_DRYING_RACK,
+            BAMBOO_DRYING_RACK,
+            CRIMSON_DRYING_RACK,
+            WARPED_DRYING_RACK
+    );
+
+    public static final RegistryObject<Block> TANNING_RACK = BLOCKS.register(
+            "tanning_rack",
+            () -> new TanningRackBlock(BlockBehaviour.Properties.of().strength(1.5F).noOcclusion())
+    );
+
+    public static final RegistryObject<Block> SPRUCE_TANNING_RACK = registerTanningRack("spruce_tanning_rack");
+    public static final RegistryObject<Block> BIRCH_TANNING_RACK = registerTanningRack("birch_tanning_rack");
+    public static final RegistryObject<Block> JUNGLE_TANNING_RACK = registerTanningRack("jungle_tanning_rack");
+    public static final RegistryObject<Block> ACACIA_TANNING_RACK = registerTanningRack("acacia_tanning_rack");
+    public static final RegistryObject<Block> DARK_OAK_TANNING_RACK = registerTanningRack("dark_oak_tanning_rack");
+    public static final RegistryObject<Block> MANGROVE_TANNING_RACK = registerTanningRack("mangrove_tanning_rack");
+    public static final RegistryObject<Block> CHERRY_TANNING_RACK = registerTanningRack("cherry_tanning_rack");
+    public static final RegistryObject<Block> BAMBOO_TANNING_RACK = registerTanningRack("bamboo_tanning_rack");
+    public static final RegistryObject<Block> CRIMSON_TANNING_RACK = registerTanningRack("crimson_tanning_rack");
+    public static final RegistryObject<Block> WARPED_TANNING_RACK = registerTanningRack("warped_tanning_rack");
+
+    public static final List<RegistryObject<Block>> TANNING_RACK_BLOCKS = List.of(
+            TANNING_RACK,
+            SPRUCE_TANNING_RACK,
+            BIRCH_TANNING_RACK,
+            JUNGLE_TANNING_RACK,
+            ACACIA_TANNING_RACK,
+            DARK_OAK_TANNING_RACK,
+            MANGROVE_TANNING_RACK,
+            CHERRY_TANNING_RACK,
+            BAMBOO_TANNING_RACK,
+            CRIMSON_TANNING_RACK,
+            WARPED_TANNING_RACK
+    );
+
     public static final RegistryObject<Block> PRIMITIVE_CAMPFIRE = BLOCKS.register(
             "primitive_campfire",
             () -> new PrimitiveCampfireBlock(BlockBehaviour.Properties.of().strength(0.5F).noOcclusion())
@@ -123,37 +179,16 @@ public class ModBlocks {
             () -> new WoodChipsPileBlock(BlockBehaviour.Properties.of().strength(0.2F).noOcclusion())
     );
 
-    public static final RegistryObject<Block> SPRUCE_DRYING_RACK = registerDryingRack("spruce_drying_rack");
-    public static final RegistryObject<Block> BIRCH_DRYING_RACK = registerDryingRack("birch_drying_rack");
-    public static final RegistryObject<Block> JUNGLE_DRYING_RACK = registerDryingRack("jungle_drying_rack");
-    public static final RegistryObject<Block> ACACIA_DRYING_RACK = registerDryingRack("acacia_drying_rack");
-    public static final RegistryObject<Block> DARK_OAK_DRYING_RACK = registerDryingRack("dark_oak_drying_rack");
-    public static final RegistryObject<Block> MANGROVE_DRYING_RACK = registerDryingRack("mangrove_drying_rack");
-    public static final RegistryObject<Block> CHERRY_DRYING_RACK = registerDryingRack("cherry_drying_rack");
-    public static final RegistryObject<Block> BAMBOO_DRYING_RACK = registerDryingRack("bamboo_drying_rack");
-    public static final RegistryObject<Block> CRIMSON_DRYING_RACK = registerDryingRack("crimson_drying_rack");
-    public static final RegistryObject<Block> WARPED_DRYING_RACK = registerDryingRack("warped_drying_rack");
-
-    public static final List<RegistryObject<Block>> DRYING_RACK_BLOCKS = List.of(
-            DRYING_RACK,
-            SPRUCE_DRYING_RACK,
-            BIRCH_DRYING_RACK,
-            JUNGLE_DRYING_RACK,
-            ACACIA_DRYING_RACK,
-            DARK_OAK_DRYING_RACK,
-            MANGROVE_DRYING_RACK,
-            CHERRY_DRYING_RACK,
-            BAMBOO_DRYING_RACK,
-            CRIMSON_DRYING_RACK,
-            WARPED_DRYING_RACK
-    );
-
     private static RegistryObject<Block> registerBarrel(String id) {
         return BLOCKS.register(id, () -> new BarrelBlock(BlockBehaviour.Properties.of().strength(2.5F)));
     }
 
     private static RegistryObject<Block> registerDryingRack(String id) {
         return BLOCKS.register(id, () -> new DryingRackBlock(BlockBehaviour.Properties.of().strength(1.5F).noOcclusion()));
+    }
+
+    private static RegistryObject<Block> registerTanningRack(String id) {
+        return BLOCKS.register(id, () -> new TanningRackBlock(BlockBehaviour.Properties.of().strength(1.5F).noOcclusion()));
     }
 
     private static RegistryObject<Block> registerChoppingBlock(String id) {

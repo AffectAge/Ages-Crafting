@@ -70,6 +70,57 @@ public class ModItems {
     );
 
     public static final RegistryObject<Item> DRYING_RACK_ITEM = registerBlockItem("drying_rack", ModBlocks.DRYING_RACK);
+    public static final RegistryObject<Item> SPRUCE_DRYING_RACK_ITEM = registerBlockItem("spruce_drying_rack", ModBlocks.SPRUCE_DRYING_RACK);
+    public static final RegistryObject<Item> BIRCH_DRYING_RACK_ITEM = registerBlockItem("birch_drying_rack", ModBlocks.BIRCH_DRYING_RACK);
+    public static final RegistryObject<Item> JUNGLE_DRYING_RACK_ITEM = registerBlockItem("jungle_drying_rack", ModBlocks.JUNGLE_DRYING_RACK);
+    public static final RegistryObject<Item> ACACIA_DRYING_RACK_ITEM = registerBlockItem("acacia_drying_rack", ModBlocks.ACACIA_DRYING_RACK);
+    public static final RegistryObject<Item> DARK_OAK_DRYING_RACK_ITEM = registerBlockItem("dark_oak_drying_rack", ModBlocks.DARK_OAK_DRYING_RACK);
+    public static final RegistryObject<Item> MANGROVE_DRYING_RACK_ITEM = registerBlockItem("mangrove_drying_rack", ModBlocks.MANGROVE_DRYING_RACK);
+    public static final RegistryObject<Item> CHERRY_DRYING_RACK_ITEM = registerBlockItem("cherry_drying_rack", ModBlocks.CHERRY_DRYING_RACK);
+    public static final RegistryObject<Item> BAMBOO_DRYING_RACK_ITEM = registerBlockItem("bamboo_drying_rack", ModBlocks.BAMBOO_DRYING_RACK);
+    public static final RegistryObject<Item> CRIMSON_DRYING_RACK_ITEM = registerBlockItem("crimson_drying_rack", ModBlocks.CRIMSON_DRYING_RACK);
+    public static final RegistryObject<Item> WARPED_DRYING_RACK_ITEM = registerBlockItem("warped_drying_rack", ModBlocks.WARPED_DRYING_RACK);
+
+    public static final List<RegistryObject<Item>> DRYING_RACK_ITEMS = List.of(
+            DRYING_RACK_ITEM,
+            SPRUCE_DRYING_RACK_ITEM,
+            BIRCH_DRYING_RACK_ITEM,
+            JUNGLE_DRYING_RACK_ITEM,
+            ACACIA_DRYING_RACK_ITEM,
+            DARK_OAK_DRYING_RACK_ITEM,
+            MANGROVE_DRYING_RACK_ITEM,
+            CHERRY_DRYING_RACK_ITEM,
+            BAMBOO_DRYING_RACK_ITEM,
+            CRIMSON_DRYING_RACK_ITEM,
+            WARPED_DRYING_RACK_ITEM
+    );
+
+    public static final RegistryObject<Item> TANNING_RACK_ITEM = registerBlockItem("tanning_rack", ModBlocks.TANNING_RACK);
+    public static final RegistryObject<Item> SPRUCE_TANNING_RACK_ITEM = registerBlockItem("spruce_tanning_rack", ModBlocks.SPRUCE_TANNING_RACK);
+    public static final RegistryObject<Item> BIRCH_TANNING_RACK_ITEM = registerBlockItem("birch_tanning_rack", ModBlocks.BIRCH_TANNING_RACK);
+    public static final RegistryObject<Item> JUNGLE_TANNING_RACK_ITEM = registerBlockItem("jungle_tanning_rack", ModBlocks.JUNGLE_TANNING_RACK);
+    public static final RegistryObject<Item> ACACIA_TANNING_RACK_ITEM = registerBlockItem("acacia_tanning_rack", ModBlocks.ACACIA_TANNING_RACK);
+    public static final RegistryObject<Item> DARK_OAK_TANNING_RACK_ITEM = registerBlockItem("dark_oak_tanning_rack", ModBlocks.DARK_OAK_TANNING_RACK);
+    public static final RegistryObject<Item> MANGROVE_TANNING_RACK_ITEM = registerBlockItem("mangrove_tanning_rack", ModBlocks.MANGROVE_TANNING_RACK);
+    public static final RegistryObject<Item> CHERRY_TANNING_RACK_ITEM = registerBlockItem("cherry_tanning_rack", ModBlocks.CHERRY_TANNING_RACK);
+    public static final RegistryObject<Item> BAMBOO_TANNING_RACK_ITEM = registerBlockItem("bamboo_tanning_rack", ModBlocks.BAMBOO_TANNING_RACK);
+    public static final RegistryObject<Item> CRIMSON_TANNING_RACK_ITEM = registerBlockItem("crimson_tanning_rack", ModBlocks.CRIMSON_TANNING_RACK);
+    public static final RegistryObject<Item> WARPED_TANNING_RACK_ITEM = registerBlockItem("warped_tanning_rack", ModBlocks.WARPED_TANNING_RACK);
+
+    public static final List<RegistryObject<Item>> TANNING_RACK_ITEMS = List.of(
+            TANNING_RACK_ITEM,
+            SPRUCE_TANNING_RACK_ITEM,
+            BIRCH_TANNING_RACK_ITEM,
+            JUNGLE_TANNING_RACK_ITEM,
+            ACACIA_TANNING_RACK_ITEM,
+            DARK_OAK_TANNING_RACK_ITEM,
+            MANGROVE_TANNING_RACK_ITEM,
+            CHERRY_TANNING_RACK_ITEM,
+            BAMBOO_TANNING_RACK_ITEM,
+            CRIMSON_TANNING_RACK_ITEM,
+            WARPED_TANNING_RACK_ITEM
+    );
+
     public static final RegistryObject<Item> PRIMITIVE_CAMPFIRE_ITEM = registerBlockItem("primitive_campfire", ModBlocks.PRIMITIVE_CAMPFIRE);
     public static final RegistryObject<Item> PIT_KILN_ITEM = registerBlockItem("pit_kiln", ModBlocks.PIT_KILN);
     public static final RegistryObject<Item> CHOPPING_BLOCK_ITEM = registerBlockItem("chopping_block", ModBlocks.CHOPPING_BLOCK);
@@ -98,41 +149,18 @@ public class ModItems {
             CRIMSON_CHOPPING_BLOCK_ITEM,
             WARPED_CHOPPING_BLOCK_ITEM
     );
-
-    public static final RegistryObject<Item> SPRUCE_DRYING_RACK_ITEM = registerBlockItem("spruce_drying_rack", ModBlocks.SPRUCE_DRYING_RACK);
-    public static final RegistryObject<Item> BIRCH_DRYING_RACK_ITEM = registerBlockItem("birch_drying_rack", ModBlocks.BIRCH_DRYING_RACK);
-    public static final RegistryObject<Item> JUNGLE_DRYING_RACK_ITEM = registerBlockItem("jungle_drying_rack", ModBlocks.JUNGLE_DRYING_RACK);
-    public static final RegistryObject<Item> ACACIA_DRYING_RACK_ITEM = registerBlockItem("acacia_drying_rack", ModBlocks.ACACIA_DRYING_RACK);
-    public static final RegistryObject<Item> DARK_OAK_DRYING_RACK_ITEM = registerBlockItem("dark_oak_drying_rack", ModBlocks.DARK_OAK_DRYING_RACK);
-    public static final RegistryObject<Item> MANGROVE_DRYING_RACK_ITEM = registerBlockItem("mangrove_drying_rack", ModBlocks.MANGROVE_DRYING_RACK);
-    public static final RegistryObject<Item> CHERRY_DRYING_RACK_ITEM = registerBlockItem("cherry_drying_rack", ModBlocks.CHERRY_DRYING_RACK);
-    public static final RegistryObject<Item> BAMBOO_DRYING_RACK_ITEM = registerBlockItem("bamboo_drying_rack", ModBlocks.BAMBOO_DRYING_RACK);
-    public static final RegistryObject<Item> CRIMSON_DRYING_RACK_ITEM = registerBlockItem("crimson_drying_rack", ModBlocks.CRIMSON_DRYING_RACK);
-    public static final RegistryObject<Item> WARPED_DRYING_RACK_ITEM = registerBlockItem("warped_drying_rack", ModBlocks.WARPED_DRYING_RACK);
-
+    public static final RegistryObject<Item> RAW_HIDE = ITEMS.register("raw_hide", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SOAKED_HIDE = ITEMS.register("soaked_hide", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SCRAPED_HIDE = ITEMS.register("scraped_hide", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> TANNED_LEATHER = ITEMS.register("tanned_leather", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ASH = ITEMS.register("ash", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> WOOD_CHIPS = ITEMS.register("wood_chips", () -> new Item(new Item.Properties()) {
         @Override
         public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
-            // Between stick (100) and plank (300) for vanilla-like fuel balance.
             return 200;
         }
     });
-
-    public static final List<RegistryObject<Item>> DRYING_RACK_ITEMS = List.of(
-            DRYING_RACK_ITEM,
-            SPRUCE_DRYING_RACK_ITEM,
-            BIRCH_DRYING_RACK_ITEM,
-            JUNGLE_DRYING_RACK_ITEM,
-            ACACIA_DRYING_RACK_ITEM,
-            DARK_OAK_DRYING_RACK_ITEM,
-            MANGROVE_DRYING_RACK_ITEM,
-            CHERRY_DRYING_RACK_ITEM,
-            BAMBOO_DRYING_RACK_ITEM,
-            CRIMSON_DRYING_RACK_ITEM,
-            WARPED_DRYING_RACK_ITEM
-    );
 
     private static RegistryObject<Item> registerBarrelItem(String id, RegistryObject<net.minecraft.world.level.block.Block> block) {
         return ITEMS.register(id, () -> new BarrelBlockItem(block.get(), new Item.Properties()));
@@ -142,9 +170,4 @@ public class ModItems {
         return ITEMS.register(id, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 }
-
-
-
-
-
 

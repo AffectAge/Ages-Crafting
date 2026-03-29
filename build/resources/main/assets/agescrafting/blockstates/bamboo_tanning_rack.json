@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "agescrafting:block/bamboo_tanning_rack",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "agescrafting:block/bamboo_tanning_rack",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "agescrafting:block/bamboo_tanning_rack"
+    },
+    "facing=west": {
+      "model": "agescrafting:block/bamboo_tanning_rack",
+      "y": 90
+    }
+  }
+}

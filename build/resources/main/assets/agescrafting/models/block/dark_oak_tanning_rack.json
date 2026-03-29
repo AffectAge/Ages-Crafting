@@ -1,0 +1,6 @@
+{
+  "parent": "agescrafting:block/tanning_rack",
+  "textures": {
+    "rack": "minecraft:block/dark_oak_log"
+  }
+}

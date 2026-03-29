@@ -5,6 +5,7 @@ import com.agescrafting.agescrafting.compat.campfire.PrimitiveCampfireDisplayRec
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import com.agescrafting.agescrafting.registry.ModItems;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
+import com.agescrafting.agescrafting.tanningrack.TanningRackRecipe;
 import com.agescrafting.agescrafting.workspace.WorkspaceCraftingRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -35,6 +36,7 @@ public class WorkspaceJeiPlugin implements IModPlugin {
                 new AnvilJeiCategory(registration.getJeiHelpers().getGuiHelper()),
                 new BarrelJeiCategory(registration.getJeiHelpers().getGuiHelper()),
                 new DryingRackJeiCategory(registration.getJeiHelpers().getGuiHelper()),
+                new TanningRackJeiCategory(registration.getJeiHelpers().getGuiHelper()),
                 new PrimitiveCampfireJeiCategory(registration.getJeiHelpers().getGuiHelper()),
                 new PitKilnJeiCategory(registration.getJeiHelpers().getGuiHelper()),
                 new ChoppingBlockJeiCategory(registration.getJeiHelpers().getGuiHelper())
@@ -48,35 +50,13 @@ public class WorkspaceJeiPlugin implements IModPlugin {
             return;
         }
 
-        registration.addRecipes(
-                WorkspaceJeiCategory.TYPE,
-                new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.WORKSPACE_CRAFTING.get()))
-        );
-
-        registration.addRecipes(
-                AnvilJeiCategory.TYPE,
-                new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.ANVIL.get()))
-        );
-
-        registration.addRecipes(
-                BarrelJeiCategory.TYPE,
-                new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.BARREL.get()))
-        );
-
-        registration.addRecipes(
-                DryingRackJeiCategory.TYPE,
-                new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.DRYING_RACK.get()))
-        );
-
-        registration.addRecipes(
-                PitKilnJeiCategory.TYPE,
-                new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.PIT_KILN.get()))
-        );
-
-        registration.addRecipes(
-                ChoppingBlockJeiCategory.TYPE,
-                new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.CHOPPING_BLOCK.get()))
-        );
+        registration.addRecipes(WorkspaceJeiCategory.TYPE, new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.WORKSPACE_CRAFTING.get())));
+        registration.addRecipes(AnvilJeiCategory.TYPE, new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.ANVIL.get())));
+        registration.addRecipes(BarrelJeiCategory.TYPE, new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.BARREL.get())));
+        registration.addRecipes(DryingRackJeiCategory.TYPE, new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.DRYING_RACK.get())));
+        registration.addRecipes(TanningRackJeiCategory.TYPE, new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.TANNING_RACK.get())));
+        registration.addRecipes(PitKilnJeiCategory.TYPE, new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.PIT_KILN.get())));
+        registration.addRecipes(ChoppingBlockJeiCategory.TYPE, new ArrayList<>(level.getRecipeManager().getAllRecipesFor(ModRecipeTypes.CHOPPING_BLOCK.get())));
 
         ArrayList<PrimitiveCampfireDisplayRecipe> campfireRecipes = new ArrayList<>();
         for (var recipe : level.getRecipeManager().getAllRecipesFor(RecipeType.SMELTING)) {
@@ -109,6 +89,9 @@ public class WorkspaceJeiPlugin implements IModPlugin {
         }
         for (var dryingRack : ModBlocks.DRYING_RACK_BLOCKS) {
             registration.addRecipeCatalyst(new ItemStack(dryingRack.get()), DryingRackJeiCategory.TYPE);
+        }
+        for (var tanningRack : ModBlocks.TANNING_RACK_BLOCKS) {
+            registration.addRecipeCatalyst(new ItemStack(tanningRack.get()), TanningRackJeiCategory.TYPE);
         }
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.PRIMITIVE_CAMPFIRE.get()), PrimitiveCampfireJeiCategory.TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.PIT_KILN.get()), PitKilnJeiCategory.TYPE);
