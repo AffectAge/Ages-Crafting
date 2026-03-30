@@ -16,8 +16,6 @@ import snownee.jade.api.config.IPluginConfig;
 import snownee.jade.api.ui.BoxStyle;
 import snownee.jade.api.ui.IElementHelper;
 
-import java.util.Locale;
-
 public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataProvider<BlockAccessor> {
     INSTANCE;
 
@@ -25,7 +23,6 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
     private static final String TAG_PROGRESS = "RecipeProgress";
     private static final String TAG_TOTAL = "RecipeTotal";
     private static final String TAG_SEALED = "Sealed";
-    private static final String TAG_SEASON_MULTIPLIER = "SeasonMultiplier";
 
     @Override
     public void appendServerData(CompoundTag data, @NotNull BlockAccessor accessor) {
@@ -34,10 +31,6 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
         }
 
         data.putBoolean(TAG_SEALED, barrel.isSealed());
-        if (barrel.hasSeasonDurationModifier()) {
-            data.putFloat(TAG_SEASON_MULTIPLIER, barrel.getSeasonDurationMultiplierForDisplay());
-        }
-
         int total = barrel.getRecipeTotalTicks();
         if (total <= 0) {
             return;
@@ -58,12 +51,6 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
                 .withStyle(sealed ? ChatFormatting.RED : ChatFormatting.GREEN);
         tooltip.add(stateText);
 
-        if (data.contains(TAG_SEASON_MULTIPLIER)) {
-            float seasonMultiplier = data.getFloat(TAG_SEASON_MULTIPLIER);
-            ChatFormatting color = seasonMultiplier < 1.0F ? ChatFormatting.GREEN : (seasonMultiplier > 1.0F ? ChatFormatting.RED : ChatFormatting.GRAY);
-            tooltip.add(Component.translatable("tooltip.agescrafting.barrel.season_modifier", String.format(Locale.ROOT, "x%.2f", seasonMultiplier)).withStyle(color));
-        }
-
         if (!data.contains(TAG_TOTAL)) {
             return;
         }
@@ -81,5 +68,3 @@ public enum BarrelJadeProvider implements IBlockComponentProvider, IServerDataPr
         return UID;
     }
 }
-
-

@@ -1,0 +1,14 @@
+{
+  "type": "agescrafting:tanning_rack",
+  "ingredient": {
+    "item": "agescrafting:raw_hide"
+  },
+  "tool": {
+    "item": "minecraft:shears"
+  },
+  "result": {
+    "item": "agescrafting:soaked_hide"
+  },
+  "hits": 4,
+  "durability_per_hit": 1
+}

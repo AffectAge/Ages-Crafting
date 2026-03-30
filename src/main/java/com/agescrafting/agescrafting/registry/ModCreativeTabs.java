@@ -1,8 +1,10 @@
 package com.agescrafting.agescrafting.registry;
 
 import com.agescrafting.agescrafting.AgesCraftingMod;
-import net.minecraft.core.registries.Registries;
+import com.agescrafting.agescrafting.compat.patchouli.PatchouliCompatUtil;
+import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -14,7 +16,11 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ModCreativeTabs {
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, AgesCraftingMod.MODID);
+    private static final ResourceKey<Registry<CreativeModeTab>> CREATIVE_MODE_TAB_REGISTRY =
+            ResourceKey.createRegistryKey(new ResourceLocation("minecraft", "creative_mode_tab"));
+
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
+            DeferredRegister.create(CREATIVE_MODE_TAB_REGISTRY, AgesCraftingMod.MODID);
 
     public static final RegistryObject<CreativeModeTab> MAIN = CREATIVE_MODE_TABS.register("main", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.agescrafting.main"))
@@ -28,6 +34,11 @@ public class ModCreativeTabs {
 
                 for (RegistryObject<net.minecraft.world.item.Item> item : items) {
                     output.accept(item.get());
+                }
+
+                ItemStack guide = PatchouliCompatUtil.createGuideBookStack();
+                if (!guide.isEmpty()) {
+                    output.accept(guide);
                 }
             })
             .build());

@@ -1,0 +1,14 @@
+{
+  "type": "agescrafting:tanning_rack",
+  "ingredient": {
+    "item": "agescrafting:tanned_leather"
+  },
+  "tool": {
+    "item": "minecraft:shears"
+  },
+  "result": {
+    "item": "minecraft:leather"
+  },
+  "hits": 3,
+  "durability_per_hit": 1
+}

@@ -79,10 +79,10 @@ public class WorkspaceJeiCategory implements IRecipeCategory<WorkspaceCraftingRe
         addLayer(builder, recipe, 1, LAYER1_X, LAYER_Y);
         addLayer(builder, recipe, 2, LAYER2_X, LAYER_Y);
 
-        builder.addSlot(RecipeIngredientRole.INPUT, 24, 95)
+        builder.addSlot(RecipeIngredientRole.INPUT, 56, 95)
                 .addItemStack(new ItemStack(Items.FLINT));
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 96, 95)
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 116, 95)
                 .addItemStack(recipe.getResultItem(Minecraft.getInstance().level != null
                         ? Minecraft.getInstance().level.registryAccess()
                         : Minecraft.getInstance().getConnection() != null
@@ -106,10 +106,7 @@ public class WorkspaceJeiCategory implements IRecipeCategory<WorkspaceCraftingRe
         background.draw(guiGraphics, 0, 0);
         drawCentered(guiGraphics, "gui.agescrafting.layer.bottom", LAYER0_X + LAYER_SIZE / 2, 3);
         drawCentered(guiGraphics, "gui.agescrafting.layer.middle", LAYER1_X + LAYER_SIZE / 2, 3);
-        drawCentered(guiGraphics, "gui.agescrafting.layer.top", LAYER2_X + LAYER_SIZE / 2, 3);
-        drawCentered(guiGraphics, "gui.agescrafting.assembly_tool", 33, 82);
-        drawCentered(guiGraphics, "gui.agescrafting.result", 105, 82);
-        recipe.getRequiredStage().ifPresent(stage ->
+        drawCentered(guiGraphics, "gui.agescrafting.layer.top", LAYER2_X + LAYER_SIZE / 2, 3);        recipe.getRequiredStage().ifPresent(stage ->
                 drawCenteredComponent(guiGraphics, Component.translatable("gui.agescrafting.stage_required", stage), 95, 114));
     }
 
@@ -123,3 +120,5 @@ public class WorkspaceJeiCategory implements IRecipeCategory<WorkspaceCraftingRe
         guiGraphics.drawString(font, text, x, y, 0x9A9A9A, false);
     }
 }
+
+

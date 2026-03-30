@@ -1,0 +1,16 @@
+{
+  "name": "Использование Дубильной Стойки",
+  "category": "agescrafting:tanning_rack",
+  "icon": "agescrafting:tanning_rack",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Положите подходящую стадию шкуры на стойку и бейте нужным инструментом из рецепта. Прогресс идет по ударам."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Каждый удар тратит прочность инструмента. В некоторых рецептах есть шанс провала на ударе с выдачей failure output."
+    }
+  ]
+}

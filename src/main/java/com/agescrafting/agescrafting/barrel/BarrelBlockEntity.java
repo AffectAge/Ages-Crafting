@@ -3,7 +3,6 @@ package com.agescrafting.agescrafting.barrel;
 import com.agescrafting.agescrafting.barrel.recipe.BarrelRecipe;
 import com.agescrafting.agescrafting.barrel.recipe.BarrelRecipeInput;
 import com.agescrafting.agescrafting.config.AgesCraftingConfig;
-import com.agescrafting.agescrafting.compat.sereneseasons.SereneSeasonsCompat;
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import net.minecraft.core.BlockPos;
@@ -274,27 +273,18 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public boolean hasSeasonDurationModifier() {
-        return SereneSeasonsCompat.isLoaded();
+        return false;
     }
 
     public float getSeasonDurationMultiplierForDisplay() {
-        if (level == null) {
-            return 1.0F;
-        }
-        BarrelRecipe recipe = activeRecipeId == null ? null : findRecipeById(activeRecipeId);
-        return getSeasonDurationMultiplier(recipe);
+        return 1.0F;
     }
 
     private float getSeasonDurationMultiplier(@Nullable BarrelRecipe recipe) {
-        if (level == null || !SereneSeasonsCompat.isLoaded()) {
-            return 1.0F;
-        }
-
         if (recipe != null) {
             return Math.max(0.05F, recipe.getDurationMultiplier(level));
         }
-
-        return Math.max(0.05F, SereneSeasonsCompat.getBarrelDurationMultiplier(level));
+        return 1.0F;
     }
 
     public boolean clearInputFluids() {
@@ -1206,6 +1196,10 @@ public class BarrelBlockEntity extends BlockEntity implements MenuProvider {
         return fluid;
     }
 }
+
+
+
+
 
 
 

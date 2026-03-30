@@ -1,0 +1,9 @@
+{
+  "name": "Ages Crafting Manual",
+  "landing_text": "Core devices and progression basics for Ages Crafting.",
+  "version": 1,
+  "show_progress": false,
+  "i18n": true,
+  "model": "patchouli:book_blue",
+  "use_resource_pack": true
+}

@@ -1,6 +1,5 @@
 package com.agescrafting.agescrafting.barrel.recipe;
 
-import com.agescrafting.agescrafting.compat.sereneseasons.SereneSeasonsCompat;
 import com.agescrafting.agescrafting.registry.ModRecipeSerializers;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import com.google.gson.JsonArray;
@@ -131,9 +130,9 @@ public class BarrelRecipe implements Recipe<Container> {
 
     public float getDurationMultiplier(@Nullable Level level) {
         if (seasonMultipliers != null) {
-            return seasonMultipliers.forSeason(SereneSeasonsCompat.getSeasonGroup(level));
+            return seasonMultipliers.spring();
         }
-        return SereneSeasonsCompat.getBarrelDurationMultiplier(level);
+        return 1.0F;
     }
 
     public boolean hasCustomSeasonMultipliers() {
@@ -219,13 +218,8 @@ public class BarrelRecipe implements Recipe<Container> {
             winter = sanitizeMultiplier(winter);
         }
 
-        public float forSeason(SereneSeasonsCompat.SeasonGroup seasonGroup) {
-            return switch (seasonGroup) {
-                case SUMMER -> summer;
-                case AUTUMN -> autumn;
-                case WINTER -> winter;
-                case SPRING, UNKNOWN -> spring;
-            };
+        public float forSeason() {
+            return spring;
         }
 
         private static float sanitizeMultiplier(float value) {
@@ -426,4 +420,7 @@ public class BarrelRecipe implements Recipe<Container> {
         return copy;
     }
 }
+
+
+
 

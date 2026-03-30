@@ -4,6 +4,7 @@ import com.agescrafting.agescrafting.anvil.AnvilBlockEntityRenderer;
 import com.agescrafting.agescrafting.barrel.BarrelBlockEntityRenderer;
 import com.agescrafting.agescrafting.barrel.BarrelScreen;
 import com.agescrafting.agescrafting.campfire.PrimitiveCampfireBlockEntityRenderer;
+import com.agescrafting.agescrafting.compat.patchouli.PatchouliGuideEvents;
 import com.agescrafting.agescrafting.choppingblock.ChoppingBlockBlockEntityRenderer;
 import com.agescrafting.agescrafting.config.AgesCraftingConfig;
 import com.agescrafting.agescrafting.dryingrack.DryingRackBlockEntityRenderer;
@@ -29,6 +30,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.common.MinecraftForge;
 
 @Mod(AgesCraftingMod.MODID)
 public class AgesCraftingMod {
@@ -47,6 +49,7 @@ public class AgesCraftingMod {
         ModRecipeTypes.RECIPE_TYPES.register(modBus);
         ModSoundEvents.SOUND_EVENTS.register(modBus);
         context.registerConfig(ModConfig.Type.SERVER, AgesCraftingConfig.SERVER_SPEC);
+        MinecraftForge.EVENT_BUS.register(new PatchouliGuideEvents());
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event) {
@@ -96,3 +99,4 @@ public class AgesCraftingMod {
         }
     }
 }
+

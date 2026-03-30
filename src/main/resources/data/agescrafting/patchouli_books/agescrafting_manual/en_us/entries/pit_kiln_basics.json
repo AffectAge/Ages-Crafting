@@ -1,0 +1,16 @@
+{
+  "name": "Using Pit Kiln",
+  "category": "agescrafting:pit_kiln",
+  "icon": "agescrafting:pit_kiln",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Insert input, cover with thatch and logs, then ignite. Firing takes time and can be affected by rain by config."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "After completion, ash remains. Remove ash first, then collect output from the kiln."
+    }
+  ]
+}

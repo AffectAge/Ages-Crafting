@@ -1,0 +1,16 @@
+{
+  "name": "Barrel Controls",
+  "category": "agescrafting:barrel",
+  "icon": "agescrafting:barrel",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(#E5C95A)Shift + Right Click with empty hand$() toggles sealed / unsealed state."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "In barrel UI, left click tank with empty bucket to take fluid. $(#E5C95A)Shift + Right Click on input/output tank$() clears that tank."
+    }
+  ]
+}

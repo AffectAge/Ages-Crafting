@@ -1,0 +1,16 @@
+{
+  "name": "Использование Workspace",
+  "category": "agescrafting:workspace",
+  "icon": "agescrafting:workspace_table",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Размещайте ингредиенты в 3 слоях на столе workspace. Для рецепта важны точные 3D позиции."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Чтобы запустить крафт, используйте кремень по столу. При валидной сборке блок превращается в результат."
+    }
+  ]
+}

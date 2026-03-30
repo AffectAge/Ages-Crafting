@@ -1,0 +1,21 @@
+{
+  "name": "Using The Barrel",
+  "category": "agescrafting:barrel",
+  "icon": "agescrafting:barrel",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Barrel accepts items and fluids. Use the container slot or right click with buckets to move fluids."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Seal barrel in UI button or Shift + Right Click with empty hand. Sealed barrel can be broken and keeps contents."
+    },
+    {
+      "type": "patchouli:text",
+      "title": "Warnings",
+      "text": "$(#E5C95A)Exact ratio is required for barrel recipes.$() If input does not match the recipe ratio, $(#D94B4B)excess items or fluids are lost.$()"
+    }
+  ]
+}

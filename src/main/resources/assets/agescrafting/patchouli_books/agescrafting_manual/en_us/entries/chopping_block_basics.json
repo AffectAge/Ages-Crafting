@@ -1,0 +1,16 @@
+{
+  "name": "Using Chopping Block",
+  "category": "agescrafting:chopping_block",
+  "icon": "agescrafting:chopping_block",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Only items with chopping recipe can be placed. Use valid tool to progress hits and finish recipe."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Wood chips can spawn around while chopping. Clean chips with shovel depending on config."
+    }
+  ]
+}

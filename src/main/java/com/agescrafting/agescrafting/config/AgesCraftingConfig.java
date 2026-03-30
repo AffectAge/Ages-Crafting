@@ -43,6 +43,7 @@ public final class AgesCraftingConfig {
         public final ForgeConfigSpec.IntValue anvilMinFoodLevel;
         public final ForgeConfigSpec.DoubleValue anvilExhaustionPerHit;
         public final ForgeConfigSpec.DoubleValue anvilExhaustionPerComplete;
+        public final ForgeConfigSpec.BooleanValue patchouliGiveBookOnFirstJoin;
 
         private Server(ForgeConfigSpec.Builder builder) {
             builder.push("recipes");
@@ -146,7 +147,14 @@ public final class AgesCraftingConfig {
                     .comment("Exhaustion added when anvil recipe completes.")
                     .defineInRange("exhaustionPerComplete", 0.25D, 0.0D, 6.0D);
             builder.pop();
+
+            builder.push("patchouli");
+            patchouliGiveBookOnFirstJoin = builder
+                    .comment("If true and Patchouli is installed, give Ages Crafting manual to player on first world join.")
+                    .define("giveBookOnFirstJoin", true);
+            builder.pop();
         }
     }
 }
+
 

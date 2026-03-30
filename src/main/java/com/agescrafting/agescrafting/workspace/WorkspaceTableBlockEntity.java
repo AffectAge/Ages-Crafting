@@ -1,6 +1,5 @@
 package com.agescrafting.agescrafting.workspace;
 
-import com.agescrafting.agescrafting.compat.gamestages.GameStagesCompat;
 import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
 import net.minecraft.core.BlockPos;
@@ -108,12 +107,6 @@ public class WorkspaceTableBlockEntity extends BlockEntity {
         }
 
         WorkspaceCraftingRecipe matchedRecipe = recipe.get();
-        if (!GameStagesCompat.canCraft(player, matchedRecipe)) {
-            String required = matchedRecipe.getRequiredStage().orElse("");
-            player.displayClientMessage(Component.translatable("message.agescrafting.stage_required", required), true);
-            return InteractionResult.CONSUME;
-        }
-
         ItemStack result = matchedRecipe.assemble(input, serverLevel.registryAccess());
         if (!(result.getItem() instanceof BlockItem blockItem)) {
             return InteractionResult.PASS;
@@ -259,6 +252,8 @@ public class WorkspaceTableBlockEntity extends BlockEntity {
         return -1;
     }
 }
+
+
 
 
 

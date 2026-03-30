@@ -1,0 +1,16 @@
+{
+  "name": "Управление Бочкой",
+  "category": "agescrafting:barrel",
+  "icon": "agescrafting:barrel",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(#E5C95A)Shift + ПКМ пустой рукой$() переключает состояние запечатано / распечатано."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "В интерфейсе бочки ЛКМ пустым ведром по резервуару забирает жидкость. $(#E5C95A)Shift + ПКМ по input/output резервуару$() очищает этот резервуар."
+    }
+  ]
+}

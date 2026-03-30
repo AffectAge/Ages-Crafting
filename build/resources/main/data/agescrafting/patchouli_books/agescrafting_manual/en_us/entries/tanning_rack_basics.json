@@ -1,0 +1,16 @@
+{
+  "name": "Using Tanning Rack",
+  "category": "agescrafting:tanning_rack",
+  "icon": "agescrafting:tanning_rack",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Place a valid hide stage on the rack, then hit it with the required tool from recipe. Progress is measured in hits."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Each hit consumes tool durability. Some recipes may fail on hit and produce failure output instead."
+    }
+  ]
+}

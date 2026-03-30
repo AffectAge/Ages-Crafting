@@ -5,6 +5,7 @@ import com.agescrafting.agescrafting.choppingblock.ChoppingBlockRecipe;
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -28,12 +29,14 @@ public class ChoppingBlockJeiCategory implements IRecipeCategory<ChoppingBlockRe
 
     private final IDrawable icon;
     private final IDrawable background;
+    private final IDrawableAnimated arrow;
 
     public ChoppingBlockJeiCategory(IGuiHelper guiHelper) {
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModBlocks.CHOPPING_BLOCK.get()));
         this.background = guiHelper.drawableBuilder(ATLAS, 0, 0, 120, 58)
                 .setTextureSize(120, 58)
                 .build();
+        this.arrow = guiHelper.createAnimatedRecipeArrow(40);
     }
 
     @Override
@@ -76,12 +79,10 @@ public class ChoppingBlockJeiCategory implements IRecipeCategory<ChoppingBlockRe
     @Override
     public void draw(@NotNull ChoppingBlockRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
         background.draw(guiGraphics, 0, 0);
+        arrow.draw(guiGraphics, 58, 19);
         var font = Minecraft.getInstance().font;
         Component chops = Component.translatable("gui.agescrafting.chopping_block.chops", recipe.chopsRequired());
         int textX = (getWidth() - font.width(chops)) / 2;
         guiGraphics.drawString(font, chops, textX, 40, 0x5E5E5E, false);
     }
 }
-
-
-

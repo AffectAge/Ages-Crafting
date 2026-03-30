@@ -1,0 +1,16 @@
+{
+  "name": "Using Anvil",
+  "category": "agescrafting:anvil",
+  "icon": "agescrafting:stone_anvil",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Place valid input on anvil and strike with required tool. Recipes complete after required number of hits."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Each hit can consume custom durability_per_hit from recipe and adds exhaustion to player."
+    }
+  ]
+}

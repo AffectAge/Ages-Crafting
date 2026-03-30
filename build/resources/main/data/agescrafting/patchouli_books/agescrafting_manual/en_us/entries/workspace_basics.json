@@ -1,0 +1,16 @@
+{
+  "name": "Using Workspace",
+  "category": "agescrafting:workspace",
+  "icon": "agescrafting:workspace_table",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Arrange ingredients on 3 layers of the workspace table. Each recipe uses exact 3D positions."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Use Flint on workspace to craft. If valid, structure transforms into resulting block."
+    }
+  ]
+}

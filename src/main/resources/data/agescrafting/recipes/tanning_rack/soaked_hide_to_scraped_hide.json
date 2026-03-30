@@ -1,0 +1,14 @@
+{
+  "type": "agescrafting:tanning_rack",
+  "ingredient": {
+    "item": "agescrafting:soaked_hide"
+  },
+  "tool": {
+    "tag": "minecraft:swords"
+  },
+  "result": {
+    "item": "agescrafting:scraped_hide"
+  },
+  "hits": 5,
+  "durability_per_hit": 1
+}

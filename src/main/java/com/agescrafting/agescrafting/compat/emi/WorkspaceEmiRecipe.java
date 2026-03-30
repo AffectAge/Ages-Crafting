@@ -81,18 +81,15 @@ public class WorkspaceEmiRecipe implements EmiRecipe {
         addCenteredText(widgets, "gui.agescrafting.layer.bottom", LAYER0_X + LAYER_SIZE / 2, 3);
         addCenteredText(widgets, "gui.agescrafting.layer.middle", LAYER1_X + LAYER_SIZE / 2, 3);
         addCenteredText(widgets, "gui.agescrafting.layer.top", LAYER2_X + LAYER_SIZE / 2, 3);
-        addCenteredText(widgets, "gui.agescrafting.assembly_tool", 33, 82);
-        addCenteredText(widgets, "gui.agescrafting.result", 105, 82);
-
         addLayer(widgets, 0, LAYER0_X, LAYER_Y);
         addLayer(widgets, 1, LAYER1_X, LAYER_Y);
         addLayer(widgets, 2, LAYER2_X, LAYER_Y);
 
-        widgets.addSlot(EmiStack.of(Items.FLINT), 24, 95).drawBack(true);
+        widgets.addSlot(EmiStack.of(Items.FLINT), 56, 95).drawBack(true);
 
         widgets.addSlot(EmiStack.of(recipe.getResultItem(Minecraft.getInstance().level != null
                 ? Minecraft.getInstance().level.registryAccess()
-                : net.minecraft.core.RegistryAccess.EMPTY)), 96, 95).drawBack(true).recipeContext(this);
+                : net.minecraft.core.RegistryAccess.EMPTY)), 116, 95).drawBack(true).recipeContext(this);
 
         recipe.getRequiredStage().ifPresent(stage ->
                 addCenteredText(widgets, Component.translatable("gui.agescrafting.stage_required", stage), 95, 114));
@@ -123,3 +120,6 @@ public class WorkspaceEmiRecipe implements EmiRecipe {
         widgets.addText(translated, x, y, 0x9A9A9A, false);
     }
 }
+
+
+

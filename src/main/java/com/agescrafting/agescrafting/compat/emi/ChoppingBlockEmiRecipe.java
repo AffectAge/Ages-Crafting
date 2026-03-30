@@ -62,6 +62,7 @@ public class ChoppingBlockEmiRecipe implements EmiRecipe {
 
         widgets.addSlot(EmiIngredient.of(recipe.ingredient()), 8, 18).drawBack(true);
         widgets.addSlot(EmiIngredient.of(recipe.tool()), 32, 18).drawBack(true);
+        widgets.addFillingArrow(58, 19, 40);
         widgets.addSlot(EmiStack.of(recipe.result()), 92, 18).drawBack(true).recipeContext(this);
 
         var font = Minecraft.getInstance().font;
@@ -70,6 +71,3 @@ public class ChoppingBlockEmiRecipe implements EmiRecipe {
         widgets.addText(chops, textX, 40, 0x5E5E5E, false);
     }
 }
-
-
-

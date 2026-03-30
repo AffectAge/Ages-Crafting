@@ -1,0 +1,16 @@
+{
+  "name": "Using Primitive Campfire",
+  "category": "agescrafting:primitive_campfire",
+  "icon": "agescrafting:primitive_campfire",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Add logs as fuel, ignite, and place food on top. Cooked state can transition into overcooked if left too long."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Ash accumulates while burning. High ash slows processing; clear it to keep campfire efficient."
+    }
+  ]
+}

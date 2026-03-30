@@ -5,6 +5,7 @@ import com.agescrafting.agescrafting.anvil.AnvilRecipe;
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -28,12 +29,14 @@ public class AnvilJeiCategory implements IRecipeCategory<AnvilRecipe> {
 
     private final IDrawable icon;
     private final IDrawable background;
+    private final IDrawableAnimated arrow;
 
     public AnvilJeiCategory(IGuiHelper guiHelper) {
         this.icon = guiHelper.createDrawableItemStack(new ItemStack(ModBlocks.STONE_ANVIL.get()));
         this.background = guiHelper.drawableBuilder(ATLAS, 0, 0, 120, 58)
                 .setTextureSize(120, 58)
                 .build();
+        this.arrow = guiHelper.createAnimatedRecipeArrow(40);
     }
 
     @Override
@@ -74,12 +77,10 @@ public class AnvilJeiCategory implements IRecipeCategory<AnvilRecipe> {
     @Override
     public void draw(@NotNull AnvilRecipe recipe, @NotNull mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, @NotNull GuiGraphics guiGraphics, double mouseX, double mouseY) {
         background.draw(guiGraphics, 0, 0);
+        arrow.draw(guiGraphics, 58, 19);
         var font = Minecraft.getInstance().font;
         Component hits = Component.translatable("gui.agescrafting.anvil.hits", recipe.hits());
         int textX = (getWidth() - font.width(hits)) / 2;
         guiGraphics.drawString(font, hits, textX, 40, 0x5E5E5E, false);
     }
 }
-
-
-

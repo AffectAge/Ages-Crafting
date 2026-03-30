@@ -14,6 +14,11 @@ public final class JadeTimeFormat {
         return formatClock(remainingSeconds);
     }
 
+    public static String formatTicksAsClock(int ticks) {
+        int seconds = Math.max(0, ticks) / 20;
+        return formatClock(seconds);
+    }
+
     private static String formatClock(int totalSeconds) {
         int seconds = Math.max(0, totalSeconds);
         int minutes = seconds / 60;
