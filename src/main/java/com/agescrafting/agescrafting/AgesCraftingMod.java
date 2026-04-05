@@ -14,6 +14,7 @@ import com.agescrafting.agescrafting.registry.ModBlockEntities;
 import com.agescrafting.agescrafting.registry.ModBlocks;
 import com.agescrafting.agescrafting.registry.ModCreativeTabs;
 import com.agescrafting.agescrafting.registry.ModItems;
+import com.agescrafting.agescrafting.registry.ModFluids;
 import com.agescrafting.agescrafting.registry.ModMenuTypes;
 import com.agescrafting.agescrafting.registry.ModRecipeSerializers;
 import com.agescrafting.agescrafting.registry.ModRecipeTypes;
@@ -40,6 +41,8 @@ public class AgesCraftingMod {
         IEventBus modBus = context.getModEventBus();
         modBus.addListener(this::onCommonSetup);
 
+        ModFluids.FLUID_TYPES.register(modBus);
+        ModFluids.FLUIDS.register(modBus);
         ModBlocks.BLOCKS.register(modBus);
         ModItems.ITEMS.register(modBus);
         ModCreativeTabs.CREATIVE_MODE_TABS.register(modBus);

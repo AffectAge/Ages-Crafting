@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "agescrafting:barrel",
+    "agescrafting:spruce_barrel",
+    "agescrafting:birch_barrel",
+    "agescrafting:jungle_barrel",
+    "agescrafting:acacia_barrel",
+    "agescrafting:dark_oak_barrel",
+    "agescrafting:mangrove_barrel",
+    "agescrafting:cherry_barrel",
+    "agescrafting:bamboo_barrel",
+    "agescrafting:crimson_barrel",
+    "agescrafting:warped_barrel"
+  ]
+}
+

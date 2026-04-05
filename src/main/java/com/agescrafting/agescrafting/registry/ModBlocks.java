@@ -11,6 +11,7 @@ import com.agescrafting.agescrafting.pitkiln.PitKilnBlock;
 import com.agescrafting.agescrafting.tanningrack.TanningRackBlock;
 import com.agescrafting.agescrafting.workspace.WorkspaceTableBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -172,6 +173,11 @@ public class ModBlocks {
             BAMBOO_CHOPPING_BLOCK,
             CRIMSON_CHOPPING_BLOCK,
             WARPED_CHOPPING_BLOCK
+    );
+
+    public static final RegistryObject<LiquidBlock> TANNIN_FLUID_BLOCK = BLOCKS.register(
+            "tannin",
+            () -> new LiquidBlock(ModFluids.SOURCE_TANNIN, BlockBehaviour.Properties.of().noCollission().strength(100.0F).noLootTable().replaceable())
     );
 
     public static final RegistryObject<Block> WOOD_CHIPS_PILE = BLOCKS.register(

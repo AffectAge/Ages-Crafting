@@ -1,0 +1,18 @@
+{
+  "type": "agescrafting:tanning_rack",
+  "ingredient": {
+    "item": "agescrafting:raw_hide"
+  },
+  "tool": {
+    "tag": "minecraft:swords"
+  },
+  "result": {
+    "item": "agescrafting:scraped_hide"
+  },
+  "hits": 6,
+  "durability_per_hit": 1,
+  "failure_output": {
+    "item": "minecraft:rotten_flesh"
+  },
+  "failure_chance": 0.1
+}

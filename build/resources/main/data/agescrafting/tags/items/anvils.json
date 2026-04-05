@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "agescrafting:stone_anvil",
+    "agescrafting:granite_anvil",
+    "agescrafting:diorite_anvil",
+    "agescrafting:andesite_anvil",
+    "agescrafting:deepslate_anvil",
+    "agescrafting:basalt_anvil",
+    "agescrafting:obsidian_anvil"
+  ]
+}
+

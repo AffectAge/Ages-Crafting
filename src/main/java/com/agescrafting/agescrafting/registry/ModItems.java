@@ -3,8 +3,10 @@ package com.agescrafting.agescrafting.registry;
 import com.agescrafting.agescrafting.AgesCraftingMod;
 import com.agescrafting.agescrafting.barrel.BarrelBlockItem;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -149,8 +151,11 @@ public class ModItems {
             CRIMSON_CHOPPING_BLOCK_ITEM,
             WARPED_CHOPPING_BLOCK_ITEM
     );
+    public static final RegistryObject<Item> TANNIN_BUCKET = ITEMS.register("tannin_bucket",
+            () -> new BucketItem(ModFluids.SOURCE_TANNIN, new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET))
+    );
+
     public static final RegistryObject<Item> RAW_HIDE = ITEMS.register("raw_hide", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> SOAKED_HIDE = ITEMS.register("soaked_hide", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SCRAPED_HIDE = ITEMS.register("scraped_hide", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> TANNED_LEATHER = ITEMS.register("tanned_leather", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ASH = ITEMS.register("ash", () -> new Item(new Item.Properties()));

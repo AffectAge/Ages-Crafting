@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "agescrafting:tanning_rack",
+    "agescrafting:spruce_tanning_rack",
+    "agescrafting:birch_tanning_rack",
+    "agescrafting:jungle_tanning_rack",
+    "agescrafting:acacia_tanning_rack",
+    "agescrafting:dark_oak_tanning_rack",
+    "agescrafting:mangrove_tanning_rack",
+    "agescrafting:cherry_tanning_rack",
+    "agescrafting:bamboo_tanning_rack",
+    "agescrafting:crimson_tanning_rack",
+    "agescrafting:warped_tanning_rack"
+  ]
+}
+

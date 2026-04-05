@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "agescrafting:chopping_block",
+    "agescrafting:spruce_chopping_block",
+    "agescrafting:birch_chopping_block",
+    "agescrafting:jungle_chopping_block",
+    "agescrafting:acacia_chopping_block",
+    "agescrafting:dark_oak_chopping_block",
+    "agescrafting:mangrove_chopping_block",
+    "agescrafting:cherry_chopping_block",
+    "agescrafting:bamboo_chopping_block",
+    "agescrafting:crimson_chopping_block",
+    "agescrafting:warped_chopping_block"
+  ]
+}
+

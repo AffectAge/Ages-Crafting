@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ModCreativeTabs {
     private static final ResourceKey<Registry<CreativeModeTab>> CREATIVE_MODE_TAB_REGISTRY =
-            ResourceKey.createRegistryKey(new ResourceLocation("minecraft", "creative_mode_tab"));
+            ResourceKey.createRegistryKey(ResourceLocation.fromNamespaceAndPath("minecraft", "creative_mode_tab"));
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(CREATIVE_MODE_TAB_REGISTRY, AgesCraftingMod.MODID);

@@ -12,8 +12,8 @@
   "gui.agescrafting.result": "Результат",
   "gui.agescrafting.stage_required": "Требуется стадия: %s",
   "message.agescrafting.stage_required": "Нужна стадия: %s",
-  "block.agescrafting.barrel": " бочка",
-  "item.agescrafting.barrel": " бочка",
+  "block.agescrafting.barrel": "Бочка",
+  "item.agescrafting.barrel": "Бочка",
   "gui.agescrafting.barrel.fluid": "Жидкость",
   "gui.agescrafting.barrel.empty": "Пусто",
   "gui.agescrafting.barrel.sealed": "Запечатано",
@@ -203,14 +203,13 @@
   "tooltip.agescrafting.tanning_rack.empty": "Пусто",
   "item.agescrafting.raw_hide": "Сырая шкура",
   "item.agescrafting.tanned_leather": "Выдубленная кожа",
-  "item.agescrafting.soaked_hide": "Замоченная шкура",
   "item.agescrafting.scraped_hide": "Очищенная шкура",
   "gui.agescrafting.tanning_rack.hits": "Нужно ударов: %s",
   "gui.agescrafting.tanning_rack.fail": "Шанс провала: %s%%",
   "tooltip.agescrafting.tanning_rack.progress": "Дубление: %s / %s ударов",
   "emi.category.agescrafting.tanning_rack": "Дубильная стойка",
-  "tooltip.agescrafting.tanning_rack.progress_percent": "Прогресс: %s%%"
+  "tooltip.agescrafting.tanning_rack.progress_percent": "Прогресс: %s%%",
+  "fluid_type.agescrafting.tannin": "Танин",
+  "item.agescrafting.tannin_bucket": "Ведро танина",
+  "block.agescrafting.tannin": "Танин"
 }
-
-
-

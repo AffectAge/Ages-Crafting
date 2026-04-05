@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "agescrafting:drying_rack",
+    "agescrafting:spruce_drying_rack",
+    "agescrafting:birch_drying_rack",
+    "agescrafting:jungle_drying_rack",
+    "agescrafting:acacia_drying_rack",
+    "agescrafting:dark_oak_drying_rack",
+    "agescrafting:mangrove_drying_rack",
+    "agescrafting:cherry_drying_rack",
+    "agescrafting:bamboo_drying_rack",
+    "agescrafting:crimson_drying_rack",
+    "agescrafting:warped_drying_rack"
+  ]
+}
+
